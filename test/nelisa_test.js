@@ -9,17 +9,17 @@ it("Sorting out the data for the week", function(){
 
   var results = nelisa.getSortedData('./files/week1.csv');
 
-          assert.equal(105, results);
+          assert.equal(results.length, 105);
 
 
 })
 
-it("The most popular product sold each week", function(){
-  var results = nelisa.getSortedData('./files/week2.csv');
+ it("The most popular product sold each week", function(){
+   var results = nelisa.getMostPopular('./files/week1.csv');
 
-          assert.equal(117, results);
+           assert.equal(results, 177);
 
-      });
+       });
 
 
 
