@@ -1,14 +1,14 @@
 var fs = require("fs");
 
 
-// module.exports = function(path) {
-//   this.getProductNames = function(callback) {
-     var spazaString = fs.readFileSync("./files/week1.csv", "utf8");
-  var spazaString = spazaString.replce(/ "Day,Date,stock item,No sold,Sales Price"/g,"").split("\n");
+exports.getSortedData = function(path) {
 
-replace(/ sets of/g, " ")
+     var spazaString = fs.readFileSync(path, "utf8");
+  var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
-     console.log(spazaString);
-// }
-//
-// }
+
+     console.log(spazaString)
+
+     return spazaString.length;
+
+ }
