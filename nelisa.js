@@ -1,76 +1,95 @@
-
 var fs = require("fs");
-
 exports.getSortedData = function(path) {
-     var spazaString = fs.readFileSync(path, "utf8");
-  var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
-//console.log(spazaString)
-  return spazaString;
-}
-//////////////////////////////////////////////////////////////////////////////
-exports.getGroupedData = function(spazaString){
-  var list = [];
-spazaString.forEach(function(n){
-var x = n.split(",")
-list.push(x);
-})
-var sortedList = list.map(function(product){
-  return {
-     SoldItem : product[3],
-Item : product[2]
+    var spazaString = fs.readFileSync(path, "utf8");
+    var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
+
+    //console.log(spazaString)
+    return spazaString;
+  }
+  //////////////////////////////////////////////////////////////////////////////
+exports.getGroupedData = function(spazaString) {
+    var list = [];
+    spazaString.forEach(function(n) {
+      var x = n.split(",")
+      list.push(x);
+    })
+    var sortedList = list.map(function(product) {
+        return {
+          SoldItem: product[3],
+          Item: product[2]
+
+        }
+      })
+      //console.log(sortedList);
+    soldProducts = {};
+    var arrMap = [];
+    sortedList.forEach(function(data) {
+      var currentItem = data.Item;
+      var itemSold = data.SoldItem;
+
+      if (soldProducts[currentItem] === undefined) {
+
+        soldProducts[currentItem] = 0;
+      }
+      soldProducts[currentItem] += Number(itemSold);
+
+    });
+    //console.log(soldProducts);
+    for (var key in soldProducts) {
+      result = {
+        items: key,
+        itemSold: soldProducts[key]
+      }
+      arrMap.push(result);
+    }
+    //  console.log(arrMap)
+    return arrMap;
 
   }
-})
-//console.log(sortedList);
-soldProducts  = {};
-var arrMap =[];
-sortedList.forEach(function(data){
-var currentItem = data.Item;
-var itemSold = data.SoldItem;
+  /////////////////////////////////////////////////////////////////////////////
+exports.getMostPopular = function(arrMap) {
 
-if(soldProducts[currentItem] === undefined){
+  var mostPop = "";
+  var max = -Infinity;
 
-  soldProducts[currentItem] = 0;
+  arrMap.forEach(function(n) {
+
+    var soldProd = n.itemSold;
+    var productName = n.items;
+
+    if (soldProd > max) {
+      max = soldProd;
+
+      productName = n.items;
+      mostPop = productName;
+    }
+
+  })
+  console.log(mostPop);
+  return mostPop;
 }
-soldProducts[currentItem] += Number(itemSold);
+///////////////////////////////////////////////////////////////////////////////
+exports.getLeastPopular = function(arrMap){
 
- });
- //console.log(soldProducts);
-for(var key in soldProducts){
-result = {
-items : key,
-itemSold : soldProducts[key]
-}
-arrMap.push(result);
-}
-//  console.log(arrMap)
- return arrMap;
-
-}
-/////////////////////////////////////////////////////////////////////////
-exports.getMostPopular = function(arrMap){
-
-var mostPop = "";
-var max = -Infinity;
+var leastPop = "";
+var min = Infinity;
 
 arrMap.forEach(function(n){
 
-var soldProd = n.itemSold;
 var productName = n.items;
-console.log(productName);
-if(soldProd > max){
 
-max = soldProd;
+if(n.itemSold < min){
+min = n.itemSold;
 
-max = productName;
-
-mostPop = productName;
+productName = n.items;
+leastPop = productName;
 
 
 }
 
-
-
 })
-console.log(mostPop);
+
+console.log(leastPop);
+return leastPop;
+
 }

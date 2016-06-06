@@ -44,6 +44,13 @@ var popular = 'Coke 500ml';
 assert.deepEqual(results, popular);
 
 })
+it("should find the least popular product sold each week", function(){
+  var arrMap = nelisa.getGroupedData(spazaString);
+  var results = nelisa.getLeastPopular(arrMap);
 
+var notpopular = 'Shampoo 1 litre';
+assert.deepEqual(results, notpopular);
+
+})
 
 })
