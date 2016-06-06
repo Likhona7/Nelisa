@@ -7,10 +7,9 @@ exports.getSortedData = function(path) {
 //console.log(spazaString)
   return spazaString;
 }
-
+//////////////////////////////////////////////////////////////////////////////
 exports.getGroupedData = function(spazaString){
-
-var list = [];
+  var list = [];
 spazaString.forEach(function(n){
 var x = n.split(",")
 list.push(x);
@@ -37,7 +36,6 @@ soldProducts[currentItem] += Number(itemSold);
 
  });
  //console.log(soldProducts);
-
 for(var key in soldProducts){
 result = {
 items : key,
@@ -46,12 +44,33 @@ itemSold : soldProducts[key]
 arrMap.push(result);
 }
 //  console.log(arrMap)
-
  return arrMap;
+
+}
+/////////////////////////////////////////////////////////////////////////
+exports.getMostPopular = function(arrMap){
+
+var mostPop = "";
+var max = -Infinity;
+
+arrMap.forEach(function(n){
+
+var soldProd = n.itemSold;
+var productName = n.items;
+console.log(productName);
+if(soldProd > max){
+
+max = soldProd;
+
+max = productName;
+
+mostPop = productName;
 
 
 }
 
-exports. = function(){
 
+
+})
+console.log(mostPop);
 }
