@@ -4,7 +4,7 @@ var fs = require("fs");
 exports.getSortedData = function(path) {
      var spazaString = fs.readFileSync(path, "utf8");
   var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
-
+//console.log(spazaString)
   return spazaString;
 }
 
@@ -22,7 +22,7 @@ Item : product[2]
 
   }
 })
-
+//console.log(sortedList);
 soldProducts  = {};
 var arrMap =[];
 sortedList.forEach(function(data){
@@ -36,7 +36,7 @@ if(soldProducts[currentItem] === undefined){
 soldProducts[currentItem] += Number(itemSold);
 
  });
-
+ //console.log(soldProducts);
 
 for(var key in soldProducts){
 result = {
@@ -45,13 +45,13 @@ itemSold : soldProducts[key]
 }
 arrMap.push(result);
 }
-console.log(arrMap)
+//  console.log(arrMap)
 
-return arrMap;
+ return arrMap;
 
 
 }
 
-//exports. = function(){
-//
-// }
+exports. = function(){
+
+}
