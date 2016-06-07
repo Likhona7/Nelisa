@@ -1,0 +1,21 @@
+productCategories = {
+    "Bananas - loose" : "Fruit",
+    "Apples - loose ": "Fruit",
+    "Heart Chocolates ": "Sweets",
+    "Imasi" : "Dairy",
+    "Bread" : "Baked_Goods",
+    "Chakalaka Can ": "Canned_Goods",
+    "Coke 500ml" : "Sweets",
+    "Cream Soda 500ml" : "Sweets",
+    "Fanta 500ml" : "Sweets",
+    "Gold Dish Vegetable Curry Can" : "Canned_Goods",
+    "Iwisa Pap 5kg" : "Cereal",
+    "Milk 1l" : "Dairy",
+    "Mixed "Sweets", 5s" : "Sweets",
+    "Shampoo 1 litre" : "Hygiene",
+    "Soap Bar" : "Hygiene",
+    "Top Class Soy Mince" : "Meat",
+    "Heart Chocolates ": "Sweets",
+    "Valentine Cards ": "Other",
+    "Rose (plastic)" : "Other"
+}

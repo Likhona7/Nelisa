@@ -3,7 +3,7 @@ exports.getSortedData = function(path) {
     var spazaString = fs.readFileSync(path, "utf8");
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
-    //console.log(spazaString)
+//    console.log(spazaString)
     return spazaString;
   }
   //////////////////////////////////////////////////////////////////////////////
@@ -20,6 +20,8 @@ exports.getGroupedData = function(spazaString) {
 
         }
       })
+
+
       //console.log(sortedList);
     soldProducts = {};
     var arrMap = [];
@@ -37,12 +39,15 @@ exports.getGroupedData = function(spazaString) {
     //console.log(soldProducts);
     for (var key in soldProducts) {
       result = {
-        items: key,
+        productName: key,
         itemSold: soldProducts[key]
       }
+       //console.log(result);
       arrMap.push(result);
     }
     //  console.log(arrMap)
+    console.log(arrMap);
+
     return arrMap;
 
   }
@@ -55,17 +60,17 @@ exports.getMostPopular = function(arrMap) {
   arrMap.forEach(function(n) {
 
     var soldProd = n.itemSold;
-    var productName = n.items;
+    var productName = n.productName;
 
     if (soldProd > max) {
       max = soldProd;
 
-      productName = n.items;
+      productName = n.productName;
       mostPop = productName;
     }
 
   })
-  console.log(mostPop);
+  //console.log(mostPop);
   return mostPop;
 }
 ///////////////////////////////////////////////////////////////////////////////
@@ -76,12 +81,12 @@ var min = Infinity;
 
 arrMap.forEach(function(n){
 
-var productName = n.items;
+var productName = n.productName;
 
 if(n.itemSold < min){
 min = n.itemSold;
 
-productName = n.items;
+productName = n.productName;
 leastPop = productName;
 
 
@@ -89,7 +94,7 @@ leastPop = productName;
 
 })
 
-console.log(leastPop);
+//console.log(leastPop);
 return leastPop;
 
 }
