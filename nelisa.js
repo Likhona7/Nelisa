@@ -3,7 +3,7 @@ exports.getSortedData = function(path) {
     var spazaString = fs.readFileSync(path, "utf8");
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
-//    console.log(spazaString)
+    //    console.log(spazaString)
     return spazaString;
   }
   //////////////////////////////////////////////////////////////////////////////
@@ -14,15 +14,15 @@ exports.getGroupedData = function(spazaString) {
       list.push(x);
     })
     var sortedList = list.map(function(product) {
-        return {
-          SoldItem: product[3],
-          Item: product[2]
+      return {
+        SoldItem: product[3],
+        Item: product[2]
 
-        }
-      })
+      }
+    })
 
 
-      //console.log(sortedList);
+    //console.log(sortedList);
     soldProducts = {};
     var arrMap = [];
     sortedList.forEach(function(data) {
@@ -36,65 +36,84 @@ exports.getGroupedData = function(spazaString) {
       soldProducts[currentItem] += Number(itemSold);
 
     });
-    //console.log(soldProducts);
-    for (var key in soldProducts) {
-      result = {
-        productName: key,
-        itemSold: soldProducts[key]
-      }
-       //console.log(result);
-      arrMap.push(result);
-    }
-    //  console.log(arrMap)
-    console.log(arrMap);
 
-    return arrMap;
+    // for (var key in soldProducts) {
+    //   result = {
+    //       productName: key,
+    //       itemSold: soldProducts[key]
+    //     }
+    //     //console.log(result);
+    //   arrMap.push(result);
+    // }
+    //  console.log(arrMap)
+    // console.log(arrMap);
+    //console.log(soldProducts);
+    return soldProducts;
 
   }
   /////////////////////////////////////////////////////////////////////////////
-exports.getMostPopular = function(arrMap) {
+exports.getMostPopular = function(Obj) {
 
-  var mostPop = "";
-  var max = -Infinity;
 
-  arrMap.forEach(function(n) {
 
-    var soldProd = n.itemSold;
-    var productName = n.productName;
+    var mostPopular = "";
+    var max = -Infinity;
 
-    if (soldProd > max) {
-      max = soldProd;
+    for (var key in Obj) {
 
-      productName = n.productName;
-      mostPop = productName;
-    }
+        if (Obj[key] > max) {
 
-  })
-  //console.log(mostPop);
-  return mostPop;
+          max = Obj[key];
+
+          mostPopular = key;
+
+
+      }
 }
-///////////////////////////////////////////////////////////////////////////////
-exports.getLeastPopular = function(arrMap){
+    return mostPopular;
+  }
+  ///////////////////////////////////////////////////////////////////////////////
+exports.getLeastPopular = function(Obj) {
 
-var leastPop = "";
-var min = Infinity;
+    //console.log(arrMap)
+    var leastPopular = "";
+    var min = Infinity;
+    for (var key in Obj) {
 
-arrMap.forEach(function(n){
+        if (Obj[key] < min) {
 
-var productName = n.productName;
+          min = Obj[key];
 
-if(n.itemSold < min){
-min = n.itemSold;
+          leastPopular = key;
 
-productName = n.productName;
-leastPop = productName;
 
+      }
+
+  }
+  //console.log(leastPopular);
+ return leastPopular;
 
 }
+  /////////////////////////////////////////////////////////////////////////////////
 
-})
+  exports.getMapCategory = function(productcategories, productWeeks) {
+var categoryMap = {};
 
-//console.log(leastPop);
-return leastPop;
+  for(var key in productWeeks){
+
+productWeeks[key]
+
+var category = productcategories[key];
+  var quantity = productWeeks[key];
+
+
+     if(!categoryMap.hasOwnProperty(category)){
+       categoryMap[category] = 0;
+   }
+   categoryMap[category] = categoryMap[category] + quantity;
+}
+//   console.log(categoryMap);
+
+return categoryMap;
 
 }
