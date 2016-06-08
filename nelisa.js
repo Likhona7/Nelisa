@@ -37,17 +37,7 @@ exports.getGroupedData = function(spazaString) {
 
     });
 
-    // for (var key in soldProducts) {
-    //   result = {
-    //       productName: key,
-    //       itemSold: soldProducts[key]
-    //     }
-    //     //console.log(result);
-    //   arrMap.push(result);
-    // }
-    //  console.log(arrMap)
-    // console.log(arrMap);
-    //console.log(soldProducts);
+//  console.log(soldProducts)
     return soldProducts;
 
   }
@@ -112,7 +102,7 @@ var category = productcategories[key];
    }
    categoryMap[category] = categoryMap[category] + quantity;
 }
-//   console.log(categoryMap);
+   //console.log(categoryMap);
 
 return categoryMap;
 

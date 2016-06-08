@@ -56,6 +56,22 @@ var week2 = { 'Imasi': 36 ,
      'Apples - loose': 25 ,
      'Mixed Sweets 5s': 29 ,
      'Milk 1l': 28 };
+var week4 = {
+  'Imasi': 34,
+  'Bread': 33,
+  'Chakalaka Can': 33,
+  'Gold Dish Vegetable Curry Can': 34,
+  'Fanta 500ml': 24,
+  'Coke 500ml': 45,
+  'Cream Soda 500ml': 19,
+  'Iwisa Pap 5kg': 16,
+  'Top Class Soy Mince': 43,
+  'Shampoo 1 litre': 13,
+  'Soap Bar': 25,
+  'Bananas - loose': 22,
+  'Apples - loose': 32,
+  'Mixed Sweets 5s': 40,
+  'Milk 1l': 43 };
 
 var productCategories = {
     "Bananas - loose" : "Fruit",
@@ -76,10 +92,9 @@ var productCategories = {
     "Top Class Soy Mince" : "Meat",
     "Heart Chocolates": "Sweets",
      "Valentine Cards": "Other",
-     "Rose (plastic)": "Other"
-};
+     "Rose (plastic)": "Other" };
 
-  var categoryWeek1 = {
+var categoryWeek1 = {
   "Baked_Goods": 45,
   "Canned_Goods": 40,
   "Dairy": 69,
@@ -114,6 +129,18 @@ var categoryWeek3 = {
 "Soft_Drink": 44,
 "Sweets": 29
 }
+
+var categoryWeek4 = {
+"Dairy": 77,
+"Baked_Goods": 33,
+"Canned_Goods": 67,
+"Soft_Drink": 88,
+"Starch": 16,
+"Meat": 43,
+"Hygiene": 38,
+"Fruit": 54,
+"Sweets": 40 };
+
 
 describe("Spaza Shop Data", function() {
 
@@ -169,6 +196,12 @@ var results = nelisa.getGroupedData(spazaString3);
 assert.deepEqual(results,week3);
   })
 
+  it("Grouping data for each week4", function(){
+var results = nelisa.getGroupedData(spazaString4);
+assert.deepEqual(results,week4);
+  })
+
+
   it("should find the most popular product sold each week1", function() {
     var results = nelisa.getMostPopular(week1);
 
@@ -176,6 +209,29 @@ assert.deepEqual(results,week3);
     assert.deepEqual(results, popular);
 
    })
+
+   it("should find the most popular product sold each week2", function() {
+     var results = nelisa.getMostPopular(week2);
+
+     var popular = 'Mixed Sweets 5s';
+     assert.deepEqual(results, popular);
+
+    })
+    it("should find the most popular product sold each week3", function() {
+      var results = nelisa.getMostPopular(week3);
+
+      var popular = 'Mixed Sweets 5s';
+      assert.deepEqual(results, popular);
+
+     })
+
+     it("should find the most popular product sold each week4", function() {
+       var results = nelisa.getMostPopular(week4);
+
+       var popular = 'Coke 500ml';
+       assert.deepEqual(results, popular);
+
+      })
 
 
   it("should find the least popular product sold each week1", function() {
@@ -186,24 +242,89 @@ assert.deepEqual(results,week3);
     assert.deepEqual(results, notpopular);
 
   })
+  it("should find the least popular product sold each week2", function() {
+
+    var results = nelisa.getLeastPopular(week2);
+
+    var notpopular = 'Soap Bar';
+    assert.deepEqual(results, notpopular);
+
+  })
+  it("should find the least popular product sold each week3", function() {
+
+    var results = nelisa.getLeastPopular(week3);
+
+    var notpopular = 'Iwisa Pap 5kg';
+    assert.deepEqual(results, notpopular);
+
+  })
+  it("should find the least popular product sold each week4", function() {
+
+    var results = nelisa.getLeastPopular(week4);
+
+    var notpopular = 'Shampoo 1 litre';
+    assert.deepEqual(results, notpopular);
+
+  })
 
 
 
-it("the grouped category week1", function(){
+it("should grouped category week1", function(){
 var result = nelisa.getMapCategory(productCategories,week1);
 assert.deepEqual(result, categoryWeek1);
 
 })
-it("the most popular category sold each week2", function(){
+it("should grouped category week2", function(){
 var result = nelisa.getMapCategory(productCategories,week2);
 assert.deepEqual(result, categoryWeek2);
 
 })
 
-it("the most popular category sold each week3", function(){
+it("should grouped category week3", function(){
 var result = nelisa.getMapCategory(productCategories,week3);
 assert.deepEqual(result, categoryWeek3);
 
 })
+it("should grouped category week4", function(){
+var result = nelisa.getMapCategory(productCategories,week4);
+assert.deepEqual(result, categoryWeek4);
+
+})
+
+it("should find the most popular category week1", function(){
+var result = nelisa.getMostPopular(categoryWeek1);
+assert.deepEqual(result, "Soft_Drink");
+})
+it("should find the most popular category week2", function(){
+var result = nelisa.getMostPopular(categoryWeek2);
+assert.deepEqual(result, "Soft_Drink");
+})
+it("should find the most popular category week3", function(){
+var result = nelisa.getMostPopular(categoryWeek3);
+assert.deepEqual(result, "Dairy");
+})
+it("should find the most popular category week4", function(){
+var result = nelisa.getMostPopular(categoryWeek4);
+assert.deepEqual(result, "Soft_Drink");
+})
+
+it("should find the least popular category week1", function(){
+var result = nelisa.getLeastPopular(categoryWeek1);
+assert.deepEqual(result, "Starch");
+})
+it("should find the least popular category week2", function(){
+var result = nelisa.getLeastPopular(categoryWeek2);
+assert.deepEqual(result, "Starch");
+})
+it("should find the least popular category week3", function(){
+var result = nelisa.getLeastPopular(categoryWeek3);
+assert.deepEqual(result, "Starch");
+})
+it("should find the least popular category week4", function(){
+var result = nelisa.getLeastPopular(categoryWeek4);
+assert.deepEqual(result, "Starch");
+})
+
+
 
 })
