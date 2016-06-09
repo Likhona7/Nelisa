@@ -63,7 +63,7 @@ exports.getGroupedData = function(spazaString) {
 //       sort1.push(sortedList);
 //
 // console.log(sort1);
-console.log(sortedList);
+//console.log(sortedList);
 var sort1 = sortedList.map(function(sort){
   sort.totalCost = Number((sort.SoldQuantity*sort.SalePrice.replace(/R/g, "")));
  console.log(sort);
@@ -71,30 +71,26 @@ var sort1 = sortedList.map(function(sort){
 })
 
 
-      // var deal = deals.map(function(deal){
-      //             deal.peravo = Number((deal.price/deal.quantity).toFixed(2));
-      //             return deal;
+
+
+
+
+      // soldProducts = {};
+      // var arrMap = [];
+      // sortedList.forEach(function(data) {
+      //   var currentItem = data.Item;
+      //   var itemSold = data.SoldItem;
+      //
+      //   if (soldProducts[currentItem] === undefined) {
+      //
+      //     soldProducts[currentItem] = 0;
+      //   }
+      //   soldProducts[currentItem] += Number(itemSold);
+      //
       // });
       //
-      // console.log(deal);
-
-
-      soldProducts = {};
-      var arrMap = [];
-      sortedList.forEach(function(data) {
-        var currentItem = data.Item;
-        var itemSold = data.SoldItem;
-
-        if (soldProducts[currentItem] === undefined) {
-
-          soldProducts[currentItem] = 0;
-        }
-        soldProducts[currentItem] += Number(itemSold);
-
-      });
-
-       //console.log(spazaString)
-      return soldProducts;
+      //  //console.log(spazaString)
+      // return soldProducts;
 
     }
   /////////////////////////////////////////////////////////////////////////////
@@ -183,7 +179,7 @@ exports.GroupPurchaseData = function(spazaString) {
       }
       soldProducts2[currentItem] += Number(itemSold);
     });
-     //console.log(soldProducts2);
+     console.log(sortedList);
 
     return soldProducts2;
 
