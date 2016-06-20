@@ -142,24 +142,26 @@ var categoryWeek4 = {
 "Fruit": 54,
 "Sweets": 40 };
 
-var purchasesBulk = { 'Chakalaka Can': 675,
-  'Coke 500ml': 598,
-  'Cream Soda 500ml': 357,
-  'Fanta 500ml': 433,
-  'Gold Dish Vegetable Curry Can': 478,
-  'Imasi': 2238,
-  'Iwisa Pap 5kg': 1020,
-  'Milk 1l': 1060,
-  'Top Class Soy Mince': 808,
-  'Bananas - loose': 72,
-  'Apples - loose': 795,
-  'Mixed Sweets 5s': 2070,
-  'Shampoo 1 litre': 520,
-  'Soap Bar': 156,
-  'Bread': 1270,
-  'Rose (plastic)': 200,
-  'Heart Chocolates': 500,
-  'Valentine Cards': 40 };
+var purchasesBulk =  {
+        "Apples - loose": 12,
+        "Bananas - loose": 8,
+        "Bread": 94,
+        "Chakalaka Can": 83.5,
+        "Coke 500ml": 28,
+        "Cream Soda 500ml": 34.5,
+        "Fanta 500ml": 44.5,
+        "Gold Dish Vegetable Curry Can": 86,
+        "Heart Chocolates": 25,
+        "Imasi": 177,
+        "Iwisa Pap 5kg": 200,
+        "Milk 1l": 101,
+        "Mixed Sweets 5s": 24,
+        "Rose (plastic)": 10,
+        "Shampoo 1 litre": 260,
+        "Soap Bar": 36,
+        "Top Class Soy Mince": 94,
+        "Valentine Cards": 2 }
+
  //
  //  '72': 0,
  // '156': 0,
@@ -377,7 +379,7 @@ it("Should group data for purchases",function(){
   assert.deepEqual(result, purchasesBulk);
 });
 
-it("should group data for week1",function(){
+it("should group data for week1 for profit",function(){
 
   var lee = [];
 var result = nelisa.getGroupedData2(spazaString);
