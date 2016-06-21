@@ -1,10 +1,10 @@
 var assert = require("assert");
 var nelisa = require("../nelisa");
-var spazaString = nelisa.getSortedData('./files/week1.csv');
-var spazaString2 = nelisa.getSortedData('./files/week2.csv');
-var spazaString3 = nelisa.getSortedData('./files/week3.csv');
-var spazaString4 = nelisa.getSortedData('./files/week4.csv');
-var spazaStringPurchase = nelisa.getSortedData('./files/purchases.csv');
+var spazaString = nelisa.readData('./files/week1.csv');
+var spazaString2 = nelisa.readData('./files/week2.csv');
+var spazaString3 = nelisa.readData('./files/week3.csv');
+var spazaString4 = nelisa.readData('./files/week4.csv');
+var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 
 var week1 = {
   'Milk 1l': 39,
@@ -162,57 +162,62 @@ var purchasesBulk =  {
         "Top Class Soy Mince": 94,
         "Valentine Cards": 2 }
 
- //
- //  '72': 0,
- // '156': 0,
- // '357': 0,
- // '433': 0,
- // '478': 0,
- // '520': 0,
- // '598': 0,
- // '675': 0,
- // '795': 0,
- // '808': 0,
- // '1020': 0,
- // '1060': 0,
- // '1270': 0,
- // '2070': 0,
- // '2238': 0 }
- //
- //
- //
+        var groupPurchasesPerWeek = [ [ 'HomeMade', '02-Feb', 'Shampoo 1 litre', '1', 'R20,00', 'R20,00' ],
+          [ 'HomeMade', '02-Feb', 'Soap Bar', '3', 'R3,00', 'R9,00' ],
+          [ 'Epping Market','03-Feb','Bananas - loose','12','R1,00','R12,00' ],
+          [ 'Epping Market','03-Feb','Apples - loose','100','R1,50','R150,00' ],
+          [ 'Epping Market','03-Feb','Mixed Sweets 5s','240','R3,00','R720,00' ],
+          [ 'HomeMade', '04-Feb', 'Shampoo 1 litre', '2', 'R20,00', 'R40,00' ],
+          [ 'HomeMade', '04-Feb', 'Soap Bar', '5', 'R3,00', 'R15,00' ],
+          [ 'Joe Spaza Shop', '04-Feb', 'Bread', '4', 'R11,00', 'R44,00' ],
+          [ 'Joe Spaza Shop', '04-Feb', 'Imasi', '4', 'R24,00', 'R96,00' ],
+          [ 'Epping Market','06-Feb','Bananas - loose','8','R1,00','R8,00' ],
+          [ 'Epping Market','06-Feb','Apples - loose','100','R1,50','R150,00' ],
+          [ 'Epping Market','06-Feb','Mixed Sweets 5s','150','R3,00','R450,00' ],
+          [ 'HomeMade', '06-Feb', 'Soap Bar', '5', 'R3,00', 'R15,00' ],
+          [ 'Makro', '6-Feb', 'Bread', '30', 'R9,00', 'R270,00' ],
+          [ 'Makro', '6-Feb', 'Chakalaka Can', '15', 'R7,00', 'R105,00' ],
+          [ 'Makro', '6-Feb', 'Coke 500ml', '36', 'R3,50', 'R126,00' ],
+          [ 'Makro', '6-Feb', 'Cream Soda 500ml', '18', 'R4,50', 'R81,00' ],
+          [ 'Makro', '6-Feb', 'Fanta 500ml', '24', 'R4,50', 'R108,00' ],
+          [ 'Makro','6-Feb','Gold Dish Vegetable Curry Can','15','R5,00','R75,00' ],
+          [ 'Makro', '6-Feb', 'Imasi', '25', 'R17,00', 'R425,00' ],
+          [ 'Makro', '6-Feb', 'Iwisa Pap 5kg', '5', 'R20,00', 'R100,00' ],
+          [ 'Makro', '6-Feb', 'Milk 1l', '10', 'R7,00', 'R70,00' ],
+          [ 'Makro', '6-Feb', 'Top Class Soy Mince', '10', 'R8,00', 'R80,00' ] ];
+
 describe("Spaza Shop Data", function() {
 
   it("Read out the data for the week1", function() {
-    var results = nelisa.getSortedData('./files/week1.csv');
+    var results = nelisa.readData('./files/week1.csv');
     assert.equal(results.length, 105);
   })
 
   it("Read out the data for the week2", function() {
-    var results = nelisa.getSortedData('./files/week2.csv');
+    var results = nelisa.readData('./files/week2.csv');
     assert.equal(results.length, 117);
   })
 
   it("Read out the data for the week3", function() {
-    var results = nelisa.getSortedData('./files/week3.csv');
+    var results = nelisa.readData('./files/week3.csv');
     assert.equal(results.length, 104);
   })
 
   it("Read out the data for the week4", function() {
-    var results = nelisa.getSortedData('./files/week4.csv');
+    var results = nelisa.readData('./files/week4.csv');
     assert.equal(results.length, 119);
   })
 
   it("Reading the category data", function() {
 
-    var result = nelisa.getSortedData('./files/category.csv');
+    var result = nelisa.readData('./files/category.csv');
     assert.equal(result.length, 20);
 
   })
 
   it("Reading the purchases data", function() {
 
-    var result = nelisa.getSortedData('./files/purchases.csv');
+    var result = nelisa.readData('./files/purchases.csv');
     assert.equal(result.length, 153);
 
   })
@@ -240,6 +245,7 @@ var results = nelisa.getGroupedData(spazaString4);
 assert.deepEqual(results,week4);
   })
 
+//it("should get group data with total selling")
 
 
   it("should find the most popular product sold each week1", function() {
@@ -376,15 +382,14 @@ it("Should group data for purchases",function(){
 
 
   var result = nelisa.GroupPurchaseData(spazaStringPurchase);
-  assert.deepEqual(result, purchasesBulk);
+  assert.deepEqual(result, groupPurchasesPerWeek);
 });
 
-it("should group data for week1 for profit",function(){
-
-  var lee = [];
-var result = nelisa.getGroupedData2(spazaString);
-assert.deepEqual(result, lee);
-
-});
+// it("should group data for week1 for profit",function(){
+// var lee = [];
+// var result = nelisa.weekPurchases(week1, groupPurchasesPerWeek);
+// assert.deepEqual(result, lee);
+//
+//  });
 
 })

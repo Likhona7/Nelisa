@@ -1,5 +1,5 @@
 var fs = require("fs");
-exports.getSortedData = function(path) {
+exports.readData = function(path) {
     var spazaString = fs.readFileSync(path, "utf8");
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
@@ -44,7 +44,7 @@ exports.getGroupedData = function(spazaString) {
 
   }
   /////////////////////////////////////////////////////////////////////////////
-exports.getGroupedData2 = function(spazaString) {
+exports.totalSellingGroupData = function(spazaString) {
     var list = [];
 
     spazaString.forEach(function(n) {
@@ -66,10 +66,10 @@ exports.getGroupedData2 = function(spazaString) {
 
 
         sort.totalSellingPrice = Number((sort.SoldQuantity * sort.SalePrice.replace(/R/g, "")));
-
+console.log(sortedList);
         return sortedList;
       })
-      //  console.log(sortedList);
+
   }
   /////////////////////////////////////////////////////////////////////////////
 exports.getMostPopular = function(Obj) {
@@ -139,25 +139,25 @@ exports.GroupPurchaseData = function(spazaString) {
     list.forEach(function(list) {
   var date = new Date(list[1] + "2016");
 
-      var date0 = new Date("01-Feb-2016");
-      var date1 = new Date("08-Feb-2016");
-      var date2 = new Date("15-Feb-2016");
-      var date3 = new Date("22-Feb-2016");
-      var date4 = new Date("02-Mar-2016");
+      var endOfdate0 = new Date("01-Feb-2016");
+      var endOfdate1 = new Date("08-Feb-2016");
+      var endOfdate2 = new Date("15-Feb-2016");
+      var endOfdate3 = new Date("22-Feb-2016");
+      var endOfdate4 = new Date("02-Mar-2016");
 
-      if(date < date0){
+      if(date < endOfdate0){
       purchaseWeek0.push(list);
     }
-    if(date > date0 && date < date1){
+    if(date > endOfdate0 && date < endOfdate1){
       purchaseWeek1.push(list);
     }
-    if(date > date1 && date < date2){
+    if(date > endOfdate1 && date < endOfdate2){
       purchaseWeek2.push(list);
     }
-    if(date > date2  && date < date3){
+    if(date > endOfdate2  && date < endOfdate3){
       purchaseWeek3.push(list);
     }
-    if(date > date3 && date < date4){
+    if(date > endOfdate3 && date < endOfdate4){
       purchaseWeek4.push(list);
     }
   });
@@ -170,20 +170,19 @@ exports.GroupPurchaseData = function(spazaString) {
   "week3": purchaseWeek3,
   "week4": purchaseWeek4
 };
-console.log(purchases);
-//return (purchases);
+console.log(purchases.week1);
+
+return purchases.week1;
+
 };
-
-
-
-
-
-
-
-
-
-
   ////////////////////////////////////////////////////////////////////////////////
+
+exports.weekPurchases = function(weeks, purchases){
+
+console.log(purchases);
+
+}
+/////////////////////////////////////////////////////////////////////////////////
   // var sortedList = list.map(function(product) {
   //     return {
   //       ShopForStock: product[0],
