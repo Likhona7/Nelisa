@@ -170,7 +170,7 @@ exports.GroupPurchaseData = function(spazaString) {
   "week3": purchaseWeek3,
   "week4": purchaseWeek4
 };
-console.log(purchases.week1);
+//console.log(purchases.week1);
 
 return purchases.week1;
 

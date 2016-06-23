@@ -385,11 +385,11 @@ it("Should group data for purchases",function(){
   assert.deepEqual(result, groupPurchasesPerWeek);
 });
 
-// it("should group data for week1 for profit",function(){
-// var lee = [];
-// var result = nelisa.weekPurchases(week1, groupPurchasesPerWeek);
-// assert.deepEqual(result, lee);
-//
-//  });
+it("should group data for week1 for profit",function(){
+var lee = [];
+var result = nelisa.weekPurchases(week1, groupPurchasesPerWeek);
+assert.deepEqual(result, lee);
+
+ });
 
 })
