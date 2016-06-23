@@ -63,13 +63,28 @@ exports.totalSellingGroupData = function(spazaString) {
     })
     var sort1 = sortedList.map(function(sort) {
 
-
-
         sort.totalSellingPrice = Number((sort.SoldQuantity * sort.SalePrice.replace(/R/g, "")));
-console.log(sortedList);
+
         return sortedList;
       })
 
+var soldProducts = {};
+
+      sort1.forEach(function(data) {
+        var currentItem = data.Product;
+        var itemSold = data.totalSellingPrice;
+
+        if (soldProducts[currentItem] === undefined) {
+
+          soldProducts[currentItem] = 0;
+        }
+        soldProducts[currentItem] += Number(itemSold);
+
+      });
+
+
+console.log(sort1);
+return sort1;
   }
   /////////////////////////////////////////////////////////////////////////////
 exports.mostPopular = function(Obj) {
@@ -194,25 +209,27 @@ var purchasesArray = [];
      }
        weeklyPurchases[array[0]] += Number(array[1]);
    });
-console.log(weeklyPurchases);
+//console.log(weeklyPurchases);
    return weeklyPurchases;
  }
 /////////////////////////////////////////////////////////////////////////////////
 exports.getProfit = function(purchasesAdded, week){
 
 
-//console.log(purchasesAdded,"PPPPPPPPPPPPPPPPPPPPPPPPPPP");
+// console.log(week,"PPPPPPPPPPPPPPPPPPPPPPPPPPP");
 var profitMap = {};
     var profit = {};
 
- 	 for(key in purchasesAdded){
+ 	 for(product in purchasesAdded){
+
     for(key in week){
-      if(key === key){
-        profitMap[key] = purchasesAdded[key] - week[key];
+
+      if(product === key){
+        profitMap[key] = purchasesAdded[product] - week[key];
       }
      }
     }
-    //console.log(profitMap);
+//console.log(profitMap);
   	return profitMap;
 
  };
@@ -220,19 +237,19 @@ var profitMap = {};
 
 
 /////////////////////////////////////////////////////////////////////////////////
-// exports.getMapCategory = function(productcategories, productWeeks) {
-//   var categoryMap = {};
-//   for (var key in productWeeks) {
-//     //  productWeeks[key]
-//     var category = productcategories[key];
-//     var quantity = productWeeks[key];
-//     if (!categoryMap.hasOwnProperty(category)) {
-//       categoryMap[category] = 0;
-//     }
-//     categoryMap[category] = categoryMap[category] + quantity;
-//   }
-// //  console.log(categoryMap);
-//
-//   return categoryMap;
-//
-// }
+exports.getMapCategory = function(productcategories, productWeeks) {
+  var categoryMap = {};
+  for (var key in productWeeks) {
+    //  productWeeks[key]
+    var category = productcategories[key];
+    var quantity = productWeeks[key];
+    if (!categoryMap.hasOwnProperty(category)) {
+      categoryMap[category] = 0;
+    }
+    categoryMap[category] = categoryMap[category] + quantity;
+  }
+//  console.log(categoryMap);
+
+  return categoryMap;
+
+}
