@@ -7,7 +7,7 @@ exports.readData = function(path) {
     return spazaString;
   }
   //////////////////////////////////////////////////////////////////////////////
-exports.getGroupedData = function(spazaString) {
+exports.GroupingData = function(spazaString) {
     var list = [];
     spazaString.forEach(function(n) {
       var x = n.split(",")
@@ -72,7 +72,7 @@ console.log(sortedList);
 
   }
   /////////////////////////////////////////////////////////////////////////////
-exports.getMostPopular = function(Obj) {
+exports.mostPopular = function(Obj) {
     var mostPopular = "";
     var max = -Infinity;
 
@@ -85,7 +85,7 @@ exports.getMostPopular = function(Obj) {
     return mostPopular;
   }
   ///////////////////////////////////////////////////////////////////////////////
-exports.getLeastPopular = function(Obj) {
+exports.leastPopular = function(Obj) {
     //console.log(arrMap)
     var leastPopular = "";
     var min = Infinity;
@@ -113,7 +113,7 @@ exports.getMapCategory = function(productcategories, productWeeks) {
     }
     categoryMap[category] = categoryMap[category] + quantity;
   }
-  //console.log(categoryMap);
+//  console.log(categoryMap);
 
   return categoryMap;
 
@@ -127,8 +127,6 @@ exports.GroupPurchaseData = function(spazaString) {
       var x = n.split(";")
       list.push(x);
     })
-
-    //console.log(list);
 
     var purchaseWeek0 = [];
     var purchaseWeek1 = [];
@@ -170,43 +168,71 @@ exports.GroupPurchaseData = function(spazaString) {
   "week3": purchaseWeek3,
   "week4": purchaseWeek4
 };
-//console.log(purchases.week1);
+//console.log(purchases);
 
 return purchases.week1;
 
 };
   ////////////////////////////////////////////////////////////////////////////////
 
-exports.weekPurchases = function(weeks, purchases){
+exports.weekPurchases = function(purchases, weeks){
 
-console.log(purchases);
+//console.log(purchases);
+var purchasesArray = [];
+  purchases.forEach(function(array) {
 
-}
+    purchasesArray.push([array[2], array[5].replace(/R/g, "").replace(/,/g, ".")]);
+
+  });
+
+  var weeklyPurchases = {};
+
+   purchasesArray.forEach(function(array) {
+
+     if (!weeklyPurchases.hasOwnProperty(array[0])) {
+       weeklyPurchases[array[0]] = 0;
+     }
+       weeklyPurchases[array[0]] += Number(array[1]);
+   });
+console.log(weeklyPurchases);
+   return weeklyPurchases;
+ }
 /////////////////////////////////////////////////////////////////////////////////
-  // var sortedList = list.map(function(product) {
-  //     return {
-  //       ShopForStock: product[0],
-  //       Dates: product[1],
-  //       Product: product[2],
-  //       Quantity: product[3],
-  //       Cost: product[4].replace(/R/g, "").replace(/,/g, "."),
-  //       totalCost: product[5]
-  //     }
-  //
-  //   })
-  //   //console.log(sortedList);
-  // costOfProduct = {};
-  // var arrMap = [];
-  // sortedList.forEach(function(data) {
-  //   var currentItem = data.Product;
-  //   var itemSold = Number(data.Cost);
-  //
-  //   if (costOfProduct[currentItem] === undefined) {
-  //
-  //     costOfProduct[currentItem] = 0;
-  //   }
-  //   costOfProduct[currentItem] += Number(itemSold);
-  // });
-  // //console.log(costOfProduct);
-  //
-  // return costOfProduct;
+exports.getProfit = function(purchasesAdded, week){
+
+
+//console.log(purchasesAdded,"PPPPPPPPPPPPPPPPPPPPPPPPPPP");
+var profitMap = {};
+    var profit = {};
+
+ 	 for(key in purchasesAdded){
+    for(key in week){
+      if(key === key){
+        profitMap[key] = purchasesAdded[key] - week[key];
+      }
+     }
+    }
+    //console.log(profitMap);
+  	return profitMap;
+
+ };
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// exports.getMapCategory = function(productcategories, productWeeks) {
+//   var categoryMap = {};
+//   for (var key in productWeeks) {
+//     //  productWeeks[key]
+//     var category = productcategories[key];
+//     var quantity = productWeeks[key];
+//     if (!categoryMap.hasOwnProperty(category)) {
+//       categoryMap[category] = 0;
+//     }
+//     categoryMap[category] = categoryMap[category] + quantity;
+//   }
+// //  console.log(categoryMap);
+//
+//   return categoryMap;
+//
+// }
