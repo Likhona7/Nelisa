@@ -57,34 +57,32 @@ exports.totalSellingGroupData = function(spazaString) {
         Dates: product[1],
         Product: product[2],
         SoldQuantity: product[3],
-        SalePrice: product[4]
+        SalePrice: product[4].replace(/R/g, "")
       }
 
     })
-    var sort1 = sortedList.map(function(sort) {
+    // var sort1 = sortedList.map(function(sort) {
+    //
+    //   sort.totalSellingPrice = Number((sort.SoldQuantity * sort.SalePrice.replace(/R/g, "")));
+    //
+  // console.log(sortedList);
+    // })
+ var soldProducts = {};
 
-        sort.totalSellingPrice = Number((sort.SoldQuantity * sort.SalePrice.replace(/R/g, "")));
+          sortedList.forEach(function(data) {
 
-        return sortedList;
-      })
+            var currentItem = data.Product;
+            var totalSellingPrice = Number(data.SoldQuantity * data.SalePrice);
+            if (soldProducts[currentItem] === undefined) {
+              soldProducts[currentItem] = 0;
+            }
+            soldProducts[currentItem] += Number(totalSellingPrice);
+          });
 
-var soldProducts = {};
-
-      sort1.forEach(function(data) {
-        var currentItem = data.Product;
-        var itemSold = data.totalSellingPrice;
-
-        if (soldProducts[currentItem] === undefined) {
-
-          soldProducts[currentItem] = 0;
-        }
-        soldProducts[currentItem] += Number(itemSold);
-
-      });
-
-
-console.log(sort1);
-return sort1;
+  //         console.log("////////soldProducts/////////");
+  // console.log(soldProducts);
+    //console.log(soldProducts);
+    return soldProducts;
   }
   /////////////////////////////////////////////////////////////////////////////
 exports.mostPopular = function(Obj) {
@@ -128,7 +126,7 @@ exports.getMapCategory = function(productcategories, productWeeks) {
     }
     categoryMap[category] = categoryMap[category] + quantity;
   }
-//  console.log(categoryMap);
+  //  console.log(categoryMap);
 
   return categoryMap;
 
@@ -136,120 +134,120 @@ exports.getMapCategory = function(productcategories, productWeeks) {
 
 ////////////////////////////////////////////////////////////////////////////////
 exports.GroupPurchaseData = function(spazaString) {
-    //  console.log(spazaString);
-    var list = [];
-    spazaString.forEach(function(n) {
-      var x = n.split(";")
-      list.push(x);
-    })
+  //  console.log(spazaString);
+  var list = [];
+  spazaString.forEach(function(n) {
+    var x = n.split(";")
+    list.push(x);
+  })
 
-    var purchaseWeek0 = [];
-    var purchaseWeek1 = [];
-    var purchaseWeek2 = [];
-    var purchaseWeek3 = [];
-    var purchaseWeek4 = [];
+  var purchaseWeek0 = [];
+  var purchaseWeek1 = [];
+  var purchaseWeek2 = [];
+  var purchaseWeek3 = [];
+  var purchaseWeek4 = [];
 
-    list.forEach(function(list) {
-  var date = new Date(list[1] + "2016");
+  list.forEach(function(list) {
+    var date = new Date(list[1] + "2016");
 
-      var endOfdate0 = new Date("01-Feb-2016");
-      var endOfdate1 = new Date("08-Feb-2016");
-      var endOfdate2 = new Date("15-Feb-2016");
-      var endOfdate3 = new Date("22-Feb-2016");
-      var endOfdate4 = new Date("02-Mar-2016");
+    var endOfdate0 = new Date("01-Feb-2016");
+    var endOfdate1 = new Date("08-Feb-2016");
+    var endOfdate2 = new Date("15-Feb-2016");
+    var endOfdate3 = new Date("22-Feb-2016");
+    var endOfdate4 = new Date("02-Mar-2016");
 
-      if(date < endOfdate0){
+    if (date < endOfdate0) {
       purchaseWeek0.push(list);
     }
-    if(date > endOfdate0 && date < endOfdate1){
+    if (date > endOfdate0 && date < endOfdate1) {
       purchaseWeek1.push(list);
     }
-    if(date > endOfdate1 && date < endOfdate2){
+    if (date > endOfdate1 && date < endOfdate2) {
       purchaseWeek2.push(list);
     }
-    if(date > endOfdate2  && date < endOfdate3){
+    if (date > endOfdate2 && date < endOfdate3) {
       purchaseWeek3.push(list);
     }
-    if(date > endOfdate3 && date < endOfdate4){
+    if (date > endOfdate3 && date < endOfdate4) {
       purchaseWeek4.push(list);
     }
   });
 
 
   purchases = {
-  "week0": purchaseWeek0,
-  "week1": purchaseWeek1,
-  "week2": purchaseWeek2,
-  "week3": purchaseWeek3,
-  "week4": purchaseWeek4
+    "week0": purchaseWeek0,
+    "week1": purchaseWeek1,
+    "week2": purchaseWeek2,
+    "week3": purchaseWeek3,
+    "week4": purchaseWeek4
+  };
+  //console.log(purchases);
+
+  return purchases.week1;
+
 };
-//console.log(purchases);
+////////////////////////////////////////////////////////////////////////////////
 
-return purchases.week1;
+exports.weekPurchases = function(purchases, week) {
 
-};
-  ////////////////////////////////////////////////////////////////////////////////
+    //console.log(sort1);
+    var purchasesArray = [];
+    purchases.forEach(function(array) {
 
-exports.weekPurchases = function(purchases, weeks){
+      purchasesArray.push([array[2], array[5].replace(/R/g, "").replace(/,/g, ".")]);
 
-//console.log(purchases);
-var purchasesArray = [];
-  purchases.forEach(function(array) {
+    });
 
-    purchasesArray.push([array[2], array[5].replace(/R/g, "").replace(/,/g, ".")]);
+    var weeklyPurchases = {};
 
-  });
+    purchasesArray.forEach(function(array) {
 
-  var weeklyPurchases = {};
-
-   purchasesArray.forEach(function(array) {
-
-     if (!weeklyPurchases.hasOwnProperty(array[0])) {
-       weeklyPurchases[array[0]] = 0;
-     }
-       weeklyPurchases[array[0]] += Number(array[1]);
-   });
-//console.log(weeklyPurchases);
-   return weeklyPurchases;
- }
-/////////////////////////////////////////////////////////////////////////////////
-exports.getProfit = function(purchasesAdded, week){
+      if (!weeklyPurchases.hasOwnProperty(array[0])) {
+        weeklyPurchases[array[0]] = 0;
+      }
+      weeklyPurchases[array[0]] += Number(array[1]);
+    });
+    //console.log(weeklyPurchases);
+    return weeklyPurchases;
+  }
+  /////////////////////////////////////////////////////////////////////////////////
+exports.getProfit = function(purchasesAdded, week) {
 
 
-// console.log(week,"PPPPPPPPPPPPPPPPPPPPPPPPPPP");
-var profitMap = {};
-    var profit = {};
+  // console.log(week,"PPPPPPPPPPPPPPPPPPPPPPPPPPP");
+  var profitMap = {};
+  var profit = {};
 
- 	 for(product in purchasesAdded){
+  for (product in purchasesAdded) {
 
-    for(key in week){
+    for (key in week) {
 
-      if(product === key){
+      if (product === key) {
         profitMap[key] = purchasesAdded[product] - week[key];
       }
-     }
     }
-//console.log(profitMap);
-  	return profitMap;
+  }
+//  console.log(profitMap);
+  return profitMap;
 
- };
+};
 
 
 
 /////////////////////////////////////////////////////////////////////////////////
-exports.getMapCategory = function(productcategories, productWeeks) {
-  var categoryMap = {};
-  for (var key in productWeeks) {
-    //  productWeeks[key]
-    var category = productcategories[key];
-    var quantity = productWeeks[key];
-    if (!categoryMap.hasOwnProperty(category)) {
-      categoryMap[category] = 0;
-    }
-    categoryMap[category] = categoryMap[category] + quantity;
-  }
-//  console.log(categoryMap);
-
-  return categoryMap;
-
-}
+// exports.profitMapCategory = function(productcategories, productWeeks) {
+//   var categoryMap = {};
+//   for (var key in productWeeks) {
+//     //  productWeeks[key]
+//     var category = productcategories[key];
+//     var quantity = productWeeks[key];productCategories, week4
+//     if (!categoryMap.hasOwnProperty(category)) {
+//       categoryMap[category] = 0;
+//     }
+//     categoryMap[category] = categoryMap[category] + quantity;
+//   }
+//     console.log(categoryMap);
+//
+//   return categoryMap;
+//
+// }

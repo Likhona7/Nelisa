@@ -80,6 +80,73 @@ var week4 = {
   'Milk 1l': 43
 };
 
+ var week1total = { 'Milk 1l': 390,
+'Imasi': 750,
+'Bread': 540,
+'Chakalaka Can': 230,
+'Gold Dish Vegetable Curry Can': 153,
+'Fanta 500ml': 214.5,
+'Coke 500ml': 351,
+'Cream Soda 500ml': 165,
+'Iwisa Pap 5kg': 510,
+'Top Class Soy Mince': 264,
+'Shampoo 1 litre': 90,
+'Soap Bar': 72,
+'Bananas - loose': 94,
+'Apples - loose': 72,
+'Mixed Sweets 5s': 120 };
+
+var week2total = { Imasi: 900,
+'Bread': 336,
+'Chakalaka Can': 210,
+'Gold Dish Vegetable Curry Can': 243,
+'Fanta 500ml': 149.5,
+'Coke 500ml': 273,
+'Cream Soda 500ml': 165,
+'Iwisa Pap 5kg': 300,
+'Top Class Soy Mince': 252,
+'Shampoo 1 litre': 180,
+'Soap Bar': 30,
+'Bananas - loose': 56,
+'Apples - loose': 42,
+'Mixed Sweets 5s': 147,
+'Milk 1l': 280,
+'Heart Chocolates': 700,
+'Rose (plastic)': 210,
+'Valentine Cards': 56 };
+
+var week3total = { Imasi: 625,
+'Bread': 288,
+'Chakalaka Can': 170,
+'Gold Dish Vegetable Curry Can': 72,
+'Fanta 500ml': 91,
+'Coke 500ml': 117,
+'Cream Soda 500ml': 90,
+'Iwisa Pap 5kg': 120,
+'Top Class Soy Mince': 144,
+'Shampoo 1 litre': 120,
+'Soap Bar': 48,
+'Bananas - loose': 34,
+'Apples - loose': 50,
+'Mixed Sweets 5s': 80,
+'Milk 1l': 280 };
+
+var week4total = { Imasi: 850,
+Bread: 396,
+'Chakalaka Can': 330,
+'Gold Dish Vegetable Curry Can': 306,
+'Fanta 500ml': 156,
+'Coke 500ml': 292.5,
+'Cream Soda 500ml': 142.5,
+'Iwisa Pap 5kg': 480,
+'Top Class Soy Mince': 516,
+'Shampoo 1 litre': 390,
+'Soap Bar': 150,
+'Bananas - loose': 44,
+'Apples - loose': 64,
+'Mixed Sweets 5s': 108,
+'Milk 1l': 430 };
+
 var productCategories = {
   "Bananas - loose": "Fruit",
   "Apples - loose": "Fruit",
@@ -618,42 +685,41 @@ var purchasesAddedPerWeek2 = {
 };
 
 var ProfitableWeek1 = {
-  'Milk 1l': 31,
-  Imasi: 491,
-  Bread: 269,
-  'Chakalaka Can': 82,
-  'Gold Dish Vegetable Curry Can': 58,
-  'Fanta 500ml': 75,
-  'Coke 500ml': 72,
-  'Cream Soda 500ml': 59,
-  'Iwisa Pap 5kg': 83,
-  'Top Class Soy Mince': 58,
-  'Shampoo 1 litre': 57,
-  'Soap Bar': 27,
-  'Bananas - loose': -27,
-  'Apples - loose': 264,
-  'Mixed Sweets 5s': 1121
-};
+'Shampoo 1 litre': -30,
+'Soap Bar': -33,
+'Bananas - loose': -74,
+'Apples - loose': 228,
+'Mixed Sweets 5s': 1050,
+'Bread': -226,
+'Imasi': -229,
+'Chakalaka Can': -125,
+'Coke 500ml': -225,
+'Cream Soda 500ml': -84,
+'Fanta 500ml': -106.5,
+'Gold Dish Vegetable Curry Can': -78,
+'Iwisa Pap 5kg': -410,
+'Milk 1l': -320,
+'Top Class Soy Mince': -184 };
 
 var ProfitableWeek2 = {
-  'Rose (plastic)': 186,
-  'Milk 1l': 204,
-  'Bananas - loose': -20,
-  'Apples - loose': 9,
-  'Mixed Sweets 5s': 546,
-  'Bread': 107,
-  'Chakalaka Can': 84,
-  'Coke 500ml': 63,
-  'Gold Dish Vegetable Curry Can': 57.5,
-  'Heart Chocolates': 480,
-  'Imasi': 474,
-  'Iwisa Pap 5kg': 90,
-  'Top Class Soy Mince': 139,
-  'Shampoo 1 litre': 114,
-  'Valentine Cards': 26,
-  'Soap Bar': 10,
-  'Fanta 500ml': 31
-};
+  'Rose (plastic)': -10,
+'Milk 1l': -48,
+'Bananas - loose': -48,
+'Apples - loose': -12,
+'Mixed Sweets 5s': 453,
+'Bread': -201,
+'Chakalaka Can': -105,
+'Coke 500ml': -168,
+'Gold Dish Vegetable Curry Can': -158.5,
+'Heart Chocolates': -200,
+'Imasi': -390,
+'Iwisa Pap 5kg': -200,
+'Top Class Soy Mince': -92,
+'Shampoo 1 litre': -60,
+'Valentine Cards': -16,
+'Soap Bar': -15,
+'Fanta 500ml': -95.5 };
+
 
 
 
@@ -708,12 +774,90 @@ describe("Spaza Shop Data", function() {
       })
     })
 ////////////////////////////////////////////////////////////////////////////////
+describe("Should Get All Selling Total For Each week", function(){
 
-it("total of selling price", function(){
+
+it("total of selling price week1", function(){
   var results = nelisa.totalSellingGroupData(spazaString);
-  assert.deepEqual(results, week); 
+    var week1total = { 'Milk 1l': 390,
+  Imasi: 750,
+  Bread: 540,
+  'Chakalaka Can': 230,
+  'Gold Dish Vegetable Curry Can': 153,
+  'Fanta 500ml': 214.5,
+  'Coke 500ml': 351,
+  'Cream Soda 500ml': 165,
+  'Iwisa Pap 5kg': 510,
+  'Top Class Soy Mince': 264,
+  'Shampoo 1 litre': 90,
+  'Soap Bar': 72,
+  'Bananas - loose': 94,
+  'Apples - loose': 72,
+  'Mixed Sweets 5s': 120 };
+  assert.deepEqual(results, week1total);
 })
 
+it("total of selling price week2", function(){
+  var results = nelisa.totalSellingGroupData(spazaString2);
+  var week2total = { Imasi: 900,
+  Bread: 336,
+  'Chakalaka Can': 210,
+  'Gold Dish Vegetable Curry Can': 243,
+  'Fanta 500ml': 149.5,
+  'Coke 500ml': 273,
+  'Cream Soda 500ml': 165,
+  'Iwisa Pap 5kg': 300,
+  'Top Class Soy Mince': 252,
+  'Shampoo 1 litre': 180,
+  'Soap Bar': 30,
+  'Bananas - loose': 56,
+  'Apples - loose': 42,
+  'Mixed Sweets 5s': 147,
+  'Milk 1l': 280,
+  'Heart Chocolates': 700,
+  'Rose (plastic)': 210,
+  'Valentine Cards': 56 };
+    assert.deepEqual(results, week2total);
+})
+it("total of selling price week3", function(){
+  var results = nelisa.totalSellingGroupData(spazaString3);
+  var week3total = { Imasi: 625,
+  Bread: 288,
+  'Chakalaka Can': 170,
+  'Gold Dish Vegetable Curry Can': 72,
+  'Fanta 500ml': 91,
+  'Coke 500ml': 117,
+  'Cream Soda 500ml': 90,
+  'Iwisa Pap 5kg': 120,
+  'Top Class Soy Mince': 144,
+  'Shampoo 1 litre': 120,
+  'Soap Bar': 48,
+  'Bananas - loose': 34,
+  'Apples - loose': 50,
+  'Mixed Sweets 5s': 80,
+  'Milk 1l': 280 };
+      assert.deepEqual(results, week3total);
+  })
+  it("total of selling price week4", function(){
+    var results = nelisa.totalSellingGroupData(spazaString4);
+      var week4total = { Imasi: 850,
+  Bread: 396,
+  'Chakalaka Can': 330,
+  'Gold Dish Vegetable Curry Can': 306,
+  'Fanta 500ml': 156,
+  'Coke 500ml': 292.5,
+  'Cream Soda 500ml': 142.5,
+  'Iwisa Pap 5kg': 480,
+  'Top Class Soy Mince': 516,
+  'Shampoo 1 litre': 390,
+  'Soap Bar': 150,
+  'Bananas - loose': 44,
+  'Apples - loose': 64,
+  'Mixed Sweets 5s': 108,
+  'Milk 1l': 430 };
+    assert.deepEqual(results, week4total);
+    })
+})
 ////////////////////////////////////////////////////////////////////////////////
   describe("Most popular", function() {
 
@@ -852,7 +996,7 @@ it("total of selling price", function(){
           'Milk 1l': 70,
           'Top Class Soy Mince': 80
         };
-        var result = nelisa.weekPurchases(groupPurchasesPerWeek1, week1);
+        var result = nelisa.weekPurchases(groupPurchasesPerWeek1);
         assert.deepEqual(result, lee);
       });
 
@@ -930,49 +1074,45 @@ it("total of selling price", function(){
   describe("Getting Profit for each week ", function() {
 
       it("should get profit for week1", function() {
-        var lee = {
-          'Milk 1l': 31,
-          Imasi: 491,
-          Bread: 269,
-          'Chakalaka Can': 82,
-          'Gold Dish Vegetable Curry Can': 58,
-          'Fanta 500ml': 75,
-          'Coke 500ml': 72,
-          'Cream Soda 500ml': 59,
-          'Iwisa Pap 5kg': 83,
-          'Top Class Soy Mince': 58,
-          'Shampoo 1 litre': 57,
-          'Soap Bar': 27,
-          'Bananas - loose': -27,
-          'Apples - loose': 264,
-          'Mixed Sweets 5s': 1121
-        }
+        var lee = { 'Shampoo 1 litre': -30,
+  'Soap Bar': -33,
+  'Bananas - loose': -74,
+  'Apples - loose': 228,
+  'Mixed Sweets 5s': 1050,
+  Bread: -226,
+  Imasi: -229,
+  'Chakalaka Can': -125,
+  'Coke 500ml': -225,
+  'Cream Soda 500ml': -84,
+  'Fanta 500ml': -106.5,
+  'Gold Dish Vegetable Curry Can': -78,
+  'Iwisa Pap 5kg': -410,
+  'Milk 1l': -320,
+  'Top Class Soy Mince': -184 };
 
-        var result = nelisa.getProfit(purchasesAddedPerWeek1, week1);
+        var result = nelisa.getProfit(purchasesAddedPerWeek1, week1total);
         assert.deepEqual(result, lee)
 
       })
       it("should get profit for week2", function() {
-        var lee = {
-          'Rose (plastic)': 186,
-          'Milk 1l': 204,
-          'Bananas - loose': -20,
-          'Apples - loose': 9,
-          'Mixed Sweets 5s': 546,
-          'Bread': 107,
-          'Chakalaka Can': 84,
-          'Coke 500ml': 63,
-          'Gold Dish Vegetable Curry Can': 57.5,
-          'Heart Chocolates': 480,
-          'Imasi': 474,
-          'Iwisa Pap 5kg': 90,
-          'Top Class Soy Mince': 139,
-          'Shampoo 1 litre': 114,
-          'Valentine Cards': 26,
-          'Soap Bar': 10,
-          'Fanta 500ml': 31
-        };
-        var result = nelisa.getProfit(purchasesAddedPerWeek2, week2);
+        var lee = { 'Rose (plastic)': -10,
+  'Milk 1l': -48,
+  'Bananas - loose': -48,
+  'Apples - loose': -12,
+  'Mixed Sweets 5s': 453,
+  'Bread': -201,
+  'Chakalaka Can': -105,
+  'Coke 500ml': -168,
+  'Gold Dish Vegetable Curry Can': -158.5,
+  'Heart Chocolates': -200,
+  'Imasi': -390,
+  'Iwisa Pap 5kg': -200,
+  'Top Class Soy Mince': -92,
+  'Shampoo 1 litre': -60,
+  'Valentine Cards': -16,
+  'Soap Bar': -15,
+  'Fanta 500ml': -95.5 };
+        var result = nelisa.getProfit(purchasesAddedPerWeek2, week2total);
         assert.deepEqual(result, lee)
       })
 
@@ -993,7 +1133,15 @@ it("total of selling price", function(){
 
     })
     ////////////////////////////////////////////////////////////////////////////////
-  describe("", function() {
+  describe("the most profitable category for each week", function() {
 
+           it("Profitable category for week1", function(){
+            var lee = [];
+              var result = nelisa.getMapCategory(productCategories, ProfitableWeek1);
+              assert.deepEqual(result, lee);
+           })
   })
+
+
+
 })
