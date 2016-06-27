@@ -95,6 +95,7 @@ exports.mostPopular = function(Obj) {
         mostPopular = key;
       }
     }
+    console.log(mostPopular);
     return mostPopular;
   }
   ///////////////////////////////////////////////////////////////////////////////
