@@ -38,10 +38,8 @@ exports.GroupingData = function(spazaString) {
       soldProducts[currentItem] += Number(itemSold);
 
     });
-
     //console.log(soldProducts)
     return soldProducts;
-
   }
   /////////////////////////////////////////////////////////////////////////////
 exports.totalSellingGroupData = function(spazaString) {
@@ -61,12 +59,7 @@ exports.totalSellingGroupData = function(spazaString) {
       }
 
     })
-    // var sort1 = sortedList.map(function(sort) {
-    //
-    //   sort.totalSellingPrice = Number((sort.SoldQuantity * sort.SalePrice.replace(/R/g, "")));
-    //
-  // console.log(sortedList);
-    // })
+
  var soldProducts = {};
 
           sortedList.forEach(function(data) {
@@ -95,7 +88,7 @@ exports.mostPopular = function(Obj) {
         mostPopular = key;
       }
     }
-    console.log(mostPopular);
+    //console.log(mostPopular);
     return mostPopular;
   }
   ///////////////////////////////////////////////////////////////////////////////
@@ -110,12 +103,9 @@ exports.leastPopular = function(Obj) {
       }
 
     }
-    //console.log(leastPopular);
     return leastPopular;
-
   }
   /////////////////////////////////////////////////////////////////////////////////
-
 exports.getMapCategory = function(productcategories, productWeeks) {
   var categoryMap = {};
   for (var key in productWeeks) {
@@ -127,7 +117,6 @@ exports.getMapCategory = function(productcategories, productWeeks) {
     }
     categoryMap[category] = categoryMap[category] + quantity;
   }
-  //  console.log(categoryMap);
 
   return categoryMap;
 
@@ -182,38 +171,27 @@ exports.GroupPurchaseData = function(spazaString) {
     "week3": purchaseWeek3,
     "week4": purchaseWeek4
   };
-  //console.log(purchases);
 
   return purchases.week1;
-
 };
 ////////////////////////////////////////////////////////////////////////////////
-
 exports.weekPurchases = function(purchases, week) {
-
-    //console.log(sort1);
     var purchasesArray = [];
     purchases.forEach(function(array) {
-
       purchasesArray.push([array[2], array[5].replace(/R/g, "").replace(/,/g, ".")]);
-
     });
 
     var weeklyPurchases = {};
-
     purchasesArray.forEach(function(array) {
-
       if (!weeklyPurchases.hasOwnProperty(array[0])) {
         weeklyPurchases[array[0]] = 0;
       }
       weeklyPurchases[array[0]] += Number(array[1]);
     });
-    //console.log(weeklyPurchases);
     return weeklyPurchases;
   }
   /////////////////////////////////////////////////////////////////////////////////
 exports.getProfit = function(purchasesAdded, week) {
-
 
   // console.log(week,"PPPPPPPPPPPPPPPPPPPPPPPPPPP");
   var profitMap = {};
@@ -228,27 +206,6 @@ exports.getProfit = function(purchasesAdded, week) {
       }
     }
   }
-//  console.log(profitMap);
   return profitMap;
-
 };
-
-
-
 /////////////////////////////////////////////////////////////////////////////////
-// exports.profitMapCategory = function(productcategories, productWeeks) {
-//   var categoryMap = {};
-//   for (var key in productWeeks) {
-//     //  productWeeks[key]
-//     var category = productcategories[key];
-//     var quantity = productWeeks[key];productCategories, week4
-//     if (!categoryMap.hasOwnProperty(category)) {
-//       categoryMap[category] = 0;
-//     }
-//     categoryMap[category] = categoryMap[category] + quantity;
-//   }
-//     console.log(categoryMap);
-//
-//   return categoryMap;
-//
-// }
