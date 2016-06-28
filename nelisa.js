@@ -79,16 +79,16 @@ exports.totalSellingGroupData = function(spazaString) {
     return soldProducts;
   }
   /////////////////////////////////////////////////////////////////////////////
-exports.mostPopular = function(Obj) {
-    //  console.log(Obj);
+exports.mostPopular = function(soldProducts) {
+    //  console.log(soldProducts);
     var mostPopular = {};
     var max = -Infinity;
 
 
-    for (var key in Obj) {
+    for (var key in soldProducts) {
   //  console.log(key);
-      if (Obj[key] > max) {
-        max = Obj[key];
+      if (soldProducts[key] > max) {
+        max = soldProducts[key];
 
 
         mostPopular = {
