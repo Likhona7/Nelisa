@@ -80,27 +80,40 @@ exports.totalSellingGroupData = function(spazaString) {
   }
   /////////////////////////////////////////////////////////////////////////////
 exports.mostPopular = function(Obj) {
-    var mostPopular = "";
+    //  console.log(Obj);
+    var mostPopular = {};
     var max = -Infinity;
 
+
     for (var key in Obj) {
+  //  console.log(key);
       if (Obj[key] > max) {
         max = Obj[key];
-        mostPopular = key;
+
+
+        mostPopular = {
+        product :  key,
+        quantity : max };
       }
+
     }
-    //console.log(mostPopular);
+//console.log(mostPopular)
     return mostPopular;
   }
   ///////////////////////////////////////////////////////////////////////////////
 exports.leastPopular = function(Obj) {
     //console.log(arrMap)
-    var leastPopular = "";
+    var leastPopular = {};
     var min = Infinity;
     for (var key in Obj) {
       if (Obj[key] < min) {
         min = Obj[key];
         leastPopular = key;
+
+        leastPopular = {
+          quantity : min,
+        product :  key };
+
       }
 
     }
@@ -178,7 +191,7 @@ exports.GroupPurchaseData = function(spazaString) {
   return purchases.week1;
 };
 ////////////////////////////////////////////////////////////////////////////////
-exports.weekPurchases = function(purchases, week) {
+exports.weekPurchases = function(purchases) {
 
     //console.log(sort1);
     var purchasesArray = [];
@@ -199,7 +212,7 @@ exports.weekPurchases = function(purchases, week) {
     return weeklyPurchases;
   }
   /////////////////////////////////////////////////////////////////////////////////
-exports.getProfit = function(purchasesAdded, week) {
+exports.getProfit = function(week, purchasesAdded) {
   // console.log(week);
   var profitMap = {};
   var profit = {};
