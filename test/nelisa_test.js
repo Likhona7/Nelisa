@@ -1177,7 +1177,7 @@ describe("Spaza Shop Data", function() {
 
     })
     ////////////////////////////////////////////////////////////////////////////////
-  describe("the map category for each week", function() {
+  describe("the map category for profit each week", function() {
 
     it("Map category for profit week1", function() {
       var expected = {
