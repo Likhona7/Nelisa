@@ -7,7 +7,7 @@ var spazaString = nelisa.readData('./files/week1.csv');
 var soldProducts = nelisa.GroupingData(spazaString);
 var mostPopular = nelisa.mostPopular(soldProducts);
 
-
+console.log(mostPopular);
 
 
 
