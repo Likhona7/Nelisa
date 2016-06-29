@@ -28,6 +28,6 @@ var source = fs.readFileSync("./index.handlebars", 'utf8');
 
 var template = handlebars.compile(source);
 
-var results = template({key : {mostPopular, leastPopular, data}});
+var results = template({key:[mostPopular, data]});
 
 fs.writeFileSync("index.html", results)
