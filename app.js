@@ -1,11 +1,12 @@
 var fs = require("fs");
 
 var handlebars = require("handlebars");
-
 var nelisa = require("./nelisa");
+
 var spazaString = nelisa.readData('./files/week1.csv');
 var soldProducts = nelisa.GroupingData(spazaString);
 var mostPopular = nelisa.mostPopular(soldProducts);
+var leastPopular = nelisa.leastPopular(soldProducts);
 
 console.log(mostPopular);
 
