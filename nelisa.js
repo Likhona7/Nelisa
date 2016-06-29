@@ -19,7 +19,6 @@ exports.GroupingData = function(spazaString) {
           Dates: product[1],
           Item: product[2],
           SoldItem: product[3],
-
           SalePrice: product[4]
         }
       })
@@ -92,6 +91,7 @@ exports.mostPopular = function(soldProducts) {
 
 
         mostPopular = {
+        description : "Most popular product",
         product :  key,
         quantity : max };
       }
@@ -111,6 +111,7 @@ exports.leastPopular = function(Obj) {
         leastPopular = key;
 
         leastPopular = {
+              description : "Least popular product",
           quantity : min,
         product :  key };
 
