@@ -694,65 +694,66 @@ var purchasesAddedPerWeek2 = {
 
 var ProfitableWeek1 = {
   'Milk 1l': 320,
-   'Imasi': 229,
-   'Bread': 226,
-   'Chakalaka Can': 125,
-   'Gold Dish Vegetable Curry Can': 78,
-   'Fanta 500ml': 106.5,
-   'Coke 500ml': 225,
-   'Cream Soda 500ml': 84,
-   'Iwisa Pap 5kg': 410,
-   'Top Class Soy Mince': 184,
-   'Shampoo 1 litre': 30,
-   'Soap Bar': 33,
-   'Bananas - loose': 74,
-   'Apples - loose': -228,
-   'Mixed Sweets 5s': -1050 };
+  'Imasi': 229,
+  'Bread': 226,
+  'Chakalaka Can': 125,
+  'Gold Dish Vegetable Curry Can': 78,
+  'Fanta 500ml': 106.5,
+  'Coke 500ml': 225,
+  'Cream Soda 500ml': 84,
+  'Iwisa Pap 5kg': 410,
+  'Top Class Soy Mince': 184,
+  'Shampoo 1 litre': 30,
+  'Soap Bar': 33,
+  'Bananas - loose': 74,
+  'Apples - loose': -228,
+  'Mixed Sweets 5s': -1050
+};
 
 
 
 var ProfitableWeek2 = {
- 'Imasi': 390,
- 'Bread': 201,
- 'Chakalaka Can': 105,
- 'Gold Dish Vegetable Curry Can': 158.5,
- 'Fanta 500ml': 95.5,
- 'Coke 500ml': 168,
- 'Iwisa Pap 5kg': 200,
- 'Top Class Soy Mince': 92,
- 'Shampoo 1 litre': 60,
- 'Soap Bar': 15,
- 'Bananas - loose': 48,
- 'Apples - loose': 12,
- 'Mixed Sweets 5s': -453,
- 'Milk 1l': 48,
- 'Heart Chocolates': 200,
- 'Rose (plastic)': 10,
- 'Valentine Cards': 16
+  'Imasi': 390,
+  'Bread': 201,
+  'Chakalaka Can': 105,
+  'Gold Dish Vegetable Curry Can': 158.5,
+  'Fanta 500ml': 95.5,
+  'Coke 500ml': 168,
+  'Iwisa Pap 5kg': 200,
+  'Top Class Soy Mince': 92,
+  'Shampoo 1 litre': 60,
+  'Soap Bar': 15,
+  'Bananas - loose': 48,
+  'Apples - loose': 12,
+  'Mixed Sweets 5s': -453,
+  'Milk 1l': 48,
+  'Heart Chocolates': 200,
+  'Rose (plastic)': 10,
+  'Valentine Cards': 16
 };
-var getMostProfitCategoryWeek1 ={
- Hygiene: -63,
- Fruit: 154,
- Sweets: 1050,
- Baked_Goods: -226,
- Dairy: -549,
- Canned_Goods: -203,
- Soft_Drink: -415.5,
- Starch: -410,
- Meat: -184
+var getMostProfitCategoryWeek1 = {
+  Hygiene: -63,
+  Fruit: 154,
+  Sweets: 1050,
+  Baked_Goods: -226,
+  Dairy: -549,
+  Canned_Goods: -203,
+  Soft_Drink: -415.5,
+  Starch: -410,
+  Meat: -184
 };
 
 var getMostProfitCategoryWeek2 = {
-          "Baked_Goods": 201,
-          "Canned_Goods": 263.5,
-          "Dairy": 438,
-          "Fruit": 60,
-          "Hygiene": 75,
-          "Meat": 92,
-          "Other": 26,
-          "Soft_Drink": 263.5,
-          "Starch": 200,
-          "Sweets": -253,
+  "Baked_Goods": 201,
+  "Canned_Goods": 263.5,
+  "Dairy": 438,
+  "Fruit": 60,
+  "Hygiene": 75,
+  "Meat": 92,
+  "Other": 26,
+  "Soft_Drink": 263.5,
+  "Starch": 200,
+  "Sweets": -253,
 }
 
 
@@ -907,22 +908,38 @@ describe("Spaza Shop Data", function() {
 
       it("should find the most popular product sold each week1", function() {
         var results = nelisa.mostPopular(week1);
-        var popular = {"product":"Coke 500ml","quantity":54};
+        var popular = {
+          "description": "Most popular product",
+          "product": "Coke 500ml",
+          "quantity": 54
+        };
         assert.deepEqual(results, popular);
       })
       it("should find the most popular product sold each week2", function() {
         var results = nelisa.mostPopular(week2);
-        var popular =  {"product":"Mixed Sweets 5s","quantity":54};
+        var popular = {
+          "description": "Most popular product",
+          "product": "Mixed Sweets 5s",
+          "quantity": 54
+        };
         assert.deepEqual(results, popular);
       })
       it("should find the most popular product sold each week3", function() {
         var results = nelisa.mostPopular(week3);
-        var popular = {"product":"Mixed Sweets 5s","quantity":29};
+        var popular = {
+          "description": "Most popular product",
+          "product": "Mixed Sweets 5s",
+          "quantity": 29
+        };
         assert.deepEqual(results, popular);
       })
       it("should find the most popular product sold each week4", function() {
         var results = nelisa.mostPopular(week4);
-        var popular = {"product":"Coke 500ml","quantity":45};
+        var popular = {
+          "description": "Most popular product",
+          "product": "Coke 500ml",
+          "quantity": 45
+        };
         assert.deepEqual(results, popular);
       })
     })
@@ -931,22 +948,38 @@ describe("Spaza Shop Data", function() {
 
       it("should find the least popular product sold each week1", function() {
         var results = nelisa.leastPopular(week1);
-        var notpopular = {"quantity":3,"product":"Shampoo 1 litre"};
+        var notpopular = {
+          "description": "Least popular product",
+          "quantity": 3,
+          "product": "Shampoo 1 litre"
+        };
         assert.deepEqual(results, notpopular);
       })
       it("should find the least popular product sold each week2", function() {
         var results = nelisa.leastPopular(week2);
-        var notpopular = {"quantity":5,"product":"Soap Bar"};
+        var notpopular = {
+                "description": "Least popular product",
+          "quantity": 5,
+          "product": "Soap Bar"
+        };
         assert.deepEqual(results, notpopular);
       })
       it("should find the least popular product sold each week3", function() {
         var results = nelisa.leastPopular(week3);
-        var notpopular = {"quantity":4,"product":"Iwisa Pap 5kg"};
+        var notpopular = {
+                "description": "Least popular product",
+          "quantity": 4,
+          "product": "Iwisa Pap 5kg"
+        };
         assert.deepEqual(results, notpopular);
       })
       it("should find the least popular product sold each week4", function() {
         var results = nelisa.leastPopular(week4);
-        var notpopular = {"quantity":13,"product":"Shampoo 1 litre"};
+        var notpopular = {
+                "description": "Least popular product",
+          "quantity": 13,
+          "product": "Shampoo 1 litre"
+        };
         assert.deepEqual(results, notpopular);
       })
     })
@@ -976,19 +1009,35 @@ describe("Spaza Shop Data", function() {
 
       it("should find the most popular category week1", function() {
         var result = nelisa.mostPopular(categoryWeek1);
-        assert.deepEqual(result, {"product":"Soft_Drink","quantity":109} );
+        assert.deepEqual(result, {
+          "description": "Most popular product",
+          "product": "Soft_Drink",
+          "quantity": 109
+        });
       });
       it("should find the most popular category week2", function() {
         var result = nelisa.mostPopular(categoryWeek2);
-        assert.deepEqual(result,  {"product":"Soft_Drink","quantity":87} );
+        assert.deepEqual(result, {
+          "description": "Most popular product",
+          "product": "Soft_Drink",
+          "quantity": 87
+        });
       });
       it("should find the most popular category week3", function() {
         var result = nelisa.mostPopular(categoryWeek3);
-        assert.deepEqual(result,  {"product":"Dairy","quantity":53});
+        assert.deepEqual(result, {
+          "description": "Most popular product",
+          "product": "Dairy",
+          "quantity": 53
+        });
       });
       it("should find the most popular category week4", function() {
         var result = nelisa.mostPopular(categoryWeek4);
-        assert.deepEqual(result, {"product":"Soft_Drink","quantity":88});
+        assert.deepEqual(result, {
+          "description": "Most popular product",
+          "product": "Soft_Drink",
+          "quantity": 88
+        });
       });
     })
     ///////////////////////////////////////////////////////////////////////////////
@@ -996,19 +1045,35 @@ describe("Spaza Shop Data", function() {
 
       it("should find the least popular category week1", function() {
         var result = nelisa.leastPopular(categoryWeek1);
-        assert.deepEqual(result, {"quantity":15,"product":"Hygiene"});
+        assert.deepEqual(result, {
+                "description": "Least popular product",
+          "quantity": 15,
+          "product": "Hygiene"
+        });
       });
       it("should find the least popular category week2", function() {
         var result = nelisa.leastPopular(categoryWeek2);
-        assert.deepEqual(result, {"quantity":10,"product":"Starch"});
+        assert.deepEqual(result, {
+                "description": "Least popular product",
+          "quantity": 10,
+          "product": "Starch"
+        });
       });
       it("should find the least popular category week3", function() {
         var result = nelisa.leastPopular(categoryWeek3);
-        assert.deepEqual(result,  {"quantity":4,"product":"Starch"});
+        assert.deepEqual(result, {
+                "description": "Least popular product",
+          "quantity": 4,
+          "product": "Starch"
+        });
       });
       it("should find the least popular category week4", function() {
         var result = nelisa.leastPopular(categoryWeek4);
-        assert.deepEqual(result, {"quantity":16,"product":"Starch"});
+        assert.deepEqual(result, {
+                 "description": "Least popular product",
+          "quantity": 16,
+          "product": "Starch"
+        });
       });
     })
     ///////////////////////////////////////////////////////////////////////////////
@@ -1119,23 +1184,23 @@ describe("Spaza Shop Data", function() {
   describe("Getting Profit for each week ", function() {
 
       it("should get profit for week1", function() {
-        var lee =
-          {'Milk 1l': 320,
-           'Imasi': 229,
-           'Bread': 226,
-           'Chakalaka Can': 125,
-           'Gold Dish Vegetable Curry Can': 78,
-           'Fanta 500ml': 106.5,
-           'Coke 500ml': 225,
-           'Cream Soda 500ml': 84,
-           'Iwisa Pap 5kg': 410,
-           'Top Class Soy Mince': 184,
-           'Shampoo 1 litre': 30,
-           'Soap Bar': 33,
-           'Bananas - loose': 74,
-           'Apples - loose': -228,
-           'Mixed Sweets 5s': -1050
-      };
+        var lee = {
+          'Milk 1l': 320,
+          'Imasi': 229,
+          'Bread': 226,
+          'Chakalaka Can': 125,
+          'Gold Dish Vegetable Curry Can': 78,
+          'Fanta 500ml': 106.5,
+          'Coke 500ml': 225,
+          'Cream Soda 500ml': 84,
+          'Iwisa Pap 5kg': 410,
+          'Top Class Soy Mince': 184,
+          'Shampoo 1 litre': 30,
+          'Soap Bar': 33,
+          'Bananas - loose': 74,
+          'Apples - loose': -228,
+          'Mixed Sweets 5s': -1050
+        };
         var result = nelisa.getProfit(purchasesAddedPerWeek1, week1total);
         //console.log(purchasesAddedPerWeek1);
         assert.deepEqual(result, lee)
@@ -1143,23 +1208,23 @@ describe("Spaza Shop Data", function() {
       })
       it("should get profit for week2", function() {
         var lee = {
-       "Apples - loose": 12,
-       "Bananas - loose": 48,
-       "Bread": 201,
-       "Chakalaka Can": 105,
-       "Coke 500ml": 168,
-      "Fanta 500ml": 95.5,
-       "Gold Dish Vegetable Curry Can": 158.5,
-       "Heart Chocolates": 200,
-       "Imasi": 390,
-       "Iwisa Pap 5kg": 200,
-       "Milk 1l": 48,
-       "Mixed Sweets 5s": -453,
-       "Rose (plastic)": 10,
-       "Shampoo 1 litre": 60,
-       "Soap Bar": 15,
-       "Top Class Soy Mince": 92,
-       "Valentine Cards": 16
+          "Apples - loose": 12,
+          "Bananas - loose": 48,
+          "Bread": 201,
+          "Chakalaka Can": 105,
+          "Coke 500ml": 168,
+          "Fanta 500ml": 95.5,
+          "Gold Dish Vegetable Curry Can": 158.5,
+          "Heart Chocolates": 200,
+          "Imasi": 390,
+          "Iwisa Pap 5kg": 200,
+          "Milk 1l": 48,
+          "Mixed Sweets 5s": -453,
+          "Rose (plastic)": 10,
+          "Shampoo 1 litre": 60,
+          "Soap Bar": 15,
+          "Top Class Soy Mince": 92,
+          "Valentine Cards": 16
         };
         var result = nelisa.getProfit(purchasesAddedPerWeek2, week2total);
         assert.deepEqual(result, lee)
@@ -1171,12 +1236,20 @@ describe("Spaza Shop Data", function() {
 
       it("should get most Profitable for week1 ", function() {
         var result = nelisa.mostPopular(ProfitableWeek1);
-        assert.deepEqual(result,  {"product":"Iwisa Pap 5kg","quantity":410});
+        assert.deepEqual(result, {
+          "description": "Most popular product",
+          "product": "Iwisa Pap 5kg",
+          "quantity": 410
+        });
 
       })
       it("should get most Profitable for week2 ", function() {
         var result = nelisa.mostPopular(ProfitableWeek2);
-        assert.deepEqual(result, {"product":"Imasi", "quantity":390});
+        assert.deepEqual(result, {
+          "description": "Most popular product",
+          "product": "Imasi",
+          "quantity": 390
+        });
 
       })
 
@@ -1186,15 +1259,15 @@ describe("Spaza Shop Data", function() {
 
     it("Map category for profit week1", function() {
       var expected = {
-          "Baked_Goods": 226,
-          "Canned_Goods": 203,
-          "Dairy": 549,
-          "Fruit": -154,
-          "Hygiene": 63,
-          "Meat": 184,
-          "Soft_Drink": 415.5,
-          "Starch": 410,
-          "Sweets": -1050
+        "Baked_Goods": 226,
+        "Canned_Goods": 203,
+        "Dairy": 549,
+        "Fruit": -154,
+        "Hygiene": 63,
+        "Meat": 184,
+        "Soft_Drink": 415.5,
+        "Starch": 410,
+        "Sweets": -1050
       };
 
       var result = nelisa.getMapCategory(productCategories, ProfitableWeek1);
@@ -1203,29 +1276,37 @@ describe("Spaza Shop Data", function() {
 
     it("Map category for profit week2", function() {
       var expected = {
-       "Baked_Goods": 201,
-       "Canned_Goods": 263.5,
-       "Dairy": 438,
-       "Fruit": 60,
-       "Hygiene": 75,
-       "Meat": 92,
-       "Other": 26,
-       "Soft_Drink": 263.5,
-       "Starch": 200,
-       "Sweets": -253
-  };
+        "Baked_Goods": 201,
+        "Canned_Goods": 263.5,
+        "Dairy": 438,
+        "Fruit": 60,
+        "Hygiene": 75,
+        "Meat": 92,
+        "Other": 26,
+        "Soft_Drink": 263.5,
+        "Starch": 200,
+        "Sweets": -253
+      };
       var result = nelisa.getMapCategory(productCategories, ProfitableWeek2);
       assert.deepEqual(result, expected);
     })
 
     it("Get Most profitable category for  week1", function() {
       var result = nelisa.mostPopular(getMostProfitCategoryWeek1);
-      assert.deepEqual(result, {"product":"Sweets","quantity":1050});
+      assert.deepEqual(result, {
+        "description": "Most popular product",
+        "product": "Sweets",
+        "quantity": 1050
+      });
     })
     it("Get Most profitable category for week2", function() {
 
       var result = nelisa.mostPopular(getMostProfitCategoryWeek2);
-      assert.deepEqual(result, {"product":"Dairy","quantity":438});
+      assert.deepEqual(result, {
+        "description": "Most popular product",
+        "product": "Dairy",
+        "quantity": 438
+      });
     })
 
   })

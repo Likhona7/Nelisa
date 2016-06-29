@@ -97,7 +97,7 @@ exports.mostPopular = function(soldProducts) {
       }
 
     }
-//console.log(mostPopular)
+console.log(mostPopular)
     return mostPopular;
   }
   ///////////////////////////////////////////////////////////////////////////////
@@ -124,6 +124,7 @@ exports.leastPopular = function(Obj) {
   }
   //////////////////////////////////////////////////////////////////////////////////
 exports.getMapCategory = function(productcategories, productWeeks) {
+//console.log(productWeeks);
     var categoryMap = {};
     for (var key in productWeeks) {
       //  productWeeks[key]
@@ -134,7 +135,7 @@ exports.getMapCategory = function(productcategories, productWeeks) {
       }
       categoryMap[category] = categoryMap[category] + quantity;
     }
-    //  console.log(categoryMap);
+      //console.log(categoryMap);
 
     return categoryMap;
 
