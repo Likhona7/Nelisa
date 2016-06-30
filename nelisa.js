@@ -123,13 +123,13 @@ exports.leastPopular = function(Obj) {
 
   }
   //////////////////////////////////////////////////////////////////////////////////
-exports.getMapCategory = function(productcategories, productWeeks) {
-//console.log(productWeeks);
+exports.getMapCategory = function(productcategories, soldProducts) {
+console.log(soldProducts);
     var categoryMap = {};
-    for (var key in productWeeks) {
-      //  productWeeks[key]
+    for (var key in soldProducts) {
+      //  soldProducts[key]
       var category = productcategories[key];
-      var quantity = productWeeks[key];
+      var quantity = soldProducts[key];
       if (!categoryMap.hasOwnProperty(category)) {
         categoryMap[category] = 0;
       }
