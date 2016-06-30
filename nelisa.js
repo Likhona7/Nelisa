@@ -97,7 +97,7 @@ exports.mostPopular = function(soldProducts) {
       }
 
     }
-console.log(mostPopular)
+//console.log(mostPopular)
     return mostPopular;
   }
   ///////////////////////////////////////////////////////////////////////////////
