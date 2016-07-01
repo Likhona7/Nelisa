@@ -3,10 +3,29 @@ exports.readData = function(path) {
     var spazaString = fs.readFileSync(path, "utf8");
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
-    //   console.log(spazaString)
+       //console.log(spazaString)
     return spazaString;
   }
-  //////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+// exports.readCategory = function(path){
+// var spazaStringCategory = fs.readFileSync(path, "utf8");
+// var spazaStringCategory1 = spazaStringCategory.split('\n').splice([1]).filter(Boolean);
+// console.log(spazaStringCategory1);
+//
+// var list = [];
+// var spazaStringCategory1 = {};
+//
+// var spazaStringCategory = spazaStringCategory1.map(function(list){
+//   return {
+//     cat : list[0]
+//   }
+//
+// });
+//
+// //console.log(list);
+// }
+///////////////////////////////////////////////////////////////////////////////
+
 exports.GroupingData = function(spazaString) {
     var list = [];
     spazaString.forEach(function(n) {
@@ -125,11 +144,12 @@ exports.leastPopular = function(Obj) {
   }
   //////////////////////////////////////////////////////////////////////////////////
 exports.getMapCategory = function( productcategories, soldProducts) {
-//console.log(soldProducts);
+//console.log(productcategories);
     var categoryMap = {};
     for (var key in soldProducts) {
       //  soldProducts[key]
       var category = productcategories[key];
+      //console.log(category);
       var quantity = soldProducts[key];
       if (!categoryMap.hasOwnProperty(category)) {
         categoryMap[category] = 0;
@@ -220,7 +240,7 @@ exports.getProfit = function(purchasesAdded, weeklyPurchases) {
 
 
    //console.log(purchasesAdded,"lllllllllllllllllllllllllll");
-   console.log(weeklyPurchases);
+   //console.log(weeklyPurchases);
 
   var profitMap = {};
   var profit = {};

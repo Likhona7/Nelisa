@@ -1,4 +1,4 @@
-{
+var productCategories = {
   "Bananas - loose": "Fruit",
   "Apples - loose": "Fruit",
   "Heart Chocolates ": "Sweets",
