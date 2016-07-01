@@ -91,8 +91,8 @@ exports.mostPopular = function(soldProducts) {
 
 
         mostPopular = {
-        description : "Most popular product",
-        product :  key,
+
+                product :  key,
         quantity : max };
       }
 
@@ -111,7 +111,8 @@ exports.leastPopular = function(Obj) {
         leastPopular = key;
 
         leastPopular = {
-              description : "Least popular product",
+
+
           quantity : min,
         product :  key };
 
@@ -123,8 +124,8 @@ exports.leastPopular = function(Obj) {
 
   }
   //////////////////////////////////////////////////////////////////////////////////
-exports.getMapCategory = function(productcategories, soldProducts) {
-console.log(soldProducts);
+exports.getMapCategory = function( productcategories, soldProducts) {
+//console.log(soldProducts);
     var categoryMap = {};
     for (var key in soldProducts) {
       //  soldProducts[key]
@@ -141,10 +142,10 @@ console.log(soldProducts);
 
   }
   ////////////////////////////////////////////////////////////////////////////////
-exports.GroupPurchaseData = function(spazaString) {
-  //  console.log(spazaString);
+exports.GroupPurchaseData = function(spazaStringPurchase) {
+// console.log(spazaStringPurchase);
   var list = [];
-  spazaString.forEach(function(n) {
+  spazaStringPurchase.forEach(function(n) {
     var x = n.split(";")
     list.push(x);
   })
@@ -188,14 +189,14 @@ exports.GroupPurchaseData = function(spazaString) {
     "week3": purchaseWeek3,
     "week4": purchaseWeek4
   };
-  //console.log(purchases);
+  //console.log(purchases.week1);
 
   return purchases.week1;
 };
 ////////////////////////////////////////////////////////////////////////////////
 exports.weekPurchases = function(purchases) {
 
-    //console.log(sort1);
+  //  console.log(purchases);
     var purchasesArray = [];
     purchases.forEach(function(array) {
 
@@ -214,16 +215,21 @@ exports.weekPurchases = function(purchases) {
     return weeklyPurchases;
   }
   /////////////////////////////////////////////////////////////////////////////////
-exports.getProfit = function(week, purchasesAdded) {
-  // console.log(week);
+exports.getProfit = function(purchasesAdded, weeklyPurchases) {
+
+
+
+   //console.log(purchasesAdded,"lllllllllllllllllllllllllll");
+   console.log(weeklyPurchases);
+
   var profitMap = {};
   var profit = {};
   for (product in purchasesAdded) {
 
-    for (key in week) {
+    for (key in weeklyPurchases) {
 
       if (product === key) {
-        profitMap[key] = purchasesAdded[product] - week[key];
+        profitMap[key] = purchasesAdded[product] - weeklyPurchases[key];
       }
     }
   }

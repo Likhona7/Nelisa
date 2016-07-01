@@ -909,7 +909,6 @@ describe("Spaza Shop Data", function() {
       it("should find the most popular product sold each week1", function() {
         var results = nelisa.mostPopular(week1);
         var popular = {
-          "description": "Most popular product",
           "product": "Coke 500ml",
           "quantity": 54
         };
@@ -918,7 +917,6 @@ describe("Spaza Shop Data", function() {
       it("should find the most popular product sold each week2", function() {
         var results = nelisa.mostPopular(week2);
         var popular = {
-          "description": "Most popular product",
           "product": "Mixed Sweets 5s",
           "quantity": 54
         };
@@ -927,7 +925,6 @@ describe("Spaza Shop Data", function() {
       it("should find the most popular product sold each week3", function() {
         var results = nelisa.mostPopular(week3);
         var popular = {
-          "description": "Most popular product",
           "product": "Mixed Sweets 5s",
           "quantity": 29
         };
@@ -936,7 +933,6 @@ describe("Spaza Shop Data", function() {
       it("should find the most popular product sold each week4", function() {
         var results = nelisa.mostPopular(week4);
         var popular = {
-          "description": "Most popular product",
           "product": "Coke 500ml",
           "quantity": 45
         };
@@ -949,7 +945,6 @@ describe("Spaza Shop Data", function() {
       it("should find the least popular product sold each week1", function() {
         var results = nelisa.leastPopular(week1);
         var notpopular = {
-          "description": "Least popular product",
           "quantity": 3,
           "product": "Shampoo 1 litre"
         };
@@ -958,8 +953,7 @@ describe("Spaza Shop Data", function() {
       it("should find the least popular product sold each week2", function() {
         var results = nelisa.leastPopular(week2);
         var notpopular = {
-                "description": "Least popular product",
-          "quantity": 5,
+                "quantity": 5,
           "product": "Soap Bar"
         };
         assert.deepEqual(results, notpopular);
@@ -967,8 +961,7 @@ describe("Spaza Shop Data", function() {
       it("should find the least popular product sold each week3", function() {
         var results = nelisa.leastPopular(week3);
         var notpopular = {
-                "description": "Least popular product",
-          "quantity": 4,
+                "quantity": 4,
           "product": "Iwisa Pap 5kg"
         };
         assert.deepEqual(results, notpopular);
@@ -976,8 +969,7 @@ describe("Spaza Shop Data", function() {
       it("should find the least popular product sold each week4", function() {
         var results = nelisa.leastPopular(week4);
         var notpopular = {
-                "description": "Least popular product",
-          "quantity": 13,
+                "quantity": 13,
           "product": "Shampoo 1 litre"
         };
         assert.deepEqual(results, notpopular);
@@ -1010,7 +1002,6 @@ describe("Spaza Shop Data", function() {
       it("should find the most popular category week1", function() {
         var result = nelisa.mostPopular(categoryWeek1);
         assert.deepEqual(result, {
-          "description": "Most popular product",
           "product": "Soft_Drink",
           "quantity": 109
         });
@@ -1018,7 +1009,6 @@ describe("Spaza Shop Data", function() {
       it("should find the most popular category week2", function() {
         var result = nelisa.mostPopular(categoryWeek2);
         assert.deepEqual(result, {
-          "description": "Most popular product",
           "product": "Soft_Drink",
           "quantity": 87
         });
@@ -1026,7 +1016,6 @@ describe("Spaza Shop Data", function() {
       it("should find the most popular category week3", function() {
         var result = nelisa.mostPopular(categoryWeek3);
         assert.deepEqual(result, {
-          "description": "Most popular product",
           "product": "Dairy",
           "quantity": 53
         });
@@ -1034,7 +1023,6 @@ describe("Spaza Shop Data", function() {
       it("should find the most popular category week4", function() {
         var result = nelisa.mostPopular(categoryWeek4);
         assert.deepEqual(result, {
-          "description": "Most popular product",
           "product": "Soft_Drink",
           "quantity": 88
         });
@@ -1046,32 +1034,28 @@ describe("Spaza Shop Data", function() {
       it("should find the least popular category week1", function() {
         var result = nelisa.leastPopular(categoryWeek1);
         assert.deepEqual(result, {
-                "description": "Least popular product",
-          "quantity": 15,
+                "quantity": 15,
           "product": "Hygiene"
         });
       });
       it("should find the least popular category week2", function() {
         var result = nelisa.leastPopular(categoryWeek2);
         assert.deepEqual(result, {
-                "description": "Least popular product",
-          "quantity": 10,
+                "quantity": 10,
           "product": "Starch"
         });
       });
       it("should find the least popular category week3", function() {
         var result = nelisa.leastPopular(categoryWeek3);
         assert.deepEqual(result, {
-                "description": "Least popular product",
-          "quantity": 4,
+                "quantity": 4,
           "product": "Starch"
         });
       });
       it("should find the least popular category week4", function() {
         var result = nelisa.leastPopular(categoryWeek4);
         assert.deepEqual(result, {
-                 "description": "Least popular product",
-          "quantity": 16,
+                 "quantity": 16,
           "product": "Starch"
         });
       });
@@ -1201,7 +1185,7 @@ describe("Spaza Shop Data", function() {
           'Apples - loose': -228,
           'Mixed Sweets 5s': -1050
         };
-        var result = nelisa.getProfit(purchasesAddedPerWeek1, week1total);
+        var result = nelisa.getProfit( week1total, purchasesAddedPerWeek1);
         //console.log(purchasesAddedPerWeek1);
         assert.deepEqual(result, lee)
 
@@ -1226,7 +1210,7 @@ describe("Spaza Shop Data", function() {
           "Top Class Soy Mince": 92,
           "Valentine Cards": 16
         };
-        var result = nelisa.getProfit(purchasesAddedPerWeek2, week2total);
+        var result = nelisa.getProfit(week2total, purchasesAddedPerWeek2);
         assert.deepEqual(result, lee)
       })
 
@@ -1237,7 +1221,6 @@ describe("Spaza Shop Data", function() {
       it("should get most Profitable for week1 ", function() {
         var result = nelisa.mostPopular(ProfitableWeek1);
         assert.deepEqual(result, {
-          "description": "Most popular product",
           "product": "Iwisa Pap 5kg",
           "quantity": 410
         });
@@ -1246,7 +1229,6 @@ describe("Spaza Shop Data", function() {
       it("should get most Profitable for week2 ", function() {
         var result = nelisa.mostPopular(ProfitableWeek2);
         assert.deepEqual(result, {
-          "description": "Most popular product",
           "product": "Imasi",
           "quantity": 390
         });
@@ -1294,7 +1276,6 @@ describe("Spaza Shop Data", function() {
     it("Get Most profitable category for  week1", function() {
       var result = nelisa.mostPopular(getMostProfitCategoryWeek1);
       assert.deepEqual(result, {
-        "description": "Most popular product",
         "product": "Sweets",
         "quantity": 1050
       });
@@ -1303,7 +1284,6 @@ describe("Spaza Shop Data", function() {
 
       var result = nelisa.mostPopular(getMostProfitCategoryWeek2);
       assert.deepEqual(result, {
-        "description": "Most popular product",
         "product": "Dairy",
         "quantity": 438
       });
