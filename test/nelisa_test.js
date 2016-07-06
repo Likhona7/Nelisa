@@ -812,7 +812,26 @@ var getMostProfitCategoryWeek2 = {
   "Sweets": -253,
 }
 
+var getMostProfitCategoryWeek3 = { 'Dairy': 203.5,
+'Baked_Goods': 63,
+'Canned_Goods': 88,
+'Soft_Drink': 84.5,
+'Starch': -110,
+'Meat': 24,
+'Hygiene': 44,
+'Fruit': -161,
+'Sweets': -16 };
 
+var getMostProfitCategoryWeek4 = {
+'Dairy': 490,
+'Baked_Goods': 70,
+'Canned_Goods': 215.5,
+'Soft_Drink': 269,
+'Starch': 250,
+'Meat': 188,
+'Hygiene': 251,
+'Fruit': -137,
+'Sweets': 84 };
 
 
 describe("Spaza Shop Data", function() {
@@ -1354,7 +1373,7 @@ it("should get most Profitable for week4", function() {
 
 })
 
-      
+
 
     })
     ////////////////////////////////////////////////////////////////////////////////
@@ -1393,6 +1412,35 @@ it("should get most Profitable for week4", function() {
       var result = nelisa.getMapCategory(productCategories, ProfitableWeek2);
       assert.deepEqual(result, expected);
     })
+    it("Map category for profit week3", function(){
+      var expected = { 'Dairy': 203.5,
+  'Baked_Goods': 63,
+  'Canned_Goods': 88,
+  'Soft_Drink': 84.5,
+  'Starch': -110,
+  'Meat': 24,
+  'Hygiene': 44,
+  'Fruit': -161,
+  'Sweets': -16 };
+
+      var result = nelisa.getMapCategory(productCategories, ProfitableWeek3);
+      assert.deepEqual(result, expected);
+    })
+
+    it("Map category for profit week4", function(){
+       var expected = {
+         'Dairy': 490,
+  'Baked_Goods': 70,
+  'Canned_Goods': 215.5,
+  'Soft_Drink': 269,
+  'Starch': 250,
+  'Meat': 188,
+  'Hygiene': 251,
+  'Fruit': -137,
+  'Sweets': 84 };
+      var result = nelisa.getMapCategory(productCategories, ProfitableWeek4);
+      assert.deepEqual(result, expected);
+    })
 
     it("Get Most profitable category for  week1", function() {
       var result = nelisa.mostPopular(getMostProfitCategoryWeek1);
@@ -1408,7 +1456,19 @@ it("should get most Profitable for week4", function() {
         "product": "Dairy",
         "quantity": 438
       });
+
+
     })
+    it("Get Most profitable category for week3", function(){
+
+      var result = nelisa.mostPopular(getMostProfitCategoryWeek3);
+      assert.deepEqual(result,{"product": "Dairy", "quantity": 203.5})
+    });
+    it("Get Most profitable category for week4", function(){
+
+      var result = nelisa.mostPopular(getMostProfitCategoryWeek4);
+      assert.deepEqual(result,{"product": "Dairy", "quantity": 490})
+    });
 
   })
 
