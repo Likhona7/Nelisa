@@ -7,24 +7,6 @@ exports.readData = function(path) {
     return spazaString;
   }
 //////////////////////////////////////////////////////////////////////////////
-// exports.readCategory = function(path){
-// var spazaStringCategory = fs.readFileSync(path, "utf8");
-// var spazaStringCategory1 = spazaStringCategory.split('\n').splice([1]).filter(Boolean);
-// console.log(spazaStringCategory1);
-//
-// var list = [];
-// var spazaStringCategory1 = {};
-//
-// var spazaStringCategory = spazaStringCategory1.map(function(list){
-//   return {
-//     cat : list[0]
-//   }
-//
-// });
-//
-// //console.log(list);
-// }
-///////////////////////////////////////////////////////////////////////////////
 
 exports.GroupingData = function(spazaString) {
     var list = [];
@@ -209,7 +191,7 @@ exports.GroupPurchaseData = function(spazaStringPurchase) {
     "week3": purchaseWeek3,
     "week4": purchaseWeek4
   };
-  //console.log(purchases.week1);
+//  console.log(purchases.week1);
 
   return purchases.week1;
 };
@@ -253,7 +235,7 @@ exports.getProfit = function(purchasesAdded, weeklyPurchases) {
       }
     }
   }
-  //  console.log(profitMap);
+    //console.log(profitMap);
   return profitMap;
 
 };

@@ -1,11 +1,12 @@
 var fs = require("fs");
 var handlebars = require("handlebars");
 var nelisa = require("../nelisa");
-var productCategories = String(fs.readFileSync("../files/category.json"));
+var productCategories = require("../files/category.json");
 var spazaString = nelisa.readData('../files/week1.csv');
 var soldProducts = nelisa.GroupingData(spazaString);
 var mostPopular = nelisa.mostPopular(soldProducts);
 var leastPopular = nelisa.leastPopular(soldProducts);
+
 //..............................................................................
 var categoryWeek1 = nelisa.getMapCategory(productCategories, soldProducts);
 //console.log(productCategories);
@@ -82,6 +83,11 @@ app.get('/', function (req, res) {
 app.get('/hello', function (req, res) {
  res.send(results);
 });
+
+app.get("/message", function(req, res){
+  res.send("rendering content to browser")
+
+})
 
 
 var server = app.listen(3000, function () {

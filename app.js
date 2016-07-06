@@ -1,31 +1,7 @@
 var fs = require("fs");
 var handlebars = require("handlebars");
 var nelisa = require("./nelisa");
-
-
-var productCategories = {
-  "Bananas - loose": "Fruit",
-  "Apples - loose": "Fruit",
-  "Heart Chocolates ": "Sweets",
-  "Imasi": "Dairy",
-  "Bread": "Baked_Goods",
-  "Chakalaka Can": "Canned_Goods",
-  "Coke 500ml": "Soft_Drink",
-  "Cream Soda 500ml": "Soft_Drink",
-  "Fanta 500ml": "Soft_Drink",
-  "Gold Dish Vegetable Curry Can": "Canned_Goods",
-  "Iwisa Pap 5kg": "Starch",
-  "Milk 1l": "Dairy",
-  "Mixed Sweets 5s": "Sweets",
-  "Shampoo 1 litre": "Hygiene",
-  "Soap Bar": "Hygiene",
-  "Top Class Soy Mince": "Meat",
-  "Heart Chocolates": "Sweets",
-  "Valentine Cards": "Other",
-  "Rose (plastic)": "Other"
-};
-
-//var profitCategory = require("./files/category.json");
+var productCategories = require("./files/category.json");
 var spazaString = nelisa.readData('./files/week1.csv');
 var soldProducts = nelisa.GroupingData(spazaString);
 var mostPopular = nelisa.mostPopular(soldProducts);
@@ -89,8 +65,10 @@ var profitablecategory = {
     product: profitCategory.product,
     quantity: profitCategory.quantity
   }
+  //console.log();
+
   ////////////////////////////////////////////////////////////////////////////////
-var results = template({
-  key: [mostPopular, leastPopular, popularCategory, notpopularCategory, profitableProduct, profitablecategory]
+var results = template({key:
+  [mostPopular, leastPopular, popularCategory, notpopularCategory, profitableProduct, profitablecategory]
 });
 fs.writeFileSync("index.html", results)

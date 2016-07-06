@@ -1,3 +1,4 @@
+var fs = require("fs");
 var assert = require("assert");
 var nelisa = require("../nelisa");
 var spazaString = nelisa.readData('./files/week1.csv');
@@ -5,6 +6,8 @@ var spazaString2 = nelisa.readData('./files/week2.csv');
 var spazaString3 = nelisa.readData('./files/week3.csv');
 var spazaString4 = nelisa.readData('./files/week4.csv');
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
+ var productCategories = require("../files/category.json");
+//console.log(productCategories);
 
 var week1 = {
   'Milk 1l': 39,
@@ -155,28 +158,8 @@ var week4total = {
   'Milk 1l': 430
 };
 
-var productCategories = {
-  "Bananas - loose": "Fruit",
-  "Apples - loose": "Fruit",
-  "Heart Chocolates ": "Sweets",
-  "Imasi": "Dairy",
-  "Bread": "Baked_Goods",
-  "Chakalaka Can": "Canned_Goods",
-  "Coke 500ml": "Soft_Drink",
-  "Cream Soda 500ml": "Soft_Drink",
-  "Fanta 500ml": "Soft_Drink",
-  "Gold Dish Vegetable Curry Can": "Canned_Goods",
-  "Iwisa Pap 5kg": "Starch",
-  "Milk 1l": "Dairy",
-  "Mixed Sweets 5s": "Sweets",
-  "Shampoo 1 litre": "Hygiene",
-  "Soap Bar": "Hygiene",
-  "Top Class Soy Mince": "Meat",
-  "Heart Chocolates": "Sweets",
-  "Valentine Cards": "Other",
-  "Rose (plastic)": "Other"
-};
 
+//console.log(productCategories);
 var categoryWeek1 = {
   "Baked_Goods": 45,
   "Canned_Goods": 40,
@@ -692,6 +675,44 @@ var purchasesAddedPerWeek2 = {
   'Fanta 500ml': 54
 };
 
+
+
+var purchasesAddedPerWeek3 = {
+  'Chakalaka Can': 87,
+  'Cream Soda 500ml': 69,
+  'Fanta 500ml': 60.5,
+  'Gold Dish Vegetable Curry Can': 67,
+  'Iwisa Pap 5kg': 230,
+  'Milk 1l': 276.5,
+  'Apples - loose': 225,
+  'Mixed Sweets 5s': 96,
+  'Bread': 225,
+  'Coke 500ml': 84,
+  'Imasi': 425,
+  'Top Class Soy Mince': 120,
+  'Shampoo 1 litre': 100,
+  'Soap Bar': 24,
+  'Bananas - loose': 20
+};
+
+var purchasesAddedPerWeek4 = {
+  'Chakalaka Can': 253,
+  'Bananas - loose': 20,
+  'Apples - loose': 225,
+  'Mixed Sweets 5s': 24,
+  'Bread': 326,
+  'Coke 500ml': 147,
+  'Cream Soda 500ml': 81,
+  'Fanta 500ml': 94,
+  'Gold Dish Vegetable Curry Can': 167.5,
+  'Imasi': 510,
+  'Milk 1l': 280,
+  'Top Class Soy Mince': 328,
+  'Soap Bar': 69,
+  'Shampoo 1 litre': 220,
+  'Iwisa Pap 5kg': 230
+};
+
 var ProfitableWeek1 = {
   'Milk 1l': 320,
   'Imasi': 229,
@@ -731,17 +752,52 @@ var ProfitableWeek2 = {
   'Rose (plastic)': 10,
   'Valentine Cards': 16
 };
+
+var ProfitableWeek3 = {'Imasi': 200,
+"Bread": 63,
+'Chakalaka Can': 83,
+'Gold Dish Vegetable Curry Can': 5,
+'Fanta 500ml': 30.5,
+'Coke 500ml': 33,
+'Cream Soda 500ml': 21,
+'Iwisa Pap 5kg': -110,
+'Top Class Soy Mince': 24,
+'Shampoo 1 litre': 20,
+'Soap Bar': 24,
+'Bananas - loose': 14,
+'Apples - loose': -175,
+'Mixed Sweets 5s': -16,
+'Milk 1l': 3.5 };
+
+var ProfitableWeek4 = {
+  'Imasi': 340,
+'Bread': 70,
+'Chakalaka Can': 77,
+'Gold Dish Vegetable Curry Can': 138.5,
+'Fanta 500ml': 62,
+'Coke 500ml': 145.5,
+'Cream Soda 500ml': 61.5,
+'Iwisa Pap 5kg': 250,
+'Top Class Soy Mince': 188,
+'Shampoo 1 litre': 170,
+'Soap Bar': 81,
+'Bananas - loose': 24,
+'Apples - loose': -161,
+'Mixed Sweets 5s': 84,
+'Milk 1l': 150 };;
+
 var getMostProfitCategoryWeek1 = {
-  Hygiene: -63,
-  Fruit: 154,
-  Sweets: 1050,
-  Baked_Goods: -226,
-  Dairy: -549,
-  Canned_Goods: -203,
-  Soft_Drink: -415.5,
-  Starch: -410,
-  Meat: -184
+  "Hygiene": -63,
+  "Fruit": 154,
+  "Sweets": 1050,
+  "Baked_Goods": -226,
+  "Dairy": -549,
+  "Canned_Goods": -203,
+  "Soft_Drink": -415.5,
+  "Starch": -410,
+  "Meat": -184
 };
+
 
 var getMostProfitCategoryWeek2 = {
   "Baked_Goods": 201,
@@ -818,8 +874,8 @@ describe("Spaza Shop Data", function() {
 
         var week1total = {
           'Milk 1l': 390,
-          Imasi: 750,
-          Bread: 540,
+          "Imasi": 750,
+          "Bread": 540,
           'Chakalaka Can': 230,
           'Gold Dish Vegetable Curry Can': 153,
           'Fanta 500ml': 214.5,
@@ -863,8 +919,8 @@ describe("Spaza Shop Data", function() {
       it("total of selling price week3", function() {
         var results = nelisa.totalSellingGroupData(spazaString3);
         var week3total = {
-          Imasi: 625,
-          Bread: 288,
+          "Imasi": 625,
+          "Bread": 288,
           'Chakalaka Can': 170,
           'Gold Dish Vegetable Curry Can': 72,
           'Fanta 500ml': 91,
@@ -884,8 +940,8 @@ describe("Spaza Shop Data", function() {
       it("total of selling price week4", function() {
         var results = nelisa.totalSellingGroupData(spazaString4);
         var week4total = {
-          Imasi: 850,
-          Bread: 396,
+          "Imasi": 850,
+          "Bread": 396,
           'Chakalaka Can': 330,
           'Gold Dish Vegetable Curry Can': 306,
           'Fanta 500ml': 156,
@@ -994,6 +1050,7 @@ describe("Spaza Shop Data", function() {
       it("should grouped category week4", function() {
         var result = nelisa.getMapCategory(productCategories, week4);
         assert.deepEqual(result, categoryWeek4);
+
       })
     })
     ////////////////////////////////////////////////////////////////////////////////
@@ -1063,10 +1120,23 @@ describe("Spaza Shop Data", function() {
     ///////////////////////////////////////////////////////////////////////////////
   describe("Grouping Data for the Purchases File ", function() {
 
-      it("Should group data for purchases week1", function() {
+      // it("Should group data for purchases week1", function() {
+      //   var result = nelisa.GroupPurchaseData(spazaStringPurchase);
+      //   assert.deepEqual(result, groupPurchasesPerWeek0);
+      // });
+      it("Should group data for purchases week2", function(){
         var result = nelisa.GroupPurchaseData(spazaStringPurchase);
         assert.deepEqual(result, groupPurchasesPerWeek1);
-      });
+      })
+      // it("Should group data for purchases week3", function(){
+      //   var result = nelisa.GroupPurchaseData(spazaStringPurchase);
+      //   assert.deepEqual(result, groupPurchasesPerWeek3);
+      // })
+      // it("Should group data for purchases week4", function(){
+      //   var result = nelisa.GroupPurchaseData(spazaStringPurchase);
+      //   assert.deepEqual(result, groupPurchasesPerWeek4);
+      // })
+
 
     })
     ////////////////////////////////////////////////////////////////////////////////
@@ -1186,7 +1256,6 @@ describe("Spaza Shop Data", function() {
           'Mixed Sweets 5s': -1050
         };
         var result = nelisa.getProfit( week1total, purchasesAddedPerWeek1);
-        //console.log(purchasesAddedPerWeek1);
         assert.deepEqual(result, lee)
 
       })
@@ -1213,6 +1282,48 @@ describe("Spaza Shop Data", function() {
         var result = nelisa.getProfit(week2total, purchasesAddedPerWeek2);
         assert.deepEqual(result, lee)
       })
+      it("should get profit for week3", function(){
+        var lee =  {
+            "Imasi": 200,
+            "Bread": 63,
+            'Chakalaka Can': 83,
+            'Gold Dish Vegetable Curry Can': 5,
+            'Fanta 500ml': 30.5,
+            'Coke 500ml': 33,
+            'Cream Soda 500ml': 21,
+            'Iwisa Pap 5kg': -110,
+            'Top Class Soy Mince': 24,
+            'Shampoo 1 litre': 20,
+            'Soap Bar': 24,
+            'Bananas - loose': 14,
+            'Apples - loose': -175,
+            'Mixed Sweets 5s': -16,
+            'Milk 1l': 3.5 };
+
+        var result = nelisa.getProfit(week3total, purchasesAddedPerWeek3);
+          assert.deepEqual(result, lee);
+      })
+      it("should get profit for week4", function(){
+
+        var lee = {
+          'Imasi': 340,
+  'Bread': 70,
+  'Chakalaka Can': 77,
+  'Gold Dish Vegetable Curry Can': 138.5,
+  'Fanta 500ml': 62,
+  'Coke 500ml': 145.5,
+  'Cream Soda 500ml': 61.5,
+  'Iwisa Pap 5kg': 250,
+  'Top Class Soy Mince': 188,
+  'Shampoo 1 litre': 170,
+  'Soap Bar': 81,
+  'Bananas - loose': 24,
+  'Apples - loose': -161,
+  'Mixed Sweets 5s': 84,
+  'Milk 1l': 150 };
+var result = nelisa.getProfit(week4total, purchasesAddedPerWeek4);
+  assert.deepEqual(result, lee);
+      })
 
     })
     ////////////////////////////////////////////////////////////////////////////////
@@ -1226,14 +1337,24 @@ describe("Spaza Shop Data", function() {
         });
 
       })
-      it("should get most Profitable for week2 ", function() {
+      it("should get most Profitable for week2", function() {
         var result = nelisa.mostPopular(ProfitableWeek2);
-        assert.deepEqual(result, {
-          "product": "Imasi",
-          "quantity": 390
-        });
+        assert.deepEqual(result, {"product": "Imasi","quantity": 390});
 
-      })
+})
+
+it("should get most Profitable for week3", function() {
+  var result = nelisa.mostPopular(ProfitableWeek3);
+  assert.deepEqual(result, {"product": "Imasi","quantity":200});
+
+})
+it("should get most Profitable for week4", function() {
+  var result = nelisa.mostPopular(ProfitableWeek4);
+  assert.deepEqual(result, {"product": "Imasi","quantity":340});
+
+})
+
+      
 
     })
     ////////////////////////////////////////////////////////////////////////////////
@@ -1294,3 +1415,24 @@ describe("Spaza Shop Data", function() {
 
 
 })
+// var productCategories = {
+//   "Bananas - loose": "Fruit",
+//   "Apples - loose": "Fruit",
+//   "Heart Chocolates ": "Sweets",
+//   "Imasi": "Dairy",
+//   "Bread": "Baked_Goods",
+//   "Chakalaka Can": "Canned_Goods",
+//   "Coke 500ml": "Soft_Drink",
+//   "Cream Soda 500ml": "Soft_Drink",
+//   "Fanta 500ml": "Soft_Drink",
+//   "Gold Dish Vegetable Curry Can": "Canned_Goods",
+//   "Iwisa Pap 5kg": "Starch",
+//   "Milk 1l": "Dairy",
+//   "Mixed Sweets 5s": "Sweets",
+//   "Shampoo 1 litre": "Hygiene",
+//   "Soap Bar": "Hygiene",
+//   "Top Class Soy Mince": "Meat",
+//   "Heart Chocolates": "Sweets",
+//   "Valentine Cards": "Other",
+//   "Rose (plastic)": "Other"
+// };
