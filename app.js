@@ -10,29 +10,43 @@ var weeklyStats = function(path) {
   var spazaString = nelisa.readData(path);
   var soldProducts = nelisa.GroupingData(spazaString);
   var PurchasedForWeek = nelisa.GroupPurchaseData(spazaStringPurchase);
-//  var totalSellingWeek = nelisa.totalSellingGroupData(spazaString);
+  var totalSellingWeek = nelisa.totalSellingGroupData(spazaString);
   var purchasedAdded = nelisa.weekPurchases(PurchasedForWeek);
   var Profit = nelisa.getProfit(purchasedAdded, totalSellingWeek);
   var categoryProfit = nelisa.getMapCategory(productCategories, Profit);
-  return {
-    mostPopular: nelisa.mostPopular(soldProducts),
-    leastPopular: nelisa.leastPopular(soldProducts),
 
-    mostProfitableProduct: nelisa.mostPopular(Profit),
-    profitCategory: nelisa.mostPopular(categoryProfit)
+  var mostPopular = nelisa.mostPopular(soldProducts),
+leastPopular = nelisa.leastPopular(soldProducts),
+mostProfitableProduct = nelisa.mostPopular(Profit),
+profitCategory = nelisa.mostPopular(categoryProfit);
+
+var stats = [mostPopular, leastPopular, mostProfitableProduct, profitCategory];
+var statsDescription = ["mostPopular", "leastPopular", "mostProfitableProduct", "profitCategory"];
+
+stats.forEach(function(stat, index){
+  stat.description = statsDescription[index];
+});
+
+
+  return {
+    mostPopular: stats[0],
+    leastPopular: stats[1],
+
+    mostProfitableProduct: stats[2],
+    profitCategory: stats[3]
   }
 }
-for(var key in weeklyStats){
 
-  console.log(weeklyStats);
-}
 var weeklyStatsWeekFor1 = weeklyStats("./files/week1.csv")
-console.log(weeklyStatsWeekFor1);
+
 var weeklyStatsWeekFor2 = weeklyStats("./files/week2.csv")
 var weeklyStatsWeekFor3 = weeklyStats("./files/week3.csv")
 var weeklyStatsWeekFor4 = weeklyStats("./files/week4.csv")
 
+for(var key in weeklyStatsWeekFor1){
 
+  console.log(weeklyStatsWeekFor1[key]);
+}
 //console.log(weeklyStatsWeekFor1);
 
 
