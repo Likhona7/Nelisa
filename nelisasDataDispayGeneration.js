@@ -3,13 +3,12 @@ exports.readData = function(path) {
     var spazaString = fs.readFileSync(path, "utf8");
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
-       //console.log(spazaString)
+       console.log(spazaString)
     return spazaString;
   }
 //////////////////////////////////////////////////////////////////////////////
 
-exports.GroupingData = function(spazaString) {
-  //console.log(spazaString);
+exports.GroupingData = function(spazaString ,spazaString2, spazaString3, spazaString4) {
     var list = [];
     spazaString.forEach(function(n) {
       var x = n.split(",")
@@ -95,7 +94,7 @@ exports.mostPopular = function(soldProducts) {
         mostPopular = {
 
                 product :  key,
-                quantity : max };
+        quantity : max };
       }
 
     }
@@ -242,38 +241,3 @@ exports.getProfit = function(purchasesAdded, weeklyPurchases) {
 };
 
 /////////////////////////////////////////////////////////////////////////////////
-exports.weeklyStats = function(week) {
-  //console.log(spazaString);
-    var list = [];
-    week.forEach(function(n) {
-      var x = n.split(",")
-      list.push(x);
-    })
-    var sortedList = list.map(function(product) {
-        return {
-          Day: product[0],
-          Dates: product[1],
-          Item: product[2],
-          SoldItem: product[3],
-          SalePrice: product[4]
-        }
-      })
-      //  console.log(sortedList);
-    stats = {};
-    var arrMap = [];
-    sortedList.forEach(function(data) {
-      var currentItem = data.Item;
-      var itemSold = data.SoldItem;
-
-      if (stats[currentItem] === undefined) {
-
-        stats[currentItem] = 0;
-      }
-      stats[currentItem] += Number(itemSold);
-
-    });
-
-    //console.log(stats)
-    return stats;
-
-  }
