@@ -7,8 +7,11 @@ var productCategories = require("./files/category.json");
 
 var weeklyStats = function(path) {
 
+//console.log(path);
+
   var spazaString = nelisa.readData(path);
   var soldProducts = nelisa.GroupingData(spazaString);
+  var categoryWeek = nelisa.getMapCategory(productCategories, soldProducts);
   var PurchasedForWeek = nelisa.GroupPurchaseData(spazaStringPurchase);
   var totalSellingWeek = nelisa.totalSellingGroupData(spazaString);
   var purchasedAdded = nelisa.weekPurchases(PurchasedForWeek);
@@ -16,12 +19,15 @@ var weeklyStats = function(path) {
   var categoryProfit = nelisa.getMapCategory(productCategories, Profit);
 
   var mostPopular = nelisa.mostPopular(soldProducts),
-leastPopular = nelisa.leastPopular(soldProducts),
-mostProfitableProduct = nelisa.mostPopular(Profit),
-profitCategory = nelisa.mostPopular(categoryProfit);
+  leastPopular = nelisa.leastPopular(soldProducts),
+  popularCategory = nelisa.mostPopular(categoryWeek),
+  notPopularCategory = nelisa.leastPopular(categoryWeek),
+  mostProfitableProduct = nelisa.mostPopular(Profit),
+  profitCategory = nelisa.mostPopular(categoryProfit);
 
-var stats = [mostPopular, leastPopular, mostProfitableProduct, profitCategory];
-var statsDescription = ["mostPopular", "leastPopular", "mostProfitableProduct", "profitCategory"];
+var stats = [mostPopular, leastPopular, popularCategory, notPopularCategory, mostProfitableProduct, profitCategory];
+var statsDescription = ["Most popular product", "Least popular product", "Popular category",
+ "Least popular category", "Most profitable product", "Profit category"];
 
 stats.forEach(function(stat, index){
   stat.description = statsDescription[index];
@@ -31,77 +37,90 @@ stats.forEach(function(stat, index){
   return {
     mostPopular: stats[0],
     leastPopular: stats[1],
-
-    mostProfitableProduct: stats[2],
-    profitCategory: stats[3]
+    popularCategory: stats[2],
+    notPopularCategory: stats[3],
+    mostProfitableProduct: stats[4],
+    profitCategory: stats[5]
   }
 }
 
 var weeklyStatsWeekFor1 = weeklyStats("./files/week1.csv")
-
+//console.log(weeklyStatsWeekFor1);
 var weeklyStatsWeekFor2 = weeklyStats("./files/week2.csv")
 var weeklyStatsWeekFor3 = weeklyStats("./files/week3.csv")
 var weeklyStatsWeekFor4 = weeklyStats("./files/week4.csv")
 
-for(var key in weeklyStatsWeekFor1){
-
-  console.log(weeklyStatsWeekFor1[key]);
+var weekStat = {
+  week1: weeklyStatsWeekFor1,
+  week2: weeklyStatsWeekFor2,
+  week3: weeklyStatsWeekFor3,
+  week4: weeklyStatsWeekFor4
 }
+
+
+
+
+
+
+var source = fs.readFileSync("./index.handlebars", 'utf8');
+
+
+var template = handlebars.compile(source);
+
 //console.log(weeklyStatsWeekFor1);
 
+var results = template(weekStat.week1);
 
 
+console.log(results);
+var week = function(path){
 
 
-// var wk = process.argv[2];
-//
-// var filePath = './files/' + wk + '.csv';
-// var spazaString = nelisa.readData(filePath);
-// var soldProducts = nelisa.GroupingData(spazaString);
-// var mostPopular = nelisa.mostPopular(soldProducts);
-// var mostPopular = {
-//   description: "Most popular product",
-//   product: mostPopular.product,
-//   quantity: mostPopular.quantity
-// };
-// var leastPopular = nelisa.leastPopular(soldProducts);
-// var leastPopular = {
-//   description: "Least popular product",
-//   product: leastPopular.product,
-//   quantity: leastPopular.quantity
-// };
-//
-// var categoryWeek = nelisa.getMapCategory(productCategories, soldProducts);
-// var popularCategory = nelisa.mostPopular(categoryWeek);
-// var notpopularCategory = nelisa.leastPopular(categoryWeek);
-//
-//   var popularCategory = {
-//     description: "most popular category",
-//     product: popularCategory.product,
-//     quantity: popularCategory.quantity
-//   };
-//
-//   var notpopularCategory = {
-//     description: "least popular category",
-//     product: notpopularCategory.product,
-//     quantity: notpopularCa.quantity
-//   };
-//
-// console.log(notpopularCategory);
-//   var source = fs.readFileSync("./index.handlebars", 'utf8');
-// var template = handlebars.compile(source);
-//
-// var results = template(mostPopular);
-//
-// fs.writeFileSync(wk + ".html", results);
+ fs.writeFileSync(path + ".html", results);
+ }
+week("week1");
+week("week2");
 
-// var spazaString = nelisa.readData('./files/week1.csv');
-// var spazaString2 = nelisa.readData('./files/week2.csv');
-// var spazaString3 = nelisa.readData('./files/week3.csv');
-// var spazaString4 = nelisa.readData('./files/week4.csv');
 
 
 //..............................................................................
+
+
+
+//
+// ////////////////////////////////////////////////////////////////////////////////
+//
+//
+// fs.writeFileSync("week2.html", results);
+// fs.writeFileSync("week3.html", results);
+// fs.writeFileSync("week4.html", results);
+//
+//
+// var weeklyStats = function(filePath) {
+//   fs.writeFileSync(filePath, results);
+//
+//   // var spazaString = nelisa.readData(path);
+//   // var soldProducts = nelisa.GroupingData(spazaString);
+//   //
+//   // return {
+//   //     mostPopular : nelisa.mostPopular(soldProducts),
+//   //     leastPopular : nelisa.leastPopular(soldProducts)
+//   // }
+//
+// }
+//
+// // fs.writeFileSync("week1.html", results);
+// // fs.writeFileSync("week2.html", results);
+// // fs.writeFileSync("week3.html", results);
+// // fs.writeFileSync("week4.html", results);
+//
+//
+// // weeklyStats('week1');
+// // weeklyStats('week2');
+// // weeklyStats('week3');
+// // weeklyStats('week4');
+// //
+// //
 
 
 
@@ -138,8 +157,7 @@ for(var key in weeklyStatsWeekFor1){
 // // console.log(mostProfitableProduct);
 // // console.log(leastPopular);
 // // console.log(dataLeastPopular);
-// var source = fs.readFileSync("./index.handlebars", 'utf8');
-// var template = handlebars.compile(source);
+//
 // ////////////////////////////////////////////////////////////////////////////////
 // var mostPopular = {
 //   description: "Most popular product",
@@ -177,39 +195,3 @@ for(var key in weeklyStatsWeekFor1){
 //     quantity: profitCategory.quantity
 //   }
 //   //console.log();
-//
-// ////////////////////////////////////////////////////////////////////////////////
-// var results = template({
-//   key: [mostPopular, leastPopular, popularCategory, notpopularCategory, profitableProduct, profitablecategory]
-// });
-// fs.writeFileSync("week1.html", results);
-// fs.writeFileSync("week2.html", results);
-// fs.writeFileSync("week3.html", results);
-// fs.writeFileSync("week4.html", results);
-//
-//
-// var weeklyStats = function(filePath) {
-//   fs.writeFileSync(filePath, results);
-//
-//   // var spazaString = nelisa.readData(path);
-//   // var soldProducts = nelisa.GroupingData(spazaString);
-//   //
-//   // return {
-//   //     mostPopular : nelisa.mostPopular(soldProducts),
-//   //     leastPopular : nelisa.leastPopular(soldProducts)
-//   // }
-//
-// }
-//
-// // fs.writeFileSync("week1.html", results);
-// // fs.writeFileSync("week2.html", results);
-// // fs.writeFileSync("week3.html", results);
-// // fs.writeFileSync("week4.html", results);
-//
-//
-// // weeklyStats('week1');
-// // weeklyStats('week2');
-// // weeklyStats('week3');
-// // weeklyStats('week4');
-// //
-// //
