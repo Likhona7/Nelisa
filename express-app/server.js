@@ -2,73 +2,69 @@ var fs = require("fs");
 var handlebars = require("handlebars");
 var nelisa = require("../nelisa");
 var productCategories = require("../files/category.json");
-var spazaString = nelisa.readData('../files/week1.csv');
-var soldProducts = nelisa.GroupingData(spazaString);
-var mostPopular = nelisa.mostPopular(soldProducts);
-var leastPopular = nelisa.leastPopular(soldProducts);
+var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
+
+
+
+
+
+var weeklyStats = function(path) {
+
+  //console.log(path);
+
+  var spazaString = nelisa.readData(path);
+  var soldProducts = nelisa.GroupingData(spazaString);
+  var categoryWeek = nelisa.getMapCategory(productCategories, soldProducts);
+  var PurchasedForWeek = nelisa.GroupPurchaseData(spazaStringPurchase);
+  var totalSellingWeek = nelisa.totalSellingGroupData(spazaString);
+  var purchasedAdded = nelisa.weekPurchases(PurchasedForWeek);
+  var Profit = nelisa.getProfit(purchasedAdded, totalSellingWeek);
+  var categoryProfit = nelisa.getMapCategory(productCategories, Profit);
+
+  var mostPopular = nelisa.mostPopular(soldProducts),
+    leastPopular = nelisa.leastPopular(soldProducts),
+    popularCategory = nelisa.mostPopular(categoryWeek),
+    notPopularCategory = nelisa.leastPopular(categoryWeek),
+    mostProfitableProduct = nelisa.mostPopular(Profit),
+    profitCategory = nelisa.mostPopular(categoryProfit);
+
+  var stats = [mostPopular, leastPopular, popularCategory, notPopularCategory, mostProfitableProduct, profitCategory];
+  var statsDescription = ["Most popular product", "Least popular product", "Popular category",
+    "Least popular category", "Most profitable product", "Profit category"
+  ];
+
+  stats.forEach(function(stat, index) {
+    stat.description = statsDescription[index];
+  });
+
+
+  return {
+    mostPopular: stats[0],
+    leastPopular: stats[1],
+    popularCategory: stats[2],
+    notPopularCategory: stats[3],
+    mostProfitableProduct: stats[4],
+    profitCategory: stats[5]
+  }
+}
+
+var weeklyStatsWeekFor1 = weeklyStats("./files/week1.csv")
+  //console.log(weeklyStatsWeekFor1);
+var weeklyStatsWeekFor2 = weeklyStats("./files/week2.csv")
+var weeklyStatsWeekFor3 = weeklyStats("./files/week3.csv")
+var weeklyStatsWeekFor4 = weeklyStats("./files/week4.csv")
+
+var weekStat = {
+  week1: weeklyStatsWeekFor1,
+  week2: weeklyStatsWeekFor2,
+  week3: weeklyStatsWeekFor3,
+  week4: weeklyStatsWeekFor4
+}
+
+console.log(weekStat);
 
 //..............................................................................
-var categoryWeek1 = nelisa.getMapCategory(productCategories, soldProducts);
-//console.log(productCategories);
-var data = nelisa.mostPopular(categoryWeek1);
-var data2 = nelisa.leastPopular(categoryWeek1);
-//..............................................................................
-var spazaStringPurchase = nelisa.readData('../files/purchases.csv');
-var data3 = nelisa.GroupPurchaseData(spazaStringPurchase);
-var totalSelling2 = nelisa.totalSellingGroupData(spazaString);
-var purchasedAdded = nelisa.weekPurchases(data3);
-var Profit = nelisa.getProfit(purchasedAdded, totalSelling2);
-var mostProfitableProduct = nelisa.mostPopular(Profit);
-//..............................................................................
-var categoryProfit = nelisa.getMapCategory(productCategories, Profit);
-var profitCategory = nelisa.mostPopular(categoryProfit);
-//console.log(profitCategory);
-//..............................................................................
-//console.log(mostProfitableProduct);
-//console.log(leastPopular);
-//console.log(data2);
-var source = fs.readFileSync("../index.handlebars", 'utf8');
-var template = handlebars.compile(source);
-//..............................................................................
-var mostPopular = {
-  description: "Most popular product",
-  product: mostPopular.product,
-  quantity: mostPopular.quantity
-};
-//..............................................................................
-var popularCategory = {
-  description: "most popular category",
-  product: data.product,
-  quantity: data.quantity
-};
-//..............................................................................
-var notpopularCategory = {
-  description: "least popular category",
-  product: data2.product,
-  quantity: data2.quantity
-};
-//..............................................................................
-var leastPopular = {
-  description: "Least popular product",
-  product: leastPopular.product,
-  quantity: leastPopular.quantity
-};
-//..............................................................................
-var profitableProduct = {
-    description: "Most profitable Product",
-    product: mostProfitableProduct.product,
-    quantity: mostProfitableProduct.quantity
-  }
-//..............................................................................
-var profitablecategory = {
-    description: "Most profitable category",
-    product: profitCategory.product,
-    quantity: profitCategory.quantity
-  }
-  ////////////////////////////////////////////////////////////////////////////////
-var results = template({key:
-  [mostPopular, leastPopular, popularCategory, notpopularCategory, profitableProduct, profitablecategory]
-});
+var results = {};
 
 
 var express = require('express');
