@@ -2,7 +2,7 @@ var fs = require("fs");
 var handlebars = require("handlebars");
 var nelisa = require("../nelisa");
 var productCategories = require("../files/category.json");
-var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
+var spazaStringPurchase = nelisa.readData('../files/purchases.csv');
 
 
 
@@ -48,11 +48,11 @@ var weeklyStats = function(path) {
   }
 }
 
-var weeklyStatsWeekFor1 = weeklyStats("./files/week1.csv")
+var weeklyStatsWeekFor1 = weeklyStats("../files/week1.csv")
   //console.log(weeklyStatsWeekFor1);
-var weeklyStatsWeekFor2 = weeklyStats("./files/week2.csv")
-var weeklyStatsWeekFor3 = weeklyStats("./files/week3.csv")
-var weeklyStatsWeekFor4 = weeklyStats("./files/week4.csv")
+var weeklyStatsWeekFor2 = weeklyStats("../files/week2.csv")
+var weeklyStatsWeekFor3 = weeklyStats("../files/week3.csv")
+var weeklyStatsWeekFor4 = weeklyStats("../files/week4.csv")
 
 var weekStat = {
   week1: weeklyStatsWeekFor1,
@@ -61,7 +61,20 @@ var weekStat = {
   week4: weeklyStatsWeekFor4
 }
 
-console.log(weekStat);
+//console.log(weekStat);
+
+//ar week = function(weekName) {
+//var weekStat = weeklyStats('./files/' + weekName + '.csv')
+  //var source = fs.readFileSync("./index.handlebars", 'utf8');
+
+  //var template = handlebars.compile(source);
+  //var results = template(weekStat);
+
+  //console.log(results);
+
+  //console.log(results);
+  fs.writeFileSync(weekName + ".html", results);
+}
 
 //..............................................................................
 var results = {};
@@ -72,12 +85,12 @@ var app = express();
 
 // create a route
 app.get('/', function (req, res) {
- res.send('Hello World!');
+ res.send('week');
 });
 
 //start the server
 app.get('/hello', function (req, res) {
- res.send(results);
+ res.send(weeklyStats);
 });
 
 app.get("/message", function(req, res){

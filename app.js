@@ -46,20 +46,6 @@ var weeklyStats = function(path) {
 }
 
 
-  //console.log(weeklyStatsWeekFor1);
-
-//var weeklyStatsWeekFor2 = weeklyStats("./files/week2.csv")
-//var weeklyStatsWeekFor3 = weeklyStats("./files/week3.csv")
-//var weeklyStatsWeekFor4 = weeklyStats("./files/week4.csv")
-/*
-var weekStat = {
-  week1: weeklyStatsWeekFor1,
-  week2: weeklyStatsWeekFor2,
-  week3: weeklyStatsWeekFor3,
-  week4: weeklyStatsWeekFor4
-}
-*/
-
 var week = function(weekName) {
   var weekStat = weeklyStats('./files/' + weekName + '.csv')
   var source = fs.readFileSync("./index.handlebars", 'utf8');
@@ -67,21 +53,13 @@ var week = function(weekName) {
   var template = handlebars.compile(source);
   var results = template(weekStat);
 
-  //console.log(results);
-
-  //console.log(results);
+console.log(results);
   fs.writeFileSync(weekName + ".html", results);
 }
 
+
+
+week("week1");
+week("week2");
+week("week3");
 week("week4");
-
-//..............................................................................
-
-
-
-//
-// ////////////////////////////////////////////////////////////////////////////////
-//
-//
-// fs.writeFileSync("week2.html", results);
-// fs.writeFileSync("week3.html", results);
