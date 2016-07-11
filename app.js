@@ -50,13 +50,14 @@ var week = function(weekName) {
   var weekStat = weeklyStats('./files/' + weekName + '.csv')
   var source = fs.readFileSync("./index.handlebars", 'utf8');
 
+
   var template = handlebars.compile(source);
   var results = template(weekStat);
 
-console.log(results);
+//console.log(results);
   fs.writeFileSync(weekName + ".html", results);
 }
-
+//...........................................................................
 
 
 week("week1");

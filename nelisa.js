@@ -1,6 +1,7 @@
 var fs = require("fs");
 exports.readData = function(path) {
     var spazaString = fs.readFileSync(path, "utf8");
+    
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
        //console.log(spazaString)

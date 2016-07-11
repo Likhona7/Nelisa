@@ -77,10 +77,9 @@ var weekStat = {
 }
 
 //..............................................................................
-var results = {};
-
-
+//var results = {};
 var express = require('express');
+
 var app = express();
 
 // create a route
@@ -90,13 +89,27 @@ app.get('/', function (req, res) {
 
 //start the server
 app.get('/hello', function (req, res) {
- res.send(weeklyStats);
+ res.send("weeklyStats");
 });
 
 app.get("/message", function(req, res){
   res.send("rendering content to browser")
 
 })
+
+// create a route
+app.get('/', function (req, res) {
+ res.send('HOME');
+});
+////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+app.get('/products/:id', function(req, res){
+  console.log(req.params.id);
+  res.send("you sent me : " + req.params.id);
+});
+
+
 
 
 var server = app.listen(3000, function () {
@@ -107,3 +120,53 @@ var server = app.listen(3000, function () {
  console.log('Example app listening at http://%s:%s', host, port);
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+// app.set('view engine', 'handlebars');
+// // create a route
+// app.get('/', function(req, res){
+//   res.render( "home")
+// });
+// app.get('/sales/:week_name', function(req, res) {
+//   var weekname = req.params.week_name;
+//   var weeklyFile = "../files/" + weekname + ".csv";
+//   var data = weeklyStats(weeklyFile, "../files/purchases.csv");
+//   res.render("weeklyStats", {
+//     key: data,
+//     week: weekname
+//   });
+// });
+// start the server
+// var server = app.listen(3000, function() {
+//   var host = server.address().address;
+//   var port = server.address().port;
+//   console.log('App listening at http://%s:%s', host, port);
+// });
