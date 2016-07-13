@@ -1,6 +1,10 @@
 var fs = require("fs");
 var handlebars = require("handlebars");
 var nelisa = require("./nelisa");
+var exphbs = require('express-handlebars');
+var express = require('express');
+var app = express();
+
 var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 
@@ -46,21 +50,63 @@ var weeklyStats = function(path) {
 }
 
 
-var week = function(weekName) {
-  var weekStat = weeklyStats('./files/' + weekName + '.csv')
-  var source = fs.readFileSync("./index.handlebars", 'utf8');
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 
-  var template = handlebars.compile(source);
-  var results = template(weekStat);
 
-//console.log(results);
-  fs.writeFileSync(weekName + ".html", results);
-}
-//...........................................................................
+app.get('/sales/:week', function(req, res){
+   var week = req.params.weekStat;
+  // console.log(week);
+  res.render("index", weekStat[req.params.week]);
+});
 
 
-week("week1");
-week("week2");
-week("week3");
-week("week4");
+
+var server = app.listen(3000, function () {
+ var host = server.address().address;
+ var port = server.address().port;
+ console.log('Example app listening at http://%s:%s', host, port);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var week = function(weekName) {
+//   var weekStat = weeklyStats('./files/' + weekName + '.csv')
+//   var source = fs.readFileSync("./index.handlebars", 'utf8');
+//
+//
+//   var template = handlebars.compile(source);
+//   var results = template(weekStat);
+//
+// //console.log(results);
+//   fs.writeFileSync(weekName + ".html", results);
+// }
+// //...........................................................................
+//
+//
+// week("week1");
+// week("week2");
+// week("week3");
+// week("week4");

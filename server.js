@@ -75,26 +75,37 @@ app.set('view engine', 'handlebars');
 app.get('/', function (req, res) {
  res.send(weekStat.week4);
 });
-// //start the server
-// app.get('/sales/:weekName', function (req, res) {
-//  res.send(weekStat.week2);
-// });
-// app.get("'/sales/:weekName", function(req, res){
-//   res.send(weekStat.week3)
+
+
+// app.get("product/:year/:month", function(req, res){
+//   console.log(req.params.year);
+//   // console.log(req.params.month);
+//   // console.log(req.params.day);
+//
+//   res.send("you sent me : " + req.params.year);
+//
 // })
-// // create a route
-// app.get('/sales/:weekName', function (req, res) {
-//  res.send(weekStat.week4);
-// });
+
+
+
+
+
+app.get('/products/:year/:month', function(req, res){
+  console.log(req.params.year);
+  console.log(req.params.month);
+
+  //
+  res.send(req.params);
+});
 
 
 
 app.get('/sales/:week', function(req, res){
-   var week = req.params.weekStat;
+  var week = req.params.week;
   console.log(week);
-  res.render("index", weekStat[req.params.week]);
+  res.render("index", weekStat[week]);
 });
-app.get('/sales')
+
 
 
 
