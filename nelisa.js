@@ -1,13 +1,13 @@
 var fs = require("fs");
 exports.readData = function(path) {
     var spazaString = fs.readFileSync(path, "utf8");
-    
+
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
        //console.log(spazaString)
     return spazaString;
   }
-//////////////////////////////////////////////////////////////////////////////
+  //............................................................................
 
 exports.GroupingData = function(spazaString) {
   //console.log(spazaString);
@@ -39,12 +39,11 @@ exports.GroupingData = function(spazaString) {
       soldProducts[currentItem] += Number(itemSold);
 
     });
-
     //console.log(soldProducts)
     return soldProducts;
 
   }
-  /////////////////////////////////////////////////////////////////////////////
+//..............................................................................
 exports.totalSellingGroupData = function(spazaString) {
     var list = [];
 
@@ -80,7 +79,7 @@ exports.totalSellingGroupData = function(spazaString) {
     //console.log(soldProducts);
     return soldProducts;
   }
-  /////////////////////////////////////////////////////////////////////////////
+  //............................................................................
 exports.mostPopular = function(soldProducts) {
     //  console.log(soldProducts);
     var mostPopular = {};
@@ -103,7 +102,8 @@ exports.mostPopular = function(soldProducts) {
 //console.log(mostPopular)
     return mostPopular;
   }
-  ///////////////////////////////////////////////////////////////////////////////
+  //............................................................................
+
 exports.leastPopular = function(Obj) {
     //console.log(arrMap)
     var leastPopular = {};
@@ -114,11 +114,8 @@ exports.leastPopular = function(Obj) {
         leastPopular = key;
 
         leastPopular = {
-
-
           quantity : min,
         product :  key };
-
       }
 
     }
@@ -126,7 +123,8 @@ exports.leastPopular = function(Obj) {
     return leastPopular;
 
   }
-  //////////////////////////////////////////////////////////////////////////////////
+//..............................................................................
+
 exports.getMapCategory = function( productcategories, soldProducts) {
 //console.log(productcategories);
     var categoryMap = {};
@@ -145,7 +143,8 @@ exports.getMapCategory = function( productcategories, soldProducts) {
     return categoryMap;
 
   }
-  ////////////////////////////////////////////////////////////////////////////////
+//..............................................................................
+
 exports.GroupPurchaseData = function(spazaStringPurchase) {
 // console.log(spazaStringPurchase);
   var list = [];
@@ -197,15 +196,13 @@ exports.GroupPurchaseData = function(spazaStringPurchase) {
 
   return purchases.week1;
 };
-////////////////////////////////////////////////////////////////////////////////
+//..............................................................................
 exports.weekPurchases = function(purchases) {
 
   //  console.log(purchases);
     var purchasesArray = [];
     purchases.forEach(function(array) {
-
       purchasesArray.push([array[2], array[5].replace(/R/g, "").replace(/,/g, ".")]);
-
     });
     var weeklyPurchases = {};
     purchasesArray.forEach(function(array) {
@@ -218,13 +215,9 @@ exports.weekPurchases = function(purchases) {
     //console.log(weeklyPurchases);
     return weeklyPurchases;
   }
-  /////////////////////////////////////////////////////////////////////////////////
+//..............................................................................
+
 exports.getProfit = function(purchasesAdded, weeklyPurchases) {
-
-
-
-   //console.log(purchasesAdded,"lllllllllllllllllllllllllll");
-   //console.log(weeklyPurchases);
 
   var profitMap = {};
   var profit = {};
@@ -242,7 +235,8 @@ exports.getProfit = function(purchasesAdded, weeklyPurchases) {
 
 };
 
-/////////////////////////////////////////////////////////////////////////////////
+//..............................................................................
+
 exports.weeklyStats = function(week) {
   //console.log(spazaString);
     var list = [];
@@ -271,10 +265,9 @@ exports.weeklyStats = function(week) {
         stats[currentItem] = 0;
       }
       stats[currentItem] += Number(itemSold);
-
     });
-
     //console.log(stats)
     return stats;
 
   }
+//..............................................................................

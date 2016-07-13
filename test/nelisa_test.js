@@ -854,10 +854,10 @@ describe("Spaza Shop Data", function() {
         var results = nelisa.readData('./files/week4.csv');
         assert.equal(results.length, 119);
       })
-      it("Reading the category data", function() {
-        var result = nelisa.readData('./files/category.csv');
-        assert.equal(result.length, 20);
-      })
+      // it("Reading the category data", function() {
+      //   var result = nelisa.readData('./files/category.csv');
+      //   assert.equal(result.length, 20);
+      // })
       it("Reading the purchases data", function() {
 
         var result = nelisa.readData('./files/purchases.csv');
