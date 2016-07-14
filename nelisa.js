@@ -4,7 +4,7 @@ exports.readData = function(path) {
 
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
-       //console.log(spazaString)
+      // console.log(spazaString)
     return spazaString;
   }
   //............................................................................
@@ -126,20 +126,16 @@ exports.leastPopular = function(Obj) {
 //..............................................................................
 
 exports.getMapCategory = function( productcategories, soldProducts) {
-//console.log(productcategories);
+//console.log(soldProducts);
     var categoryMap = {};
     for (var key in soldProducts) {
-      //  soldProducts[key]
       var category = productcategories[key];
-      //console.log(category);
       var quantity = soldProducts[key];
       if (!categoryMap.hasOwnProperty(category)) {
         categoryMap[category] = 0;
       }
       categoryMap[category] = categoryMap[category] + quantity;
     }
-      //console.log(categoryMap);
-
     return categoryMap;
 
   }
