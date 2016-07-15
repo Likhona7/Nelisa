@@ -1,13 +1,16 @@
 var fs = require("fs");
 exports.readData = function(path) {
     var spazaString = fs.readFileSync(path, "utf8");
+
     var spazaString = spazaString.split("\n").splice([1]).filter(Boolean);
 
-    //   console.log(spazaString)
+      // console.log(spazaString)
     return spazaString;
   }
-  //////////////////////////////////////////////////////////////////////////////
+  //............................................................................
+
 exports.GroupingData = function(spazaString) {
+  //console.log(spazaString);
     var list = [];
     spazaString.forEach(function(n) {
       var x = n.split(",")
@@ -19,9 +22,7 @@ exports.GroupingData = function(spazaString) {
           Dates: product[1],
           Item: product[2],
           SoldItem: product[3],
-
           SalePrice: product[4]
-
         }
       })
       //  console.log(sortedList);
@@ -40,8 +41,9 @@ exports.GroupingData = function(spazaString) {
     });
     //console.log(soldProducts)
     return soldProducts;
+
   }
-  /////////////////////////////////////////////////////////////////////////////
+//..............................................................................
 exports.totalSellingGroupData = function(spazaString) {
     var list = [];
 
@@ -60,73 +62,89 @@ exports.totalSellingGroupData = function(spazaString) {
 
     })
 
- var soldProducts = {};
+    var soldProducts = {};
 
-          sortedList.forEach(function(data) {
+    sortedList.forEach(function(data) {
 
-            var currentItem = data.Product;
-            var totalSellingPrice = Number(data.SoldQuantity * data.SalePrice);
-            if (soldProducts[currentItem] === undefined) {
-              soldProducts[currentItem] = 0;
-            }
-            soldProducts[currentItem] += Number(totalSellingPrice);
-          });
+      var currentItem = data.Product;
+      var totalSellingPrice = Number(data.SoldQuantity * data.SalePrice);
+      if (soldProducts[currentItem] === undefined) {
+        soldProducts[currentItem] = 0;
+      }
+      soldProducts[currentItem] += Number(totalSellingPrice);
+    });
 
-  //         console.log("////////soldProducts/////////");
-  // console.log(soldProducts);
+    //         console.log("////////soldProducts/////////");
+    // console.log(soldProducts);
     //console.log(soldProducts);
     return soldProducts;
   }
-  /////////////////////////////////////////////////////////////////////////////
-exports.mostPopular = function(Obj) {
-    var mostPopular = "";
+  //............................................................................
+exports.mostPopular = function(soldProducts) {
+    //  console.log(soldProducts);
+    var mostPopular = {};
     var max = -Infinity;
 
-    for (var key in Obj) {
-      if (Obj[key] > max) {
-        max = Obj[key];
-        mostPopular = key;
+
+    for (var key in soldProducts) {
+  //  console.log(key);
+      if (soldProducts[key] > max) {
+        max = soldProducts[key];
+
+
+        mostPopular = {
+
+                product :  key,
+                quantity : max };
       }
+
     }
-    //console.log(mostPopular);
+//console.log(mostPopular)
     return mostPopular;
   }
-  ///////////////////////////////////////////////////////////////////////////////
+  //............................................................................
+
 exports.leastPopular = function(Obj) {
     //console.log(arrMap)
-    var leastPopular = "";
+    var leastPopular = {};
     var min = Infinity;
     for (var key in Obj) {
       if (Obj[key] < min) {
         min = Obj[key];
         leastPopular = key;
+
+        leastPopular = {
+          quantity : min,
+        product :  key };
       }
 
     }
+    //console.log(leastPopular);
     return leastPopular;
+
   }
-  /////////////////////////////////////////////////////////////////////////////////
-exports.getMapCategory = function(productcategories, productWeeks) {
-  var categoryMap = {};
-  for (var key in productWeeks) {
-    //  productWeeks[key]
-    var category = productcategories[key];
-    var quantity = productWeeks[key];
-    if (!categoryMap.hasOwnProperty(category)) {
-      categoryMap[category] = 0;
+//..............................................................................
+
+exports.getMapCategory = function( productcategories, soldProducts) {
+//console.log(soldProducts);
+    var categoryMap = {};
+    for (var key in soldProducts) {
+      var category = productcategories[key];
+      var quantity = soldProducts[key];
+      if (!categoryMap.hasOwnProperty(category)) {
+        categoryMap[category] = 0;
+      }
+      categoryMap[category] = categoryMap[category] + quantity;
     }
-    categoryMap[category] = categoryMap[category] + quantity;
+    return categoryMap;
+
   }
+//..............................................................................
 
-  return categoryMap;
-
-}
-
-////////////////////////////////////////////////////////////////////////////////
-exports.GroupPurchaseData = function(spazaString) {
-  //  console.log(spazaString);
+exports.GroupPurchaseData = function(spazaStringPurchase) {
+// console.log(spazaStringPurchase);
   var list = [];
-  spazaString.forEach(function(n) {
+  spazaStringPurchase.forEach(function(n) {
     var x = n.split(";")
     list.push(x);
   })
@@ -163,7 +181,6 @@ exports.GroupPurchaseData = function(spazaString) {
     }
   });
 
-
   purchases = {
     "week0": purchaseWeek0,
     "week1": purchaseWeek1,
@@ -171,41 +188,82 @@ exports.GroupPurchaseData = function(spazaString) {
     "week3": purchaseWeek3,
     "week4": purchaseWeek4
   };
+//  console.log(purchases.week1);
 
   return purchases.week1;
 };
-////////////////////////////////////////////////////////////////////////////////
-exports.weekPurchases = function(purchases, week) {
+//..............................................................................
+exports.weekPurchases = function(purchases) {
+
+  //  console.log(purchases);
     var purchasesArray = [];
     purchases.forEach(function(array) {
       purchasesArray.push([array[2], array[5].replace(/R/g, "").replace(/,/g, ".")]);
     });
-
     var weeklyPurchases = {};
     purchasesArray.forEach(function(array) {
+
       if (!weeklyPurchases.hasOwnProperty(array[0])) {
         weeklyPurchases[array[0]] = 0;
       }
       weeklyPurchases[array[0]] += Number(array[1]);
     });
+    //console.log(weeklyPurchases);
     return weeklyPurchases;
   }
-  /////////////////////////////////////////////////////////////////////////////////
-exports.getProfit = function(purchasesAdded, week) {
+//..............................................................................
 
-  // console.log(week,"PPPPPPPPPPPPPPPPPPPPPPPPPPP");
+exports.getProfit = function(purchasesAdded, weeklyPurchases) {
+
   var profitMap = {};
   var profit = {};
-
   for (product in purchasesAdded) {
 
-    for (key in week) {
+    for (key in weeklyPurchases) {
 
       if (product === key) {
-        profitMap[key] = purchasesAdded[product] - week[key];
+        profitMap[key] = purchasesAdded[product] - weeklyPurchases[key];
       }
     }
   }
+    //console.log(profitMap);
   return profitMap;
+
 };
-/////////////////////////////////////////////////////////////////////////////////
+
+//..............................................................................
+
+exports.weeklyStats = function(week) {
+  //console.log(spazaString);
+    var list = [];
+    week.forEach(function(n) {
+      var x = n.split(",")
+      list.push(x);
+    })
+    var sortedList = list.map(function(product) {
+        return {
+          Day: product[0],
+          Dates: product[1],
+          Item: product[2],
+          SoldItem: product[3],
+          SalePrice: product[4]
+        }
+      })
+      //  console.log(sortedList);
+    stats = {};
+    var arrMap = [];
+    sortedList.forEach(function(data) {
+      var currentItem = data.Item;
+      var itemSold = data.SoldItem;
+
+      if (stats[currentItem] === undefined) {
+
+        stats[currentItem] = 0;
+      }
+      stats[currentItem] += Number(itemSold);
+    });
+    //console.log(stats)
+    return stats;
+
+  }
+//..............................................................................
