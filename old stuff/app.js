@@ -1,6 +1,6 @@
 var fs = require("fs");
 var handlebars = require("handlebars");
-var nelisa = require("./nelisa");
+var nelisa = require("../nelisa");
 var exphbs = require('express-handlebars');
 var express = require('express');
 var app = express();

@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
   <title>Nelisa Spaza Store</title>
   <h1>Nelisa Spaza Store</h1>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<style>
-body{
-  padding: 15px;
-  
-}
-h1{
-  text-align: center;
-  font-size:75px;
- text-align:center;
- margin:60px 0 0 0;
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      padding: 15px;
+      opacity: 10;
+    }
 
-}
-#information{
-  margin: auto;
-/*position: relative;*/
-    width: 30%;
-    border: 3px solid blue;
-    padding: 10px;
+    h1 {
+      text-align: center;
+      font-size: 75px;
+      text-align: center;
+      margin: 60px 0 0 0;
+    }
 
-}
-
-</style>
+    #information {
+      margin: auto;
+      /*position: relative;*/
+      width: 30%;
+      border: 3px solid blue;
+      padding: 10px;
+    }
+  </style>
 
 
 </head>
@@ -39,21 +39,21 @@ h1{
   <a class="btn btn-primary btn-block" href="/sales/week4">week 4</a>
 
 
-<div id="information" >
-  <p> {{mostPopular.description}} is {{mostPopular.product}} : {{mostPopular.quantity}} </p>
+  <div id="information">
 
-  <p> {{leastPopular.description}} is {{leastPopular.product}} : {{leastPopular.quantity}} </p>
+    <p> {{mostPopular.description}} is {{mostPopular.product}} : {{mostPopular.quantity}} </p>
 
-  <p> {{popularCategory.description}} is {{popularCategory.product}} : {{popularCategory.quantity}}</p>
+    <p> {{leastPopular.description}} is {{leastPopular.product}} : {{leastPopular.quantity}} </p>
 
-  <p> {{notPopularCategory.description}} is {{notPopularCategory.product}} : {{notPopularCategory.quantity}}</p>
+    <p> {{popularCategory.description}} is {{popularCategory.product}} : {{popularCategory.quantity}}</p>
 
-  <p> {{mostProfitableProduct.description}} is {{mostProfitableProduct.product}} : R{{mostProfitableProduct.quantity}}</p>
+    <p> {{notPopularCategory.description}} is {{notPopularCategory.product}} : {{notPopularCategory.quantity}}</p>
 
-  <p> {{profitCategory.description}} is {{profitCategory.product}} : R{{profitCategory.quantity}}</p>
+    <p> {{mostProfitableProduct.description}} is {{mostProfitableProduct.product}} : R{{mostProfitableProduct.quantity}}</p>
 
+    <p> {{profitCategory.description}} is {{profitCategory.product}} : R{{profitCategory.quantity}}</p>
 
+  </div>
 
-</div>
 </body>
 </html>
