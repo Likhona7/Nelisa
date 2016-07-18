@@ -4,7 +4,7 @@ var exphbs = require('express-handlebars');
 var express = require('express');
 
 var nelisa = require("./nelisa");
-var productCategories = require("/files/category.json");
+var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('../files/purchases.csv');
 var app = express();
 
