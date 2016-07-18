@@ -2,11 +2,11 @@ var fs = require("fs");
 var handlebars = require("handlebars");
 var exphbs = require('express-handlebars');
 var express = require('express');
-var app = express();
-var nelisa = require("./nelisa");
-var productCategories = require("../files/category.json");
-var spazaStringPurchase = nelisa.readData('../files/purchases.csv');
 
+var nelisa = require("./nelisa");
+var productCategories = require("./files/category.json");
+var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
+var app = express();
 
 
 
@@ -51,10 +51,10 @@ var weeklyStats = function(path) {
   }
 }
 
-var weeklyStatsWeekFor1 = weeklyStats("../files/week1.csv")
-var weeklyStatsWeekFor2 = weeklyStats("../files/week2.csv")
-var weeklyStatsWeekFor3 = weeklyStats("../files/week3.csv")
-var weeklyStatsWeekFor4 = weeklyStats("../files/week4.csv")
+var weeklyStatsWeekFor1 = weeklyStats("./files/week1.csv")
+var weeklyStatsWeekFor2 = weeklyStats("./files/week2.csv")
+var weeklyStatsWeekFor3 = weeklyStats("./files/week3.csv")
+var weeklyStatsWeekFor4 = weeklyStats("./files/week4.csv")
 
 var weekStat = {
   week1: weeklyStatsWeekFor1,
