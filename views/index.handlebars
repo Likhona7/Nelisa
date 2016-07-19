@@ -10,24 +10,29 @@
   <style>
 
     body {
+
       padding: 15px;
 
     }
 
-img{
-  border: 1px white;
-  border-radius: 140px;
-  margin-left: 500px;
+.img-responsive {
+   border: 4px solid blue;
+   border-radius: 140px;
+   margin: auto;
    text-align: center;
    color : black;
-   position: center;
+   position: center
+   max-width : 100%;
+   display : block;
+   height: auto;
 }
 
 
     h1 {
       text-align: center;
-      font-size: 75px;
+       font-size: 75px;
       text-align: center;
+
       /*margin: 60px 0 0 0;*/
     }
 
@@ -37,6 +42,7 @@ img{
       width: 30%;
       border: 3px solid blue;
       padding: 10px;
+
     }
   </style>
 
@@ -45,20 +51,25 @@ img{
 
 <body>
 
-  <img src="http://narrative.projectcodex.co/images/ProfileNelisa.png" align="middle">
+
+<img src="http://narrative.projectcodex.co/images/ProfileNelisa.png" class="img-responsive" alt="Cinque Terre" width="304" height="236" position="center" text-align="center">
+  <!-- <img src="http://narrative.projectcodex.co/images/ProfileNelisa.png" align="middle"> -->
   <br></br>
 
   <a class="btn btn-primary btn-block" href="/sales/week1">week 1</a>
   <a class="btn btn-primary btn-block" href="/sales/week2">week 2</a>
   <a class="btn btn-primary btn-block" href="/sales/week3">week 3</a>
   <a class="btn btn-primary btn-block" href="/sales/week4">week 4</a>
+<br></br>
+
 
 
   <div id="information">
 
+
     <p> {{mostPopular.description}} is {{mostPopular.product}} : {{mostPopular.quantity}} </p>
 
-    <p> {{leastPopular.description}} is {{leastPopular.product}} : {{leastPopular.quantity}} </p>
+    <p> {{leastPopu-lar.description}} is {{leastPopular.product}} : {{leastPopular.quantity}} </p>
 
     <p> {{popularCategory.description}} is {{popularCategory.product}} : {{popularCategory.quantity}}</p>
 
