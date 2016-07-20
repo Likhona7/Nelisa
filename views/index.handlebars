@@ -5,13 +5,12 @@
 
   <title>Nelisa Spaza Store</title>
 
-  <h1>Nelisa Spaza Store</h1>
 
   <br></br>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <style>
-
     body {
       padding: 15px;
     }
@@ -28,19 +27,70 @@
     }
 
     h1 {
-      text-align: center;font-size: 75px;text-align: center;
+      text-align: center;
+      font-size: 75px;
+      text-align: center;
     }
-
-    #information {
-      margin: auto;width: 30%;border: 3px solid blue;padding: 10px;
-    }
-
   </style>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+  </div>
+  <h1>Nelisa Spaza Store</h1>
 
 
 </head>
 
 <body>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+
+
+  </body>
+
+  </html>
+
 
 
   <img src="http://narrative.projectcodex.co/images/ProfileNelisa.png" class="img-responsive" alt="Cinque Terre" width="304" height="236" position="center" text-align="center">
@@ -52,23 +102,74 @@
   <a class="btn btn-primary btn-block" href="/sales/week4">week 4</a>
   <br></br>
 
+  <div class="container">
+    <h2>Weekly Sales</h2>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Description</th>
+            <th>Product</th>
+            <th>Quantity</th>
 
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>{{mostPopular.description}}</td>
+            <td>{{mostPopular.product}}</td>
+            <td>{{mostPopular.quantity}}</td>
 
-  <div id="information">
+          </tr>
+          <tbody>
+            <tr>
+              <td>2</td>
+              <td>{{leastPopular.description}}</td>
+              <td>{{leastPopular.product}}</td>
+              <td>{{leastPopular.quantity}}</td>
 
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>3</td>
+              <td>{{popularCategory.description}}</td>
+              <td>{{popularCategory.product}}</td>
+              <td>{{popularCategory.quantity}}</td>
 
-    <p> {{mostPopular.description}} is {{mostPopular.product}} : {{mostPopular.quantity}} </p>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>4</td>
+              <td>{{notPopularCategory.description}}</td>
+              <td>{{notPopularCategory.product}}</td>
+              <td>{{notPopularCategory.quantity}}</td>
 
-    <p> {{leastPopular.description}} is {{leastPopular.product}} : {{leastPopular.quantity}} </p>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>5</td>
+              <td>{{mostProfitableProduct.description}}</td>
+              <td>{{mostProfitableProduct.product}}</td>
+              <td>R{{mostProfitableProduct.quantity}}</td>
 
-    <p> {{popularCategory.description}} is {{popularCategory.product}} : {{popularCategory.quantity}}</p>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>6</td>
+              <td>{{profitCategory.description}}</td>
+              <td>{{profitCategory.product}}</td>
+              <td>R{{profitCategory.quantity}}</td>
 
-    <p> {{notPopularCategory.description}} is {{notPopularCategory.product}} : {{notPopularCategory.quantity}}</p>
-
-    <p> {{mostProfitableProduct.description}} is {{mostProfitableProduct.product}} : R{{mostProfitableProduct.quantity}}</p>
-
-    <p> {{profitCategory.description}} is {{profitCategory.product}} : R{{profitCategory.quantity}}</p>
-
+            </tr>
+          </tbody>
+      </table>
+    </div>
   </div>
 
 </body>
