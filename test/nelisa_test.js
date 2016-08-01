@@ -103,7 +103,7 @@ var week1total = {
 };
 
 var week2total = {
-  Imasi: 900,
+  'Imasi': 900,
   'Bread': 336,
   'Chakalaka Can': 210,
   'Gold Dish Vegetable Curry Can': 243,
@@ -124,7 +124,7 @@ var week2total = {
 };
 
 var week3total = {
-  Imasi: 625,
+  'Imasi': 625,
   'Bread': 288,
   'Chakalaka Can': 170,
   'Gold Dish Vegetable Curry Can': 72,
@@ -142,8 +142,8 @@ var week3total = {
 };
 
 var week4total = {
-  Imasi: 850,
-  Bread: 396,
+  'Imasi': 850,
+  'Bread': 396,
   'Chakalaka Can': 330,
   'Gold Dish Vegetable Curry Can': 306,
   'Fanta 500ml': 156,
@@ -162,47 +162,47 @@ var week4total = {
 
 //console.log(productCategories);
 var categoryWeek1 = {
-  "Baked_Goods": 45,
-  "Canned_Goods": 40,
+  "Baked Goods": 45,
+  "Canned Goods": 40,
   "Dairy": 69,
   "Fruit": 83,
   "Hygiene": 15,
   "Starch": 17,
   "Meat": 22,
-  "Soft_Drink": 109,
+  "Soft Drink": 109,
   "Sweets": 49
 };
 
 var categoryWeek2 = {
-  "Baked_Goods": 28,
-  "Canned_Goods": 48,
+  "Baked Goods": 28,
+  "Canned Goods": 48,
   "Dairy": 64,
   "Fruit": 49,
   "Hygiene": 11,
   "Starch": 10,
   "Meat": 21,
   "Other": 28,
-  "Soft_Drink": 87,
+  "Soft Drink": 87,
   "Sweets": 74
 }
 
 var categoryWeek3 = {
-  "Baked_Goods": 24,
-  "Canned_Goods": 25,
+  "Baked Goods": 24,
+  "Canned Goods": 25,
   "Dairy": 53,
   "Fruit": 42,
   "Hygiene": 12,
   "Starch": 4,
   "Meat": 12,
-  "Soft_Drink": 44,
+  "Soft Drink": 44,
   "Sweets": 29
 }
 
 var categoryWeek4 = {
   "Dairy": 77,
-  "Baked_Goods": 33,
-  "Canned_Goods": 67,
-  "Soft_Drink": 88,
+  "Baked Goods": 33,
+  "Canned Goods": 67,
+  "Soft Drink": 88,
   "Starch": 16,
   "Meat": 43,
   "Hygiene": 38,
@@ -794,33 +794,33 @@ var getMostProfitCategoryWeek1 = {
   "Hygiene": -63,
   "Fruit": 154,
   "Sweets": 1050,
-  "Baked_Goods": -226,
+  "Baked Goods": -226,
   "Dairy": -549,
-  "Canned_Goods": -203,
-  "Soft_Drink": -415.5,
+  "Canned Goods": -203,
+  "Soft Drink": -415.5,
   "Starch": -410,
   "Meat": -184
 };
 
 
 var getMostProfitCategoryWeek2 = {
-  "Baked_Goods": 201,
-  "Canned_Goods": 263.5,
+  "Baked Goods": 201,
+  "Canned Goods": 263.5,
   "Dairy": 438,
   "Fruit": 60,
   "Hygiene": 75,
   "Meat": 92,
   "Other": 26,
-  "Soft_Drink": 263.5,
+  "Soft Drink": 263.5,
   "Starch": 200,
   "Sweets": -253,
 }
 
 var getMostProfitCategoryWeek3 = {
   'Dairy': 203.5,
-  'Baked_Goods': 63,
-  'Canned_Goods': 88,
-  'Soft_Drink': 84.5,
+  'Baked Goods': 63,
+  'Canned Goods': 88,
+  'Soft Drink': 84.5,
   'Starch': -110,
   'Meat': 24,
   'Hygiene': 44,
@@ -830,9 +830,9 @@ var getMostProfitCategoryWeek3 = {
 
 var getMostProfitCategoryWeek4 = {
   'Dairy': 490,
-  'Baked_Goods': 70,
-  'Canned_Goods': 215.5,
-  'Soft_Drink': 269,
+  'Baked Goods': 70,
+  'Canned Goods': 215.5,
+  'Soft Drink': 269,
   'Starch': 250,
   'Meat': 188,
   'Hygiene': 251,
@@ -1085,14 +1085,14 @@ describe("Spaza Shop Data", function() {
         it("should find the most popular category week1", function() {
           var result = nelisa.mostPopular(categoryWeek1);
           assert.deepEqual(result, {
-            "product": "Soft_Drink",
+            "product": "Soft Drink",
             "quantity": 109
           });
         });
         it("should find the most popular category week2", function() {
           var result = nelisa.mostPopular(categoryWeek2);
           assert.deepEqual(result, {
-            "product": "Soft_Drink",
+            "product": "Soft Drink",
             "quantity": 87
           });
         });
@@ -1106,7 +1106,7 @@ describe("Spaza Shop Data", function() {
         it("should find the most popular category week4", function() {
           var result = nelisa.mostPopular(categoryWeek4);
           assert.deepEqual(result, {
-            "product": "Soft_Drink",
+            "product": "Soft Drink",
             "quantity": 88
           });
         });
@@ -1399,13 +1399,13 @@ describe("Spaza Shop Data", function() {
 
       it("Map category for profit week1", function() {
         var expected = {
-          "Baked_Goods": 226,
-          "Canned_Goods": 203,
+          "Baked Goods": 226,
+          "Canned Goods": 203,
           "Dairy": 549,
           "Fruit": -154,
           "Hygiene": 63,
           "Meat": 184,
-          "Soft_Drink": 415.5,
+          "Soft Drink": 415.5,
           "Starch": 410,
           "Sweets": -1050
         };
@@ -1416,14 +1416,14 @@ describe("Spaza Shop Data", function() {
 
       it("Map category for profit week2", function() {
         var expected = {
-          "Baked_Goods": 201,
-          "Canned_Goods": 263.5,
+          "Baked Goods": 201,
+          "Canned Goods": 263.5,
           "Dairy": 438,
           "Fruit": 60,
           "Hygiene": 75,
           "Meat": 92,
           "Other": 26,
-          "Soft_Drink": 263.5,
+          "Soft Drink": 263.5,
           "Starch": 200,
           "Sweets": -253
         };
@@ -1433,9 +1433,9 @@ describe("Spaza Shop Data", function() {
       it("Map category for profit week3", function() {
         var expected = {
           'Dairy': 203.5,
-          'Baked_Goods': 63,
-          'Canned_Goods': 88,
-          'Soft_Drink': 84.5,
+          'Baked Goods': 63,
+          'Canned Goods': 88,
+          'Soft Drink': 84.5,
           'Starch': -110,
           'Meat': 24,
           'Hygiene': 44,
@@ -1450,9 +1450,9 @@ describe("Spaza Shop Data", function() {
       it("Map category for profit week4", function() {
         var expected = {
           'Dairy': 490,
-          'Baked_Goods': 70,
-          'Canned_Goods': 215.5,
-          'Soft_Drink': 269,
+          'Baked Goods': 70,
+          'Canned Goods': 215.5,
+          'Soft Drink': 269,
           'Starch': 250,
           'Meat': 188,
           'Hygiene': 251,
