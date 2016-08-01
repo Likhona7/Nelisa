@@ -60,7 +60,7 @@ background-color: transparent;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
@@ -105,7 +105,7 @@ background-color: transparent;
             <td>1</td>
             <td>{{mostPopular.description}}</td>
             <td>{{mostPopular.product}}</td>
-            <td>{{mostPopular.quantity}}</td>
+            <td><strong>{{mostPopular.quantity}}</strong></td>
 
           </tr>
           <tbody>
@@ -113,7 +113,7 @@ background-color: transparent;
               <td>2</td>
               <td>{{leastPopular.description}}</td>
               <td>{{leastPopular.product}}</td>
-              <td>{{leastPopular.quantity}}</td>
+              <td><strong>{{leastPopular.quantity}}</strong></td>
 
             </tr>
           </tbody>
@@ -122,7 +122,7 @@ background-color: transparent;
               <td>3</td>
               <td>{{popularCategory.description}}</td>
               <td>{{popularCategory.product}}</td>
-              <td>{{popularCategory.quantity}}</td>
+              <td><strong>{{popularCategory.quantity}}</strong></td>
 
             </tr>
           </tbody>
@@ -131,7 +131,7 @@ background-color: transparent;
               <td>4</td>
               <td>{{notPopularCategory.description}}</td>
               <td>{{notPopularCategory.product}}</td>
-              <td>{{notPopularCategory.quantity}}</td>
+              <td><strong>{{notPopularCategory.quantity}}</strong></td>
 
             </tr>
           </tbody>
@@ -140,7 +140,7 @@ background-color: transparent;
               <td>5</td>
               <td>{{mostProfitableProduct.description}}</td>
               <td>{{mostProfitableProduct.product}}</td>
-              <td>R{{mostProfitableProduct.quantity}}</td>
+              <td>R<strong>{{mostProfitableProduct.quantity}}</strong></td>
 
             </tr>
           </tbody>
@@ -149,7 +149,7 @@ background-color: transparent;
               <td>6</td>
               <td>{{profitCategory.description}}</td>
               <td>{{profitCategory.product}}</td>
-              <td>R{{profitCategory.quantity}}</td>
+              <td><strong>R{{profitCategory.quantity}}</strong></td>
 
             </tr>
           </tbody>
