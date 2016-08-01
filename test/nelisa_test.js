@@ -10,19 +10,6 @@ var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var productCategories = require("../files/category.json");
 //console.log(productCategories);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 var week1 = {
   'Milk 1l': 39,
   'Imasi': 30,

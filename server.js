@@ -87,7 +87,9 @@ app.get('/sales/:week', function(req, res) {
   // console.log(week);
   res.render("index", weekStat[req.params.week]);
 });
-
+app.get("/contact", function(req, res){
+  res.render("contact");
+});
 
 
 //set the port number to an existing environment variable PORT or default to 5000
