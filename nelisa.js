@@ -127,6 +127,8 @@ exports.leastPopular = function(Obj) {
 
 exports.getMapCategory = function( productcategories, soldProducts) {
 //console.log(soldProducts);
+//console.log(productcategories);
+
     var categoryMap = {};
     for (var key in soldProducts) {
       var category = productcategories[key];
