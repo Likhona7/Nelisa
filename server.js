@@ -1,14 +1,27 @@
+'use strict';
 var fs = require("fs");
 var handlebars = require("handlebars");
 var exphbs = require('express-handlebars');
 var express = require('express');
-
+var mysql = require('mysql');
+var myConnection = require('express-myconnection');
+var bodyParser = require('body-parser');
+var categories = require('./routes/categories');
+var products = require('./routes/products');
+var sales = require('./routes/sales');
+var purchases = require('./routes/purchases');
 var nelisa = require("./nelisa");
 var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var app = express();
 
-
+var dbOptions = {
+  host: 'localhost',
+  user: 'root',
+  password: 'coder123',
+  port: 3306,
+  database: 'nelisa'
+};
 
 
 var weeklyStats = function(path) {
@@ -67,29 +80,84 @@ var weekStat = {
 
 //..............................................................................
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 
-// create a route
-app.get('/', function(req, res) {
-  res.send(weekStat.week4);
-});
-// andre's example
-// app.get('/products/:year/:month/:day', function(req, res){
-//   console.log(req.params.year);
-//   console.log(req.params.month);
-//   console.log(req.params.day);
-//   res.send(req.params);
-// });
+app.use(express.static(__dirname + '/public'));
+
+//setup middleware
+app.use(myConnection(mysql, dbOptions, 'single'));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: false
+  }))
+  // parse application/json
+app.use(bodyParser.json())
+
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', {
+    error: err
+  });
+}
+
+//setup the handlers
+
+app.get('/categories', categories.show);
+app.get('/categories/add', categories.showAdd);
+ app.get('/categories/edit/:id', categories.get);
+ app.post('/categories/update/:id', categories.update);
+ app.post('/categories/add', categories.add);
+// //this should be a post but this is only an illustration of CRUD - not on good practices
+ app.get('/categories/delete/:id', categories.delete);
+////////////////////////////////////////////////////////////////////////////////
+ app.get('/products', products.show);
+ app.get('/products/add', products.showAdd);
+ app.get('/products/edit/:id', products.get);
+ app.post('/products/update/:id', products.update);
+ app.get('/products/delete/:id', products.delete);
+ app.post('/products/add', products.add);
+
+ ////////////////////////////////////////////////////////////////////////
+
+ app.get('/sales', sales.show);
+ app.get('/sales/add_sales', sales.showAdd);
+ app.post('/sales/add_sales', sales.addsale);
+
+ // app.get('/sales/edit_sales/:id', sales.get);
+ // app.get('/sales/add_sales', sales.addsale);
+
+ //app.post('/sales/add', sales.add);
+
+
+ //app.post('/sales/update/:id', sales.salesUpdate);
+
+
+
+
+
+ ///////////////////////////////////////////////////////////////////
+ app.get('/purchases', purchases.show);
+
+// //this should be a post but this is only an illustration of CRUD - not on good practices
+// app.get('/products/delete/:id', products.delete);
+
+
+
+app.use(errorHandler);
+
 //..............................................................................
 app.get('/sales/:week', function(req, res) {
   var week = req.params.weekStat;
   // console.log(week);
   res.render("index", weekStat[req.params.week]);
 });
-app.get("/contact", function(req, res){
+app.get("/contact", function(req, res) {
   res.render("contact");
 });
+
 
 
 //set the port number to an existing environment variable PORT or default to 5000

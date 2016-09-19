@@ -1,0 +1,32 @@
+<h1 class="area">Products</h1>
+
+<a href="/products/add" type="button" class="btn btn-primary">Add</a>
+
+<table class="table">
+   <thead>
+     <tr>
+       <th>products name</th>
+       <th>Categories Name</th>
+           </tr>
+   </thead>
+   <tbody>
+      {{#products}}
+     <tr class="success">
+       <td><strong>{{description}}</strong>
+       </td>
+       <td><strong>{{category_id}}</strong></td>
+
+       <td><a href="/products/edit/{{id}}" type="button" class="btn btn-default btn-sm">
+         <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+
+         <td><a href="/products/delete/{{id}}" type="button" class="btn btn-primary">Delete</a></td>
+     </tr>
+
+     <!-- <tr class="success">
+     </tr> -->
+       {{/products}}
+   </tbody>
+
+
+
+ </table>

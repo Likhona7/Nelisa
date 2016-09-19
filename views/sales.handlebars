@@ -1,0 +1,33 @@
+<h1 class="area">Sales</h1>
+
+
+
+<a href="/sales/add_sales" type="button" class="btn btn-primary">Add</a>
+
+<table class="table">
+   <thead>
+     <tr>
+       <th>Sales</th>
+       <th>Quantity</th>
+       <th>Price</th>
+       <th>Product_id</th>
+           </tr>
+   </thead>
+   <tbody>
+      {{#sales}}
+     <tr class="success">
+       <td><strong>{{sale_date}}</strong></td>
+       <td><strong>{{quantity}}</strong></td>
+       <td><strong>{{price}}</strong></td>
+       <td><strong>{{product_id}}</strong></td>
+       <td><a href="/sales/edit/{{id}}" type="button" class="btn btn-default btn-sm">
+         <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+
+         <td><a href="/sales/delete/{{id}}" type="button" class="btn btn-primary">Delete</a></td>
+
+
+     </tr>
+       {{/sales}}
+
+   </tbody>
+ </table>

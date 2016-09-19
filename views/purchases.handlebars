@@ -1,0 +1,28 @@
+<h1 class="area">purchases</h1>
+<table class="table">
+   <thead>
+     <tr>
+       <th>Supplier</th>
+       <th>Date</th>
+       <th>Product name</th>
+       <th>Prooduct Quantity</th>
+       <th>Price</th>
+           </tr>
+   </thead>
+   <tbody>
+      {{#purchases}}
+     <tr class="success">
+
+       <td><strong>{{supplier}}</strong></td>
+       <td><strong>{{purchase_date}}</strong></td>
+       <td><strong>{{prod_id}}</strong></td>
+       <td><strong>{{quantity}}</strong></td>
+       <td><strong>{{cost}}</strong></td>
+       <td><a href="/categories/edit/{{id}}" type="button" class="btn btn-default btn-sm">
+         <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+
+     </tr>
+       {{/purchases}}
+
+   </tbody>
+ </table>

@@ -1,0 +1,25 @@
+<h1 class="area">Categories</h1>
+
+<a href="/categories/add" type="button" class="btn btn-primary">Add</a>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>categories name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#categories}}
+      <tr class="success">
+        <td><strong>{{description}}
+        </strong></td>
+        <td><a href="/categories/edit/{{id}}" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+
+<td><a href="/categories/delete/{{id}}" type="button" class="btn btn-primary">Delete</a></td>
+
+      </tr>
+    {{/categories}}
+
+  </tbody>
+</table>
