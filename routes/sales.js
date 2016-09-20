@@ -15,7 +15,7 @@ exports.show = function(req, res, next) {
 exports.showAdd = function(req, res) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
-    connection.query('SELECT * from categories', [], function(err, categories) {
+    connection.query('SELECT * from products', [], function(err, categories) {
       if (err) return next(err);
       res.render('add_sales', {
         categories: categories,
@@ -56,51 +56,62 @@ exports.showEdit = function (req, res, next) {
  		connection.query(query, [], function(err, results1){
  				res.render( 'editSales', {
  					sales : results,
- 					products : results1 });});});});});};
+ 					products : results1 });
+        });
+      });
+    });
+  });
+};
 // ////////////////////////////////////////////////////////////////////////////////
+ exports.get = function(req, res, next){
+ 	var id = req.params.id;
+  console.log(id);
+ 	var input = JSON.parse(JSON.stringify(req.body));
+ 	    var data = {
+        sale_date: input.sale_date,
+        quantity: input.quantity,
+ 			price : input.price,
+      product_id: input.id
 
-// ////////////////////////////////////////////////////////////////////////////////
-//
-//  exports.get = function(req, res, next){
-//  	var id = req.params.id;
-//  	var input = JSON.parse(JSON.stringify(req.body));
-//  	    var data = {
-//  			product_id: input.id,
-//  			sale_date: input.date,
-//  			quantity: input.quantity,
-//  			price : input.price
-//  		};
-//  	req.getConnection(function(err, connection){
-//  		connection.query('SELECT * FROM sales WHERE id = ?', [id], function(err,rows){
-//  			if(err){
-//  		        console.log("Error Selecting : %s ",err );
-//  			}
-//  		    res.render('editSales',{page_title:"Edit Customers - Node.js", data : rows[0]});
-//  		});
-//  	});
-//  };
+ 		};
+    console.log(data,"llllllllllllllllllllllll");
+    // sale_date: input.sale_date,
+    // quantity: input.quantity,
+    // price : input.price,
+    // product_id: input.product_id
+ 	req.getConnection(function(err, connection){
+ 		connection.query('SELECT * FROM sales WHERE id = ?', [id], function(err,rows){
+
+      console.log(rows,"sssssssssssssssssssssssssssss");
+ 			if(err){
+ 		        console.log("Error Selecting : %s ",err );
+ 			}
+ 		    res.render('editSales',{page_title:"Edit Customers - Node.js", data : rows[0]});
+ 		});
+ 	});
+ };
 //  ///////////////////////////////////////////////////////////////////////////////
 
- // exports.salesUpdate = function(req, res, next){
- // 	var data = JSON.parse(JSON.stringify(req.body));
- // 	var id = req.params.id;
- // 	var input = JSON.parse(JSON.stringify(req.body));
- // 	     var data = {
- //  			product_id: input.id,
- //  			sale_date: input.sale_date,
- //  			quantity: input.quantity,
- //  			price : input.price,
- //  			name: input.name
- // 		};
- // 	req.getConnection(function(err, connection){
- // 		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
- // 			if (err){
- // 		       console.log("Error Updating : %s ",err );
- // 			}
- // 		    res.redirect('/sales');
- // 		});
- // 	});
- // };
+ exports.salesUpdate = function(req, res, next){
+ 	var data = JSON.parse(JSON.stringify(req.body));
+ 	var id = req.params.id;
+ 	var input = JSON.parse(JSON.stringify(req.body));
+ 	     var data = {
+  			product_id: input.id,
+  			sale_date: input.sale_date,
+  			quantity: input.quantity,
+  			price : input.price,
+  			name: input.name
+ 		};
+ 	req.getConnection(function(err, connection){
+ 		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
+ 			if (err){
+ 		       console.log("Error Updating : %s ",err );
+ 			}
+ 		    res.redirect('/sales');
+ 		});
+ 	});
+ };
 //  exports.delete = function(req, res, next){
 //  	var id = req.params.id;
 //  	req.getConnection(function(err, connection){
