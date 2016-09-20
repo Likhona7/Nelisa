@@ -29,7 +29,7 @@ exports.addsale = function (req, res, next) {
  		if (err){return next(err);}
  		var input = JSON.parse(JSON.stringify(req.body));
  		var data = {
- 			sale_date: input.sales_date,
+ 			sale_date: input.sale_date,
  			quantity: input.quantity,
  			price : input.price,
       product_id: input.product_id
@@ -44,26 +44,19 @@ console.log("Error inserting : %s ",err );
 
 
 // ////////////////////////////////////////////////////////////////////////////////
-// exports.showEdit = function (req, res, next) {
-//  		req.getConnection(function(err, connection){
-//  		if (err)
-//  			return next(err);
-// 			connection.query("SELECT DATE_FORMAT(sales.sales_date,'%d %b %y') as date, no_sold as Quantity, sales.prod_id as id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
-// 			connection.query("SELECT sales.id, DATE_FORMAT(sales.sales_date,'%d %b %y') as date, no_sold as Quantity, sales.prod_id as prod_id ,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
-//         console.log(results);
-//  	        	if (err)
-//  	        		return next(err);
-//  		var query = 'SELECT name,id from products';
-//  		connection.query(query, [], function(err, results1){
-//  				res.render( 'editSales', {
-//  					sales : results,
-//  					products : results1
-//  				});
-//  			});
-//  		});
-//  	});
-//     });
-// };
+exports.showEdit = function (req, res, next) {
+ 		req.getConnection(function(err, connection){
+ 		if (err) return next(err);
+			connection.query('SELECT * FROM products', [], function(err, results) {
+        if (err) return next(err);
+			connection.query('SELECT * FROM sales WHERE id = ?', [], function(err, results) {console.log(results);
+ 	        	if (err)
+ 	        		return next(err);
+ 		var query = 'SELECT name,id from products';
+ 		connection.query(query, [], function(err, results1){
+ 				res.render( 'editSales', {
+ 					sales : results,
+ 					products : results1 });});});});});};
 // ////////////////////////////////////////////////////////////////////////////////
 
 // ////////////////////////////////////////////////////////////////////////////////

@@ -1,3 +1,4 @@
+
 /***
  * A very basic CRUD example using MySQL
  */
@@ -42,7 +43,7 @@ exports.add = function(req, res, next) {
     });
   });
 };
-
+////////////////////////////////////////////////////////////////////////////////
 exports.get = function(req, res, next) {
   var id = req.params.id;
   req.getConnection(function(err, connection) {
@@ -53,19 +54,14 @@ exports.get = function(req, res, next) {
         var product = products[0];
         categories = categories.map(function(category) {
           category.selected = category.id === product.category_id ? "selected" : "";
-          return category;
-        });
+          return category;});
         res.render('edit', {
           categories: categories,
-          data: product
-        });
-      });
-    });
-  });
-};
+          data: product  });});});});};
+////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////
 exports.update = function(req, res, next) {
-
   var data = {
     category_id: Number(req.body.category_id),
     description: req.body.description

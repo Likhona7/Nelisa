@@ -18,7 +18,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: 'coder123',
+  password: '0839535220',
   port: 3306,
   database: 'nelisa'
 };
@@ -39,8 +39,8 @@ var weeklyStats = function(path) {
 
   var mostPopular = nelisa.mostPopular(soldProducts),
     leastPopular = nelisa.leastPopular(soldProducts),
-    popularCategory = nelisa.mostPopular(categoryWeek),
     notPopularCategory = nelisa.leastPopular(categoryWeek),
+    popularCategory = nelisa.mostPopular(categoryWeek),
     mostProfitableProduct = nelisa.mostPopular(Profit),
     profitCategory = nelisa.mostPopular(categoryProfit);
 
@@ -124,6 +124,9 @@ app.get('/categories/add', categories.showAdd);
 
  app.get('/sales', sales.show);
  app.get('/sales/add_sales', sales.showAdd);
+
+app.get('/sales/edit/:id', sales.showEdit);
+
  app.post('/sales/add_sales', sales.addsale);
 
  // app.get('/sales/edit_sales/:id', sales.get);
