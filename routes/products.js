@@ -48,15 +48,21 @@ exports.get = function(req, res, next) {
   var id = req.params.id;
   req.getConnection(function(err, connection) {
     connection.query('SELECT * FROM categories', [id], function(err, categories) {
+
+      //console.log(categories);
       if (err) return next(err);
       connection.query('SELECT * FROM products WHERE id = ?', [id], function(err, products) {
+console.log(products);
         if (err) return next(err);
         var product = products[0];
         categories = categories.map(function(category) {
           category.selected = category.id === product.category_id ? "selected" : "";
-          return category;});
+        //console.log(category);
+          return category;
+        });
         res.render('edit', {
           categories: categories,
+
           data: product  });});});});};
 ////////////////////////////////////////////////////////////////////////////////
 

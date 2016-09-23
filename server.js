@@ -27,6 +27,7 @@ var dbOptions = {
 var weeklyStats = function(path) {
 
   //console.log(path);
+
   var spazaString = nelisa.readData(path);
   var soldProducts = nelisa.GroupingData(spazaString);
   var categoryWeek = nelisa.getMapCategory(productCategories, soldProducts);
@@ -123,30 +124,22 @@ app.get('/categories/add', categories.showAdd);
 
  app.get('/sales', sales.show);
  app.get('/sales/add_sales', sales.showAdd);
-
- app.get('/sales/edit_sales/:id', sales.get);
-
-app.get('/sales/edit/:id', sales.showEdit);
-
-
-
-app.post('/sales/update/:id', sales.salesUpdate);
-
-
+//app.get('/sales/edit/:id', sales.showEdit);
  app.post('/sales/add_sales', sales.addsale);
+ app.get('/sales/edit_sales/:id', sales.get);
+ // app.get('/sales/add_sales', sales.addsale);
+ app.get('sales/delete/:id', sales.delete)
+ app.post('/sales/update/:id', sales.update);
+ app.post('/sales/update/:id', sales.salesUpdate);
 
- // app.get('/sales/edit_sales/:id', sales.get);
-
- //app.post('/sales/add', sales.add);
-
-
- //app.post('/sales/update/:id', sales.salesUpdate);
 
 
 
 
 
  ///////////////////////////////////////////////////////////////////
+
+
  app.get('/purchases', purchases.show);
 
 // //this should be a post but this is only an illustration of CRUD - not on good practices

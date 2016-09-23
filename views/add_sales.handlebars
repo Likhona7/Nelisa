@@ -11,26 +11,11 @@
 	</div>
 
 
-	<!-- <div class="container">
-    <form class="navbar-form navbar-left" action="/sales/add" method="POST">
-        <div>
-            <label for="">Product &nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <select class="" name="product_id">
-                {{#products}}
-                    <option class="btn btn-default" value="{{id}}">{{product}}</option>
-                {{/products}}
-            </select>
-        </div> -->
-   <!--  --><!--  --><!--  --><!--  --><!--  -->
-  <!-- <div>
-		<label for="">Description</label>
-		<input type="text" name="description" value="{{description}}"></div>
-<!----><!--  --><!--  --><!--  --><!--  -->
-	<div>
 		<div>
-			<label for="">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<label for="">Date</label>
+
 			<input type="text" name="sale_date" value="{{sale_date}}"></div>
-	<!--  --><!--  --><!--  --><!--  --><!--  -->
+
 		<div>
 		<label for="">Amount</label>
 		<input type="number" step="any" name="price" value="{{price}}">
@@ -43,11 +28,3 @@
 
 	<input type="submit">
 </form>
-<script>
-	var options = {year: "numeric",month: "2-digit",day: "2-digit"};
-	TinyDatePicker(document.querySelector('.date-picker'), {
-		format: function(date) {
-			return date.toLocaleDateString('en-CA', options);
-		}
-	});
-</script>
