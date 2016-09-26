@@ -110,7 +110,7 @@ var sale = rows[0];
 
 
 
-          
+
  // exports.delete = function(req, res, next){
  // 	var id = req.params.id;
  // 	req.getConnection(function(err, connection){
@@ -243,7 +243,7 @@ exports.salesUpdate = function(req, res, next){
  	var id = req.params.id;
  	var input = JSON.parse(JSON.stringify(req.body));
  	     var data = {
-			prod_id: input.id,
+			product_id: input.id,
 			date: input.date,
 			quantity: input.quantity,
 			price : input.price,
@@ -251,6 +251,7 @@ exports.salesUpdate = function(req, res, next){
  		};
  	req.getConnection(function(err, connection){
  		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
+      console.log(sales);
  			if (err){
  		       console.log("Error Updating : %s ",err );
  			}
