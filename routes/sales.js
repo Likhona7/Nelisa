@@ -95,15 +95,15 @@ var sale = rows[0];
         exports.update = function(req, res, next){
         	var data = {
             sale_date: Number(req.body.sale_date),
-        		quantity : Number(eq.body.quantity),
-        		price : Number(req.body.price),
-        		  product_id : Number(req.body.product_id)
+        		quantity : req.body.quantity,
+        		price : req.body.price,
+        		  product_id : req.body.product_id
 
           };
-          	var id = req.params.id;
+          	var id = req.params.product_id;
           	req.getConnection(function(err, connection){
         		if (err) return next(err);
-        		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
+        		connection.query('UPDATE sales SET ? WHERE product_id = ?', [data, id], function(err, rows){
         			if (err) return next(err);
               		res.redirect('/sales');
         		});});};
@@ -127,7 +127,7 @@ var sale = rows[0];
     exports.delete = function(req, res, next){
     	var id = req.params.id;
     	req.getConnection(function(err, connection){
-    		connection.query('DELETE FROM sales WHERE id = ?', [id], function(err,rows){
+    		connection.query('DELETE FROM sales WHERE sale_id = ?', [id], function(err,rows){
     			if(err) return next(err);
     			res.redirect('/sales');
     		});
