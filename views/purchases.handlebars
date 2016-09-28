@@ -21,8 +21,10 @@
        <td><strong>{{prod_id}}</strong></td>
        <td><strong>{{quantity}}</strong></td>
        <td><strong>{{cost}}</strong></td>
-       <td><a href="/categories/edit/{{id}}" type="button" class="btn btn-default btn-sm">
+       <td><a href="/purchases/edit_purchases/{{id}}" type="button" class="btn btn-default btn-sm">
          <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+
+         <td><a href="/purchases/delete/{{id}}" type="button" class="btn btn-primary">Delete</a></td>
 
      </tr>
        {{/purchases}}

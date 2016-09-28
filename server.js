@@ -128,22 +128,21 @@ app.get('/categories/add', categories.showAdd);
  app.post('/sales/add_sales', sales.addsale);
  app.get('/sales/edit_sales/:id', sales.get);
  // app.get('/sales/add_sales', sales.addsale);
- app.get('sales/delete/:id', sales.delete)
- app.post('/sales/update/:id', sales.update);
 // app.post('/sales/update/:id', sales.salesUpdate);
+ app.post('/sales/update/:id', sales.update);
 
-
-
-
-
-
+ app.get('/sales/delete/:id', sales.delete);
  ///////////////////////////////////////////////////////////////////
 
 
  app.get('/purchases', purchases.show);
-app.get('/purchases/add_purchases', purchases.showAdd);
-app.get('/purchases/add_purchases', purchases.addPurchases)
-// //this should be a post but this is only an illustration of CRUD - not on good practices
+ app.get('/purchases/add_purchases', purchases.showAdd);
+ app.post('/purchases/add_purchases', purchases.addPurchases);
+
+ app.get('/purchases/edit_purchases/:id', purchases.get);
+ app.post('/purchases/update/:id', purchases.update);
+ app.get('/purchases/delete/:id', purchases.delete);
+ //tion of CRUD - not on good practices
 // app.get('/products/delete/:id', products.delete);
 
 
