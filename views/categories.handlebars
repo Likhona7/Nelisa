@@ -1,7 +1,7 @@
 <h1 class="area">Categories</h1>
 
-<a href="/categories/add" type="button" class="btn btn-primary">Add</a>
-
+<a href="/categories/add" type="button" id="add_button" class="btn btn-primary glyphicon glyphicon-plus-sign">Add</a>
+<!-- class="glyphicon glyphicon-plus-sign" -->
 
 <table class="table">
   <thead>
@@ -11,12 +11,11 @@
   </thead>
   <tbody>
     {{#categories}}
-      <tr class="success">
+      <tr id="Pagetable" class="success">
         <td><strong>{{description}}
         </strong></td>
         <td><a href="/categories/edit/{{id}}" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
-
-<td><a href="/categories/delete/{{id}}" type="button" class="btn btn-primary">Delete</a></td>
+<td><a href="/categories/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger glyphicon glyphicon-trash">Delete</a></td>
 
       </tr>
     {{/categories}}
