@@ -1,25 +1,29 @@
 <h1 class="area">Products</h1>
 
-<a href="/products/add" type="button" class="btn btn-primary">Add</a>
+<a href="/products/add" type="button" id="add_button" class="btn btn-primary glyphicon glyphicon-plus-sign">Add</a>
+
+
+<div class="table-responsive">
 
 <table class="table">
    <thead>
      <tr>
-       <th>products name</th>
-       <th>Categories Name</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black" >products name</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Categories Name</th>
            </tr>
    </thead>
    <tbody>
       {{#products}}
-     <tr class="success">
-       <td><strong>{{description}}</strong>
+     <tr id="Pagetable" id="colorTable">
+       <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{product_name}}</strong>
        </td>
-       <td><strong>{{category_id}}</strong></td>
+       <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{description}}</strong></td>
 
-       <td><a href="/products/edit/{{id}}" type="button" class="btn btn-default btn-sm">
+       <td><a href="/products/edit/{{id}}" type="button" id="edit_button" class="btn btn-default btn-sm">
          <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
 
-         <td><a href="/products/delete/{{id}}" type="button" class="btn btn-primary">Delete</a></td>
+         <td><a href="/products/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger glyphicon glyphicon-trash">Delete</a></td>
+
      </tr>
 
      <!-- <tr class="success">
@@ -30,3 +34,4 @@
 
 
  </table>
+</div>

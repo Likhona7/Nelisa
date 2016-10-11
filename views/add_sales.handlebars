@@ -2,23 +2,28 @@
 <form action="/sales/add_sales" method="POST">
 	<div class="">
 
-		<label for="">Category</label>
-
-		<select class="" name="category_id">
+		<label for="">Products &nbsp;&nbsp;&nbsp;&nbsp;</label>
+		<select class="" name="product_id">
 			{{#categories}}
 				<option value="{{id}}">{{description}}</option>
 			{{/categories}}
 		</select>
 	</div>
+
+	<div>
+		<div>
+
    <!--  --><!--  --><!--  --><!--  --><!--  -->
-  <div>
+  <!-- <div>
 		<label for="">Description</label>
-		<input type="text" name="description" value="{{description}}"></div>
+		<input type="text" name="description" value="{{description}}"></div> -->
 <!--  --><!--  --><!--  --><!--  --><!--  -->
 	<div>
 		<div>
 			<label for="">Date</label>
-			<input type="text" name="sale_date" value="{{sale_date}}"></div>
+			<input type="date" name="sale_date" value="{{sale_date}}"></div>
+
+		
 	<!--  --><!--  --><!--  --><!--  --><!--  -->
 		<div>
 		<label for="">Amount</label>

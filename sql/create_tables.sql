@@ -19,12 +19,11 @@ create table products (
     foreign key (category_id) references categories(id)
 );
 
-
     create table purchases(
     	id int not null auto_increment,
       supplier char(100) not null,
       purchase_date char(100) not null,
-    	prod_id int not null,
+    	prod_id int,
     	quantity int(11),
       cost char(11) not null,
     	primary key(id),

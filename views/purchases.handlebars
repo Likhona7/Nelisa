@@ -1,28 +1,39 @@
 <h1 class="area">purchases</h1>
+
+<a href="/purchases/add_purchases" type="button" id="add_button" class="btn btn-primary glyphicon glyphicon-plus-sign">Add</a>
+
+
+<div class="table-responsive">
+
 <table class="table">
    <thead>
      <tr>
-       <th>Supplier</th>
-       <th>Date</th>
-       <th>Product name</th>
-       <th>Prooduct Quantity</th>
-       <th>Price</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Supplier</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Date</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Product Name</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Prooduct Quantity</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Price</th>
            </tr>
    </thead>
    <tbody>
       {{#purchases}}
-     <tr class="success">
+     <tr  id="Pagetable" id="colorTable">
 
-       <td><strong>{{supplier}}</strong></td>
-       <td><strong>{{purchase_date}}</strong></td>
-       <td><strong>{{prod_id}}</strong></td>
-       <td><strong>{{quantity}}</strong></td>
-       <td><strong>{{cost}}</strong></td>
-       <td><a href="/categories/edit/{{id}}" type="button" class="btn btn-default btn-sm">
+       <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{supplier}}</strong></td>
+       <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{purchase_date}}</strong></td>
+       <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{description}}</strong></td>
+       <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{quantity}}</strong></td>
+       <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{cost}}</strong></td>
+       <td><a href="/purchases/edit_purchases/{{id}}" type="button" id="edit_button" class="btn btn-default btn-sm">
          <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+
+         <td><a href="/purchases/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger glyphicon glyphicon-trash">Delete</a></td>
+
+
 
      </tr>
        {{/purchases}}
 
    </tbody>
  </table>
+</div>

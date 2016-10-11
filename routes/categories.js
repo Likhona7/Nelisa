@@ -3,7 +3,7 @@
  * A very basic CRUD example using MySQL
  */
 
-exports.show = function (req, res, next) {
+exports.show_categories = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
 		connection.query('SELECT * from categories', [], function(err, results) {
@@ -16,11 +16,11 @@ exports.show = function (req, res, next) {
 	});
 };
 
-exports.showAdd = function(req, res){
+exports.showAdd_categories = function(req, res){
 	res.render('add_category');
 }
 
-exports.add = function (req, res, next) {
+exports.add_categories = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
 		var input = req.body;
@@ -36,7 +36,7 @@ exports.add = function (req, res, next) {
 	});
 };
 
-exports.get = function(req, res, next){
+exports.get_categories = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
 		connection.query('SELECT * FROM categories WHERE id = ?', [id], function(err,rows){
@@ -49,7 +49,7 @@ exports.get = function(req, res, next){
 	});
 };
 
-exports.update = function(req, res, next){
+exports.update_categories = function(req, res, next){
 
   var data = req.body;
   var id = req.params.id;
@@ -62,7 +62,7 @@ exports.update = function(req, res, next){
     });
 };
 
-exports.delete = function(req, res, next){
+exports.delete_categories = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
 		connection.query('DELETE FROM categories WHERE id = ?', [id], function(err,rows){

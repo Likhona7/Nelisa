@@ -18,7 +18,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
@@ -105,44 +105,45 @@ function errorHandler(err, req, res, next) {
 
 //setup the handlers
 
-app.get('/categories', categories.show);
-app.get('/categories/add', categories.showAdd);
- app.get('/categories/edit/:id', categories.get);
- app.post('/categories/update/:id', categories.update);
- app.post('/categories/add', categories.add);
+app.get('/categories', categories.show_categories);
+app.get('/categories/add', categories.showAdd_categories);
+ app.get('/categories/edit/:id', categories.get_categories);
+ app.post('/categories/update/:id', categories.update_categories);
+ app.post('/categories/add', categories.add_categories);
 // //this should be a post but this is only an illustration of CRUD - not on good practices
- app.get('/categories/delete/:id', categories.delete);
+ app.get('/categories/delete/:id', categories.delete_categories);
 ////////////////////////////////////////////////////////////////////////////////
- app.get('/products', products.show);
- app.get('/products/add', products.showAdd);
- app.get('/products/edit/:id', products.get);
- app.post('/products/update/:id', products.update);
- app.get('/products/delete/:id', products.delete);
- app.post('/products/add', products.add);
+ app.get('/products', products.show_products);
+ app.get('/products/add', products.showAdd_products);
+ app.get('/products/edit/:id', products.get_products);
+ app.post('/products/update/:id', products.update_products);
+ app.get('/products/delete/:id', products.delete_products);
+ app.post('/products/add', products.add_products);
 
  ////////////////////////////////////////////////////////////////////////
 
  app.get('/sales', sales.show);
  app.get('/sales/add_sales', sales.showAdd);
-
-app.get('/sales/edit/:id', sales.showEdit);
-
+//app.get('/sales/edit/:id', sales.showEdit);
  app.post('/sales/add_sales', sales.addsale);
-
- // app.get('/sales/edit_sales/:id', sales.get);
+ app.get('/sales/edit_sales/:id', sales.get);
  // app.get('/sales/add_sales', sales.addsale);
+// app.post('/sales/update/:id', sales.salesUpdate);
+ app.post('/sales/update/:id', sales.update);
 
- //app.post('/sales/add', sales.add);
-
-
- //app.post('/sales/update/:id', sales.salesUpdate);
-
-
-
-
-
+ app.get('/sales/delete/:id', sales.delete);
  ///////////////////////////////////////////////////////////////////
+
+
  app.get('/purchases', purchases.show);
+ app.get('/purchases/add_purchases', purchases.showAdd);
+ app.post('/purchases/add_purchases', purchases.addPurchases);
+
+ app.get('/purchases/edit_purchases/:id', purchases.get);
+ app.post('/purchases/update/:id', purchases.update);
+ 
+ app.get('/purchases/delete/:id', purchases.delete);
+
 
 // //this should be a post but this is only an illustration of CRUD - not on good practices
 // app.get('/products/delete/:id', products.delete);
