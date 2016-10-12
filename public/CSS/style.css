@@ -7,6 +7,15 @@ background-size: cover;
 }*/
 
 
+.form-inline {
+  /*border-bottom: 1px solid #000;*/
+color: white;
+display: inline-block;
+text-shadow: 0px 10px 7px black;
+width: auto;
+	display: block;
+}
+
 label {
 
  color:linen;
@@ -28,6 +37,10 @@ h1 {
 	  text-shadow:0px 10px 7px black;
 }
 
+
+h4 {
+  color: white;
+}
 thead {
 	color: linen;
 	/*text-shadow:0px 10px 7px black;*/
@@ -58,8 +71,8 @@ li a {
 }
 
 #edit_button {
-	color : white;
-	background-color: green;
+	color : white !important;
+	/*background-color: green;*/
 	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
 	transition: width 2s, height 2s;
 }
@@ -69,7 +82,7 @@ li a {
 }
 
 #delete_button {
-color:white;
+color:white !important;
 -webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
 transition: width 2s, height 2s;
 }
@@ -78,7 +91,7 @@ transition: width 2s, height 2s;
 }
 
 #add_button {
-	color: white;
+	color: white !important;
 	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
 	transition: width 2s, height 2s;
 }
@@ -128,7 +141,7 @@ select {
 }
 
 input[type=text], input[type=number] {
-	padding: 0.2em;
+  padding: 0.2em;
 	font-size: 1.5em;
 	display: block;
 	margin-top: 0.5em;
@@ -137,10 +150,13 @@ input[type=text], input[type=number] {
 
 input[type=submit] {
 
-	padding: 1em;
-  	border: 0.3em solid darkblue;
-	font-weight: bold;
-	font-size: 1em;
+  color: white !important;
+	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
+	transition: width 2s, height 2s;
+  padding: 1.2em;
+  /*margin-bottom: -100px;
+  margin-right: -100px;*/
+
 };
 
 .field > label {

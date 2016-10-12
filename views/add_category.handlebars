@@ -1,24 +1,24 @@
 <h1 class="area">Add category</h1>
 
 <form action="/categories/add" method="POST">
+	  <!-- <i class="fa fa-plus-square" aria-hidden="true"></i>
 	<label for="text" class="col-md-4 control-label">Description</label>
-	<input type="text" name="description" class="form-control" id="inputEmail" placeholder="add category"> value="{{description}}">
-	<input type="submit">
+	<input type="text" name="description" class="form-control" id="inputEmail" data-success="right" placeholder="add category"> value="{{description}}">
+	<input type="submit"> -->
+<!-- <i class="fa fa-plus-square" aria-hidden="true"></i> -->
 
 
-	<div class="col-xs-6">
-		<form action="/categories/add" method="POST">
-	  <label for="text">Description</label>
-	  <input class="form-control" name="description" id="ex3" type="text" placeholder="add category"> value="{{description}}">
-		<input type="submit">
-	</div>
 
 
-	<!-- <div class="row">
-		<div class="col-sm-6 col-lg-4">
-			<div class="form-group">
-				<label for="inputEmail" class="col-md-4 control-label">likona:</label>
-				<div class="col-md-8">
-					<input type="likho" class="form-control" id="inputEmail" placeholder="likhona">
-				</div> -->
-</form>
+	<div class="form-inline">
+		<h4>description<h4>
+    <i class="fa fa-plus-square" aria-hidden="true"></i>
+    <input type="text" name="description" id="form6" class="form-control" placeholder="add category"  size="8">{{description}}</input>
+    <label for="form9" data-error="wrong" data-success="right"></label>
+
+
+		<input class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign" type="submit">
+</div>
+
+<!-- type="submit"> -->
+<form>
