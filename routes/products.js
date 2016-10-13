@@ -1,13 +1,17 @@
-
 /***
  * A very basic CRUD example using MySQL
  */
-exports.show = function(req, res, next) {
+exports.show_products = function(req, res, next) {
 
   req.getConnection(function(err, connection) {
 
+
     if (err) return next(err);
-    connection.query('SELECT * from products', [], function(err, results) {
+
+
+    connection.query('select products.id, products.description as product_name, categories.description from products inner join categories on products.category_id = categories.id', [], function(err, results) {
+
+
       if (err) return next(err);
       res.render('products', {
         no_products: results.length === 0,
@@ -17,7 +21,7 @@ exports.show = function(req, res, next) {
   });
 };
 
-exports.showAdd = function(req, res) {
+exports.showAdd_products = function(req, res) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
     connection.query('SELECT * from categories', [], function(err, categories) {
@@ -29,7 +33,7 @@ exports.showAdd = function(req, res) {
   });
 };
 
-exports.add = function(req, res, next) {
+exports.add_products = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
     var data = {
@@ -37,6 +41,7 @@ exports.add = function(req, res, next) {
       description: req.body.description
     //  price: Number(req.body.price)
     };
+  //  console.log(data);
     connection.query('insert into products set ?', data, function(err, results) {
       if (err) return next(err);
       res.redirect('/products');
@@ -44,34 +49,32 @@ exports.add = function(req, res, next) {
   });
 };
 ////////////////////////////////////////////////////////////////////////////////
-exports.get = function(req, res, next) {
+exports.get_products = function(req, res, next) {
   var id = req.params.id;
+  console.log(id);
   req.getConnection(function(err, connection) {
     connection.query('SELECT * FROM categories', [id], function(err, categories) {
-
-      //console.log(categories);
       if (err) return next(err);
       connection.query('SELECT * FROM products WHERE id = ?', [id], function(err, products) {
-console.log(products);
         if (err) return next(err);
         var product = products[0];
+        console.log(products);
+
         categories = categories.map(function(category) {
           category.selected = category.id === product.category_id ? "selected" : "";
-        //console.log(category);
           return category;
         });
         res.render('edit', {
           categories: categories,
-
           data: product  });});});});};
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
-exports.update = function(req, res, next) {
+exports.update_products = function(req, res, next) {
   var data = {
     category_id: Number(req.body.category_id),
     description: req.body.description
-    //price: Number(req.body.price)
+    //price: Number(req.body.price)0
   };
   var id = req.params.id;
   req.getConnection(function(err, connection) {
@@ -83,7 +86,7 @@ exports.update = function(req, res, next) {
   });
 };
 
-exports.delete = function(req, res, next) {
+exports.delete_products = function(req, res, next) {
   var id = req.params.id;
   req.getConnection(function(err, connection) {
     connection.query('DELETE FROM products WHERE id = ?', [id], function(err, rows) {

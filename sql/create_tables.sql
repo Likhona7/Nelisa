@@ -40,3 +40,4 @@ create table products (
       product_id int,
     foreign key (product_id) references products(id)
   );
+  select categories.description, products.description from categories inner join products on categories.id = products.category_id;

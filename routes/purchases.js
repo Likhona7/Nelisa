@@ -1,7 +1,7 @@
 exports.show = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
-    connection.query('SELECT * from purchases order by id desc', [], function(err, results) {
+    connection.query('select purchases.id, purchases.supplier, purchases.purchase_date, purchases.quantity, purchases.cost, products.description from purchases inner join products on purchases.prod_id = products.id', [], function(err, results) {
       if (err) return next(err);
       res.render('purchases', {
         no_purchases: results.length === 0,
@@ -80,7 +80,7 @@ exports.get = function(req, res, next) {
      };
      console.log(data);
        var id = req.params.id;
-    //  console.log(id);
+      console.log(id);
        //console.log(id);
        req.getConnection(function(err, connection){
        if (err) return next(err);

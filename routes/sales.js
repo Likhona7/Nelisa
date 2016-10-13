@@ -1,7 +1,7 @@
 exports.show = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
-    connection.query('SELECT * from sales order by id desc ', [], function(err, results) {
+    connection.query('select sales.id, sales.sale_date, sales.quantity, sales.price, products.description from sales inner join products on sales.product_id = products.id', [], function(err, results) {
       if (err) return next(err);
       res.render('sales', {
         no_sales: results.length === 0,
@@ -54,8 +54,7 @@ console.log("Error inserting : %s ",err );
      if (err) return next(err);
  	req.getConnection(function(err, connection){
  		connection.query('SELECT * FROM sales WHERE id = ?', [id], function(err,rows){
-console.log(rows);
-      if(err){
+ 			if(err){
  		        console.log("Error Selecting : %s ",err );
           }
 var sale = rows[0];

@@ -1,8 +1,10 @@
 <h1 class="area">Sales</h1>
 
 <!-- ////////<h1 class="area">Sales</h1> -->
-<a href="/sales/add_sales" type="button" class="btn btn-primary">Add</a>
+<a href="/sales/add_sales" type="button" id="add_button" class="btn btn-primary glyphicon glyphicon-plus-sign">Add</a>
 
+
+<div class="table-responsive">
 <table class="table">
    <thead>
      <tr>
@@ -14,16 +16,17 @@
    </thead>
    <tbody>
       {{#sales}}
-     <tr  id="Pagetable" class="success">
-       <td><strong>{{sale_date}}</strong></td>
-       <td><strong>{{quantity}}</strong></td>
-       <td><strong>{{price}}</strong></td>
-       <td><strong>{{product_id}}</strong></td>
+     <tr  id="Pagetable" id="colorTable">
+      <td id="colorTable" style="color:linen"><strong>{{sale_date}}</strong></td>
+       <td id="colorTable" style="color:linen"><strong>{{quantity}}</strong></td>
+       <td id="colorTable" style="color:linen"><strong>{{price}}</strong></td>
+       <td id="colorTable" style="color:linen"><strong>{{description}}</strong></td>
 
-       <td><a href="/sales/edit_sales/{{id}}" type="button" class="btn btn-default btn-sm">
+       <td><a href="/sales/edit_sales/{{id}}" type="button" id="edit_button" class="btn btn-default btn-sm">
          <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
 
-         <td><a href="/sales/delete/{{id}}" type="button" class="btn btn-primary">Delete</a></td>
+         <td><a href="/sales/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger glyphicon glyphicon-trash">Delete</a></td>
+
 
 
      </tr>
@@ -31,3 +34,4 @@
 
    </tbody>
  </table>
+</div>

@@ -2,19 +2,20 @@
 
 <a href="/categories/add" type="button" id="add_button" class="btn btn-primary glyphicon glyphicon-plus-sign">Add</a>
 <!-- class="glyphicon glyphicon-plus-sign" -->
+<div class="table-responsive" >
 
 <table class="table">
   <thead>
-    <tr>
+    <tr id="colorTable">
       <th>categories name</th>
     </tr>
   </thead>
   <tbody>
     {{#categories}}
-      <tr id="Pagetable" class="success">
-        <td><strong>{{description}}
+      <tr id="Pagetable"  id="colorTable">
+        <td id="colorTable" style="color:white"><strong>{{description}}
         </strong></td>
-        <td><a href="/categories/edit/{{id}}" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+        <td><a href="/categories/edit/{{id}}" type="button" id="edit_button" class="btn btn-default btn-lm"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
 <td><a href="/categories/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger glyphicon glyphicon-trash">Delete</a></td>
 
       </tr>
@@ -22,3 +23,4 @@
 
   </tbody>
 </table>
+</div>
