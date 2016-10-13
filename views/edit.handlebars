@@ -1,8 +1,9 @@
-<h1>Edit product</h1>
+<h1 class="area">Edit product</h1>
 <form action="/products/update/{{data.id}}" method="POST">
 	<div class="">
 		<label for="">Category</label>
 		<select class="" name="category_id">
+
 			{{#categories}}
 				<option {{selected}} value="{{id}}">{{description}}</option>
 			{{/categories}}

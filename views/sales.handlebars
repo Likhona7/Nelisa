@@ -1,31 +1,33 @@
 <h1 class="area">Sales</h1>
 
 <!-- ////////<h1 class="area">Sales</h1> -->
-<a href="/sales/add_sales" type="button" id="add_button" class="btn btn-primary glyphicon glyphicon-plus-sign">Add</a>
+
+<a href="/sales/add_sales" type="button" id="add_button" class="btn btn-primary-outline waves-effect glyphicon glyphicon-plus-sign">Add</a>
 
 
 <div class="table-responsive">
 <table class="table">
    <thead>
      <tr>
-       <th>Date</th>
-       <th>Quantity</th>
-       <th>Price</th>
-       <th>Product_id</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Date</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Quantity</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Price</th>
+       <th  style="color:linen; text-shadow:0px 10px 7px black">Product Name</th>
            </tr>
    </thead>
    <tbody>
       {{#sales}}
      <tr  id="Pagetable" id="colorTable">
-      <td id="colorTable" style="color:linen"><strong>{{sale_date}}</strong></td>
-       <td id="colorTable" style="color:linen"><strong>{{quantity}}</strong></td>
-       <td id="colorTable" style="color:linen"><strong>{{price}}</strong></td>
-       <td id="colorTable" style="color:linen"><strong>{{description}}</strong></td>
 
-       <td><a href="/sales/edit_sales/{{id}}" type="button" id="edit_button" class="btn btn-default btn-sm">
+      <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{sale_date}}</strong></td>
+       <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{quantity}}</strong></td>
+       <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{price}}</strong></td>
+       <td id="colorTable" style="color:linen;  text-shadow:0px 10px 7px black"><strong>{{description}}</strong></td>
+
+       <td><a href="/sales/edit_sales/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-sm">
          <span class="glyphicon glyphicon-edit"></span> Edit</a></td>
 
-         <td><a href="/sales/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger glyphicon glyphicon-trash">Delete</a></td>
+         <td><a href="/sales/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger-outline waves-effect glyphicon glyphicon-trash">Delete</a></td>
 
 
 
