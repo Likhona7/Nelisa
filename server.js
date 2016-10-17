@@ -18,7 +18,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
@@ -139,7 +139,10 @@ app.get('/categories/add', categories.showAdd_categories);
 
  app.get('/purchases/edit_purchases/:id', purchases.get);
  app.post('/purchases/update/:id', purchases.update);
+<<<<<<< HEAD
 
+=======
+>>>>>>> b1bbebd93e85a8b80f1d902e9107e1c898c59091
  app.get('/purchases/delete/:id', purchases.delete);
 
 
