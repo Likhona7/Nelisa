@@ -13,12 +13,20 @@
 	</div>
    <!--  -->
 	 <!--  -->
-	<div>
-		<label for="">Description</label>
-		<input type="text" name="description"  placeholder="add products" value="{{description}}">
+	<div class="form-inline">
+		<label for="form9">Description</label>
+		<i class="fa fa-plus-square" aria-hidden="true"   style="color:lightblue;size:10px;text-shadow:2px 2px 4px #000000;"></i>
+		<input type="text" name="description" id="form6" class"form-control" placeholder="add products" size="10" value="{{description}}">
 	</div>
-<!--  -->
-<!--  -->
+
+<br></br>
+	<div class="form-inline">
+		<h4>description<h4>
+    <i class="fa fa-plus-square" aria-hidden="true"   style="color:lightblue;size:10px;text-shadow:2px 2px 4px #000000;"></i>
+    <input type="text" name="description" id="form6" class="form-control" placeholder="add product"  size="10">{{description}}</input>
+    <label for="form9" data-error="wrong" data-success="right"></label>
+
+
 	<!-- <div>
 		<label for="">Amount</label>
 		<input type="number" step="any" name="price" value="{{price}}">

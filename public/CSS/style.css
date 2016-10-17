@@ -144,11 +144,14 @@ li a {
 	/*background-color: green;*/
 	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
 	transition: width 2s, height 2s;
+  /*border: 2px solid #2BBBAD;*/
 }
 
 #edit_button:hover{
 	transform: scale(1.3);
+  box-shadow: 10px 10px 5px black;
 }
+
 
 #delete_button {
 color:white;
@@ -157,6 +160,8 @@ transition: width 2s, height 2s;
 }
 #delete_button:hover {
 		transform: scale(1.3);
+    box-shadow: 10px 10px 5px black;
+
 }
 
 #add_button {
@@ -166,6 +171,8 @@ transition: width 2s, height 2s;
 }
 #add_button:hover {
 		transform: scale(1.3);
+    box-shadow: 10px 10px 5px black;
+
 }
 /*//////////////////////////////////////////////////////////////////////////*/
 
@@ -268,21 +275,30 @@ select {
 input[type=text], input[type=number] {
   padding: 0.2em;
 	font-size: 1.5em;
+  color:white;
 	display: block;
 	margin-top: 0.5em;
 	margin-bottom: 1em;
 }
+input[type="text"]:hover, textarea:hover {
+  background-color: transparent;
+  box-shadow: 10px 10px 5px black;
+  border-color: white;
+
+}
+
 
 input[type=submit] {
-
   color: white !important;
 	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
 	transition: width 2s, height 2s;
   padding: 1.2em;
+
+
   /*margin-bottom: -100px;
   margin-right: -100px;*/
-
 };
+
 
 .field > label {
 	width: 10px;
