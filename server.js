@@ -141,7 +141,6 @@ app.get('/categories/add', categories.showAdd_categories);
 
  app.get('/purchases/edit_purchases/:id', purchases.get);
  app.post('/purchases/update/:id', purchases.update);
- 
  app.get('/purchases/delete/:id', purchases.delete);
 
 
