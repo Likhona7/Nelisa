@@ -1,27 +1,29 @@
 <h1 class="area">Add category</h1>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<body class="fixed-sn graphite-skin">
 
-<form action="/categories/add" method="POST">
-	  <!-- <i class="fa fa-plus-square" aria-hidden="true"></i>
-	<label for="text" class="col-md-4 control-label">Description</label>
-	<input type="text" name="description" class="form-control" id="inputEmail" data-success="right" placeholder="add category"> value="{{description}}">
-	<input type="submit"> -->
-<!-- <i class="fa fa-plus-square" aria-hidden="true"></i> -->
-	<div class="form-inline">
-		<h4>description<h4>
-    <i class="fa fa-plus-square" aria-hidden="true"   style="color:lightblue;size:10px;text-shadow:2px 2px 4px #000000;"></i>
-    <input type="text" name="description" id="form6" class="form-control" placeholder="add category"  size="10">{{description}}</input>
-    <label for="form9" data-error="wrong" data-success="right"></label>
 
-<br></br>
-		<input class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign" type="submit">
+
+<div class="row">
+    <div class="col-lg-3"></div>
+
+    <div class="col-lg-6">
+        <div class="card">
+
+					<div class="form-header blue-gradient">
+							<h3><i class="fa fa-user"></i> Add Category:</h3>
+					</div>
+
+					<form action="/categories/add" method="POST">
+						<div class="md-form">
+					    <i class="fa fa-plus-square" aria-hidden="true"   style="color:lightblue;size:10px;text-shadow:2px 2px 4px #000000;"></i>
+					    <input type="text" name="description" id="form6" class="form-control" placeholder="add category"  size="10">{{description}}</input>
+					    <label for="form9" data-error="wrong" data-success="right"></label>
+
+					<br></br>
+							<input class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign" type="submit">
+					</div>
+        </div>
+    </div>
+
+    <div class="col-lg-3"></div>
 </div>
-<!-- type="submit"> -->
-
-	 <!-- </form>
-	 <div class="md-form">
-    <input type="text" id="form1" class="form-control">
-    <label for="form1" class="">Example label</label>
-</div> -->

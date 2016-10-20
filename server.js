@@ -124,22 +124,17 @@ app.get('/categories/add', categories.showAdd_categories);
 
  app.get('/sales', sales.show);
  app.get('/sales/add_sales', sales.showAdd);
-//app.get('/sales/edit/:id', sales.showEdit);
  app.post('/sales/add_sales', sales.addsale);
  app.get('/sales/edit_sales/:id', sales.get);
- // app.get('/sales/add_sales', sales.addsale);
-// app.post('/sales/update/:id', sales.salesUpdate);
  app.post('/sales/update/:id', sales.update);
  app.get('/sales/delete/:id', sales.delete);
  ///////////////////////////////////////////////////////////////////
+
  app.get('/purchases', purchases.show);
  app.get('/purchases/add_purchases', purchases.showAdd);
  app.post('/purchases/add_purchases', purchases.addPurchases);
-
-
  app.get('/purchases/edit_purchases/:id', purchases.get);
  app.post('/purchases/update/:id', purchases.update);
-
  app.get('/purchases/delete/:id', purchases.delete);
 
 
@@ -158,6 +153,9 @@ app.get("/contact", function(req, res) {
   res.render("contact");
 });
 
+app.get("/login", function(req, res) {
+res.render("login");  
+});
 
 
 //set the port number to an existing environment variable PORT or default to 5000
