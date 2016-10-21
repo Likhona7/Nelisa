@@ -188,23 +188,28 @@ app.get('/sales/:week', function(req, res) {
 
 var checkUser = function(req, res, next){
 console.log("checking.user................");
-
 if(req.session.user){
-  return next();
-}
+  return next();}
 res.redirect("/login");
 };
 
 
 app.post("/login", function(req, res){
-  req.session.user = "andre";
-  res.redirect("home")
+  req.session.user = req.body.username;
+  // res.redirect("home", {user: req.session.user})
+  res.redirect("/home")
 })
-
 
 app.get("/home", checkUser, function(req, res){
-res.render("home");
+res.render("home", {user: req.session.user});
 })
+
+app.get("/logout", function(req, res){
+delete req.session.user;
+res.redirect("/login");
+})
+
+
 app.get("/contact", function(req, res) {
   res.render("contact");
 });
