@@ -11,13 +11,21 @@
                   <div class="form-header blue-gradient">
                       <h3><i class="fa fa-user"></i> Login:</h3>
                   </div>
-                  <!--Body-->
-                  <div class="md-form">
+
+
+                  <form class="md-form" action="/login" method="post">
+
 
                       <i class="fa fa-user prefix"></i>
-                      <input type="text" id="form4" class="form-control">
+
+                      <input type="text" id="form4" name="username" value="" placeholder="username" class="form-control">
                       <label for="form4">Your name</label>
                   </div>
+
+
+
+
+
                   <!-- <div class="md-form">
                       <i class="fa fa-envelope prefix"></i>
                       <input type="text" id="form2" class="form-control">
@@ -31,10 +39,12 @@
                   <div class="text-xs-center">
 
                     <!-- <input class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign" type="submit"> -->
-                    <button class="submitUser">Sign Up</button>
+                    <button type="submit" name="name" value="login" class="submitUser">Login</button>
 
 
-                      <!-- <button class="btn btn-indigo">Sign up</button> -->
+</form>
+
+
                       <hr>
 
                   </div>

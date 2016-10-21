@@ -20,36 +20,38 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
 
-var app = express()
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
-}))
 
 
-app.use(function (req, res, next) {
-  var views = req.session.views
-
-  if (!views) {
-    views = req.session.views = {}
-  }
-
-  // get the url pathname
-  var pathname = parseurl(req).pathname
-
-  // count the views
-  views[pathname] = (views[pathname] || 0) + 1
-
-  next()
-})
-
-
+// var app = express()
+// app.use(session({
+//   secret: 'keyboard cat',
+//   resave: false,
+//   saveUninitialized: true
+// }))
+//
+//
+// app.use(function (req, res, next) {
+//   var views = req.session.views
+//
+//   if (!views) {
+//     views = req.session.views = {}
+//   }
+//
+//   // get the url pathname
+//   var pathname = parseurl(req).pathname
+//
+//   // count the views
+//   views[pathname] = (views[pathname] || 0) + 1
+//
+//   next()
+// })
+//
+//
 
 
 
@@ -111,8 +113,17 @@ var weekStat = {
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
 }));
-app.set('view engine', 'handlebars');
 
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+
+// app.use(function(req, res, next){
+//   console.log("the middleware");
+//   next();
+// })
+
+
+
+app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
 //setup middleware
@@ -165,10 +176,6 @@ app.get('/categories/add', categories.showAdd_categories);
  app.post('/purchases/update/:id', purchases.update);
  app.get('/purchases/delete/:id', purchases.delete);
 
-
-
-
-
 app.use(errorHandler);
 
 //..............................................................................
@@ -177,24 +184,43 @@ app.get('/sales/:week', function(req, res) {
   // console.log(week);
   res.render("index", weekStat[req.params.week]);
 });
+
+
+var checkUser = function(req, res, next){
+console.log("checking.user................");
+
+if(req.session.user){
+  return next();
+}
+res.redirect("/login");
+};
+
+
+app.post("/login", function(req, res){
+  req.session.user = "andre";
+  res.redirect("home")
+})
+
+
+app.get("/home", checkUser, function(req, res){
+res.render("home");
+})
 app.get("/contact", function(req, res) {
   res.render("contact");
 });
-
 app.get("/login", function(req, res) {
-res.render("login");
+res.render("login", {});
 });
 app.get("/signUp", function (req, res){
   res.render("signUp");
 })
-
-app.get('/foo', function (req, res, next) {
-  res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
-})
-app.get('/bar', function (req, res, next) {
-  res.send('you viewed this page ' + req.session.views['/bar'] + ' times')
-})
-
+// app.get('/foo', function (req, res, next) {
+//   res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+// })
+// app.get('/bar', function (req, res, next) {
+//   res.send('you viewed this page ' + req.session.views['/bar'] + ' times')
+// })
+//
 
 
 
