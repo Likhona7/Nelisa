@@ -20,7 +20,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: 'coder123',
+  password: '0839535220',
   port: 3306,
   database: 'nelisa'
 };
@@ -114,12 +114,20 @@ app.engine('handlebars', exphbs({
   defaultLayout: 'main'
 }));
 
+
+var userRoles = {
+  "likhona" : "admin",
+  "andile" : "viewer"
+}
+
+
+
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
 
-// app.use(function(req, res, next){
-//   console.log("the middleware");
-//   next();
-// })
+app.use(function(req, res, next){
+  console.log("the middleware :" + req.path);
+  next();
+})
 
 
 
@@ -193,10 +201,11 @@ if(req.session.user){
 res.redirect("/login");
 };
 
-
 app.post("/login", function(req, res){
-  req.session.user = req.body.username;
-  // res.redirect("home", {user: req.session.user})
+  req.session.user = {
+    name: req.body.username,
+    is_admin :userRoles[req.body.username] === "likhona"
+  };
   res.redirect("/home")
 })
 
@@ -209,13 +218,14 @@ delete req.session.user;
 res.redirect("/login");
 })
 
-
 app.get("/contact", function(req, res) {
   res.render("contact");
 });
+
 app.get("/login", function(req, res) {
 res.render("login", {});
 });
+
 app.get("/signUp", function (req, res){
   res.render("signUp");
 })
