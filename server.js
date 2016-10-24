@@ -15,12 +15,13 @@ var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var session = require('express-session');
 var parseurl = require('parseurl');
+var flash = require("flash")
 var app = express();
 
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
@@ -226,9 +227,30 @@ app.get("/login", function(req, res) {
 res.render("login", {});
 });
 
-app.get("/signUp", function (req, res){
-  res.render("signUp");
+app.get("/signUp_users", function (req, res){
+  res.render("signUp_users", {title: "SignUp"});
 })
+app.post("/signUp_user", function(req, res, next){
+if(req.body.name &&
+req.body.email &&
+req.body.password &&
+req.body.confirmPassword){
+}
+if(req.body.password !== req.body.confirmPassword){
+var err = new Error("password do not match.");
+err.status = 400;
+return next(err);
+}
+
+
+// else {
+//   var err = new Error("All fields required..");
+//   err.status = 400;
+//   return next(err);
+// }
+
+})
+
 // app.get('/foo', function (req, res, next) {
 //   res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
 // })

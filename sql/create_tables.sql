@@ -39,4 +39,27 @@ create table products (
       product_id int,
     foreign key (product_id) references products(id)
   );
+
+create table users (
+id int null auto_increment,
+username char(100) not null,
+email char(100) not null,
+password char(100) not null,
+locked char(100) not null,
+admin char(100) not null,
+primary key(id)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
   select categories.description, products.description from categories inner join products on categories.id = products.category_id;
