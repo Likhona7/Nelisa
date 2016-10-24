@@ -1,20 +1,41 @@
 var bcrypt = require('bcrypt');
+var flash = require("flash");
 
 exports.add_users = function(req, res, next) {
 
+
+
+
   var data = {
-    username: req.body.username,
     email: req.body.email,
-    password: req.body.password,
+   username: req.body.username,
+   password: req.body.password,
     locked: 0,
     admin: 0
   };
+//   var username = req.body.username;
+//   var password = req.body.password;
+//
+// console.log(username +" "+password);
+// console.log(data);
+//
+//   if (username.length < 3 || password.length < 3) {
+//            flash('warning', 'Username/Password too short, minimum length should be 4 letters long');
+//            return res.redirect("/signUp_users");
+//        } else {
+//          req.getConnection(function(err, connection) {
+//              if (err)
+//                  return next(err);
+
   req.getConnection(function(err, connection) {
     if (err) return next(err);
     connection.query('insert into users set ?', data, function(err, data) {
+
+      console.log(data);
       res.redirect('/login');
     });
   });
+
 };
 
 

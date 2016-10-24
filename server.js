@@ -16,13 +16,13 @@ var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var session = require('express-session');
 var parseurl = require('parseurl');
-var flash = require("flash")
+var flash = require("flash");
 var app = express();
 
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: 'coder123',
+  password: '0839535220',
   port: 3306,
   database: 'nelisa'
 };

@@ -41,13 +41,12 @@ create table products (
   );
 
 create table users (
-id int null auto_increment,
+id int primary key auto_increment,
 username char(100) not null,
 email char(100) not null,
 password char(100) not null,
 locked char(100) not null,
-admin char(100) not null,
-primary key(id)
+admin char(100) not null
 );
 
 
