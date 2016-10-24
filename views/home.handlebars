@@ -1,17 +1,9 @@
-<h1>Hello Nelisa</h1>
-
-
-<h2>{{#if user}}
-
-    Hello, {{user}}
-
-
-{{/if}}</h2>
 
 <!-- {{ user.is_admin}} -->
-<html><head>
+<html>
+<head>
 <style>
-body, html {
+body , html {
   height: 100%;
   margin: 0;
   font: 400 15px/1.8 "Lato", sans-serif;
@@ -28,17 +20,19 @@ body, html {
 
 }
 .bgimg-1 {
-  background-image: url("womanSpaza.jpg");
+  background-image: url("/img/Joburg-Street-Art-1.jpg");
+
   min-height: 100%;
 }
 
 .bgimg-2 {
-  background-image: url("joburg-Street_Art-1.jpg");
+  background-image: url("/img/womanSpaza.jpg");
+
   min-height: 400px;
 }
 
 .bgimg-3 {
-  background-image: url("img_parallax3.jpg");
+  background-image: url("/img/bottles.jpg");
   min-height: 400px;
 }
 
@@ -69,9 +63,20 @@ h3 {
 </head>
 <body>
 
+  <!-- <h1>Hello Nelisa</h1> -->
+
+
+  <h2>{{#if user}}
+
+      Hello, {{user}}
+
+
+  {{/if}}</h2>
+
+
 <div class="bgimg-1">
   <div class="caption">
-    <span class="border">SCROLL DOWN</span>
+    <span class="border">Spaza Shop</span>
   </div>
 </div>
 
@@ -112,16 +117,3 @@ h3 {
 
 
 </body></html>
-
-
-<!-- {{# if user.is_admin}} -->
-
-<!-- <h3>you can see this if you are logged in</h3> -->
-
-
-<a href="/logout">Logout</a>
-
-
-
-
-<!-- <h3>Welcoming the users</h3> -->

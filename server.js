@@ -10,6 +10,7 @@ var categories = require('./routes/categories');
 var products = require('./routes/products');
 var sales = require('./routes/sales');
 var purchases = require('./routes/purchases');
+var signUp = require("./routes/signUp");
 var nelisa = require("./nelisa");
 var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
@@ -185,6 +186,9 @@ app.get('/categories/add', categories.showAdd_categories);
  app.post('/purchases/update/:id', purchases.update);
  app.get('/purchases/delete/:id', purchases.delete);
 
+
+
+
 app.use(errorHandler);
 
 //..............................................................................
@@ -201,7 +205,6 @@ if(req.session.user){
   return next();}
 res.redirect("/login");
 };
-
 app.post("/login", function(req, res){
   req.session.user = {
     name: req.body.username,
@@ -210,8 +213,8 @@ app.post("/login", function(req, res){
   res.redirect("/home")
 })
 
-app.get("/home", checkUser, function(req, res){
-res.render("home", {user: req.session.user});
+app.get("/home", function(req, res){
+res.render("home");
 })
 
 app.get("/logout", function(req, res){
@@ -228,19 +231,18 @@ res.render("login", {});
 });
 
 app.get("/signUp_users", function (req, res){
-  res.render("signUp_users", {title: "SignUp"});
+  res.render("signUp_users");
 })
-app.post("/signUp_user", function(req, res, next){
-if(req.body.name &&
-req.body.email &&
-req.body.password &&
-req.body.confirmPassword){
-}
-if(req.body.password !== req.body.confirmPassword){
-var err = new Error("password do not match.");
-err.status = 400;
-return next(err);
-}
+app.post("/signUp", signUp.add_users);
+
+
+
+
+// if(req.body.password !== req.body.confirmPassword){
+// var err = new Error("password do not match.");
+// err.status = 400;
+// return next(err);
+// }
 
 
 // else {
@@ -249,7 +251,7 @@ return next(err);
 //   return next(err);
 // }
 
-})
+// })
 
 // app.get('/foo', function (req, res, next) {
 //   res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
