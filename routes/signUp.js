@@ -4,24 +4,24 @@ var flash = require("flash");
 exports.add_users = function(req, res, next) {
   var data = {
     email: req.body.email,
-   username: req.body.username,
-   password: req.body.password,
+  //  username: req.body.username,
+  //  password: req.body.password,
     locked: 0,
     admin: 0
   };
-//   var username = req.body.username;
-//   var password = req.body.password;
+  var username = req.body.username;
+  var password = req.body.password;
 //
 // console.log(username +" "+password);
 // console.log(data);
 //
-//   if (username.length < 3 || password.length < 3) {
-//            flash('warning', 'Username/Password too short, minimum length should be 4 letters long');
-//            return res.redirect("/signUp_users");
-//        } else {
-//          req.getConnection(function(err, connection) {
-//              if (err)
-//                  return next(err);
+  if (username.length < 3 || password.length < 3) {
+           req.flash('warning', 'Username/Password too short, should be 3 letters long');
+           return res.redirect("/signUp_users");
+       } else {
+         req.getConnection(function(err, connection) {
+             if (err)
+                 return next(err);
 
   req.getConnection(function(err, connection) {
     if (err) return next(err);
@@ -31,7 +31,8 @@ exports.add_users = function(req, res, next) {
       res.redirect('/login');
     });
   });
-
+});
+}
 };
 
 

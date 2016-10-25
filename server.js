@@ -17,13 +17,13 @@ var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var session = require('express-session');
 var parseurl = require('parseurl');
-var flash = require("flash");
+var flash = require('express-flash');
 var app = express();
 
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
@@ -126,11 +126,14 @@ var userRoles = {
 
 
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.use(flash());
 
 app.use(function(req, res, next){
   console.log("the middleware :" + req.path);
   next();
 })
+
+
 
 
 
