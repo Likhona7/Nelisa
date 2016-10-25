@@ -2,10 +2,6 @@ var bcrypt = require('bcrypt');
 var flash = require("flash");
 
 exports.add_users = function(req, res, next) {
-
-
-
-
   var data = {
     email: req.body.email,
    username: req.body.username,

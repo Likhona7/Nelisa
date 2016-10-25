@@ -11,6 +11,7 @@ var products = require('./routes/products');
 var sales = require('./routes/sales');
 var purchases = require('./routes/purchases');
 var signUp = require("./routes/signUp");
+var user = require("./routes/user");
 var nelisa = require("./nelisa");
 var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
@@ -162,6 +163,15 @@ app.get('/categories/add', categories.showAdd_categories);
 // //this should be a post but this is only an illustration of CRUD - not on good practices
  app.get('/categories/delete/:id', categories.delete_categories);
 ////////////////////////////////////////////////////////////////////////////////
+
+app.get("/user", user.show_users);
+app.get("/user/add", user.showAdd_user)
+
+
+
+
+
+
  app.get('/products', products.show_products);
  app.get('/products/add', products.showAdd_products);
  app.get('/products/edit/:id', products.get_products);
@@ -185,7 +195,7 @@ app.get('/categories/add', categories.showAdd_categories);
  app.get('/purchases/edit_purchases/:id', purchases.get);
  app.post('/purchases/update/:id', purchases.update);
  app.get('/purchases/delete/:id', purchases.delete);
-
+///////////////////////////////////////////////////////////////////////////////
 
 
 
