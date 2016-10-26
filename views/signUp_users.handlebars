@@ -1,5 +1,9 @@
 
-
+{{#if msg}}
+    <div class="message">
+        {{msg}}
+    </div>
+{{/if}}
 
         <div class="row">
             <div class="col-lg-3"></div>
@@ -37,7 +41,7 @@
 
                           <div class="md-form">
                               <i class="fa fa-lock prefix"></i>
-                              <input id="form4" class="form-control" type="password" name="password">{{password}}</input>
+                              <input type="password" id="form4" class="form-control" type="password" name="password">{{password}}</input>
                               <label for="form4">Your password</label>
                           <!-- </div>
                           <div class="md-form">
@@ -46,9 +50,15 @@
                               <label for="form4">Confirm password</label>
                           </div> -->
                           <button class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign">Sign Up</button>
+
 </form>
+
                 </div>
             </div>
 
             <div class="col-lg-3"></div>
         </div>
+
+        <h4 style="color:red" id='warning'>{{messages.warning}}</h4>
+
+        <h4 style="color:yellow" id='warning'>{{messages.warning}}</h4>

@@ -125,8 +125,12 @@ var userRoles = {
 
 
 
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
-app.use(flash());
+app.use(session({ secret: 'keyboard cat',
+ cookie: { maxAge: 60000,
+   resave: true,
+  saveUninitialized: false
+ }
+}));
 
 app.use(function(req, res, next){
   console.log("the middleware :" + req.path);
@@ -139,7 +143,7 @@ app.use(function(req, res, next){
 
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
-
+app.use(flash());
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 // parse application/x-www-form-urlencoded
@@ -241,7 +245,18 @@ app.get("/contact", function(req, res) {
 });
 
 app.get("/login", function(req, res) {
-res.render("login", {});
+res.render("login", {Title: "logged in"});
+});
+
+app.post("/login", function(req, res, next){
+if(req.body.email && req.body.password){
+}
+else {
+  var err = new Error("email and password are required");
+  err.status = 401;
+  return next(err);
+}
+
 });
 
 app.get("/signUp_users", function (req, res){
@@ -249,6 +264,16 @@ app.get("/signUp_users", function (req, res){
 })
 app.post("/signUp", signUp.add_users);
 
+
+
+// router.post("/signUp_users", function(req, res, next){
+//   if(req.body.email &&
+//   req.body.username &&
+// req.body.password &&){
+//
+//   }
+//
+// })
 
 
 

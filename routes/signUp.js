@@ -1,38 +1,55 @@
 var bcrypt = require('bcrypt');
-var flash = require("flash");
-
 exports.add_users = function(req, res, next) {
-  var data = {
-    email: req.body.email,
-  //  username: req.body.username,
-  //  password: req.body.password,
-    locked: 0,
-    admin: 0
-  };
-  var username = req.body.username;
-  var password = req.body.password;
-//
-// console.log(username +" "+password);
-// console.log(data);
-//
-  if (username.length < 3 || password.length < 3) {
-           req.flash('warning', 'Username/Password too short, should be 3 letters long');
-           return res.redirect("/signUp_users");
-       } else {
-         req.getConnection(function(err, connection) {
-             if (err)
-                 return next(err);
+var data = {
+  email: req.body.email,
+  username: req.body.username,
+  password: req.body.password,
+  locked: 0,
+  admin: 0
+};
+if (data.username.length < 3 || data.password.length < 3) {
+  req.flash("warning", 'Username/Password too short, should be 3 letters long');
+  return res.redirect("/signUp_users");
+}
 
+// else if(data.password.length < 0 || data.email.length < 0 || data.username.length < 0){
+//           req.flash("warning", 'All fields required..');
+//           return res.redirect("/signUp_users");
+//          }
+
+else {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
-    connection.query('insert into users set ?', data, function(err, data) {
 
-      console.log(data);
-      res.redirect('/login');
+    //         if(data.password.length < 0 || data.email.length < 0 || data.username.length < 0){
+    //           req.flash("warning", 'All fields required..');
+    //           return res.redirect("/signUp_users");
+    //         }
+    //         else {
+    //           req.getConnection(function(err, connection) {
+    //            if (err)
+    //               return next(err);
+
+    bcrypt.hash(data.password, 10, function(err, hash) {
+
+if(err){
+  return next(err);
+
+}
+                data.password = hash;
+
+    req.getConnection(function(err, connection) {
+      if (err) return next(err);
+      connection.query('insert into users set ?', data, function(err, data) {
+
+        console.log(data);
+        res.redirect('/login');
+      });
     });
   });
+// };
 });
-}
+};
 };
 
 
@@ -60,8 +77,6 @@ exports.add_users = function(req, res, next) {
 //
 //           bcrypt.hash(password, 10, function(err, hash) {
 //               data.password = hash;
-//
-//
 //
 //               connection.query('insert into users set ?', data, function(err, data) {
 //                   if (err) {
