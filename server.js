@@ -11,6 +11,7 @@ var products = require('./routes/products');
 var sales = require('./routes/sales');
 var purchases = require('./routes/purchases');
 var signUp = require("./routes/signUp");
+var login = require("./routes/login")
 var user = require("./routes/user");
 var nelisa = require("./nelisa");
 var productCategories = require("./files/category.json");
@@ -220,16 +221,16 @@ var checkUser = function(req, res, next){
 console.log("checking.user................");
 if(req.session.user){
   return next();}
-res.redirect("/login");
+res.redirect("/login_users");
 };
 
-app.post("/login", function(req, res){
-  req.session.user = {
-    name: req.body.username,
-    is_admin :userRoles[req.body.username] === "likhona"
-  };
-  res.redirect("/home")
-})
+// app.post("/login", function(req, res){
+//   req.session.user = {
+//     name: req.body.username,
+//     is_admin :userRoles[req.body.username] === "likhona"
+//   };
+//   res.redirect("/home")
+// })
 
 app.get("/home", function(req, res){
 res.render("home");
@@ -244,11 +245,11 @@ app.get("/contact", function(req, res) {
   res.render("contact");
 });
 
-app.get("/login", function(req, res) {
-res.render("login", {Title: "logged in"});
+app.get("/login_users", function(req, res) {
+res.render("login_users", {Title: "logged in"});
 });
 
-app.post("/login", function(req, res, next){
+app.post("/login_users", function(req, res, next){
 if(req.body.email && req.body.password){
 }
 else {
