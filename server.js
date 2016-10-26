@@ -245,18 +245,12 @@ app.get("/contact", function(req, res) {
   res.render("contact");
 });
 
-app.get("/login_users", function(req, res) {
-res.render("login_users", {Title: "logged in"});
-});
+// app.get("/login_users", function(req, res) {
+// res.render("login_users", {Title: "logged in"});
+// });
 
 app.post("/login_users", function(req, res, next){
-if(req.body.email && req.body.password){
-}
-else {
-  var err = new Error("email and password are required");
-  err.status = 401;
-  return next(err);
-}
+
 
 });
 
@@ -266,7 +260,10 @@ app.get("/signUp_users", function (req, res){
 app.post("/signUp", signUp.add_users);
 
 
-
+app.get("/login_users", function(req, res){
+  res.render("login_users");
+})
+app.post("/login", login.Inloggin);
 // router.post("/signUp_users", function(req, res, next){
 //   if(req.body.email &&
 //   req.body.username &&
