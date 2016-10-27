@@ -18,44 +18,19 @@ var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var session = require('express-session');
 var parseurl = require('parseurl');
-// var flash = require('express-flash');
+var LocalStrategy   = require('passport-local');
+var flash = require('express-flash');
 var app = express();
 
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
 
 
-
-// var app = express()
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: true
-// }))
-//
-//
-// app.use(function (req, res, next) {
-//   var views = req.session.views
-//
-//   if (!views) {
-//     views = req.session.views = {}
-//   }
-//
-//   // get the url pathname
-//   var pathname = parseurl(req).pathname
-//
-//   // count the views
-//   views[pathname] = (views[pathname] || 0) + 1
-//
-//   next()
-// })
-//
-//
 
 
 
@@ -144,7 +119,7 @@ app.use(function(req, res, next){
 
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
-///////////////////////////////////////////////////////////////app.use(flash());
+app.use(flash());
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 // parse application/x-www-form-urlencoded
@@ -160,10 +135,18 @@ function errorHandler(err, req, res, next) {
     error: err
   });
 }
+////////////////////////////////////////////////////////////////////////////////
+var checkUser = function(req, res, next){
+console.log("checking.user................");
+if(req.session.user){
+  return next();}
+res.redirect("/login_users");
+};
+
 
 //setup the handlers
 
-app.get('/categories', categories.show_categories);
+app.get('/categories', checkUser, categories.show_categories);
 app.get('/categories/add', categories.showAdd_categories);
  app.get('/categories/edit/:id', categories.get_categories);
  app.post('/categories/update/:id', categories.update_categories);
@@ -189,7 +172,7 @@ app.get("/user/add", user.showAdd_user)
 
  ////////////////////////////////////////////////////////////////////////
 
- app.get('/sales', sales.show);
+ app.get('/sales',  sales.show);
  app.get('/sales/add_sales', sales.showAdd);
  app.post('/sales/add_sales', sales.addsale);
  app.get('/sales/edit_sales/:id', sales.get);
@@ -217,12 +200,6 @@ app.get('/sales/:week', function(req, res) {
 });
 
 
-var checkUser = function(req, res, next){
-console.log("checking.user................");
-if(req.session.user){
-  return next();}
-res.redirect("/login_users");
-};
 
 // app.post("/login", function(req, res){
 //   req.session.user = {
@@ -232,7 +209,7 @@ res.redirect("/login_users");
 //   res.redirect("/home")
 // })
 
-app.get("/home", function(req, res){
+app.get("/home", checkUser, function(req, res){
 res.render("home");
 })
 
@@ -241,7 +218,7 @@ delete req.session.user;
 res.redirect("/login");
 })
 
-app.get("/contact", function(req, res) {
+app.get("/contact", checkUser, function(req, res) {
   res.render("contact");
 });
 

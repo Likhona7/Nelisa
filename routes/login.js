@@ -2,20 +2,9 @@ var bcrypt = require("bcrypt");
 
 var loginNumber = 0;
 
-// exports.Inloggin = function(req, res, next) {
-//   req.getConnection(function(err, connection) {
-//         connection.query("SELECT * FROM users", [], function(err, data) {
-//           if (err) return next(err);
-//                   console.log(data);
-//
-//                   res.redirect('/home');
-// });
-// });
-// };
+
 
 exports.Inloggin = function(req, res) {
-
-
   var data = {
     email: req.body.email,
     username: req.body.username,
@@ -25,14 +14,46 @@ exports.Inloggin = function(req, res) {
   };
 
 
-console.log(data);
-
   req.getConnection(function(err, connection) {
     if (err) return next(err);
-    connection.query('SELECT * from users where username = ? ', username, function(err, users) {
+    connection.query('SELECT * from users where username = ? ', data.username, function(err, users) {
       if (err) return next(err);
       console.log("//////////////////////////////////////////////////////////////////");
-      console.log(users);
+
+
+
+      console.log(data.password);
+      var user = users[0];
+
+        if (err) return next(err);
+
+
+
+        if (!user) {
+                       req.flash('warning', 'No user found.');
+                       return res.redirect("/login_users");
+    }
+
+if (!user.password == data.password)
+
+console.log(data);
+            return (null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+
+        // all is well, return successful user
+        return done(null, user[0]);
+
+
+
+    			//  if (!user.length) {
+          // return (null, false, req.flash('loginMessage', 'No user found.'));
+          //           // req.flash is the way to set flashdata using connect-flash
+          //           console.log(user);
+          //       }
+
+
+
+
+
       res.redirect('/home');
     });
   });
