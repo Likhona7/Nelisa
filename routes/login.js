@@ -1,6 +1,7 @@
-// var bcrypt = require("bcrypt");
+var bcrypt = require("bcrypt");
 
-//
+var loginNumber = 0;
+
 // exports.Inloggin = function(req, res, next) {
 //   req.getConnection(function(err, connection) {
 //         connection.query("SELECT * FROM users", [], function(err, data) {
@@ -11,23 +12,34 @@
 // });
 // });
 // };
-//
-// exports.Inloggin = function(req, res) {
-//   req.getConnection(function(err, connection) {
-//     if (err) return next(err);
-//     connection.query('SELECT * from users', [], function(err, users) {
-//       if (err) return next(err);
-//       console.log("//////////////////////////////////////////////////////////////////");
-//       console.log(users);
-//       res.redirect('/home');
-//     });
-//   });
-// };
+
+exports.Inloggin = function(req, res) {
+
+
+  var data = {
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password,
+    locked: 0,
+    admin: 0
+  };
+
+
+console.log(data);
+
+  req.getConnection(function(err, connection) {
+    if (err) return next(err);
+    connection.query('SELECT * from users where username = ? ', username, function(err, users) {
+      if (err) return next(err);
+      console.log("//////////////////////////////////////////////////////////////////");
+      console.log(users);
+      res.redirect('/home');
+    });
+  });
+};
 // var bcrypt = require('bcrypt');
 // var login_count = 0;
-//
 // module.exports = function(req, res) {
-//
 //     var username = req.body.username;
 //     var password = req.body.password;
 //

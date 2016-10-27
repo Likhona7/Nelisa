@@ -18,13 +18,13 @@ var productCategories = require("./files/category.json");
 var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var session = require('express-session');
 var parseurl = require('parseurl');
-var flash = require('express-flash');
+// var flash = require('express-flash');
 var app = express();
 
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: 'coder123',
+  password: '0839535220',
   port: 3306,
   database: 'nelisa'
 };
@@ -144,7 +144,7 @@ app.use(function(req, res, next){
 
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
-app.use(flash());
+///////////////////////////////////////////////////////////////app.use(flash());
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 // parse application/x-www-form-urlencoded
@@ -250,8 +250,6 @@ app.get("/contact", function(req, res) {
 // });
 
 app.post("/login_users", function(req, res, next){
-
-
 });
 
 app.get("/signUp_users", function (req, res){
