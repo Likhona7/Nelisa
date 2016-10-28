@@ -1,10 +1,5 @@
-var bcrypt = require("bcrypt");
-
-var loginNumber = 0;
-
-
-
 exports.Inloggin = function(req, res) {
+
   var data = {
     email: req.body.email,
     username: req.body.username,
@@ -12,49 +7,116 @@ exports.Inloggin = function(req, res) {
     locked: 0,
     admin: 0
   };
+  var user1 = [data];
 
 
+
+
+
+  // SELECT * from users where username = ?
+
+  // console.log(dataOfUser);
   req.getConnection(function(err, connection) {
     if (err) return next(err);
-    connection.query('SELECT * from users where username = ? ', data.username, function(err, users) {
+    connection.query('SELECT * from users', data.username, function(err, users) {
       if (err) return next(err);
-      console.log("//////////////////////////////////////////////////////////////////");
+
+var dtbeUser = users;
+
+      // console.log(dtbeUser);
+      // console.log("//////////////////////////////////////////////////////////////////");
+      // // console.log(user);
+
+
+dtbeUser.forEach(function(dataFromDatabase){
+user1.forEach(function(dataFromLogin){
+
+  console.log(dataFromDatabase);
+  console.log(dataFromLogin);
+
+
+if(dataFromDatabase.username == dataFromLogin.usename &&
+  dataFromDatabase.password == dataFromLogin.password){
+  req.session.user = {
+name: req.body.username,
+is_admin: rolesMap[req.body.username] === "admin",
+user:rolesMap[req.body.username] === "user"
+  };
+
+  console.log(req.session.user);
+  res.redirect("/home")
+}
+if (dataFromDatabase.password == dataFromLogin.surname &&
+dataFromDatabase.password !== dataFromLogin.password) {
+  req.flash('warning', 'No wrong password.');
+  return res.redirect("/login_users");
+}
+
+else {
+   req.flash("warning", 'Email and Password are required.');
+return res.redirect("/login_users");
+ }
+
+})
+})
+
+
+      // if (err) return next(err);
+      // console.log("My Users DTBS Usernames------------");
+      // dbUsers.forEach(function(item) {
+      //   user1.forEach(function(item2) {
+      //     if (item.username == item2.name && item.password == item2.pass) {
+      //       req.session.user = {
+      //         name: req.body.username,
+      //         is_admin: rolesMap[req.body.username] === "admin",
+      //         user: rolesMap[req.body.username] === "user"
+      //       };
+      //       console.log(req.session.user);
+      //       res.redirect("/home");
+      //     }
+      //     if (item.username == item2.name && item.password !== item2.pass) {
+      //       req.flash("warning", 'Wrong Password');
+      //       return res.redirect("/login");
+      //     }
+      //   })
+      // });
+      //     });
+      //   });
+      // }
+
+
+      // if (err) return next(err);
+      //
+
+      //
+      //
+      //
 
 
 
-      console.log(data.password);
-      var user = users[0];
-
-        if (err) return next(err);
 
 
 
-        if (!user) {
-                       req.flash('warning', 'No user found.');
-                       return res.redirect("/login_users");
-    }
+      // console.log(users);
 
-if (!user.password == data.password)
-
-console.log(data);
-            return (null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-
-        // all is well, return successful user
-        return done(null, user[0]);
-
-
-
-    			//  if (!user.length) {
-          // return (null, false, req.flash('loginMessage', 'No user found.'));
-          //           // req.flash is the way to set flashdata using connect-flash
-          //           console.log(user);
-          //       }
+      // bcrypt.hash("bacon", null, null, function(err, hash) {
+      //     // Store hash in your password DB.
+      // });
+      // // Load hash from your password DB.
+      // bcrypt.compare("bacon", hash, function(err, res) {
+      //     // res == true
+      // });
+      // bcrypt.compare("veggies", hash, function(err, res) {
+      //     // res = false
+      // });
 
 
-
-
-
-      res.redirect('/home');
+      //  if (!user.length) {
+      // return (null, false, req.flash('loginMessage', 'No user found.'));
+      //           // req.flash is the way to set flashdata using connect-flash
+      //           console.log(user);
+      //       }
+      //res.redirect('/home');
     });
   });
 };
