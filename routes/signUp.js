@@ -34,7 +34,6 @@ else {
 
 if(err){
   return next(err);
-
 }
                 data.password = hash;
 
@@ -43,7 +42,7 @@ if(err){
       connection.query('insert into users set ?', data, function(err, data) {
 
         console.log(data);
-        res.redirect('/login');
+        res.redirect('/login_users');
       });
     });
   });
