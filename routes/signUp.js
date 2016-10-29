@@ -20,15 +20,15 @@ if (data.username.length < 3 || data.password.length < 3) {
 else {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
-
-    //         if(data.password.length < 0 || data.email.length < 0 || data.username.length < 0){
-    //           req.flash("warning", 'All fields required..');
-    //           return res.redirect("/signUp_users");
-    //         }
-    //         else {
-    //           req.getConnection(function(err, connection) {
-    //            if (err)
-    //               return next(err);
+            //
+            // if(data.password.length < 0 || data.email.length < 0 || data.username.length < 0){
+            //   req.flash("warning", 'All fields required..');
+            //   return res.redirect("/signUp_users");
+            // }
+            // else {
+            //   req.getConnection(function(err, connection) {
+            //    if (err)
+            //       return next(err);
 
     bcrypt.hash(data.password, 10, function(err, hash) {
 

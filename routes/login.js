@@ -1,64 +1,49 @@
 exports.Inloggin = function(req, res) {
-
-  var data = {
+  var rolesMap = {
+     "nelisa":"admin",
+     "aluta" :"viewer"
+   };
+  var inputUser = {
     email: req.body.email,
     username: req.body.username,
     password: req.body.password,
-    locked: 0,
-    admin: 0
-  };
-  var user1 = [data];
+    is_admin: rolesMap[req.body.username] === "admin"};
 
-
-
-
-
-  // SELECT * from users where username = ?
-
-  // console.log(dataOfUser);
+  var inputUsers = [inputUser];
+  // console.log(inputUserOfUser);
   req.getConnection(function(err, connection) {
+
     if (err) return next(err);
-    connection.query('SELECT * from users', data.username, function(err, users) {
-      if (err) return next(err);
+    
+    connection.query('SELECT * from users where username = ?', inputUser.username, function(err, users) {
 
-var dtbeUser = users;
+console.log(users);console.log(inputUsers);
 
-      // console.log(dtbeUser);
-      // console.log("//////////////////////////////////////////////////////////////////");
-      // // console.log(user);
+if (users.length === 0){
+  req.flash('warning', 'Invalid username');
+  console.log("Access denied....");
 
-
-dtbeUser.forEach(function(dataFromDatabase){
-user1.forEach(function(dataFromLogin){
-
-  console.log(dataFromDatabase);
-  console.log(dataFromLogin);
-
-
-if(dataFromDatabase.username == dataFromLogin.usename &&
-  dataFromDatabase.password == dataFromLogin.password){
-  req.session.user = {
-name: req.body.username,
-is_admin: rolesMap[req.body.username] === "admin",
-user:rolesMap[req.body.username] === "user"
-  };
-
-  console.log(req.session.user);
-  res.redirect("/home")
-}
-if (dataFromDatabase.password == dataFromLogin.surname &&
-dataFromDatabase.password !== dataFromLogin.password) {
-  req.flash('warning', 'No wrong password.');
   return res.redirect("/login_users");
+              }
+              else{
+                var dbUser = users[0];
+
+                if(inputUser.password === dbUser.password){
+                      //return next();
+                      req.session.user = inputUser;
+                      res.redirect('/home');
+                }
+                else{
+                      return res.redirect("/login_users");
+                      console.log("Wrong Password.....");
+
+                }
+              }
+
+          });
+      });
 }
 
-else {
-   req.flash("warning", 'Email and Password are required.');
-return res.redirect("/login_users");
- }
-
-})
-})
 
 
       // if (err) return next(err);
@@ -117,9 +102,9 @@ return res.redirect("/login_users");
       //           console.log(user);
       //       }
       //res.redirect('/home');
-    });
-  });
-};
+//     });
+//   });
+// };
 // var bcrypt = require('bcrypt');
 // var login_count = 0;
 // module.exports = function(req, res) {

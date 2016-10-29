@@ -158,10 +158,46 @@ function errorHandler(err, req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////
 var checkUser = function(req, res, next){
 console.log("checking.user................");
-if(req.session.user){
-  return next();}
+if(req.session.user || req.path === "/login_users"){
+  return next();
+}
 res.redirect("/login_users");
+next();
 };
+
+
+
+// app.post("/login", function(req, res){
+//   req.session.user = {
+//     name: req.body.username,
+//     is_admin :userRoles[req.body.username] === "likhona"
+//   };
+//   res.redirect("/home")
+// })
+
+
+
+
+
+
+// app.post("/login", function(req, res, next){
+//
+//       var inputUser = {
+//         name : req.body.username,
+//         password : req.body.password,
+//         is_admin : rolesMap[req.body.username] === "admin"
+//       };
+
+
+
+
+
+
+
+
+
+
+
 
 
 //setup the handlers
@@ -221,13 +257,7 @@ app.get('/sales/:week', function(req, res) {
 
 
 
-// app.post("/login", function(req, res){
-//   req.session.user = {
-//     name: req.body.username,
-//     is_admin :userRoles[req.body.username] === "likhona"
-//   };
-//   res.redirect("/home")
-// })
+
 
 app.get("/home", function(req, res){
 res.render("home");
