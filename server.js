@@ -260,8 +260,10 @@ app.get('/sales/:week', function(req, res) {
 
 
 app.get("/home", function(req, res){
-res.render("home");
+res.render("home", {
+  user
 })
+});
 
 app.get("/logout", function(req, res){
 delete req.session.user;
