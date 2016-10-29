@@ -22,6 +22,7 @@
     "passport-facebook": "^2.1.1",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
-    "prompt": "^0.2.14"
+    "prompt": "^0.2.14",
+    "middleware": "~1.0.0"
   }
 }
