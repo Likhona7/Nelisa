@@ -27,7 +27,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
@@ -159,11 +159,10 @@ function errorHandler(err, req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////
 var checkUser = function(req, res, next){
 console.log("checking.user................");
-if(req.session.user || req.path === "/login_users"){
+if(req.session.user || req.path == "/login_users"){
   return next();
 }
 res.redirect("/login_users");
-next();
 };
 
 
@@ -203,13 +202,13 @@ next();
 
 //setup the handlers
 
-app.get('/categories', categories.show_categories);
-app.get('/categories/add', categories.showAdd_categories);
- app.get('/categories/edit/:id', categories.get_categories);
- app.post('/categories/update/:id', categories.update_categories);
- app.post('/categories/add', categories.add_categories);
+app.get('/categories',checkUser, categories.show_categories);
+app.get('/categories/add', checkUser, categories.showAdd_categories);
+ app.get('/categories/edit/:id', checkUser, categories.get_categories);
+ app.post('/categories/update/:id', checkUser, categories.update_categories);
+ app.post('/categories/add', checkUser, categories.add_categories);
 // //this should be a post but this is only an illustration of CRUD - not on good practices
- app.get('/categories/delete/:id', categories.delete_categories);
+ app.get('/categories/delete/:id', checkUser, categories.delete_categories);
 ////////////////////////////////////////////////////////////////////////////////
 
 app.get("/user", user.show_users);
@@ -229,7 +228,7 @@ app.get("/user/add", user.showAdd_user)
 
  ////////////////////////////////////////////////////////////////////////
 
- app.get('/sales',  sales.show);
+ app.get('/sales', sales.show);
  app.get('/sales/add_sales', sales.showAdd);
  app.post('/sales/add_sales', sales.addsale);
  app.get('/sales/edit_sales/:id', sales.get);
@@ -261,10 +260,9 @@ app.get('/sales/:week', function(req, res) {
 
 
 app.get("/home", function(req, res){
-res.render("home", {
-  user
+res.render("home");
 })
-});
+
 
 app.get("/logout", function(req, res){
 delete req.session.user;

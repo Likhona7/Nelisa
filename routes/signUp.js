@@ -1,55 +1,45 @@
 var bcrypt = require('bcrypt');
+
+
 exports.add_users = function(req, res, next) {
-var data = {
-  email: req.body.email,
-  username: req.body.username,
-  password: req.body.password,
-  locked: 0,
-  admin: 0
-};
-if (data.username.length < 3 || data.password.length < 3) {
-  req.flash("warning", 'Username/Password too short, should be 3 letters long');
-  return res.redirect("/signUp_users");
-}
+  var data = {
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password,
+    // comfirmPassword: req.body.confirmPassword,
+    locked: 0,
+    admin: 0
+  };
 
-// else if(data.password.length < 0 || data.email.length < 0 || data.username.length < 0){
-//           req.flash("warning", 'All fields required..');
-//           return res.redirect("/signUp_users");
-//          }
 
-else {
-  req.getConnection(function(err, connection) {
-    if (err) return next(err);
-            //
-            // if(data.password.length < 0 || data.email.length < 0 || data.username.length < 0){
-            //   req.flash("warning", 'All fields required..');
-            //   return res.redirect("/signUp_users");
-            // }
-            // else {
-            //   req.getConnection(function(err, connection) {
-            //    if (err)
-            //       return next(err);
-
-    bcrypt.hash(data.password, 10, function(err, hash) {
-
-if(err){
-  return next(err);
-}
-                data.password = hash;
-
+  if (data.username.length < 3 || data.password.length < 3) {
+    req.flash("warning", 'Username/Password too short, should be 3 letters long');
+    return res.redirect("/signUp_users");
+  } else {
     req.getConnection(function(err, connection) {
       if (err) return next(err);
-      connection.query('insert into users set ?', data, function(err, data) {
 
-        console.log(data);
-        res.redirect('/login_users');
+      bcrypt.hash(data.password, 10, function(err, hash) {
+        console.log(hash);
+        if (err) {
+          return next(err);
+        }
+        data.password = hash;
+
+        if (err) return next(err);
+        connection.query('insert into users set ?', data, function(err, data) {
+          if (err) return next(err);
+          console.log(data);
+          res.redirect('/login_users');
+        });
+
       });
+      // };
     });
-  });
-// };
-});
+  };
 };
-};
+
+
 
 
 

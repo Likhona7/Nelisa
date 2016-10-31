@@ -1,107 +1,139 @@
+var bcrypt = require("bcrypt");
+
+
 exports.Inloggin = function(req, res) {
   var rolesMap = {
-     "nelisa":"admin",
-     "aluta" :"viewer"
-   };
+    "nelisa": "admin",
+    "aluta": "viewer"
+  };
   var inputUser = {
-    email: req.body.email,
+    // email: req.body.email,
     username: req.body.username,
     password: req.body.password,
-    is_admin: rolesMap[req.body.username] === "admin"};
+    is_admin: rolesMap[req.body.username] === "admin"
+  };
 
   var inputUsers = [inputUser];
   // console.log(inputUserOfUser);
   req.getConnection(function(err, connection) {
 
     if (err) return next(err);
-    
+
     connection.query('SELECT * from users where username = ?', inputUser.username, function(err, users) {
 
-console.log(users);console.log(inputUsers);
+      // console.log(users);
+      console.log(inputUsers);
 
-if (users.length === 0){
-  req.flash('warning', 'Invalid username');
-  console.log("Access denied....");
+      if (users.length === 0) {
+        req.flash('warning', 'Invalid username');
+        console.log("Access denied....");
 
-  return res.redirect("/login_users");
-              }
-              else{
-                var dbUser = users[0];
+        return res.redirect("/login_users");
+      } else {
+        var dbUser = users[0];
 
-                if(inputUser.password === dbUser.password){
-                      //return next();
-                      req.session.user = inputUser;
-                      res.redirect('/home');
-                }
-                else{
-                      return res.redirect("/login_users");
-                      console.log("Wrong Password.....");
 
-                }
-              }
+        bcrypt.compare(inputUser.password, dbUser.password, function(err, match) {
 
-          });
-      });
+// if (err) console.log('error while checking password');
+//
+// else if (match)
+
+          //  console.log(match);
+
+          // else
+          // console.log("then password do not match");
+
+
+          console.log(match);
+          if (match) {
+            // req.session.user;
+            // req.session.is_admin = {
+            //   admin: req.session.user.admin,
+            //   user: req.session.user.username
+            // };
+            if (err) return next(err);
+
+            return res.redirect("/home");
+          }
+
+
+
+
+
+          if (inputUser.password === dbUser.password) {
+            //return next();
+            req.session.user = inputUser;
+            res.redirect('/home');
+          } else {
+            return res.redirect("/login_users");
+            console.log("Wrong Password.....");
+
+          }
+        })
+      }
+    });
+  });
 }
 
 
 
-      // if (err) return next(err);
-      // console.log("My Users DTBS Usernames------------");
-      // dbUsers.forEach(function(item) {
-      //   user1.forEach(function(item2) {
-      //     if (item.username == item2.name && item.password == item2.pass) {
-      //       req.session.user = {
-      //         name: req.body.username,
-      //         is_admin: rolesMap[req.body.username] === "admin",
-      //         user: rolesMap[req.body.username] === "user"
-      //       };
-      //       console.log(req.session.user);
-      //       res.redirect("/home");
-      //     }
-      //     if (item.username == item2.name && item.password !== item2.pass) {
-      //       req.flash("warning", 'Wrong Password');
-      //       return res.redirect("/login");
-      //     }
-      //   })
-      // });
-      //     });
-      //   });
-      // }
+// if (err) return next(err);
+// console.log("My Users DTBS Usernames------------");
+// dbUsers.forEach(function(item) {
+//   user1.forEach(function(item2) {
+//     if (item.username == item2.name && item.password == item2.pass) {
+//       req.session.user = {
+//         name: req.body.username,
+//         is_admin: rolesMap[req.body.username] === "admin",
+//         user: rolesMap[req.body.username] === "user"
+//       };
+//       console.log(req.session.user);
+//       res.redirect("/home");
+//     }
+//     if (item.username == item2.name && item.password !== item2.pass) {
+//       req.flash("warning", 'Wrong Password');
+//       return res.redirect("/login");
+//     }
+//   })
+// });
+//     });
+//   });
+// }
 
 
-      // if (err) return next(err);
-      //
+// if (err) return next(err);
+//
 
-      //
-      //
-      //
-
-
-
+//
+//
+//
 
 
 
-      // console.log(users);
-
-      // bcrypt.hash("bacon", null, null, function(err, hash) {
-      //     // Store hash in your password DB.
-      // });
-      // // Load hash from your password DB.
-      // bcrypt.compare("bacon", hash, function(err, res) {
-      //     // res == true
-      // });
-      // bcrypt.compare("veggies", hash, function(err, res) {
-      //     // res = false
-      // });
 
 
-      //  if (!user.length) {
-      // return (null, false, req.flash('loginMessage', 'No user found.'));
-      //           // req.flash is the way to set flashdata using connect-flash
-      //           console.log(user);
-      //       }
-      //res.redirect('/home');
+
+// console.log(users);
+
+// bcrypt.hash("bacon", null, null, function(err, hash) {
+//     // Store hash in your password DB.
+// });
+// // Load hash from your password DB.
+// bcrypt.compare("bacon", hash, function(err, res) {
+//     // res == true
+// });
+// bcrypt.compare("veggies", hash, function(err, res) {
+//     // res = false
+// });
+
+
+//  if (!user.length) {
+// return (null, false, req.flash('loginMessage', 'No user found.'));
+//           // req.flash is the way to set flashdata using connect-flash
+//           console.log(user);
+//       }
+//res.redirect('/home');
 //     });
 //   });
 // };
@@ -121,7 +153,6 @@ if (users.length === 0){
 //                 return res.redirect("/login");
 //             } else if (user.locked === 0) {
 //                 var id = user.id;
-//
 //                 bcrypt.compare(password, user.password, function(err, match) {
 //                     if (match) {
 //                         req.session.user = user;
