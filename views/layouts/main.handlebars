@@ -4,8 +4,6 @@
 
  <head>
 
-   <title>nelisa</title>
-
     <meta charset="utf-8">
 
     <title>Nelisa</title>
@@ -38,10 +36,12 @@
 
 
 
-
-
-
-
+  /*#navbarShadow{
+    background: black;
+color: white !important;
+    opacity: 0.6;
+    filter: alpha (opacity=30);
+  }*/
 
 .nav {
   margin-bottom: 0;
@@ -52,7 +52,10 @@
       letter-spacing: 4px;
       border-radius: 0;
 background-color: transparent;
+
 }
+
+
 
 
 
@@ -65,15 +68,16 @@ background-color: transparent;
       position: center max-width: 100%;
       display: block;
       height: auto;
+
     }
 
     h1 {
       text-align: center;
       font-size: 75px;
       text-align: center;
+
     }
   </style>
-
 
 
 
@@ -95,26 +99,29 @@ background-color: transparent;
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
+
             <li class="active"><a href="/home">Home</a></li>
+
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Statistics<span class="caret"></span></a>
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Statistics<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/sales/week1">week 1</a></li>
                 <li><a href="/sales/week2">week 2</a></li>
-                <li><a href="/sales/week3">week 3</a></li>
+                <li><a href="/sales/week3" >week 3</a></li>
                 <li><a href="/sales/week4">week 4</a></li>
               </ul>
             </li>
-            <li><a href="user">user</a></li>
-            <li><a href="/categories">Categories</a></li>
-            <li><a href="/products">Products</a></li>
-              <li><a href="/sales">Sales</a></li>
-              <li><a href="/purchases">Purchases</a></li>
-            <li><a href="/contact">Contact</a></li>
+
+            <li><a href="user" style="color: white">user</a></li>
+            <li><a href="/categories" style="color: white">Categories</a></li>
+            <li><a href="/products" style="color: white">Products</a></li>
+              <li><a href="/sales" style="color: white">Sales</a></li>
+              <li><a href="/purchases" style="color: white">Purchases</a></li>
+            <li><a href="/contact" style="color: white">Contact</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login_users"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            <li><a href="signUp_users"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/login_users"><span class="glyphicon glyphicon-log-in" style="color: white"></span> Login</a></li>
+            <li><a href="signUp_users"><span class="glyphicon glyphicon-user" style="color: white"></span> Sign Up</a></li>
 
           </ul>
         </div>
