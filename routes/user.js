@@ -6,6 +6,8 @@ exports.show_users = function (req, res, next) {
 		res.render('user', {
 				no_user : results.length === 0,
 				users : results,
+				user: req.session.user,
+				is_admin: req.session.is_admin
 		});
       });
 	});

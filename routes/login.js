@@ -1,6 +1,4 @@
 var bcrypt = require("bcrypt");
-
-
 exports.Inloggin = function(req, res) {
   var rolesMap = {
     "nelisa": "admin",
@@ -12,38 +10,21 @@ exports.Inloggin = function(req, res) {
     password: req.body.password,
     is_admin: rolesMap[req.body.username] === "admin"
   };
-
   var inputUsers = [inputUser];
-  // console.log(inputUserOfUser);
   req.getConnection(function(err, connection) {
 
     if (err) return next(err);
 
     connection.query('SELECT * from users where username = ?', inputUser.username, function(err, users) {
-
-      // console.log(users);
-      console.log(inputUsers);
-
       if (users.length === 0) {
         req.flash('warning', 'Invalid username');
         console.log("Access denied....");
-
         return res.redirect("/login_users");
       } else {
         var dbUser = users[0];
 
 
         bcrypt.compare(inputUser.password, dbUser.password, function(err, match) {
-
-// if (err) console.log('error while checking password');
-//
-// else if (match)
-
-          //  console.log(match);
-
-          // else
-          // console.log("then password do not match");
-
 
           console.log(match);
           if (match) {

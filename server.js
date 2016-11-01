@@ -27,7 +27,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
@@ -156,13 +156,34 @@ function errorHandler(err, req, res, next) {
   });
 }
 ////////////////////////////////////////////////////////////////////////////////
-var checkUser = function(req, res, next){
-console.log("checking.user................");
-if(req.session.user || req.path == "/login_users"){
-  return next();
-}
-res.redirect("/login_users");
+// var checkUser = function(req, res, next){
+// console.log("checking.user................");
+// if(req.session.user || req.path == "/login_users"){
+//   return next();
+// }
+// };
+
+app.all('*', checkUser);
+
+function checkUser(req, res, next) {
+  if (req.session.user || req.path == '/login'){
+    return next();
+  }
+
+  res.redirect("/login");
+
 };
+
+
+// function checkUser(req, res, next) {
+//   var _ = require('underscore')
+//       , nonSecurePaths = ['/', '/contact'];
+//   if ( _.contains(nonSecurePaths, req.path) ) return next();
+//
+//   //authenticate user
+//   next();
+// }
+//
 
 
 
@@ -201,47 +222,46 @@ res.redirect("/login_users");
 
 //setup the handlers
 
-app.get('/categories',checkUser, categories.show_categories);
-app.get('/categories/add', checkUser, categories.showAdd_categories);
- app.get('/categories/edit/:id', checkUser, categories.get_categories);
- app.post('/categories/update/:id', checkUser, categories.update_categories);
- app.post('/categories/add', checkUser, categories.add_categories);
+app.get('/categories',  categories.show_categories);
+app.get('/categories/add',   categories.showAdd_categories);
+ app.get('/categories/edit/:id', categories.get_categories);
+ app.post('/categories/update/:id',  categories.update_categories);
+ app.post('/categories/add',  categories.add_categories);
 // //this should be a post but this is only an illustration of CRUD - not on good practices
- app.get('/categories/delete/:id', checkUser, categories.delete_categories);
+ app.get('/categories/delete/:id',  categories.delete_categories);
 ////////////////////////////////////////////////////////////////////////////////
 
-app.get("/user",checkUser, user.show_users);
-app.get("/user/add", checkUser, user.showAdd_user)
+app.get("/user", user.show_users);
+app.get("/user/add",  user.showAdd_user)
 
 
 
 
 
 
- app.get('/products',checkUser, products.show_products);
- app.get('/products/add',checkUser, products.showAdd_products);
- app.get('/products/edit/:id',checkUser, products.get_products);
- app.post('/products/update/:id',checkUser, products.update_products);
- app.get('/products/delete/:id', checkUser, products.delete_products);
- app.post('/products/add', checkUser, products.add_products);
+ app.get('/products', products.show_products);
+ app.get('/products/add', products.showAdd_products);
+ app.get('/products/edit/:id', products.get_products);
+ app.post('/products/update/:id', products.update_products);
+ app.get('/products/delete/:id',  products.delete_products);
+ app.post('/products/add',  products.add_products);
 
  ////////////////////////////////////////////////////////////////////////
 
- app.get('/sales', checkUser, sales.show);
- app.get('/sales/add_sales', checkUser, sales.showAdd);
- app.post('/sales/add_sales',checkUser, sales.addsale);
- app.get('/sales/edit_sales/:id',checkUser, sales.get);
- app.post('/sales/update/:id',checkUser, sales.update);
- app.get('/sales/delete/:id',checkUser, sales.delete);
+ app.get('/sales',  sales.show);
+ app.get('/sales/add_sales',  sales.showAdd);
+ app.post('/sales/add_sales', sales.addsale);
+ app.get('/sales/edit_sales/:id', sales.get);
+ app.post('/sales/update/:id', sales.update);
+ app.get('/sales/delete/:id', sales.delete);
  ///////////////////////////////////////////////////////////////////
-
- app.get('/purchases/add_purchases',checkUser, purchases.showAdd);
- app.post('/purchases/add_purchases',checkUser, purchases.addPurchases);
- app.get('/purchases/edit_purchases/:id',checkUser, purchases.get);
- app.post('/purchases/update/:id',checkUser, purchases.update);
- app.get('/purchases/delete/:id',checkUser, purchases.delete);
+ app.get('/purchases',  purchases.show);
+ app.get('/purchases/add_purchases', purchases.showAdd);
+ app.post('/purchases/add_purchases', purchases.addPurchases);
+ app.get('/purchases/edit_purchases/:id', purchases.get);
+ app.post('/purchases/update/:id', purchases.update);
+ app.get('/purchases/delete/:id', purchases.delete);
 ///////////////////////////////////////////////////////////////////////////////
-app.get('/purchases', checkUser, purchases.show);
 
 
 
@@ -255,23 +275,26 @@ app.get('/sales/:week', function(req, res) {
 });
 
 
-app.get("/home", checkUser, function(req, res){
-res.render("home", {user: req.session.user});
-});
-
-app.get("/login_users", function(req, res){
+app.get("/login", function(req, res){
   res.render("login_users");
 })
 app.post("/login", login.Inloggin);
 
 
 
-app.get("/logout", function(req, res){
+app.get("/home", function(req, res){
+res.render("home");
+});
+
+
+
+
+  app.get("/logout", function(req, res){
 delete req.session.user;
 res.redirect("/login");
 });
 
-app.get("/contact", checkUser, function(req, res) {
+app.get("/contact",  function(req, res) {
   res.render("contact");
 });
 
@@ -468,7 +491,7 @@ app.listen(app.get('port'), function() {
 //       });
 // })
 //
-// app.get("/home",checkUser,function(req, res){
+// app.get("/home",function(req, res){
 //     res.render("home", {user : req.session.user});
 // });
 //

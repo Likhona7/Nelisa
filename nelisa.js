@@ -43,6 +43,7 @@ exports.GroupingData = function(spazaString) {
     return soldProducts;
 
   }
+
 //..............................................................................
 exports.totalSellingGroupData = function(spazaString) {
     var list = [];
