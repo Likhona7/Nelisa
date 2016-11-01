@@ -27,7 +27,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: 'coder123',
+  password: '0839535220',
   port: 3306,
   database: 'nelisa'
 };
@@ -37,7 +37,6 @@ var dbOptions = {
 
 
 var weeklyStats = function(path) {
-
 
   var spazaString = nelisa.readData(path);
   var soldProducts = nelisa.GroupingData(spazaString);
@@ -211,38 +210,38 @@ app.get('/categories/add', checkUser, categories.showAdd_categories);
  app.get('/categories/delete/:id', checkUser, categories.delete_categories);
 ////////////////////////////////////////////////////////////////////////////////
 
-app.get("/user", user.show_users);
-app.get("/user/add", user.showAdd_user)
+app.get("/user",checkUser, user.show_users);
+app.get("/user/add", checkUser, user.showAdd_user)
 
 
 
 
 
 
- app.get('/products', products.show_products);
- app.get('/products/add', products.showAdd_products);
- app.get('/products/edit/:id', products.get_products);
- app.post('/products/update/:id', products.update_products);
- app.get('/products/delete/:id', products.delete_products);
- app.post('/products/add', products.add_products);
+ app.get('/products',checkUser, products.show_products);
+ app.get('/products/add',checkUser, products.showAdd_products);
+ app.get('/products/edit/:id',checkUser, products.get_products);
+ app.post('/products/update/:id',checkUser, products.update_products);
+ app.get('/products/delete/:id', checkUser, products.delete_products);
+ app.post('/products/add', checkUser, products.add_products);
 
  ////////////////////////////////////////////////////////////////////////
 
- app.get('/sales', sales.show);
- app.get('/sales/add_sales', sales.showAdd);
- app.post('/sales/add_sales', sales.addsale);
- app.get('/sales/edit_sales/:id', sales.get);
- app.post('/sales/update/:id', sales.update);
- app.get('/sales/delete/:id', sales.delete);
+ app.get('/sales', checkUser, sales.show);
+ app.get('/sales/add_sales', checkUser, sales.showAdd);
+ app.post('/sales/add_sales',checkUser, sales.addsale);
+ app.get('/sales/edit_sales/:id',checkUser, sales.get);
+ app.post('/sales/update/:id',checkUser, sales.update);
+ app.get('/sales/delete/:id',checkUser, sales.delete);
  ///////////////////////////////////////////////////////////////////
 
- app.get('/purchases', purchases.show);
- app.get('/purchases/add_purchases', purchases.showAdd);
- app.post('/purchases/add_purchases', purchases.addPurchases);
- app.get('/purchases/edit_purchases/:id', purchases.get);
- app.post('/purchases/update/:id', purchases.update);
- app.get('/purchases/delete/:id', purchases.delete);
+ app.get('/purchases/add_purchases',checkUser, purchases.showAdd);
+ app.post('/purchases/add_purchases',checkUser, purchases.addPurchases);
+ app.get('/purchases/edit_purchases/:id',checkUser, purchases.get);
+ app.post('/purchases/update/:id',checkUser, purchases.update);
+ app.get('/purchases/delete/:id',checkUser, purchases.delete);
 ///////////////////////////////////////////////////////////////////////////////
+app.get('/purchases', checkUser, purchases.show);
 
 
 
@@ -256,20 +255,23 @@ app.get('/sales/:week', function(req, res) {
 });
 
 
+app.get("/home", checkUser, function(req, res){
+res.render("home", {user: req.session.user});
+});
 
-
-
-app.get("/home", function(req, res){
-res.render("home");
+app.get("/login_users", function(req, res){
+  res.render("login_users");
 })
+app.post("/login", login.Inloggin);
+
 
 
 app.get("/logout", function(req, res){
 delete req.session.user;
 res.redirect("/login");
-})
+});
 
-app.get("/contact", function(req, res) {
+app.get("/contact", checkUser, function(req, res) {
   res.render("contact");
 });
 
@@ -286,10 +288,7 @@ app.get("/signUp_users", function (req, res){
 app.post("/signUp", signUp.add_users);
 
 
-app.get("/login_users", function(req, res){
-  res.render("login_users");
-})
-app.post("/login", login.Inloggin);
+
 // router.post("/signUp_users", function(req, res, next){
 //   if(req.body.email &&
 //   req.body.username &&
