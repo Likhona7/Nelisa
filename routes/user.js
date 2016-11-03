@@ -1,4 +1,5 @@
 var bcrypt = require("bcrypt")
+
 exports.show_users = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
