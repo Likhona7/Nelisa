@@ -19,3 +19,15 @@ exports.show_users = function (req, res, next) {
 exports.showAdd_user = function(req, res){
 	res.render('add_user');
 }
+
+//
+// exports.add_users = frunction(req, res){
+//
+// req.getConnection(function(err, connection){
+// if(err) return next(err);
+// connection.query('select * from user', [], function(err, results){
+//
+//
+// })
+// })
+// }

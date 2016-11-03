@@ -161,29 +161,29 @@ function errorHandler(err, req, res, next) {
 // if(req.session.user || req.path == "/login_users"){
 //   return next();
 // }
+//     res.redirect("/login");
+//
 // };
 
 app.all('*', checkUser);
-
 function checkUser(req, res, next) {
+  console.log("your path is: " + req.path + " your session variable " + req.session.user);
   if (req.session.user || req.path == '/login'){
     return next();
   }
-
-  res.redirect("/login");
+   res.redirect("/login");
 
 };
 
-
 // function checkUser(req, res, next) {
 //   var _ = require('underscore')
-//       , nonSecurePaths = ['/', '/contact'];
+//       , nonSecurePaths = ['/', '/contact','signUp_users'];
 //   if ( _.contains(nonSecurePaths, req.path) ) return next();
 //
 //   //authenticate user
 //   next();
 // }
-//
+
 
 
 
@@ -222,7 +222,7 @@ function checkUser(req, res, next) {
 
 //setup the handlers
 
-app.get('/categories',  categories.show_categories);
+app.get('/categories', checkUser,  categories.show_categories);
 app.get('/categories/add',   categories.showAdd_categories);
  app.get('/categories/edit/:id', categories.get_categories);
  app.post('/categories/update/:id',  categories.update_categories);
