@@ -6,6 +6,9 @@ drop table if exists categories;
 drop table if exists products;
 drop table if exists purchases;
 drop table if exists sales;
+drop table if exists users;
+
+
 
 create table categories(
     id int primary key auto_increment,

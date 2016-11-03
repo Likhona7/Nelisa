@@ -14,11 +14,11 @@ exports.show_categories = function (req, res, next) {
       });
 	});
 };
-
+////////////////////////////////////////////////////////////////////////////////
 exports.showAdd_categories = function(req, res){
 	res.render('add_category');
 }
-
+////////////////////////////////////////////////////////////////////////////////
 exports.add_categories = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
@@ -30,10 +30,9 @@ exports.add_categories = function (req, res, next) {
 			if (err) return next(err);
 		res.redirect('/categories');
 	});
-
 	});
 };
-
+////////////////////////////////////////////////////////////////////////////////
 exports.get_categories = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
@@ -46,9 +45,8 @@ exports.get_categories = function(req, res, next){
 		});
 	});
 };
-
+////////////////////////////////////////////////////////////////////////////////
 exports.update_categories = function(req, res, next){
-
   var data = req.body;
   var id = req.params.id;
   req.getConnection(function(err, connection){
@@ -59,7 +57,7 @@ exports.update_categories = function(req, res, next){
 
     });
 };
-
+////////////////////////////////////////////////////////////////////////////////
 exports.delete_categories = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){

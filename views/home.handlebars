@@ -68,18 +68,15 @@ h3 {
 </head>
 <body>
 
-  <!-- <h1>Hello Nelisa</h1> -->
-
-
-  <!-- <h2>{{#if user}}
-
-      Hello, {{user}}
-
-
-  {{/if}}</h2> -->
+   {{#if user}}
+    <h2>  Hello, {{user.req.body.username}}</h2>
+  {{/if}}
 
 
 
+    {{#if user.is_admin}}
+        <h2>Hello, {{user.req.body.username}}</h2>
+    {{/if}}
 
 
 <div class="bgimg-1">

@@ -5,52 +5,50 @@ exports.Inloggin = function(req, res) {
     "aluta": "viewer"
   };
   var inputUser = {
-    // email: req.body.email,
+    //  email: req.body.email,
     username: req.body.username,
     password: req.body.password,
     is_admin: rolesMap[req.body.username] === "admin"
   };
   var inputUsers = [inputUser];
   req.getConnection(function(err, connection) {
-
     if (err) return next(err);
-
     connection.query('SELECT * from users where username = ?', inputUser.username, function(err, users) {
+
+
+
       if (users.length === 0) {
         req.flash('warning', 'Invalid username');
         console.log("Access denied....");
         return res.redirect("/login_users");
-      } else {
+      }
+      else {
         var dbUser = users[0];
-
-
         bcrypt.compare(inputUser.password, dbUser.password, function(err, match) {
-
           console.log(match);
           if (match) {
+          req.session.user = inputUser;
+            console.log("session: " + req.session.user);
             // req.session.user;
             // req.session.is_admin = {
             //   admin: req.session.user.admin,
             //   user: req.session.user.username
             // };
             if (err) return next(err);
-
             return res.redirect("/home");
           }
-
-
-
-
-
-          if (inputUser.password === dbUser.password) {
-            //return next();
-            req.session.user = inputUser;
-            res.redirect('/home');
-          } else {
+          else {
             return res.redirect("/login_users");
             console.log("Wrong Password.....");
 
           }
+
+          // if (inputUser.password === dbUser.password) {
+          //   //return next();
+          //   req.session.user = inputUser;
+          //   console.log("session: " + req.session);
+          //   res.redirect('/home');
+          // }
         })
       }
     });
