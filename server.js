@@ -233,9 +233,10 @@ app.get('/categories/add',   categories.showAdd_categories);
 
 app.get("/user", user.show_users);
 app.get("/user/add",  user.showAdd_user);
-app.post("/user/add", user.add_users);
 app.get("user/edit/:id", user.getUsers);
-
+app.post("user/update/:id", user.update);
+app.get("user//delete/:id", user.delete);
+app.post("/user/add", user.add_users);
 
 
 
