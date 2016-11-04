@@ -4,6 +4,7 @@ function loggedOut(req, res, next){
   }
   return next();
 }
+////////////////////////////////////////////////////////////////////////////////
 function requiresLogin(req, res, next){
   if(req.session && req.session.user){
     return next();
@@ -13,6 +14,7 @@ function requiresLogin(req, res, next){
     return res.redirect("/login");
   }
 }
+///////////////////////////////////////////////////////////////////////////////
 //If visitor is not Admin warn them
 function requiresLoginAsAdmin(req, res, next){
   // if(req.session.user.is_admin){
@@ -26,6 +28,7 @@ function requiresLoginAsAdmin(req, res, next){
     return res.redirect("/");
   }
 }
+////////////////////////////////////////////////////////////////////////////////
 //If there current user is loggedin or registered
 function registered(req, res, next){
   if(req.session){
@@ -36,6 +39,7 @@ function registered(req, res, next){
     return res.redirect("/");
   }
 }
+////////////////////////////////////////////////////////////////////////////////
 module.exports.loggedOut = loggedOut;
 module.exports.requiresLogin = requiresLogin;
 module.exports.requiresLoginAsAdmin = requiresLoginAsAdmin;

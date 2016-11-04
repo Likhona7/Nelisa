@@ -1,9 +1,11 @@
 var bcrypt = require("bcrypt");
+
 exports.Inloggin = function(req, res) {
   var rolesMap = {
     "nelisa": "admin",
     "aluta": "viewer"
   };
+
   var inputUser = {
     //  email: req.body.email,
     username: req.body.username,

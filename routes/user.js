@@ -47,7 +47,7 @@ exports.add_users = function(req, res, next) {
     })
   }
   //////////////////////////////////////////////////////////////////////////////
-exports.getUsers = function(req, res, next) {
+exports.editUsers = function(req, res, next) {
   var id = req.params.id;
 	console.log(id+" "+"lllllllllllllllllllllllllllllllllllllllllllll");
   req.getConnection(function(err, connection) {
@@ -66,19 +66,19 @@ exports.update = function(req, res, next) {
     password: req.body.password,
     email: req.body.email
   };
-  var id = req.params.user_id;
+  var id = req.params.id;
   req.getConnection(function(err, connection) {
-    connection.query('UPDATE users SET ? WHERE user_id = ?', [data, id], function(err, rows) {
+    connection.query('UPDATE users SET ? WHERE id = ?', [data, id], function(err, rows) {
       if (err) next(err);
-      res.redirect('/users');
+      res.redirect('/user');
     });
   });
 };
 ////////////////////////////////////////////////////////////////////////////////
 exports.delete = function(req, res, next) {
-  var id = req.params.user_id;
+  var id = req.params.id;
   req.getConnection(function(err, connection) {
-    connection.query('DELETE FROM users WHERE user_id = ?', [id], function(err, rows) {
+    connection.query('DELETE FROM users WHERE id = ?', [id], function(err, rows) {
       if (err) return next(err);
       res.redirect('/user');
     });

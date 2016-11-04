@@ -27,7 +27,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
@@ -105,7 +105,8 @@ var userRoles = {
 app.use(session({ secret: 'keyboard cat',
  cookie: { maxAge: 60000,
    resave: true,
-  saveUninitialized: false
+  saveUninitialized: false,
+  activeDuration: 5 * 60 * 1000
  }
 }));
 
@@ -175,14 +176,14 @@ function checkUser(req, res, next) {
 
 };
 
-// function checkUser(req, res, next) {
-//   var _ = require('underscore')
-//       , nonSecurePaths = ['/', '/contact','signUp_users'];
-//   if ( _.contains(nonSecurePaths, req.path) ) return next();
-//
-//   //authenticate user
-//   next();
-// }
+function checkUser(req, res, next) {
+  var _ = require('underscore')
+      , nonSecurePaths = ['/', '/contact','signUp_users'];
+  if ( _.contains(nonSecurePaths, req.path) ) return next();
+
+  //authenticate user
+  next();
+}
 
 
 
@@ -233,10 +234,11 @@ app.get('/categories/add',   categories.showAdd_categories);
 
 app.get("/user", user.show_users);
 app.get("/user/add",  user.showAdd_user);
-app.get("user/edit/:id", user.getUsers);
-app.post("user/update/:id", user.update);
-app.get("user//delete/:id", user.delete);
+app.get("/user/edit/:id", user.editUsers);
+app.post("/user/update/:id", user.update);
+
 app.post("/user/add", user.add_users);
+app.get("/user/delete/:id", user.delete);
 
 
 
