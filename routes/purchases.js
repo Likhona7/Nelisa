@@ -5,7 +5,7 @@ exports.show = function(req, res, next) {
       if (err) return next(err);
       res.render('purchases', {
         no_purchases: results.length === 0,
-        purchases: results,
+        purchases: results
       });
     });
   });
@@ -17,7 +17,7 @@ if (err) return next(err);
 connection.query('select * from products', [], function(err, categories){
 if(err) return next(err);
 res.render('add_purchases', {
-  categories:categories,
+  categories:categories
 });
 });
 });
@@ -62,6 +62,7 @@ exports.get = function(req, res, next) {
           res.render('edit_purchases', {
             products: products,
             data: purchase
+
           });
             console.log(purchases)
         });

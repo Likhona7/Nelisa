@@ -7,9 +7,7 @@ exports.show_users = function(req, res, next) {
       if (err) return next(err);
       res.render('user', {
         no_user: results.length === 0,
-        users: results,
-        user: req.session.user,
-        is_admin: req.session.is_admin
+        users: results
       });
     });
   });
