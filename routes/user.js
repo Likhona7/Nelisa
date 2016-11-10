@@ -16,7 +16,10 @@ exports.show_users = function(req, res, next) {
 };
 ////////////////////////////////////////////////////////////////////////////////
 exports.showAdd_user = function(req, res) {
-    res.render('add_user');
+    res.render('add_user', {
+      user: req.session.user,
+      is_admin: req.session.is_admin
+    });
   }
 ////////////////////////////////////////////////////////////////////////////////
   var rolesMap = {
@@ -54,7 +57,9 @@ exports.editUsers = function(req, res, next) {
     connection.query('SELECT * FROM users WHERE id = ?', [id], function(err, rows) {
       if (err) return next(err);
       res.render('edit_user', {
-        data: rows[0]
+        data: rows[0],
+        user: req.session.user,
+        is_admin: req.session.is_admin
       });
     });
   });
