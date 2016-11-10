@@ -1,21 +1,20 @@
 /***
  * A very basic CRUD example using MySQL
  */
+ var userRoles = {
+   "likhona": "admin",
+   "andile": "viewer"
+ }
+
 exports.show_products = function(req, res, next) {
-
   req.getConnection(function(err, connection) {
-
-
     if (err) return next(err);
-
-
     connection.query('select products.id, products.description as product_name, categories.description from products inner join categories on products.category_id = categories.id', [], function(err, results) {
-
-
       if (err) return next(err);
       res.render('products', {
         no_products: results.length === 0,
-        products: results,
+        products: results
+
       });
     });
   });
@@ -27,7 +26,7 @@ exports.showAdd_products = function(req, res) {
     connection.query('SELECT * from categories', [], function(err, categories) {
       if (err) return next(err);
       res.render('add', {
-        categories: categories,
+        categories: categories
       });
     });
   });
@@ -39,9 +38,9 @@ exports.add_products = function(req, res, next) {
     var data = {
       category_id: Number(req.body.category_id),
       description: req.body.description
-    //  price: Number(req.body.price)
+        //  price: Number(req.body.price)
     };
-  //  console.log(data);
+    //  console.log(data);
     connection.query('insert into products set ?', data, function(err, results) {
       if (err) return next(err);
       res.redirect('/products');
@@ -66,7 +65,13 @@ exports.get_products = function(req, res, next) {
         });
         res.render('edit', {
           categories: categories,
-          data: product  });});});});};
+          data: product
+
+        });
+      });
+    });
+  });
+};
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -74,7 +79,7 @@ exports.update_products = function(req, res, next) {
   var data = {
     category_id: Number(req.body.category_id),
     description: req.body.description
-    //price: Number(req.body.price)0
+      //price: Number(req.body.price)0
   };
   var id = req.params.id;
   req.getConnection(function(err, connection) {

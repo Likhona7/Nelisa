@@ -68,16 +68,18 @@ h3 {
 </head>
 <body>
 
+  {{#if user.is_admin}}
+      <h2>Hello, {{user.username}}</h2>
+  {{/if}}
+
    {{#if user}}
-    <h2>  Hello, {{user.req.body.username}}</h2>
+    <h2>  Hello, {{user.username}}</h2>
   {{/if}}
 
 
 
-    {{#if user.is_admin}}
-        <h2>Hello, {{user.req.body.username}}</h2>
-    {{/if}}
 
+    <h4 style="color:red" id='warning'>{{messages.warning}}</h4>
 
 <div class="bgimg-1">
   <div class="caption">
@@ -119,6 +121,5 @@ h3 {
     <span class="border">COOL!</span>
   </div>
 </div>
-
 
 </body></html>

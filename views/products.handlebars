@@ -6,9 +6,12 @@
 <body class="fixed-sn graphite-skin">
 
 <!-- <a href="/products/add" type="button" id="add_button" class="btn btn-default-outline waves-effect"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i> -->
+{{#if user.is_admin}}
 
   <a href="/products/add" type="button" id="add_button" class="btn btn-default-outline waves-effect"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i>Add</a>
-
+  {{else}}
+  <a></a>
+{{/if}}
 <div class="table-responsive">
 
 <table class="table">
@@ -26,23 +29,18 @@
        </td>
        <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{description}}</strong></td>
 
+       {{#if ../is_admin}}
        <td><a href="/products/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-sm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>
 
-
-       <!-- <td><a href="/products/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-sm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td> -->
-
-         <!-- <td><a href="/products/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger-outline waves-effect glyphicon glyphicon-trash">Delete</a></td> -->
-
          <td><a href="/products/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger-outline "><span><i class="fa fa-trash" style="color:red;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span>Delete</a></td>
-
+         {{else}}
+         <td></td>
+         {{/if}}
      </tr>
 
      <!-- <tr class="success">
      </tr> -->
        {{/products}}
    </tbody>
-
-
-
  </table>
 </div>

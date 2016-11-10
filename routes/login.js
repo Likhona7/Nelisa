@@ -30,7 +30,6 @@ exports.Inloggin = function(req, res) {
           console.log(match);
           if (match) {
           req.session.user = inputUser;
-            console.log("session: " + req.session.user);
             // req.session.user;
             // req.session.is_admin = {
             //   admin: req.session.user.admin,

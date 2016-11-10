@@ -1,139 +1,139 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
- <head>
+<head>
 
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <title>Nelisa</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
+  <title>Nelisa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <body class="fixed-sn graphite-skin">
 
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/dist/css/bootstrap-material-design.css">
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/dist/css/ripples.min.css">
-<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <body class="fixed-sn graphite-skin">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/dist/css/bootstrap-material-design.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/dist/css/ripples.min.css">
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="/js/javascript.js"></script>
 
     <link rel="stylesheet" href="/CSS/bootstrap.min.css">
 
-  <!-- .............................................................................. -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/js/mdb.min.js"></script>
+    <!-- .............................................................................. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/js/mdb.min.js"></script>
 
 
 
 
-<link rel="stylesheet" href=/CSS/style.css>
-  <style>
-
-
-
-  /*#navbarShadow{
+    <link rel="stylesheet" href=/CSS/style.css>
+    <style>
+      /*#navbarShadow{
     background: black;
 color: white !important;
     opacity: 0.6;
     filter: alpha (opacity=30);
   }*/
 
-.nav {
-  margin-bottom: 0;
-      z-index: 9999;
-      border: 0;
-      font-size: 12px !important;
-      line-height: 1.42857143 !important;
-      letter-spacing: 4px;
-      border-radius: 0;
-background-color: transparent;
+      .nav {
+        margin-bottom: 0;
+        z-index: 9999;
+        border: 0;
+        font-size: 12px !important;
+        line-height: 1.42857143 !important;
+        letter-spacing: 4px;
+        border-radius: 0;
+        background-color: transparent;
+      }
 
-}
+      .img-responsive {
+        border: 4px solid blue;
+        border-radius: 200px;
+        margin: auto;
+        text-align: center;
+        color: black;
+        position: center max-width: 100%;
+        display: block;
+        height: auto;
+      }
 
-
-
-
-
-    .img-responsive {
-      border: 4px solid blue;
-      border-radius: 200px;
-      margin: auto;
-      text-align: center;
-      color: black;
-      position: center max-width: 100%;
-      display: block;
-      height: auto;
-
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 75px;
-      text-align: center;
-
-    }
-  </style>
+      h1 {
+        text-align: center;
+        font-size: 75px;
+        text-align: center;
+      }
+    </style>
 
 
 
-  </head>
+</head>
 
 
 
-  <body>
+<body>
 
-    <nav id="navbarShadow" class="navbar navbar-inverse" >
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Nelisa Store</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
+  <nav id="navbarShadow" class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Nelisa Store</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li class="active">
 
-            <li class="active"><a href="/home">Home</a></li>
+              {{#if user}}
+              <a href="/home">Home</a></li>
 
             <li class="dropdown">
-             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Statistics<span class="caret"></span></a>
+
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Weekly Statistics<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/sales/week1">week 1</a></li>
                 <li><a href="/sales/week2">week 2</a></li>
-                <li><a href="/sales/week3" >week 3</a></li>
+                <li><a href="/sales/week3">week 3</a></li>
                 <li><a href="/sales/week4">week 4</a></li>
               </ul>
             </li>
-
-            <li><a href="user" style="color: white">user</a></li>
             <li><a href="/categories" style="color: white">Categories</a></li>
             <li><a href="/products" style="color: white">Products</a></li>
+            {{#if user.is_admin}}
               <li><a href="/sales" style="color: white">Sales</a></li>
               <li><a href="/purchases" style="color: white">Purchases</a></li>
-            <li><a href="/contact" style="color: white">Contact</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login"><span class="glyphicon glyphicon-log-in" style="color: white"></span> Login</a></li>
-            <li><a href="/logout"><span class="glyphicon glyphicon-log-in" style="color: white"></span> Logout</a></li>
+            {{else}}
+            {{/if}}
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+          {{#if user.is_admin}}
+            <li><a href="user" style="color: white">Manage User</a></li>
+          {{/if}}
+          <li><a href="/contact" style="color: white">Contact</a></li>
+
+          <li><a href="/logout"><span class="glyphicon glyphicon-log-in" style="color: white"></span> Logout</a></li>
+          {{else}}
 
             <li><a href="signUp_users"><span class="glyphicon glyphicon-user" style="color: white"></span> Sign Up</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in" style="color: white"></span> Login</a></li>
+            {{/if}}
 
-          </ul>
-        </div>
+
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
+  {{{body}}}
 
+</body>
 
-
-
-     {{{body}}}
-
-  </body>
 </html>

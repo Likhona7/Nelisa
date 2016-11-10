@@ -25,7 +25,7 @@ function requiresLoginAsAdmin(req, res, next){
   }
   else {
     req.flash("warning", "You must be logged in as admin to view this page.");
-    return res.redirect("/");
+    return res.redirect("/home");
   }
 }
 ////////////////////////////////////////////////////////////////////////////////
