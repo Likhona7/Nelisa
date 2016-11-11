@@ -1,7 +1,23 @@
-.submitUser {
+  .submitUser {
+  color: blue !important;
+}
 
+.searchBar[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 20px solid #lightblue;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: ;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.1s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
 
-  color : blue !important;
+.searchBar[type=text]:focus {
+  width: 100%;
 }
 
 
@@ -10,23 +26,18 @@ i {
 }
 h3 {
   color: linen;
-
 }
-
-
 a {
   min-height: 5%;
   margin: 0;
   padding: 0;
   font: 40 1.4rem 'Lato', Verdana, Helvetica, sans-serif;
 }
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 #wrapper {
   width: 100%;
   margin: 10%;
@@ -36,62 +47,56 @@ a {
   width: 400%;
   margin: 100 auto;
 }
-
- .button  {
-  margin:  auto;
+.button {
+  margin: auto;
   font-size: 15px;
   padding: 10px 10px 15px 15px;
   display: block;
   width: 20%;
-    border: 1em solid transparent;
-  background-color :skyblue;
-   color: #ffffff;
+  border: 1em solid transparent;
+  background-color: skyblue;
+  color: #ffffff;
   font-weight: 100px;
   -webkit-border-radius: 100px;
   border-radius: 50px 10px 10px;
   -webkit-transition: all 0.32s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.3s ease-in-out;
-       cursor: pointer;
- }
+  cursor: pointer;
+}
 
-    /*  .button:hover {
+/*  .button:hover {
      background-color: #ffffff;
      color: black;
      border-color: black;
         }   */
+
+
 /*
         border : 1em solid;
       	width: 50%;*/
 
- .Add_button {
-    background-color: skyblue;
-    color: white;
-    border: 2px solid skyblue;
-
+.Add_button {
+  background-color: skyblue;
+  color: white;
+  border: 2px solid skyblue;
 }
- .Add_button:hover {
-    background-color:transparent;
-    color: white;
-    box-shadow: 10px 10px 5px black;
-
-
+.Add_button:hover {
+  background-color: transparent;
+  color: white;
+  box-shadow: 10px 10px 5px black;
 }
-
 .Edit_button {
-   background-color: green;
-    color: white;
-    border-color: green;
-      border: 3px solid green;
-
+  background-color: green;
+  color: white;
+  border-color: green;
+  border: 3px solid green;
 }
- .Edit_button:hover {
-    background-color: transparent;
-    color:  white;
-    box-shadow: 10px 10px 5px black;
-
+.Edit_button:hover {
+  background-color: transparent;
+  color: white;
+  box-shadow: 10px 10px 5px black;
 }
-
 
 /*html {
 background: url(/img/nlisa2.jpg) no-repeat center center fixed;
@@ -101,166 +106,158 @@ background: url(/img/nlisa2.jpg) no-repeat center center fixed;
 background-size: cover;
 }*/
 
-
 label {
- color:linen;
+  color: linen;
 }
-
 body {
-	background: url(/img/nelisa1.jpg) no-repeat center center fixed;
-	font-family: Ubuntu, Arial, sans-serif;
-	margin: 0;
-background: #90a4ae blue-grey;
-	padding: 15px;
-	/*text-shadow:0px 10px 7px black;*/
+  background: url(/img/nelisa1.jpg) no-repeat center center fixed;
+  font-family: Ubuntu, Arial, sans-serif;
+  margin: 0;
+  background: #90a4ae blue-grey;
+  padding: 15px;
+  /*text-shadow:0px 10px 7px black;*/
 }
-
 h1 {
-/*box-shadow: 10px 10px 5px grey;*/
-	  text-shadow:0px 10px 7px black;
+  /*box-shadow: 10px 10px 5px grey;*/
+  text-shadow: 0px 10px 7px black;
 }
-
-
-
 h4 {
   color: white;
 }
 thead {
-	color: linen;
-	/*text-shadow:0px 10px 7px black;*/
-
+  color: linen;
+  /*text-shadow:0px 10px 7px black;*/
 }
-
 #navbarShadow {
-    box-shadow: 0px 10px 15px black;
+  box-shadow: 0px 10px 15px black;
 }
+
 /*//////////////////////////////////////////////////////////////////////////////*/
 
 #table {
-    /*width: 100px;
+  /*width: 100px;
     height: 100px;*/
-		/*text-decoration-color: white;
+  /*text-decoration-color: white;
     background: black;
 		opacity: 0.5;*/
-    -webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-    transition: width 2s, height 2s;
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 2s, height 2s;
 }
-
 #table:hover {
-		transform: scale(1.05);
+  transform: scale(1.05);
 }
-
 li a {
-    opacity: 0.9;
+  opacity: 0.9;
 }
-
 #edit_button {
-	color : white;
-	/*background-color: green;*/
-	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-	transition: width 2s, height 2s;
+  color: white;
+  /*background-color: green;*/
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 2s, height 2s;
   /*border: 2px solid #2BBBAD;*/
 }
-
-#edit_button:hover{
-	transform: scale(1.3);
+#edit_button:hover {
+  transform: scale(1.3);
+  box-shadow: 10px 10px 5px black;
+}
+#delete_button {
+  color: white;
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 2s, height 2s;
+}
+#delete_button:hover {
+  transform: scale(1.3);
+  box-shadow: 10px 10px 5px black;
+}
+#add_button {
+  color: white;
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 2s, height 2s;
+}
+#add_button:hover {
+  transform: scale(1.3);
   box-shadow: 10px 10px 5px black;
 }
 
-
-#delete_button {
-color:white;
--webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-transition: width 2s, height 2s;
-}
-#delete_button:hover {
-		transform: scale(1.3);
-    box-shadow: 10px 10px 5px black;
-
-}
-
-#add_button {
-	color: white;
-	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-	transition: width 2s, height 2s;
-}
-#add_button:hover {
-		transform: scale(1.3);
-    box-shadow: 10px 10px 5px black;
-
-}
 /*//////////////////////////////////////////////////////////////////////////*/
 
 
 }
-
 #navbarShadow {
-    box-shadow: 0px 10px 15px black;
+  box-shadow: 0px 10px 15px black;
 }
-/*//////////////////////////////////////////////////////////////////////////////*/
 
+/*//////////////////////////////////////////////////////////////////////////////*/
 #table {
-    /*width: 100px;
+  /*width: 100px;
     height: 100px;*/
-		/*text-decoration-color: white;
+  /*text-decoration-color: white;
     background: black;
 		opacity: 0.5;*/
-    -webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-    transition: width 2s, height 2s;
-}
 
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
+
+  transition: width 2s, height 2s;
+}
 #table:hover {
-		transform: scale(1.05);
+  transform: scale(1.05);
 }
-
 li a {
-    opacity: 0.9;
+  opacity: 0.9;
 }
-
 #edit_button {
-	color : white !important;
-	/*background-color: green;*/
-	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-	transition: width 2s, height 2s;
-}
+  color: white !important;
+  /*background-color: green;*/
 
-#edit_button:hover{
-	transform: scale(1.3);
-}
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
 
+  transition: width 2s, height 2s;
+}
+#edit_button:hover {
+  transform: scale(1.3);
+}
 #delete_button {
-color:white !important;
--webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-transition: width 2s, height 2s;
+  color: white !important;
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
+
+  transition: width 2s, height 2s;
 }
 #delete_button:hover {
-		transform: scale(1.3);
+  transform: scale(1.3);
 }
-
 #add_button {
-	color: white !important;
-	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-	transition: width 2s, height 2s;
+  color: white !important;
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
+
+  transition: width 2s, height 2s;
 }
 #add_button:hover {
-		transform: scale(1.3);
+  transform: scale(1.3);
 }
+
 /*//////////////////////////////////////////////////////////////////////////*/
 
 }
-#container{
-	margin: 0 auto;
-	width: 80%;
-	background-color: #FFF;
-	margin-top: 2em;
-	padding: 1em;
+#container {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #FFF;
+  margin-top: 2em;
+  padding: 1em;
 }
-
 #add-products {
-	border : 1em solid;
-	width: 50%;
-	padding: 15px;
-	box-shadow: 10px 10px 5px grey;
+  border: 1em solid;
+  width: 50%;
+  padding: 15px;
+  box-shadow: 10px 10px 5px grey;
 }
 
 /*a:link {
@@ -274,94 +271,67 @@ a:visited {
 a:hover {
 	text-decoration: none;
 }*/
-
 label {
-	font-weight: bold;
+  font-weight: bold;
 }
-
 select {
-	padding: 0.2em;
-	font-size: 1.5em;
-	display: block;
-	margin-top: 0.5em;
-	margin-bottom: 1em;
+  padding: 0.2em;
+  font-size: 1.5em;
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
-
 input[type=text], input[type=number] {
   padding: 0.2em;
-	font-size: 1.5em;
+  font-size: 1.5em;
   color:white;
-	display: block;
-	margin-top: 0.5em;
-	margin-bottom: 1em;
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
 input[type="text"]:hover, textarea:hover {
   background-color: transparent;
   box-shadow: 10px 10px 5px black;
   border-color: white;
-
 }
-
-
 input[type=submit] {
   color: white !important;
-	-webkit-transition: all 2s, ease-in-out; /* For Safari 3.1 to 6.0 */
-	transition: width 2s, height 2s;
+  -webkit-transition: all 2s, ease-in-out;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 2s, height 2s;
   padding: 1.2em;
-
-
   /*margin-bottom: -100px;
   margin-right: -100px;*/
-};
-
-
-.field > label {
-	width: 10px;
 }
-
+;
+.field>label {
+  width: 10px;
+}
 .nav {
   margin-bottom: 0;
-	width: auto;
-      z-index: 9999;
-      border: 0;
-      font-size: 12px !important;
-      line-height: 1.42857143 !important;
-      letter-spacing: 4px;
-      border-radius: 0;
-background-color: rgba(255,255,255,0.1);
+  width: auto;
+  z-index: 9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.1);
 }
-
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
-.area{
+.area {
   text-align:center;
   color:linen;
   animation:blur .9000s ease-out 1;
-  text-shadow:0px 0px 5px white,
-      0px 0px 7px #gold;
+  text-shadow:0px 0px 5px white, 0px 0px 7px #gold;
 }
-@keyframes blur{
-  from{
-      text-shadow:10px 10px 10px #fff,
-      10px 0px 10px #fff,
-      10px 0px 25px #fff,
-      10px 0px 25px #fff,
-      10px 0px 25px #fff,
-      10px 0px 25px #fff,
-      10px 0px 25px #fff,
-      10px 0px 25px #fff,
-      10px 0px 50px #fff,
-      10px 50px #fff,
-      10px 0px 50px #7B96B8,
-      10px 0px 150px #7B96B8,
-      10px 10px 100px #7B96B8,
-      10px 10px 100px #7B96B8,
-      10px 10px 100px #7B96B8,
-      10px 10px 100px #7B96B8,
-      10px -10px 100px #7B96B8,
-      10px -10px 100px #7B96B8;}*/
-/*.................................................................................*/
-
-/*button {
+@keyframes blur {
+  from {
+    text-shadow: 10px 10px 10px #fff, 10px 0px 10px #fff, 10px 0px 25px #fff, 10px 0px 25px #fff, 10px 0px 25px #fff, 10px 0px 25px #fff, 10px 0px 25px #fff, 10px 0px 25px #fff, 10px 0px 50px #fff, 10px 50px #fff, 10px 0px 50px #7B96B8, 10px 0px 150px #7B96B8, 10px 10px 100px #7B96B8, 10px 10px 100px #7B96B8, 10px 10px 100px #7B96B8, 10px 10px 100px #7B96B8, 10px -10px 100px #7B96B8, 10px -10px 100px #7B96B8;
+  }
+  */
+  /*.................................................................................*/
+  /*button {
   min-height: 5%;
   margin: 0;
   padding: 0;
@@ -406,8 +376,7 @@ background-color: rgba(255,255,255,0.1);
      color: black;
      border-color: black;
         }   */
-
- /*.Add_button {
+  /*.Add_button {
     background-color: skyblue;
     color: white;
     border: 2px solid skyblue;
@@ -430,4 +399,5 @@ background-color: rgba(255,255,255,0.1);
  .Edit_button:hover {
     background-color: white;
     color:  green;
-}*/*/
+}*/
+  */

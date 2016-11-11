@@ -1,12 +1,9 @@
 <h1 class="area">Sales</h1>
 
-<!-- ////////<h1 class="area">Sales</h1> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <body class="fixed-sn graphite-skin">
 
-<!-- <a href="/sales/add_sales" type="button" id="add_button" class="btn btn-default-outline waves-effect"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i> -->
-<!-- <a href="/sales/add_sales" type="button" id="add_button" class="btn btn-primary-outline waves-effect glyphicon glyphicon-plus-sign">Add</a> -->
+<input type="text" class="searchBar" name="search" placeholder="Search.." method="POST">
 {{#if user.is_admin}}
 <a href="/sales/add_sales" type="button" id="add_button" class="btn btn-default-outline waves-effect"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i>Add</a>
 {{else}}

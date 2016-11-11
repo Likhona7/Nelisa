@@ -112,10 +112,10 @@ app.use(session({
   }
 }));
 
-app.use(function(req, res, next) {
-  console.log("the middleware :" + req.path);
-  next();
-})
+//app.use(function(req, res, next) {
+  //console.log("the middleware :" + req.path);
+  //next();
+//})
 
 
 // app.use(function(req, res, next){
@@ -165,7 +165,7 @@ function errorHandler(err, req, res, next) {
 
 app.all('*', checkUser);
 function checkUser(req, res, next) {
-  console.log("your path is: " + req.path + " your session variable " + req.session.user);
+  // console.log("your path is: " + req.path + " your session variable " + req.session.user);
   if (req.session.user || req.path == '/login') {
     //make user always available in my template
 
@@ -230,6 +230,7 @@ app.get('/products/edit/:id', mid.requiresLoginAsAdmin, products.get_products);
 app.post('/products/update/:id', mid.requiresLoginAsAdmin, products.update_products);
 app.get('/products/delete/:id', products.delete_products);
 app.post('/products/add', products.add_products);
+app.post('/products/search/', products.searchProducts);
 
 ////////////////////////////////////////////////////////////////////////
 
