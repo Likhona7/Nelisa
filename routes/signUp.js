@@ -30,7 +30,7 @@ exports.add_users = function(req, res, next) {
         connection.query('insert into users set ?', data, function(err, data) {
           if (err) return next(err);
           console.log(data);
-          res.redirect('/login_users');
+          res.redirect('/login');
         });
 
       });

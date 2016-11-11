@@ -180,9 +180,9 @@ function checkUser(req, res, next) {
 };
 
 // function checkUser(req, res, next) {
-
+//
 //   var _ = require('underscore'),
-//     nonSecurePaths = ['/', 'contact', 'signUp_users'];
+//     nonSecurePaths = ['/contact', '/signUp_users'];
 //   if (_.contains(nonSecurePaths, req.path)) return next();
 //
 //   //authenticate user
