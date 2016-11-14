@@ -17,9 +17,10 @@ exports.searchPurchases = function(req, res, next) {
     console.log(req.body);
     connection.query('select purchases.id, purchases.supplier, purchases.purchase_date, purchases.quantity, purchases.cost, products.description from purchases inner join products on purchases.prod_id = products.id where products.description like ?', '%' + req.body.search_val + '%', function(err, results) {
       if (err) return next(err);
-      console.log('Record Updated ' + results +"lllllllllllllllllllllllllllllllllllllllllll");
+      //console.log('Record Updated ' + results +"lllllllllllllllllllllllllllllllllllllllllll");
+      console.log(results);
       res.render('purchaseSearch', {
-        products: results
+        purchases: results
       });
     })
   })
