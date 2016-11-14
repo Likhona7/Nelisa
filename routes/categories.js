@@ -79,6 +79,7 @@ exports.delete_categories = function(req, res, next) {
     });
   });
 };
+////////////////////////////////////////////////////////////////////////////////
 exports.searchCategories = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
@@ -90,7 +91,19 @@ exports.searchCategories = function(req, res, next) {
 
       res.render('categorieSearch', {
        categories: results
-      });
-    })
-  })
-}
+      });})})}
+////////////////////////////////////////////////////////////////////////////////
+
+// exports.searchCategories = function(req, res, next){
+//   req.getConnection(function(err, connection) {
+// connection.query('SELECT description from categories where description like "%'+req.body.search_val +'%"', function(err, rows, fields) {
+// if (err) return next(err);
+// var data=[];
+// for(i=0;i<rows.length;i++)
+// {
+// data.push(rows[i].description);
+// }
+// res.end(JSON.stringify(data));
+// });
+// })
+// }

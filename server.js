@@ -221,7 +221,7 @@ app.post('/products/search/', products.searchProducts);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-app.get('/sales', sales.show);
+app.get('/sales', mid.requiresLoginAsAdmin, sales.show);
 app.get('/sales/add_sales', mid.requiresLoginAsAdmin, sales.showAdd);
 app.post('/sales/add_sales', sales.addsale);
 app.get('/sales/edit_sales/:id', mid.requiresLoginAsAdmin, sales.get);
@@ -230,7 +230,7 @@ app.get('/sales/delete/:id', sales.delete);
 app.post('/sales/search/', sales.searchSales);
 
 ///////////////////////////////////////////////////////////////////
-app.get('/purchases', purchases.show);
+app.get('/purchases', mid.requiresLoginAsAdmin, purchases.show);
 app.get('/purchases/add_purchases', mid.requiresLoginAsAdmin, purchases.showAdd);
 app.post('/purchases/add_purchases', mid.requiresLoginAsAdmin, purchases.addPurchases);
 app.get('/purchases/edit_purchases/:id', mid.requiresLoginAsAdmin, purchases.get);
