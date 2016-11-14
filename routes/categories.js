@@ -1,14 +1,7 @@
-/***
- * A very basic CRUD example using MySQL
- */
-
-
- var userRoles = {
+var userRoles = {
    "likhona": "admin",
    "andile": "viewer"
  }
-
-
 exports.show_categories = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
@@ -21,6 +14,20 @@ exports.show_categories = function(req, res, next) {
     });
   });
 };
+////////////////////////////////////////////////////////////////////////////////
+exports.searchCategories = function(req, res, next) {
+  req.getConnection(function(err, connection) {
+    if (err) return next(err);
+    console.log(req.body);
+    connection.query('select categories where categories.description like ?', '%' + req.body.search_val + '%', function(err, results) {
+      if (err) return next(err);
+      console.log('Record Updated ' + results);
+      res.render('categorieSearch', {
+        products: results
+      });
+    })
+  })
+}
 ////////////////////////////////////////////////////////////////////////////////
 exports.showAdd_categories = function(req, res) {
     res.render('add_category', {
@@ -47,9 +54,7 @@ exports.get_categories = function(req, res, next) {
   var id = req.params.id;
   req.getConnection(function(err, connection) {
     connection.query('SELECT * FROM categories WHERE id = ?', [id], function(err, rows) {
-
       if (err) return next(err);
-
       console.log('ddddddddddddddddddddddddddddddddddddddddddddddddddddd', rows);
       res.render('edit_category', {
         page_title: "Edit Customers - Node.js",

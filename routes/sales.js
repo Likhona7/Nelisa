@@ -11,7 +11,23 @@ exports.show = function(req, res, next) {
   });
 };
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+exports.searchSales = function(req, res, next) {
+  req.getConnection(function(err, connection) {
+    if (err) return next(err);
+    console.log(req.body);
+    connection.query('select sales.id, sales.sale_date, sales.quantity, sales.price, products.description from sales inner join products on sales.product_id = products.id where products.description like ?', '%' + req.body.search_val + '%', function(err, results) {
+      if (err) return next(err);
+      console.log('Record Updated ' + results +"lllllllllllllllllllllllllllllllllllllllllll");
+      res.render('saleSearch', {
+        products: results
+      });
+    })
+  })
+}
+
+////////////////////////////////////////////////////////////////////////////////
 exports.showAdd = function(req, res) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);

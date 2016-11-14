@@ -106,16 +106,16 @@ var userRoles = {
 app.use(session({
   secret: 'keyboard cat',
   cookie: {
-    maxAge: 60000,
+    maxAge: 90000,
     resave: true,
     saveUninitialized: false
   }
 }));
 
-app.use(function(req, res, next) {
-  console.log("the middleware :" + req.path);
-  next();
-})
+//app.use(function(req, res, next) {
+  //console.log("the middleware :" + req.path);
+  //next();
+//})
 
 
 // app.use(function(req, res, next){
@@ -165,7 +165,7 @@ function errorHandler(err, req, res, next) {
 
 app.all('*', checkUser);
 function checkUser(req, res, next) {
-  console.log("your path is: " + req.path + " your session variable " + req.session.user);
+  // console.log("your path is: " + req.path + " your session variable " + req.session.user);
   if (req.session.user || req.path == '/login') {
     //make user always available in my template
 
@@ -189,20 +189,7 @@ function checkUser(req, res, next) {
 //   next();
 // }
 
-// app.post("/login", function(req, res){
-//   req.session.user = {
-//     name: req.body.username,
-//     is_admin :userRoles[req.body.username] === "likhona"
-//   };
-//   res.redirect("/home")
-// })
-// app.post("/login", function(req, res, next){
-//
-//       var inputUser = {
-//         name : req.body.username,
-//         password : req.body.password,
-//         is_admin : rolesMap[req.body.username] === "admin"
-//       };
+
 
 //setup the handlers
 app.get('/categories', categories.show_categories);
@@ -212,18 +199,17 @@ app.post('/categories/update/:id', mid.requiresLoginAsAdmin, categories.update_c
 app.post('/categories/add', categories.add_categories);
 // //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/categories/delete/:id', categories.delete_categories);
+app.post('/categories/search/', categories.searchCategories);
 ////////////////////////////////////////////////////////////////////////////////
 
 app.get("/user", user.show_users);
 app.get("/user/add", mid.requiresLoginAsAdmin, user.showAdd_user);
 app.get("/user/edit/:id", mid.requiresLoginAsAdmin, user.editUsers);
 app.post("/user/update/:id", mid.requiresLoginAsAdmin, user.update);
-
 app.post("/user/add", user.add_users);
 app.get("/user/delete/:id", user.delete);
 
-
-
+////////////////////////////////////////////////////////////////////////////////
 
 app.get('/products',  products.show_products);
 app.get('/products/add', mid.requiresLoginAsAdmin, products.showAdd_products);
@@ -231,8 +217,9 @@ app.get('/products/edit/:id', mid.requiresLoginAsAdmin, products.get_products);
 app.post('/products/update/:id', mid.requiresLoginAsAdmin, products.update_products);
 app.get('/products/delete/:id', products.delete_products);
 app.post('/products/add', products.add_products);
+app.post('/products/search/', products.searchProducts);
 
-////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 app.get('/sales', sales.show);
 app.get('/sales/add_sales', mid.requiresLoginAsAdmin, sales.showAdd);
@@ -240,6 +227,8 @@ app.post('/sales/add_sales', sales.addsale);
 app.get('/sales/edit_sales/:id', mid.requiresLoginAsAdmin, sales.get);
 app.post('/sales/update/:id', mid.requiresLoginAsAdmin, sales.update);
 app.get('/sales/delete/:id', sales.delete);
+app.post('/sales/search/', sales.searchSales);
+
 ///////////////////////////////////////////////////////////////////
 app.get('/purchases', purchases.show);
 app.get('/purchases/add_purchases', mid.requiresLoginAsAdmin, purchases.showAdd);
@@ -247,6 +236,7 @@ app.post('/purchases/add_purchases', mid.requiresLoginAsAdmin, purchases.addPurc
 app.get('/purchases/edit_purchases/:id', mid.requiresLoginAsAdmin, purchases.get);
 app.post('/purchases/update/:id', mid.requiresLoginAsAdmin, purchases.update);
 app.get('/purchases/delete/:id', purchases.delete);
+app.post('/purchases/search/', purchases.searchPurchases);
 ///////////////////////////////////////////////////////////////////////////////
 
 
@@ -271,9 +261,6 @@ app.post("/login", login.Inloggin);
 app.get("/home", function(req, res) {
   res.render("home");
 });
-
-
-
 
 app.get("/logout", function(req, res) {
   delete req.session.user;
@@ -323,14 +310,6 @@ app.post("/signUp", signUp.add_users);
 
 // })
 
-// app.get('/foo', function (req, res, next) {
-//   res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
-// })
-// app.get('/bar', function (req, res, next) {
-//   res.send('you viewed this page ' + req.session.views['/bar'] + ' times')
-// })
-//
-
 
 
 //set the port number to an existing environment variable PORT or default to 5000
@@ -348,193 +327,6 @@ app.listen(app.get('port'), function() {
 
 
 
-// app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
-// // create a route
-// app.get('/', function(req, res){
-//   res.render( "home")
-// });
-// app.get('/sales/:week_name', function(req, res) {
-//   var weekname = req.params.week_name;
-//   var weeklyFile = "../files/" + weekname + ".csv";
-//   var data = weeklyStats(weeklyFile, "../files/purchases.csv");
-//   res.render("weeklyStats", {
-//     key: data,
-//     week: weekname
-//   });
-// });
-// start the server
-// var server = app.listen(3000, function() {
-//   var host = server.address().address;
-//   var port = server.address().port;
-//   console.log('App listening at http://%s:%s', host, port);
-// });
-
-//////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////
-// var express = require('express'),
-//     exphbs  = require('express-handlebars'),
-//     mysql = require('mysql'),
-//     myConnection = require('express-myconnection'),
-//     bodyParser = require('body-parser'),
-//     session = require('express-session');
-//     categories = require('./routes/categories');
-//     products = require('./routes/products');
-//     purchases = require('./routes/purchases');
-//     sales = require('./routes/sales');
-//     users = require('./routes/users');
-//     //application = require('./app');
-//
-// var app = express();
-//
-// var dbOptions = {
-//       host: 'localhost',
-//       user: 'root',
-//       password: 'lusindisomkiva',
-//       port: 3306,
-//       database: 'nelisa'
-// };
-//
-// app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
-//
-// var rolesMap = {
-//   "nelisa":"admin",
-//   "aluta" :"viewer"
-// };
-//
-// app.use(session({
-// secret: 'keyboard cat',
-// resave: false,
-// saveUninitialized: true
-// }))
-//
-//
-// app.use(express.static(__dirname + '/public'));
-//
-// //setup middleware
-// app.use(myConnection(mysql, dbOptions, 'single'));
-// // parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }))
-// // parse application/json
-// app.use(bodyParser.json())
-//
-// function errorHandler(err, req, res, next) {
-//   res.status(500);
-//   res.render('error', { error: err });
-// }
-//
-// app.get("/", function(req, res){
-//     res.redirect("/home");
-// });
-//
-// var checkUser = function(req, res, next){
-//     console.log("checkUser...");
-//   if(req.session.user || req.path === '/login'){
-//         return next();
-//   }
-//    res.redirect("/login");
-//     // next();
-// };
-//
-// app.post("/login", function(req, res, next){
-//
-//       var inputUser = {
-//         name : req.body.username,
-//         password : req.body.password,
-//         is_admin : rolesMap[req.body.username] === "admin"
-//       };
-//         //getting my users from the database
-//       req.getConnection(function(err, connection){
-//         if (err) return next(err);
-//
-//         connection.query('SELECT * from users where username = ?', [inputUser.name], function(err, results) {
-//             if (err) return next(err);
-//
-//               // console.log(user);
-//               // console.log(results);
-//
-//               if (results.length === 0){
-//                 console.log("Access denied....");
-//                 return res.redirect("/login");
-//               }
-//               else{
-//                 var dbUser = results[0];
-//                 if(inputUser.password === dbUser.password){
-//                       //console.log("Wrong Password.....");
-//                       //return next();
-//                       req.session.user = inputUser;
-//                       res.redirect('/home');
-//                 }
-//                 else{
-//                       return res.redirect("/login");
-//                 }
-//               }
-//
-//           });
-//       });
-// })
-//
-// app.get("/home",function(req, res){
-//     res.render("home", {user : req.session.user});
-// });
-//
-// app.get("/logout", function(req, res){
-//     delete req.session.user;
-//     res.redirect("/login")
-// })
-//
-// app.get("/login", function(req, res){
-//     res.render("login", {});
-// });
-//
-// app.get('/categories', checkUser, categories.show);
-// app.get('/categories/add', categories.showAdd);
-// app.get('/categories/edit/:id', categories.get);
-// app.post('/categories/update/:id', categories.update);
-// app.post('/categories/add', categories.add);
-// app.get('/categories/delete/:id', categories.delete);
-//
-// app.get('/products', products.show);
-// app.get('/products/add', products.showAdd);
-// app.get('/products/edit/:id', products.get);
-// app.post('/products/update/:id', products.update);
-// app.post('/products/add', products.add);
-// app.get('/products/delete/:id', products.delete);
-//
-// app.get('/sales', sales.show);
-// app.get('/sales/add', sales.showAdd);
-// app.get('/sales/edit/:id', sales.get);
-// app.post('/sales/update/:id', sales.update);
-// app.post('/sales/add/', sales.add);
-// app.get('/sales/delete/:id', sales.delete);
-//
-// app.get('/purchases', purchases.show);
-// app.get('/purchases/add', purchases.showAdd);
-// app.get('/purchases/edit/:id', purchases.get);
-// app.post('/purchases/update/:id', purchases.update);
-// app.post('/purchases/add/', purchases.add);
-// app.get('/purchases/delete/:id', purchases.delete);
-//
-// app.get('/users', users.show);
-// app.get('/users/add', users.showAdd);
-// app.post('/users/add/', users.add);
-// app.post('/users/update/:id', users.update);
-//
-// app.use(errorHandler);
-//
-//
-// // var portNumber = process.env.CRUD_PORT_NR || 3000;
-// //
-// // //start everything up
-// // app.listen(portNumber, function () {
-// //   //  console.log('Create, Read, Update, and Delete (CRUD) example server listening on:', portNumber);
-// // });
-//
-//
-//
-//
 // // app.get('/sales/:week_name', function(req, res){
 // //   var week_name = req.params.week_name
 // //    //console.log(week_name)
