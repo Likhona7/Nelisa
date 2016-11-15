@@ -17,7 +17,9 @@ exports.searchSales = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
     console.log(req.body);
-    connection.query('select sales.id, sales.sale_date, sales.quantity, sales.price, products.description from sales inner join products on sales.product_id = products.id where products.description like ?', '%' + req.body.search_val + '%', function(err, results) {
+    var search_val = '%' + req.body.search_val + '%';
+
+    connection.query('select sales.id, sales.sale_date, sales.quantity, sales.price, products.description from sales inner join products on sales.product_id = products.id where products.description like ?', search_val, function(err, results) {
       if (err) return next(err);
       console.log('Record Updated ' + results +"lllllllllllllllllllllllllllllllllllllllllll");
       res.render('saleSearch', {

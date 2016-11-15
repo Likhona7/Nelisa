@@ -1,7 +1,7 @@
 <h1 class="area">Categories</h1>
 
 <form action="/categories/search/" method="post">
-  <input type="text" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+  <input type="text" id="searchBar" class="searchBar" name="search_val" placeholder="Search.." method="POST">
   <input type='submit' value='search'>
 </form>
 
@@ -21,7 +21,7 @@ Add</a>
     </thead>
     <tbody>
       {{#categories}}
-        <tr id="Pagetable" id="colorTable">
+        <tr id="Pagetable" id="catList" id="colorTable">
           <td id="colorTable" style="color:white; text-shadow:0px 10px 7px black"><strong>{{description}}
         </strong></td>
           {{#if ../is_admin}}
@@ -40,4 +40,21 @@ Add</a>
     </tbody>
   </table>
 </div>
+<script>
+
+$(document).ready(function(){
+   $("#searchBar").keyup(function(){
+       var search_val = $("#searchBar").val();
+       $.get("/categories/search/" + search_val, function(results){
+         $("#catList").html(results)
+       });
+       if(search_val.length === 0){
+          location.reload();
+       };
+   });
+ });
+</script>
+
+
+
 </body>
