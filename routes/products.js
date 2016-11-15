@@ -1,4 +1,6 @@
-
+/***
+ * A very basic CRUD example using MySQL
+ */
 var userRoles = {
   "likhona": "admin",
   "andile": "viewer"
@@ -23,7 +25,9 @@ exports.searchProducts = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
     console.log(req.body);
-    connection.query('select products.id, products.description as product_name, categories.description from products inner join categories on products.category_id = categories.id where products.description like ?', '%' + req.body.search_val + '%', function(err, results) {
+    var search_val = '%' + req.body.search_val + '%';
+
+    connection.query('select products.id, products.description as product_name, categories.description from products inner join categories on products.category_id = categories.id where products.description like ?', search_val, function(err, results) {
       if (err) return next(err);
       console.log('Record Updated ' + results);
       res.render('productSearch', {
