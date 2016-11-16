@@ -2,6 +2,17 @@
   color: blue !important;
 }
 
+
+.table-hover tbody tr:hover, .table-hover tbody tr:hover th {
+
+  /*background-color: black !important;*/
+  background-color: rgba(0, 0, 0, 0.11);  !important;
+
+back
+}
+
+
+
 .searchBar[type=text] {
   width: 130px;
   box-sizing: border-box;

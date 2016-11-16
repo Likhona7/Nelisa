@@ -84,10 +84,10 @@ exports.searchCategories = function(req, res, next) {
   req.getConnection(function(err, connection) {
     if (err) return next(err);
     var search_val = '%' + req.body.search_val + '%';
-    console.log(req.body);
+    //console.log(req.body);
     connection.query('SELECT * FROM categories WHERE description like ?',search_val, function(err, results) {
       if (err) return next(err);
-      console.log('Record Updated ' + results);
+      //console.log('Record Updated ' + results);
       if (err) return next(err);
 
       res.render('categorieSearch', {
