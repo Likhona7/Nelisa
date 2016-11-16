@@ -10,10 +10,10 @@ Add</a>
 {{else}}
   <a></a>
 {{/if}}
-<div class="table-responsive">
-  <table class="table table-bordered table-hover">
+<div class="table-responsive ">
+  <table id="categorieSearch" class="table table-bordered table-hover">
     <thead>
-      <tr id="colorTable" id="categorySearch">
+      <tr id="colorTable" >
         <th style=" text-shadow:0px 10px 7px black">categories</th>
       </tr>
     </thead>
@@ -38,10 +38,11 @@ Add</a>
   $(document).ready(function() {
     $("#searchBar").keyup(function() {
       var search_val = $("#searchBar").val();
-      console.log(search_val + ";;;;;;;;;;;;;;;;;;;;;;;;;");
+      console.log(search_val);
       $.post("/categories/search", {search_val : search_val} , function(results) {
-        console.log(search_val, "lllllllllllllllllllllllllll");
-        $("#categorySearch").html(results)
+        console.log(search_val);
+        $("#categorieSearch").html(results)
+        console.log(results);
       });
       if (search_val.length === 0) {
         location.reload();

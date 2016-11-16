@@ -91,7 +91,8 @@ exports.searchCategories = function(req, res, next) {
       if (err) return next(err);
 
       res.render('categorieSearch', {
-       categories: results
+       categories: results,
+       layout: false
       });})})}
 ////////////////////////////////////////////////////////////////////////////////
 
