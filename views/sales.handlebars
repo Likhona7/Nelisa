@@ -5,23 +5,17 @@
 
 
 <form action="/sales/search/" method="post">
-<input type="text" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+<input type="text" id="searchBarSales" class="searchBar" name="search_val" placeholder="Search.." method="POST">
 <input type="submit" value"search">
 </form>
-
-
-
-
-
 
 {{#if user.is_admin}}
 <a href="/sales/add_sales" type="button" id="add_button" class="btn btn-default-outline waves-effect"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i>Add</a>
 {{else}}
 <a></a>
 {{/if}}
-
 <div class="table-responsive">
-<table class="table table-bordered table-hover">
+<table id="searchBarSales" class="table table-bordered table-hover">
    <thead>
      <tr>
        <th  style="color:linen; text-shadow:0px 10px 7px black">Date</th>
@@ -51,3 +45,19 @@
    </tbody>
  </table>
 </div>
+<script>
+  $(document).ready(function() {
+    $("#searchBarSales").keyup(function() {
+      var search_val = $("#searchBarSales").val();
+      console.log(search_val);
+      $.post("/sales/search", {search_val : search_val} , function(results) {
+        console.log(search_val);
+        $("#saleSearch").html(results)
+        console.log(results);
+      });
+      if (search_val.length === 0) {
+        location.reload();
+      };
+    });
+  });
+</script>

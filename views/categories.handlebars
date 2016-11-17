@@ -1,7 +1,7 @@
 <h1 class="area">Categories</h1>
 
 <form action="/categories/search/" method="post">
-  <input type="text" id="searchBar" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+  <input type="text" id="searchBarCategories" class="searchBar" name="search_val" placeholder="Search.." method="POST">
   <input type='submit' value='search'>
 </form>
 {{#if user.is_admin}}
@@ -36,8 +36,8 @@ Add</a>
 </div>
 <script>
   $(document).ready(function() {
-    $("#searchBar").keyup(function() {
-      var search_val = $("#searchBar").val();
+    $("#searchBarCategories").keyup(function() {
+      var search_val = $("#searchBarCategories").val();
       console.log(search_val);
       $.post("/categories/search", {search_val : search_val} , function(results) {
         console.log(search_val);

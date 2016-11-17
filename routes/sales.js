@@ -23,7 +23,8 @@ exports.searchSales = function(req, res, next) {
       if (err) return next(err);
       console.log('Record Updated ' + results +"lllllllllllllllllllllllllllllllllllllllllll");
       res.render('saleSearch', {
-        sales: results
+        sales: results,
+        layout : false
       });
     })
   })
