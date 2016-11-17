@@ -28,7 +28,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: '0839535220',
+  password: 'coder123',
   port: 3306,
   database: 'nelisa'
 };
@@ -168,7 +168,6 @@ function checkUser(req, res, next) {
   // console.log("your path is: " + req.path + " your session variable " + req.session.user);
   if (req.session.user || req.path == '/login') {
     //make user always available in my template
-
     if (req.session.user){
       res.locals.user = req.session.user;
       res.locals.is_admin = req.session.user.is_admin;
@@ -180,11 +179,9 @@ function checkUser(req, res, next) {
 };
 
 // function checkUser(req, res, next) {
-//
 //   var _ = require('underscore'),
 //     nonSecurePaths = ['/contact', '/signUp_users'];
 //   if (_.contains(nonSecurePaths, req.path)) return next();
-//
 //   //authenticate user
 //   next();
 // }

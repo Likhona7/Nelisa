@@ -1,11 +1,16 @@
-<h1 class="area">Categories</h1>
-
+<h1 class="area">Categories</h1><br></br>
 <form action="/categories/search/" method="post">
+  <p id="text" style="color:white">
+    <i class="fa fa-search" id="icon" aria-hidden="true"></i>
+  </p>
   <input type="text" id="searchBarCategories" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+<p id="text" style="color:white">
   <input type='submit' value='search'>
+</p>
 </form>
+
 {{#if user.is_admin}}
-  <a href="/categories/add" type="button" id="add_button" class="btn btn-default-outline waves-effect"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i>
+  <a href="/categories/add" type="button" id="add_button" class="btn btn-default-outline waves-effect pull-centre"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i>
 Add</a>
 {{else}}
   <a></a>
@@ -44,9 +49,9 @@ Add</a>
         $("#categorieSearch").html(results)
         console.log(results);
       });
-      if (search_val.length === 0) {
-        location.reload();
-      };
+      // if (search_val.length === 0) {
+      //   location.reload();
+      // };
     });
   });
 </script>

@@ -31,7 +31,7 @@ exports.searchProducts = function(req, res, next) {
       console.log('Record Updated ' + results);
       res.render('productSearch', {
         products: results,
-        layout : false
+        layout: false
       });
     })
   })
