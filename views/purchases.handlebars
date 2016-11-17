@@ -1,12 +1,24 @@
 <h1 class="area">purchases</h1>
 
-
-
+<!-- <form action="/categories/search/" method="post">
+  <p id="text" style="color:white">
+    <i class="fa fa-search" id="icon" aria-hidden="true"></i>
+  </p>
+  <input type="text" id="searchBarCategories" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+<p id="text" style="color:white">
+  <input type='submit' value='search'>
+</p>
+</form> -->
 
 
 <form action="/purchases/search/" method="post">
+  <p id="text" style="color:white">
+    <i class="fa fa-search" id="icon" aria-hidden="true"></i>
+  </p>
 <input type="text" class="searchBar" id="searchBarPurchases" name="search_val" placeholder="Search.." method="POST">
+<p id="text" style="color:white">
 <input type='submit' value='search'>
+</p>
 </form>
 
 {{#if user.is_admin}}

@@ -1,13 +1,20 @@
 <h1 class="area">Sales</h1>
 
 
+
+
+
 <body class="fixed-sn graphite-skin">
-
-
 <form action="/sales/search/" method="post">
+<p id="text" style="color:white">
+<i class="fa fa-search" id="icon" aria-hidden="true"></i>
+</p>
 <input type="text" id="searchBarSales" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+<p id="text" style="color:white">
 <input type="submit" value"search">
+</p>
 </form>
+
 
 {{#if user.is_admin}}
 <a href="/sales/add_sales" type="button" id="add_button" class="btn btn-default-outline waves-effect"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i>Add</a>
