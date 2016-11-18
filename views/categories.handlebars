@@ -1,4 +1,5 @@
 <h1 class="area">Categories</h1><br></br>
+
 <form action="/categories/search/" method="post">
   <p id="text" style="color:white">
     <i class="fa fa-search" id="icon" aria-hidden="true"></i>
@@ -19,13 +20,13 @@ Add</a>
   <table id="categorieSearch" class="table table-bordered table-hover">
     <thead>
       <tr id="colorTable" >
-        <th style=" text-shadow:0px 10px 7px black">categories</th>
+        <th class="tableheadStyling">categories</th>
       </tr>
     </thead>
     <tbody>
       {{#categories}}
         <tr id="Pagetable" id="catList" id="colorTable">
-          <td id="colorTable" style="color:white; text-shadow:0px 10px 7px black"><strong>{{description}}
+          <td id="colorTable" class="tableheadStyling"><strong>{{description}}
         </strong></td>
           {{#if ../is_admin}}
             <td><a href="/categories/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-lm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>
@@ -43,12 +44,12 @@ Add</a>
   $(document).ready(function() {
     $("#searchBarCategories").keyup(function() {
       var search_val = $("#searchBarCategories").val();
-      console.log(search_val);
       $.post("/categories/search", {search_val : search_val} , function(results) {
         console.log(search_val);
         $("#categorieSearch").html(results)
-        console.log(results);
+          console.log(results);
       });
+
       // if (search_val.length === 0) {
       //   location.reload();
       // };

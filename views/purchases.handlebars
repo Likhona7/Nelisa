@@ -1,16 +1,5 @@
 <h1 class="area">purchases</h1>
 
-<!-- <form action="/categories/search/" method="post">
-  <p id="text" style="color:white">
-    <i class="fa fa-search" id="icon" aria-hidden="true"></i>
-  </p>
-  <input type="text" id="searchBarCategories" class="searchBar" name="search_val" placeholder="Search.." method="POST">
-<p id="text" style="color:white">
-  <input type='submit' value='search'>
-</p>
-</form> -->
-
-
 <form action="/purchases/search/" method="post">
   <p id="text" style="color:white">
     <i class="fa fa-search" id="icon" aria-hidden="true"></i>
@@ -32,25 +21,21 @@
   <table id="purchaseSearch" class="table table-bordered table-hover">
     <thead>
       <tr>
-        <th style="color:linen; text-shadow:0px 10px 7px black">Supplier</th>
-        <th style="color:linen; text-shadow:0px 10px 7px black">Date</th>
-        <th style="color:linen; text-shadow:0px 10px 7px black">Product Name</th>
-        <th style="color:linen; text-shadow:0px 10px 7px black">Prooduct Quantity</th>
-        <th style="color:linen; text-shadow:0px 10px 7px black">Price</th>
+        <th class="tableheadStyling">Supplier</th>
+        <th class="tableheadStyling">Date</th>
+        <th class="tableheadStyling">Product Name</th>
+        <th class="tableheadStyling">Prooduct Quantity</th>
+        <th class="tableheadStyling">Price</th>
       </tr>
     </thead>
     <tbody>
       {{#purchases}}
         <tr id="Pagetable" id="colorTable">
-
-
-          <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{supplier}}</strong></td>
-          <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{purchase_date}}</strong></td>
-          <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{description}}</strong></td>
-          <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{quantity}}</strong></td>
-          <td style="color:linen; text-shadow:0px 10px 7px black"><strong>{{cost}}</strong></td>
-
-
+          <td class="tableheadStyling"><strong>{{supplier}}</strong></td>
+          <td class="tableheadStyling"><strong>{{purchase_date}}</strong></td>
+          <td class="tableheadStyling"><strong>{{description}}</strong></td>
+          <td class="tableheadStyling"><strong>{{quantity}}</strong></td>
+          <td class="tableheadStyling"><strong>{{cost}}</strong></td>
           {{#if ../is_admin}}
 
             <td><a href="/purchases/edit_purchases/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-lm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>

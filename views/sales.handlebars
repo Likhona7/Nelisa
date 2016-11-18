@@ -25,20 +25,20 @@
 <table id="saleSearch" class="table table-bordered table-hover">
    <thead>
      <tr>
-       <th  style="color:linen; text-shadow:0px 10px 7px black">Date</th>
-       <th  style="color:linen; text-shadow:0px 10px 7px black">Quantity</th>
-       <th  style="color:linen; text-shadow:0px 10px 7px black">Price</th>
-       <th  style="color:linen; text-shadow:0px 10px 7px black">Product Name</th>
+       <th class="tableheadStyling">Date</th>
+       <th class="tableheadStyling">Quantity</th>
+       <th class="tableheadStyling">Price</th>
+       <th class="tableheadStyling">Product Name</th>
            </tr>
    </thead>
    <tbody>
       {{#sales}}
      <tr  id="Pagetable" id="colorTable">
 
-      <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{sale_date}}</strong></td>
-       <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{quantity}}</strong></td>
-       <td id="colorTable" style="color:linen; text-shadow:0px 10px 7px black"><strong>{{price}}</strong></td>
-       <td id="colorTable" style="color:linen;  text-shadow:0px 10px 7px black"><strong>{{description}}</strong></td>
+       <td id="colorTable" class="tableheadStyling"><strong>{{sale_date}}</strong></td>
+       <td id="colorTable" class="tableheadStyling"><strong>{{quantity}}</strong></td>
+       <td id="colorTable" class="tableheadStyling"><strong>{{price}}</strong></td>
+       <td id="colorTable" class="tableheadStyling"><strong>{{description}}</strong></td>
 
        {{#if ../is_admin}}
        <td><a href="/sales/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-lm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>
@@ -62,9 +62,9 @@
         $("#saleSearch").html(results)
         console.log(results);
       });
-      if (search_val.length === 0) {
-        location.reload();
-      };
+      // if (search_val.length === 0) {
+      //   location.reload();
+      // };
     });
   });
 </script>
