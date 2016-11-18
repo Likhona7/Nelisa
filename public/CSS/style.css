@@ -1,3 +1,20 @@
+/*.buttonForSearch{
+
+
+  color: blue;
+}
+*/
+.tableHeadStyling{
+ color: linen !important;
+ text-shadow: 0px 10px 7px black;
+}
+
+
+.tableDataWhite{
+  color: linen !important;
+  text-shadow: 0px 10px 7px black;
+}
+
   .submitUser {
   color: blue !important;
 }
@@ -6,12 +23,6 @@
   /*background-color: black !important;*/
   background-color: rgba(0, 0, 0, 0.11);  !important;
 
-}
-
-
-.tableheadStyling{
-color:linen;
-text-shadow:0px 10px 7px black;
 }
 
 .searchBar[type=text] {
@@ -41,9 +52,11 @@ text-align: center;
 i {
   color: linen;
 }
+
 h3 {
   color: linen;
 }
+
 a {
   min-height: 5%;
   margin: 0;

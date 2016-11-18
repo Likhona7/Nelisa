@@ -1,26 +1,14 @@
 <h1 class="area">Products</h1>
 
-
-<!-- <form action="/categories/search/" method="post">
-  <p id="text" style="color:white">
-    <i class="fa fa-search" id="icon" aria-hidden="true"></i>
-  </p>
-  <input type="text" id="searchBarCategories" class="searchBar" name="search_val" placeholder="Search.." method="POST">
-<p id="text" style="color:white">
-  <input type='submit' value='search'>
-</p>
-</form>
-///////////////////////////////////////////////////////////////////////////////// -->
-
 <body class="fixed-sn graphite-skin">
   <form action="/products/search/" method="post">
     <p id="text" style="color:white">
       <i class="fa fa-search" id="icon" aria-hidden="true"></i>
     </p>
-    <input type="text" id="searchBarProducts" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+    <input autocomplete="off" type="text" id="searchBarProducts" class="searchBar" name="search_val" placeholder="Search.." method="POST">
     <p id="text" style="color:white">
-    <input type="submit" value="search">
-  </p>
+      <input type="submit" value="search">
+    </p>
   </form>
   {{#if user.is_admin}}
     <a href="/products/add" type="button" id="add_button" class="btn btn-default-outline waves-effect"><i class="fa fa-plus" style="color:lightblue;text-shadow:2px 2px 4px #000000;"></i>Add</a>
@@ -40,9 +28,9 @@
         {{#products}}
           <tr id="Pagetable" id="colorTable">
 
-            <td id="colorTable" class="tableheadStyling"><strong>{{product_name}}</strong>
+            <td class="tableDataWhite"><strong>{{product_name}}</strong>
             </td>
-            <td id="colorTable" class="tableheadStyling"><strong>{{description}}</strong></td>
+            <td class="tableDataWhite"><strong>{{description}}</strong></td>
 
             {{#if ../is_admin}}
               <td><a href="/products/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-sm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>
@@ -61,9 +49,7 @@
       $("#searchBarProducts").keyup(function() {
         var search_val = $("#searchBarProducts").val();
         console.log(search_val);
-        $.post("/products/search", {
-          search_val: search_val
-        }, function(results) {
+        $.post("/products/search", { search_val: search_val}, function(results) {
           console.log(search_val);
           $("#productSearch").html(results)
           console.log(results);

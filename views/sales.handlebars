@@ -9,9 +9,9 @@
 <p id="text" style="color:white">
 <i class="fa fa-search" id="icon" aria-hidden="true"></i>
 </p>
-<input type="text" id="searchBarSales" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+<input autocomplete="off" type="text" id="searchBarSales" class="searchBar" name="search_val" placeholder="Search.." method="POST">
 <p id="text" style="color:white">
-<input type="submit" value"search">
+<input type="submit" class="buttonForSearch" value"search">
 </p>
 </form>
 
@@ -33,12 +33,12 @@
    </thead>
    <tbody>
       {{#sales}}
-     <tr  id="Pagetable" id="colorTable">
+     <tr  id="Pagetable">
 
-       <td id="colorTable" class="tableheadStyling"><strong>{{sale_date}}</strong></td>
-       <td id="colorTable" class="tableheadStyling"><strong>{{quantity}}</strong></td>
-       <td id="colorTable" class="tableheadStyling"><strong>{{price}}</strong></td>
-       <td id="colorTable" class="tableheadStyling"><strong>{{description}}</strong></td>
+       <td class="tableDataWhite"><strong>{{sale_date}}</strong></td>
+       <td class="tableDataWhite"><strong>{{quantity}}</strong></td>
+       <td class="tableDataWhite"><strong>{{price}}</strong></td>
+       <td class="tableDataWhite"><strong>{{description}}</strong></td>
 
        {{#if ../is_admin}}
        <td><a href="/sales/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-lm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>

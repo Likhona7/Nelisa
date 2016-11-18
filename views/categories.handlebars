@@ -4,9 +4,9 @@
   <p id="text" style="color:white">
     <i class="fa fa-search" id="icon" aria-hidden="true"></i>
   </p>
-  <input type="text" id="searchBarCategories" class="searchBar" name="search_val" placeholder="Search.." method="POST">
+  <input autocomplete="off" type="text" id="searchBarCategories" class="searchBar" name="search_val" placeholder="Search.." method="POST">
 <p id="text" style="color:white">
-  <input type='submit' value='search'>
+  <input type='submit' class="btn btn-default" value='search'>
 </p>
 </form>
 
@@ -25,9 +25,8 @@ Add</a>
     </thead>
     <tbody>
       {{#categories}}
-        <tr id="Pagetable" id="catList" id="colorTable">
-          <td id="colorTable" class="tableheadStyling"><strong>{{description}}
-        </strong></td>
+        <tr id="Pagetable">
+          <td class="tableDataWhite"><strong>{{description}}</strong></td>
           {{#if ../is_admin}}
             <td><a href="/categories/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-lm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>
             <td><a href="/categories/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger-outline "><span><i class="fa fa-trash" style="color:red;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span>Delete</a></td>

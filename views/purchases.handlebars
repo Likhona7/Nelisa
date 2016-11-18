@@ -4,7 +4,7 @@
   <p id="text" style="color:white">
     <i class="fa fa-search" id="icon" aria-hidden="true"></i>
   </p>
-<input type="text" class="searchBar" id="searchBarPurchases" name="search_val" placeholder="Search.." method="POST">
+<input  autocomplete="off" type="text" class="searchBar" id="searchBarPurchases" name="search_val" placeholder="Search.." method="POST">
 <p id="text" style="color:white">
 <input type='submit' value='search'>
 </p>
@@ -30,12 +30,12 @@
     </thead>
     <tbody>
       {{#purchases}}
-        <tr id="Pagetable" id="colorTable">
-          <td class="tableheadStyling"><strong>{{supplier}}</strong></td>
-          <td class="tableheadStyling"><strong>{{purchase_date}}</strong></td>
-          <td class="tableheadStyling"><strong>{{description}}</strong></td>
-          <td class="tableheadStyling"><strong>{{quantity}}</strong></td>
-          <td class="tableheadStyling"><strong>{{cost}}</strong></td>
+        <tr id="Pagetable">
+          <td class="tableDataWhite"><strong>{{supplier}}</strong></td>
+          <td class="tableDataWhite"><strong>{{purchase_date}}</strong></td>
+          <td class="tableDataWhite"><strong>{{description}}</strong></td>
+          <td class="tableDataWhite"><strong>{{quantity}}</strong></td>
+          <td class="tableDataWhite"><strong>{{cost}}</strong></td>
           {{#if ../is_admin}}
 
             <td><a href="/purchases/edit_purchases/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-lm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>
@@ -63,9 +63,9 @@
         $("#purchaseSearch").html(results)
         console.log(results);
       });
-      if (search_val.length === 0) {
-        location.reload();
-      };
+      // if (search_val.length === 0) {
+      //   location.reload();
+      // };
     });
   });
 </script>
