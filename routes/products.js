@@ -26,7 +26,7 @@ exports.searchProducts = function(req, res, next) {
     if (err) return next(err);
     console.log(req.body);
     var search_val = '%' + req.body.search_val + '%';
-    connection.query('select products.id, products.description as product_name, categories.description from products inner join categories on products.category_id = categories.id where products.description & categories.description like ?', search_val, function(err, results) {
+    connection.query('select products.id, products.description as product_name, categories.description from products inner join categories on products.category_id = categories.id where products.description like ?', search_val, function(err, results) {
       if (err) return next(err);
       console.log('Record Updated ' + results);
       res.render('productSearch', {

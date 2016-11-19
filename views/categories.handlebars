@@ -19,13 +19,13 @@ Add</a>
 <div class="table-responsive ">
   <table id="categorieSearch" class="table table-bordered table-hover">
     <thead>
-      <tr id="colorTable" >
+      <tr>
         <th class="tableheadStyling">categories</th>
       </tr>
     </thead>
     <tbody>
       {{#categories}}
-        <tr id="Pagetable">
+        <tr>
           <td class="tableDataWhite"><strong>{{description}}</strong></td>
           {{#if ../is_admin}}
             <td><a href="/categories/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-lm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>
