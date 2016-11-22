@@ -44,7 +44,7 @@ Add</a>
   $(document).ready(function() {
     $("#searchBarCategories").keyup(function() {
       var search_val = $("#searchBarCategories").val();
-      if(search_val.length >= 3) {
+      if(search_val.length >= 3 || search_val.length === 0) {
   $.post("/categories/search", {search_val : search_val} , function(results) {
     // console.log(search_val);
     $("#categorieSearch").html(results)

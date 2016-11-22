@@ -58,11 +58,14 @@
     $("#searchBarPurchases").keyup(function() {
       var search_val = $("#searchBarPurchases").val();
       console.log(search_val);
+      if(search_val.length >= 3 || search_val.length === 0) {
+
       $.post("/purchases/search", {search_val : search_val} , function(results) {
         console.log(search_val);
         $("#purchaseSearch").html(results)
         console.log(results);
       });
+    }
       // if (search_val.length === 0) {
       //   location.reload();
       // };

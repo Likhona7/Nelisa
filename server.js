@@ -166,6 +166,13 @@ function errorHandler(err, req, res, next) {
 app.all('*', checkUser);
 function checkUser(req, res, next) {
   // console.log("your path is: " + req.path + " your session variable " + req.session.user);
+
+  // var  nonSecurePaths = ['/contact', '/signUp_users'];
+  //  return next();
+  //    //authenticate use
+if(req.path == '/signUp_users') return next();
+
+
   if (req.session.user || req.path == '/login') {
     //make user always available in my template
     if (req.session.user){
@@ -175,15 +182,13 @@ function checkUser(req, res, next) {
 
     return next();
   }
+
   res.redirect("/login");
 };
 
 // function checkUser(req, res, next) {
 //   var _ = require('underscore'),
-//     nonSecurePaths = ['/contact', '/signUp_users'];
-//   if (_.contains(nonSecurePaths, req.path)) return next();
-//   //authenticate user
-//   next();
+//
 // }
 
 
