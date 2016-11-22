@@ -40,18 +40,18 @@ Add</a>
   </table>
 </div>
 <script>
+
   $(document).ready(function() {
     $("#searchBarCategories").keyup(function() {
       var search_val = $("#searchBarCategories").val();
-      $.post("/categories/search", {search_val : search_val} , function(results) {
-        console.log(search_val);
-        $("#categorieSearch").html(results)
-          console.log(results);
-      });
+      if(search_val.length >= 3) {
+  $.post("/categories/search", {search_val : search_val} , function(results) {
+    // console.log(search_val);
+    $("#categorieSearch").html(results)
+      console.log(results);
+  });
+}
 
-      // if (search_val.length === 0) {
-      //   location.reload();
-      // };
     });
   });
 </script>
