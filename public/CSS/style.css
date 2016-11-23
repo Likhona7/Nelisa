@@ -4,6 +4,12 @@
   color: blue;
 }
 */
+.tableHeadWeeklySale{
+text-align: center;
+text-shadow: 0px 10px 7px black;
+color: linen !important;
+}
+
 .tableHeadStyling{
  color: linen !important;
  text-shadow: 0px 10px 7px black;
@@ -43,6 +49,7 @@
 .searchBar[type=text]:focus {
   width: 100%;
 }
+
 
 
 #text{
