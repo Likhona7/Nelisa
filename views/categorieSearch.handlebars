@@ -7,9 +7,8 @@
     </thead> -->
     <tbody>
       {{#categories}}
-        <tr id="Pagetable" id="colorTable">
-          <td id="colorTable" class="tableheadStyling">
-            <strong>{{description}}</strong>
+        <tr>
+          <td class="tableDataWhite"><strong>{{description}}</strong>
           </td>
           <td><a href="/categories/edit/{{id}}" type="button" id="edit_button" class="btn btn-success-outline waves-effect btn-lm"><span <i class="fa fa-edit"style="color:lightgreen;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span> Edit</a></td>
           <td><a href="/categories/delete/{{id}}" type="button" id="delete_button" class="btn btn-danger-outline "><span><i class="fa fa-trash" style="color:red;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i></span>Delete</a></td>

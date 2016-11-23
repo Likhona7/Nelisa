@@ -19,7 +19,7 @@ var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var session = require('express-session');
 var bcrypt = require("bcrypt");
 var mid = require("./middleware")
-// var middleware = require("middleware");
+  // var middleware = require("middleware");
 var parseurl = require('parseurl');
 var LocalStrategy = require('passport-local');
 var flash = require('express-flash');
@@ -113,8 +113,8 @@ app.use(session({
 }));
 
 //app.use(function(req, res, next) {
-  //console.log("the middleware :" + req.path);
-  //next();
+//console.log("the middleware :" + req.path);
+//next();
 //})
 
 
@@ -164,18 +164,15 @@ function errorHandler(err, req, res, next) {
 // };
 
 app.all('*', checkUser);
+
 function checkUser(req, res, next) {
   // console.log("your path is: " + req.path + " your session variable " + req.session.user);
 
-  // var  nonSecurePaths = ['/contact', '/signUp_users'];
-  //  return next();
-  //    //authenticate use
-if(req.path == '/signUp_users') return next();
-
+   if (req.path == '/signUp_users') return next();
 
   if (req.session.user || req.path == '/login') {
     //make user always available in my template
-    if (req.session.user){
+    if (req.session.user) {
       res.locals.user = req.session.user;
       res.locals.is_admin = req.session.user.is_admin;
     }
@@ -186,17 +183,13 @@ if(req.path == '/signUp_users') return next();
   res.redirect("/login");
 };
 
-// function checkUser(req, res, next) {
-//   var _ = require('underscore'),
-//
-// }
 
 
 
 //setup the handlers
 app.get('/categories', categories.show_categories);
 app.get('/categories/add', mid.requiresLoginAsAdmin, categories.showAdd_categories);
-app.get('/categories/edit/:id', mid.requiresLoginAsAdmin,categories.get_categories);
+app.get('/categories/edit/:id', mid.requiresLoginAsAdmin, categories.get_categories);
 app.post('/categories/update/:id', mid.requiresLoginAsAdmin, categories.update_categories);
 app.post('/categories/add', categories.add_categories);
 // //this should be a post but this is only an illustration of CRUD - not on good practices
@@ -213,7 +206,7 @@ app.get("/user/delete/:id", user.delete);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-app.get('/products',  products.show_products);
+app.get('/products', products.show_products);
 app.get('/products/add', mid.requiresLoginAsAdmin, products.showAdd_products);
 app.get('/products/edit/:id', mid.requiresLoginAsAdmin, products.get_products);
 app.post('/products/update/:id', mid.requiresLoginAsAdmin, products.update_products);
@@ -273,12 +266,9 @@ app.get("/contact", function(req, res) {
   res.render("contact");
 });
 
-// app.get("/login_users", function(req, res) {
-// res.render("login_users", {Title: "logged in"});
-// });
 
 app.post("/login_users", function(req, res, next) {});
-
+////////////////////////////////////////////////////////////////////////////////
 app.get("/signUp_users", function(req, res) {
   res.render("signUp_users");
 })
