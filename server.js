@@ -106,7 +106,7 @@ var userRoles = {
 app.use(session({
   secret: 'keyboard cat',
   cookie: {
-    maxAge: 90000,
+    maxAge: 90000 * 60,
     resave: true,
     saveUninitialized: false
   }
@@ -168,15 +168,14 @@ app.all('*', checkUser);
 function checkUser(req, res, next) {
   // console.log("your path is: " + req.path + " your session variable " + req.session.user);
 
-   if (req.path == '/signUp_users') return next();
+  if (req.path == '/signup' || req.path == '/login') return next();
 
-  if (req.session.user || req.path == '/login') {
+  if (req.session.user) {
     //make user always available in my template
     if (req.session.user) {
       res.locals.user = req.session.user;
       res.locals.is_admin = req.session.user.is_admin;
     }
-
     return next();
   }
 
@@ -237,9 +236,11 @@ app.post('/purchases/search/', purchases.searchPurchases);
 
 
 app.use(errorHandler);
+
 //..............................................................................
 app.get('/sales/:week', function(req, res) {
   var week = req.params.weekStat;
+  // console.log(week);
   res.render("index", weekStat[req.params.week]);
 });
 
@@ -267,10 +268,12 @@ app.get("/contact", function(req, res) {
 
 app.post("/login_users", function(req, res, next) {});
 ////////////////////////////////////////////////////////////////////////////////
-app.get("/signUp_users", function(req, res) {
+
+app.get("/signup", function(req, res) {
   res.render("signUp_users");
-})
-app.post("/signUp", signUp.add_users);
+});
+
+app.post("/signup", signUp.add_users);
 
 
 

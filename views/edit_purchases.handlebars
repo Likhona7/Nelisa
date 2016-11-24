@@ -1,13 +1,21 @@
 
 <h1 class="area">Edit Purchases</h1>
+
+<div class="card-block">
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+
 <form action="/purchases/update/{{data.id}}" method="POST">
 	<div class="">
 		<label for="">Purchases</label>
-		<select class="" name="prod_id">
+		<!-- <select class="" name="prod_id"> -->
+			<select class="mdb-select colorful-select dropdown-danger" name="prod_id">
 			{{#products}}
 				<option {{selected}} value="{{id}}">{{description}}</option>
 			{{/products}}
-		</select></div>
+		</select><label>Blue select</label>
+</div>
 		<div class="form-group">
 				<label for="">Supplier</label>
 				<input class="date-picker" type="text" name="supplier" value="{{data.supplier}}">
@@ -24,4 +32,3 @@
 		<input type="text" name="cost" value="{{data.cost}}"></div>
 	<input type="submit">
 </form>
-///////////////////////////////////////////////////////////////

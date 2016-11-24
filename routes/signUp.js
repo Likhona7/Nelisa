@@ -14,7 +14,7 @@ exports.add_users = function(req, res, next) {
 console.log(data);
   if (data.username.length < 3 || data.password.length < 3) {
     req.flash("warning", 'Username/Password too short, should be 3 letters long');
-    return res.redirect("/signUp_users");
+    return res.redirect("/signUp");
   } else {
     req.getConnection(function(err, connection) {
       if (err) return next(err);

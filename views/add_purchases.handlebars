@@ -1,7 +1,14 @@
 <h1 class="area">Add Purchases</h1>
+
+<div class="card-block">
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+
+
+
 <form action="/purchases/add_purchases" method="POST">
 	<div class="">
-
 		<label for="">Products &nbsp;&nbsp;&nbsp;&nbsp;</label>
 		<select class="" name="prod_id">
 			{{#categories}}
@@ -17,7 +24,6 @@
 	<!--  --><!--  --><!--  --><!--  -->
 	<div>
 		<div>
-
 			<label for="">Date</label>
 			<input type="date" name="purchase_date" value="{{purchase_date}}"></div>
 <!--  --><!--  --><!--  --><!--  -->

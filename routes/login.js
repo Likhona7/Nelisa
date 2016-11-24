@@ -20,7 +20,7 @@ exports.Inloggin = function(req, res) {
 
 
       if (users.length === 0) {
-        req.flash('warning', 'Invalid username');
+req.flash('warning', 'Invalid username');
         console.log("Access denied....");
         return res.redirect("/login_users");
       }
@@ -39,7 +39,7 @@ exports.Inloggin = function(req, res) {
             return res.redirect("/home");
           }
           else {
-            return res.redirect("/login_users");
+            return res.redirect("/login");
             console.log("Wrong Password.....");
 
           }
