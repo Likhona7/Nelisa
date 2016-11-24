@@ -1,4 +1,9 @@
 <h1 class="area">Add Sales</h1>
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="card">
+
 <form action="/sales/add_sales" method="POST">
 	<div class="">
 
@@ -10,32 +15,20 @@
 		</select>
 	</div>
 
-
 	<div>
 		<div>
-
-   <!--  --><!--  --><!--  --><!--  --><!--  -->
-  <!-- <div>
-		<label for="">Description</label>
-		<input type="text" name="description" value="{{description}}"></div> -->
-<!--  --><!--  --><!--  --><!--  --><!--  -->
 	<div>
 		<div>
 			<label for="">Date</label>
 			<input type="date" name="sale_date" value="{{sale_date}}"></div>
-
-
-	<!--  --><!--  --><!--  --><!--  --><!--  -->
->>>>>>> 1de13e84fa3deedb57886f10c7f624973571a43e
 		<div>
 		<label for="">Amount</label>
 		<input type="number" step="any" name="price" value="{{price}}">
 	</div>
-<!--  --><!--  --><!--  --><!--  -->
 	<div>
 		<label for="">Quantity</label>
 		<input type="number" step="any" name="quantity" value="{{quantity}}">
 	</div>
 
-	<input type="submit">
+	<input class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign" type="submit">
 </form>

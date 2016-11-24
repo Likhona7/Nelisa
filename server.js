@@ -237,11 +237,9 @@ app.post('/purchases/search/', purchases.searchPurchases);
 
 
 app.use(errorHandler);
-
 //..............................................................................
 app.get('/sales/:week', function(req, res) {
   var week = req.params.weekStat;
-  // console.log(week);
   res.render("index", weekStat[req.params.week]);
 });
 

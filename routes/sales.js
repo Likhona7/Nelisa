@@ -70,7 +70,7 @@ exports.addsale = function(req, res, next) {
 // ////////////////////////////////////////////////////////////////////////////////
 exports.get = function(req, res, next) {
   var id = req.params.id;
-  //console.log(id)
+  console.log(id)
   // 	var input = JSON.parse(JSON.stringify(req.body)); var data = {sale_date: input.sale_date,quantity: input.quantity,price : input.price,product_id: input.id};console.log(data);
   req.getConnection(function(err, connection) {
     connection.query('SELECT * FROM products', [id], function(err, products) { // console.log(categories);
