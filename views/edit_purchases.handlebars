@@ -7,14 +7,14 @@
 		<div class="col-lg-6">
 
 <form action="/purchases/update/{{data.id}}" method="POST">
-	<div class="md-form">>
-		<label for="">Purchases</label>
+	<div class="md-form">
+		<!-- <label for="">Purchases</label> -->
 		<!-- <select class="" name="prod_id"> -->
 			<select class="mdb-select colorful-select dropdown-danger" name="prod_id">
 			{{#products}}
 				<option {{selected}} value="{{id}}">{{description}}</option>
 			{{/products}}
-		</select><label>Blue select</label>
+		</select>
 </div>
 		<div class="form-group">
 				<label for="">Supplier</label>

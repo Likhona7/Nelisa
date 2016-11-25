@@ -5,31 +5,31 @@
         <div class="card">
 
 <form action="/sales/add_sales" method="POST">
-	<div class="md-form">
 
+	<div class="md-form">
 		<label for="">Products &nbsp;&nbsp;&nbsp;&nbsp;</label>
 		<select class="" name="product_id">
 			{{#categories}}
 				<option value="{{id}}">{{description}}</option>
 			{{/categories}}
 		</select>
+	</div>
 
-	<div>
-		<div>
-	<div>
+
 		<div>
 			<label for="">Date</label>
-			<input type="date" name="sale_date" value="{{sale_date}}"></div>
-		<div>
+			<input type="date" name="sale_date" value="{{sale_date}}">
+    </div>
+
+		<div class="md-form">
 		<label for="">Amount</label>
 		<input type="number" step="any" name="price" value="{{price}}">
 	</div>
+
 	<div>
 		<label for="">Quantity</label>
-		<input type="number" name="quantity" value="{{quantity}}">
+		<input type="number" step="any" name="quantity" value="{{quantity}}">
 	</div>
-
 
 	<input class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign" type="submit">
-	</div>
 </form>
