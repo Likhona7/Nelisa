@@ -106,7 +106,7 @@ var userRoles = {
 app.use(session({
   secret: 'keyboard cat',
   cookie: {
-    maxAge: 90000 * 60,
+    maxAge: 90000 * 6,
     resave: true,
     saveUninitialized: false
   }
