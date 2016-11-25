@@ -7,7 +7,7 @@
 		<div class="col-lg-6">
 
 <form action="/purchases/update/{{data.id}}" method="POST">
-	<div class="">
+	<div class="md-form">>
 		<label for="">Purchases</label>
 		<!-- <select class="" name="prod_id"> -->
 			<select class="mdb-select colorful-select dropdown-danger" name="prod_id">
@@ -30,5 +30,5 @@
 	<div class="field">
 		<label for="price">Cost</label>
 		<input type="text" name="cost" value="{{data.cost}}"></div>
-	<input type="submit">
+	<input class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign" type="submit">
 </form>

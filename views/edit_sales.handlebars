@@ -6,7 +6,7 @@
 		<div class="col-lg-6">
 
 			<form action="/sales/update/{{data.id}}" method="POST">
-				<div class="">
+				<div class="md-form">
 					<label for="">Products</label>
 					<select class="" name="product_id">
 						{{#products}}
@@ -14,18 +14,18 @@
 						{{/products}}
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="md-form">
 
 					<label for="">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					<input class="date-picker" type="date" name="sale_date" value="{{data.sale_date}}">
 				</div>
-				<div class="field">
+				<div class="md-form">
 					<label for="price">Quantity</label>
 					<input type="text" name="quantity" value="{{data.quantity}}">
 				</div>
-				<div class="field">
+				<div class="md-form">
 					<label for="price">Price</label>
 					<input type="text" name="price" value="{{data.price}}">
 				</div>
-				<input type="submit">
+				<input class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign" type="submit">
 			</form>
