@@ -6,17 +6,19 @@
 		<div class="col-lg-6">
 
 			<form action="/sales/update/{{data.id}}" method="POST">
+				<label for="">Products</label>
+
 				<div class="md-form">
-					<label for="">Products</label>
 					<select class="" name="product_id">
 						{{#products}}
 							<option {{selected}} value="{{id}}">{{description}}</option>
 						{{/products}}
 					</select>
 				</div>
+				<label for="">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
 				<div class="md-form">
 
-					<label for="">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					<input class="date-picker" type="date" name="sale_date" value="{{data.sale_date}}">
 				</div>
 				<div class="md-form">
