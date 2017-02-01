@@ -1,0 +1,36 @@
+16:12:58.119 INFO - Launching a standalone Selenium Server
+16:12:58.156 INFO - Java: Oracle Corporation 24.121-b00
+16:12:58.156 INFO - OS: Linux 4.4.0-47-generic amd64
+16:12:58.172 INFO - v2.53.0, with Core v2.53.0. Built from revision 35ae25b
+16:12:58.251 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+registration capabilities Capabilities [{platform=WINDOWS, ensureCleanSession=true, browserName=internet explorer, version=}] does not match the current platform LINUX
+16:12:58.252 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+registration capabilities Capabilities [{platform=WINDOWS, browserName=MicrosoftEdge, version=}] does not match the current platform LINUX
+16:12:58.252 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+16:12:58.252 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+16:12:58.253 INFO - Driver provider org.openqa.selenium.safari.SafariDriver registration is skipped:
+registration capabilities Capabilities [{platform=MAC, browserName=safari, version=}] does not match the current platform LINUX
+16:12:58.254 INFO - Driver class not found: org.openqa.selenium.htmlunit.HtmlUnitDriver
+16:12:58.254 INFO - Driver provider org.openqa.selenium.htmlunit.HtmlUnitDriver is not registered
+16:12:58.318 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+16:12:58.319 INFO - Selenium Server is up and running
+16:12:58.851 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]])
+16:12:58.865 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]
+Starting ChromeDriver 2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320) on port 26084
+Only local connections are allowed.
+16:12:59.949 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]]
+16:12:59.969 INFO - Executing: [get: https://saucelabs.com/test/guinea-pig])
+16:13:01.389 INFO - Done: [get: https://saucelabs.com/test/guinea-pig]
+16:13:01.402 INFO - Executing: [find elements: By.cssSelector: body])
+16:13:01.466 INFO - Done: [find elements: By.cssSelector: body]
+16:13:01.471 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on LINUX (e49ac5cebb3e8e8c1889688c3fe086fa)] -> css selector: body]])
+16:13:01.500 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on LINUX (e49ac5cebb3e8e8c1889688c3fe086fa)] -> css selector: body]]
+16:13:01.506 INFO - Executing: [get title])
+16:13:01.513 INFO - Done: [get title]
+16:13:01.518 INFO - Executing: [take screenshot])
+16:13:01.693 INFO - Done: [take screenshot]
+16:13:01.710 INFO - Executing: [delete session: 0dc2028d-5202-4134-8bd1-4411d26d47b1])
+16:13:01.781 INFO - Done: [delete session: 0dc2028d-5202-4134-8bd1-4411d26d47b1]
