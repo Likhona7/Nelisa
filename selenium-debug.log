@@ -1,107 +1,114 @@
-16:55:45.836 INFO - Launching a standalone Selenium Server
-16:55:45.875 INFO - Java: Oracle Corporation 24.121-b00
-16:55:45.875 INFO - OS: Linux 4.4.0-47-generic amd64
-16:55:45.893 INFO - v2.53.0, with Core v2.53.0. Built from revision 35ae25b
-16:55:45.986 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+11:32:36.944 INFO - Launching a standalone Selenium Server
+11:32:36.981 INFO - Java: Oracle Corporation 24.121-b00
+11:32:36.981 INFO - OS: Linux 4.4.0-47-generic amd64
+11:32:36.997 INFO - v2.53.0, with Core v2.53.0. Built from revision 35ae25b
+11:32:37.075 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
 registration capabilities Capabilities [{platform=WINDOWS, ensureCleanSession=true, browserName=internet explorer, version=}] does not match the current platform LINUX
-16:55:45.987 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+11:32:37.076 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
 registration capabilities Capabilities [{platform=WINDOWS, browserName=MicrosoftEdge, version=}] does not match the current platform LINUX
-16:55:45.987 INFO - Driver class not found: com.opera.core.systems.OperaDriver
-16:55:45.987 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
-16:55:45.988 INFO - Driver provider org.openqa.selenium.safari.SafariDriver registration is skipped:
+11:32:37.076 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+11:32:37.076 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+11:32:37.078 INFO - Driver provider org.openqa.selenium.safari.SafariDriver registration is skipped:
 registration capabilities Capabilities [{platform=MAC, browserName=safari, version=}] does not match the current platform LINUX
-16:55:45.989 INFO - Driver class not found: org.openqa.selenium.htmlunit.HtmlUnitDriver
-16:55:45.989 INFO - Driver provider org.openqa.selenium.htmlunit.HtmlUnitDriver is not registered
-16:55:46.064 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
-16:55:46.064 INFO - Selenium Server is up and running
-16:55:46.596 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+11:32:37.078 INFO - Driver class not found: org.openqa.selenium.htmlunit.HtmlUnitDriver
+11:32:37.079 INFO - Driver provider org.openqa.selenium.htmlunit.HtmlUnitDriver is not registered
+11:32:37.147 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+11:32:37.148 INFO - Selenium Server is up and running
+11:32:37.667 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
             (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]])
-16:55:46.611 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+11:32:37.681 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
             (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]
-Starting ChromeDriver 2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320) on port 18831
+Starting ChromeDriver 2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320) on port 16060
 Only local connections are allowed.
-16:55:47.739 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+11:32:38.761 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
             (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]]
-16:55:47.758 INFO - Executing: [get: http://nelisa123.projectcodex.co/login])
-16:55:52.438 INFO - Done: [get: http://nelisa123.projectcodex.co/login]
-16:55:52.454 INFO - Executing: [find elements: By.cssSelector: body])
-16:55:52.514 INFO - Done: [find elements: By.cssSelector: body]
-16:55:52.518 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: body]])
-16:55:52.546 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: body]]
-16:55:52.552 INFO - Executing: [get title])
-16:55:52.560 INFO - Done: [get title]
-16:55:52.567 INFO - Executing: [find element: By.cssSelector: input[type=text]])
-16:55:52.596 INFO - Done: [find element: By.cssSelector: input[type=text]]
-16:55:52.600 INFO - Executing: [is displayed: 1 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[type=text]]])
-16:55:52.628 INFO - Done: [is displayed: 1 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[type=text]]]
-16:55:52.634 INFO - Executing: [find element: By.cssSelector: input[name=username]])
-16:55:52.663 INFO - Done: [find element: By.cssSelector: input[name=username]]
-16:55:52.667 INFO - Executing: [is displayed: 1 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[type=text]]])
-16:55:52.679 INFO - Done: [is displayed: 1 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[type=text]]]
-16:55:52.684 INFO - Executing: [find element: By.cssSelector: input[name=password]])
-16:55:52.713 INFO - Done: [find element: By.cssSelector: input[name=password]]
-16:55:52.716 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[name=password]]])
-16:55:52.746 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[name=password]]]
-16:55:52.750 INFO - Executing: [find element: By.cssSelector: input[type=text]])
-16:55:52.762 INFO - Done: [find element: By.cssSelector: input[type=text]]
-16:55:52.768 INFO - Executing: [send keys: 1 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[type=text]], [n, e, l, i, s, a]])
-16:55:52.866 INFO - Done: [send keys: 1 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[type=text]], [n, e, l, i, s, a]]
-16:55:52.871 INFO - Executing: [find element: By.cssSelector: input[type=password]])
-16:55:52.908 INFO - Done: [find element: By.cssSelector: input[type=password]]
-16:55:52.914 INFO - Executing: [send keys: 2 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[name=password]], [p, a, s, s]])
-16:55:53.002 INFO - Done: [send keys: 2 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: input[name=password]], [p, a, s, s]]
-16:55:53.016 INFO - Executing: [find elements: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]])
-16:55:53.049 INFO - Done: [find elements: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]
-16:55:53.057 INFO - Executing: [is displayed: 3 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]])
-16:55:53.090 INFO - Done: [is displayed: 3 [[ChromeDriver: chrome on LINUX (151f8ca93ab223882eb347064520724f)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]]
-16:55:53.100 INFO - Executing: [find element: By.cssSelector: button[class=btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign]])
-16:55:53.801 WARN - Exception thrown
-org.openqa.selenium.InvalidSelectorException: invalid selector: An invalid or illegal selector was specified
-  (Session info: chrome=56.0.2924.76)
-  (Driver info: chromedriver=2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320),platform=Linux 4.4.0-47-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 37 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/invalid_selector_exception.html
-Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 17:00:58'
-System info: host: 'codexadmin-Inspiron-3542', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.4.0-47-generic', java.version: '1.7.0_121'
-*** Element info: {Using=css selector, value=button[class=btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign]}
-Session ID: 151f8ca93ab223882eb347064520724f
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/tmp/.org.chromium.Chromium.BMDDvN, chromedriverVersion=2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320)}, networkConnectionEnabled=false, unexpectedAlertBehaviour=, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=56.0.2924.76, pageLoadStrategy=normal, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true}]
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:492)
-	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:103)
-	at com.sun.proxy.$Proxy1.findElement(Unknown Source)
-	at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:188)
-	at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:48)
-	at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:1)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
-	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:176)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
-	at java.lang.Thread.run(Thread.java:745)
-16:55:53.805 WARN - Exception: invalid selector: An invalid or illegal selector was specified
-  (Session info: chrome=56.0.2924.76)
-  (Driver info: chromedriver=2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320),platform=Linux 4.4.0-47-generic x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 37 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/invalid_selector_exception.html
-Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 17:00:58'
-System info: host: 'codexadmin-Inspiron-3542', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.4.0-47-generic', java.version: '1.7.0_121'
-*** Element info: {Using=css selector, value=button[class=btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign]}
-Session ID: 151f8ca93ab223882eb347064520724f
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/tmp/.org.chromium.Chromium.BMDDvN, chromedriverVersion=2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320)}, networkConnectionEnabled=false, unexpectedAlertBehaviour=, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=56.0.2924.76, pageLoadStrategy=normal, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true}]
-16:55:59.008 INFO - Executing: [delete session: 7bd31431-bebf-4a11-88e7-fe8880207562])
-16:55:59.084 INFO - Done: [delete session: 7bd31431-bebf-4a11-88e7-fe8880207562]
+11:32:38.781 INFO - Executing: [get: http://nelisa123.projectcodex.co/login])
+11:32:42.930 INFO - Done: [get: http://nelisa123.projectcodex.co/login]
+11:32:42.938 INFO - Executing: [get title])
+11:32:42.948 INFO - Done: [get title]
+11:32:42.956 INFO - Executing: [find element: By.cssSelector: input[type=text]])
+11:32:43.005 INFO - Done: [find element: By.cssSelector: input[type=text]]
+11:32:43.009 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[type=text]]])
+11:32:43.038 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[type=text]]]
+11:32:43.043 INFO - Executing: [find element: By.cssSelector: input[name=username]])
+11:32:43.072 INFO - Done: [find element: By.cssSelector: input[name=username]]
+11:32:43.075 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[type=text]]])
+11:32:43.086 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[type=text]]]
+11:32:43.090 INFO - Executing: [find element: By.cssSelector: input[name=password]])
+11:32:43.119 INFO - Done: [find element: By.cssSelector: input[name=password]]
+11:32:43.123 INFO - Executing: [is displayed: 1 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[name=password]]])
+11:32:43.150 INFO - Done: [is displayed: 1 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[name=password]]]
+11:32:43.154 INFO - Executing: [find element: By.cssSelector: input[type=text]])
+11:32:43.166 INFO - Done: [find element: By.cssSelector: input[type=text]]
+11:32:43.171 INFO - Executing: [send keys: 0 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[type=text]], [n, e, l, i, s]])
+11:32:43.250 INFO - Done: [send keys: 0 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[type=text]], [n, e, l, i, s]]
+11:32:43.256 INFO - Executing: [find element: By.cssSelector: input[type=password]])
+11:32:43.289 INFO - Done: [find element: By.cssSelector: input[type=password]]
+11:32:43.297 INFO - Executing: [send keys: 1 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[name=password]], [p, a, s]])
+11:32:43.374 INFO - Done: [send keys: 1 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: input[name=password]], [p, a, s]]
+11:32:43.386 INFO - Executing: [find elements: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]])
+11:32:43.429 INFO - Done: [find elements: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]
+11:32:43.435 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]])
+11:32:43.472 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]]
+11:32:43.479 INFO - Executing: [find element: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]])
+11:32:43.513 INFO - Done: [find element: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]
+11:32:43.521 INFO - Executing: [click: 2 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]])
+11:32:46.126 INFO - Done: [click: 2 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]]
+11:32:46.133 INFO - Executing: [find elements: By.cssSelector: h4[id="warning"]])
+11:32:46.164 INFO - Done: [find elements: By.cssSelector: h4[id="warning"]]
+11:32:46.167 INFO - Executing: [is displayed: 3 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: h4[id="warning"]]])
+11:32:46.195 INFO - Done: [is displayed: 3 [[ChromeDriver: chrome on LINUX (691dbbaa5deb68b3640aef321c1b19fe)] -> css selector: h4[id="warning"]]]
+11:32:47.202 INFO - Executing: [delete session: f953a1a1-4e18-4ce6-8faa-322177609c81])
+11:32:47.271 INFO - Done: [delete session: f953a1a1-4e18-4ce6-8faa-322177609c81]
+11:32:47.283 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]])
+11:32:47.284 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]
+Starting ChromeDriver 2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320) on port 17888
+Only local connections are allowed.
+11:32:47.748 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]]
+11:32:47.756 INFO - Executing: [get: http://nelisa123.projectcodex.co/login])
+11:32:52.268 INFO - Done: [get: http://nelisa123.projectcodex.co/login]
+11:32:52.281 INFO - Executing: [find element: By.cssSelector: input[type=password]])
+11:32:52.314 INFO - Done: [find element: By.cssSelector: input[type=password]]
+11:32:52.321 INFO - Executing: [send keys: 0 [[ChromeDriver: chrome on LINUX (8fcc65e49b5556ccaed4951b3e7694a9)] -> css selector: input[type=password]], [p, a, s, s]])
+11:32:52.395 INFO - Done: [send keys: 0 [[ChromeDriver: chrome on LINUX (8fcc65e49b5556ccaed4951b3e7694a9)] -> css selector: input[type=password]], [p, a, s, s]]
+11:32:52.400 INFO - Executing: [find element: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]])
+11:32:52.433 INFO - Done: [find element: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]
+11:32:52.437 INFO - Executing: [click: 1 [[ChromeDriver: chrome on LINUX (8fcc65e49b5556ccaed4951b3e7694a9)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]])
+11:32:55.041 INFO - Done: [click: 1 [[ChromeDriver: chrome on LINUX (8fcc65e49b5556ccaed4951b3e7694a9)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]]
+11:32:55.049 INFO - Executing: [find elements: By.cssSelector: h4[id="warning"]])
+11:32:55.082 INFO - Done: [find elements: By.cssSelector: h4[id="warning"]]
+11:32:55.087 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on LINUX (8fcc65e49b5556ccaed4951b3e7694a9)] -> css selector: h4[id="warning"]]])
+11:32:55.115 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on LINUX (8fcc65e49b5556ccaed4951b3e7694a9)] -> css selector: h4[id="warning"]]]
+11:33:00.127 INFO - Executing: [delete session: 9d3db0a2-3e13-49bd-9c0d-e246c841440a])
+11:33:00.196 INFO - Done: [delete session: 9d3db0a2-3e13-49bd-9c0d-e246c841440a]
+11:33:00.203 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]])
+11:33:00.204 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]
+Starting ChromeDriver 2.27.440175 (9bc1d90b8bfa4dd181fbbf769a5eb5e575574320) on port 1053
+Only local connections are allowed.
+11:33:00.700 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=E2e, chromeOptions={args=[Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3, --window-size=640,1136]}}]]
+11:33:00.708 INFO - Executing: [get: http://nelisa123.projectcodex.co/login])
+11:33:04.927 INFO - Done: [get: http://nelisa123.projectcodex.co/login]
+11:33:04.934 INFO - Executing: [find element: By.cssSelector: input[type=text]])
+11:33:04.968 INFO - Done: [find element: By.cssSelector: input[type=text]]
+11:33:04.973 INFO - Executing: [send keys: 0 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: input[type=text]], [n, e, l, i, s, a]])
+11:33:05.053 INFO - Done: [send keys: 0 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: input[type=text]], [n, e, l, i, s, a]]
+11:33:05.060 INFO - Executing: [find element: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]])
+11:33:05.094 INFO - Done: [find element: By.cssSelector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]
+11:33:05.099 INFO - Executing: [click: 1 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]])
+11:33:07.671 INFO - Done: [click: 1 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: button[class="btn btn-default-outline waves-effect glyphicon glyphicon-plus-sign"]]]
+11:33:07.678 INFO - Executing: [find elements: By.cssSelector: h4[id="warning"]])
+11:33:07.708 INFO - Done: [find elements: By.cssSelector: h4[id="warning"]]
+11:33:07.713 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: h4[id="warning"]]])
+11:33:07.739 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: h4[id="warning"]]]
+11:33:08.243 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: h4[id="warning"]]])
+11:33:08.262 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: h4[id="warning"]]]
+11:33:08.767 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: h4[id="warning"]]])
+11:33:08.779 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on LINUX (a63301f3f2ea5e2cf93574eaae721514)] -> css selector: h4[id="warning"]]]
+11:33:08.784 INFO - Executing: [delete session: 72facd23-497e-4e6d-be05-511096a5d470])
+11:33:08.854 INFO - Done: [delete session: 72facd23-497e-4e6d-be05-511096a5d470]
