@@ -3,7 +3,7 @@
 
 
        module.exports = {
-              'test if elements are visible and filling out the form on the login and press button' : function (client) {
+  'test if elements are visible and filling out the form on the login and press button' : function (client) {
                 client
                   .url('http://nelisa123.projectcodex.co/login')
                   .assert.title('Nelisa')
