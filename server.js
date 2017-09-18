@@ -19,7 +19,7 @@ var spazaStringPurchase = nelisa.readData('./files/purchases.csv');
 var session = require('express-session');
 var bcrypt = require("bcrypt");
 var mid = require("./middleware")
-  // var middleware = require("middleware");
+var middleware = require("middleware");
 var parseurl = require('parseurl');
 var LocalStrategy = require('passport-local');
 var flash = require('express-flash');
@@ -28,7 +28,7 @@ var app = express();
 var dbOptions = {
   host: 'localhost',
   user: 'root',
-  password: 'coder123',
+  password: 'boot123',
   port: 3306,
   database: 'nelisa'
 };
