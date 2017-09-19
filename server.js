@@ -25,6 +25,8 @@ var LocalStrategy = require('passport-local');
 var flash = require('express-flash');
 var app = express();
 
+//..............................................................................
+
 var dbOptions = {
   host: 'localhost',
   user: 'root',
@@ -33,10 +35,7 @@ var dbOptions = {
   database: 'nelisa'
 };
 
-
-
-
-
+//..............................................................................
 var weeklyStats = function(path) {
 
   var spazaString = nelisa.readData(path);
@@ -91,6 +90,7 @@ var weekStat = {
 
 //..............................................................................
 
+
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
 }));
@@ -116,13 +116,15 @@ app.use(session({
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 app.use(flash());
+
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
-    extended: false
-  }))
-  // parse application/json
+  extended: false
+}))
+// parse application/json
 app.use(bodyParser.json())
 
 function errorHandler(err, req, res, next) {
@@ -147,12 +149,11 @@ function checkUser(req, res, next) {
     }
     return next();
   }
-
   res.redirect("/login");
 };
 
 
-
+//..............................................................................
 
 //setup the handlers
 app.get('/categories', categories.show_categories);
@@ -163,7 +164,8 @@ app.post('/categories/add', categories.add_categories);
 // //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/categories/delete/:id', categories.delete_categories);
 app.post('/categories/search/', categories.searchCategories);
-////////////////////////////////////////////////////////////////////////////////
+
+//..............................................................................
 
 app.get("/user", user.show_users);
 app.get("/user/add", mid.requiresLoginAsAdmin, user.showAdd_user);
@@ -172,7 +174,7 @@ app.post("/user/update/:id", mid.requiresLoginAsAdmin, user.update);
 app.post("/user/add", user.add_users);
 app.get("/user/delete/:id", user.delete);
 
-////////////////////////////////////////////////////////////////////////////////
+//..............................................................................
 
 app.get('/products', products.show_products);
 app.get('/products/add', mid.requiresLoginAsAdmin, products.showAdd_products);
@@ -182,7 +184,7 @@ app.get('/products/delete/:id', products.delete_products);
 app.post('/products/add', products.add_products);
 app.post('/products/search/', products.searchProducts);
 
-////////////////////////////////////////////////////////////////////////////////
+//..............................................................................
 
 app.get('/sales', mid.requiresLoginAsAdmin, sales.show);
 app.get('/sales/add_sales', mid.requiresLoginAsAdmin, sales.showAdd);
@@ -192,7 +194,7 @@ app.post('/sales/update/:id', mid.requiresLoginAsAdmin, sales.update);
 app.get('/sales/delete/:id', sales.delete);
 app.post('/sales/search/', sales.searchSales);
 
-///////////////////////////////////////////////////////////////////
+//..............................................................................
 app.get('/purchases', mid.requiresLoginAsAdmin, purchases.show);
 app.get('/purchases/add_purchases', mid.requiresLoginAsAdmin, purchases.showAdd);
 app.post('/purchases/add_purchases', mid.requiresLoginAsAdmin, purchases.addPurchases);
@@ -200,7 +202,7 @@ app.get('/purchases/edit_purchases/:id', mid.requiresLoginAsAdmin, purchases.get
 app.post('/purchases/update/:id', mid.requiresLoginAsAdmin, purchases.update);
 app.get('/purchases/delete/:id', purchases.delete);
 app.post('/purchases/search/', purchases.searchPurchases);
-///////////////////////////////////////////////////////////////////////////////
+//..............................................................................
 
 
 
@@ -219,24 +221,17 @@ app.get("/login", function(req, res) {
 })
 app.post("/login", login.Inloggin);
 
-
-
 app.get("/home", function(req, res) {
   res.render("home");
 });
-
 app.get("/logout", function(req, res) {
   delete req.session.user;
   res.redirect("/login");
 });
-
 app.get("/contact", function(req, res) {
   res.render("contact");
 });
-
-
 app.post("/login_users", function(req, res, next) {});
-////////////////////////////////////////////////////////////////////////////////
 
 app.get("/signup", function(req, res) {
   res.render("signUp_users");
@@ -245,7 +240,7 @@ app.get("/signup", function(req, res) {
 app.post("/signup", signUp.add_users);
 
 
-
+//..............................................................................
 
 //set the port number to an existing environment variable PORT or default to 5000
 app.set('port', (process.env.PORT || 5000));
