@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "e2e": "node_modules/.bin/nightwatch --config nightwatch.conf.Basic.js",
+    "postinstall": "node nightwatch.conf.js",
+    "test": "./node_modules/.bin/nightwatch --env local",
+    "ie": "./node_modules/.bin/nightwatch -e ie11",
+    "sauce": "./node_modules/.bin/nightwatch -e chrome,ie11,android_s4_emulator,iphone_6_simulator",
+    "upload": "node test/e2e/upload_screenshots_to_s3.js",
+    "dev": "./node_modules/.bin/nodemon -w test/index.html --delay 250ms --exec 'npm run upload'"
   },
   "author": "",
   "license": "ISC",
@@ -16,28 +22,20 @@
     "express-flash": "git://github.com/RGBboy/express-flash.git",
     "express-handlebars": "^1.1.0",
     "express-myconnection": "^1.0.4",
+    "express-session": "^1.15.5",
     "flash": "~1.1.0",
+    "middleware": "~1.0.0",
     "mysql": "^2.5.3",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "prompt": "^0.2.14",
-    "middleware": "~1.0.0",
     "underscore": "~1.8.3"
   },
   "devDependencies": {
     "nightwatch": "^0.9.12",
     "env2": "^2.1.1",
     "selenium-download": "^2.0.9"
-  },
-  "scripts": {
-  "e2e": "node_modules/.bin/nightwatch --config nightwatch.conf.Basic.js",
-  "postinstall": "node nightwatch.conf.js",
-  "test": "./node_modules/.bin/nightwatch --env local",
-  "ie": "./node_modules/.bin/nightwatch -e ie11",
-  "sauce": "./node_modules/.bin/nightwatch -e chrome,ie11,android_s4_emulator,iphone_6_simulator",
-  "upload": "node test/e2e/upload_screenshots_to_s3.js",
-  "dev": "./node_modules/.bin/nodemon -w test/index.html --delay 250ms --exec 'npm run upload'"
-}
+  }
 }
