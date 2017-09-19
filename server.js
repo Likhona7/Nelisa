@@ -112,28 +112,6 @@ app.use(session({
   }
 }));
 
-//app.use(function(req, res, next) {
-//console.log("the middleware :" + req.path);
-//next();
-//})
-
-
-// app.use(function(req, res, next){
-//   console.log('in my middleware!');
-//
-//   // the user is not going to the login screen
-//   if (req.path != "/login_users"){
-//       //is the user not logged in?
-//       if (!req.session.username ){
-//           // redirects to the login screen
-//           return res.redirect("/login_users");
-//       }
-//   }
-//
-//   //proceed to the next middleware component
-//   next();
-// });
-
 
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
@@ -153,15 +131,6 @@ function errorHandler(err, req, res, next) {
     error: err
   });
 }
-////////////////////////////////////////////////////////////////////////////////
-// var checkUser = function(req, res, next){
-// console.log("checking.user................");
-// if(req.session.user || req.path == "/login_users"){
-//   return next();
-// }
-//     res.redirect("/login");
-//
-// };
 
 app.all('*', checkUser);
 
@@ -277,33 +246,6 @@ app.post("/signup", signUp.add_users);
 
 
 
-// router.post("/signUp_users", function(req, res, next){
-//   if(req.body.email &&
-//   req.body.username &&
-// req.body.password &&){
-//
-//   }
-//
-// })
-
-
-
-// if(req.body.password !== req.body.confirmPassword){
-// var err = new Error("password do not match.");
-// err.status = 400;
-// return next(err);
-// }
-
-
-// else {
-//   var err = new Error("All fields required..");
-//   err.status = 400;
-//   return next(err);
-// }
-
-// })
-
-
 
 //set the port number to an existing environment variable PORT or default to 5000
 app.set('port', (process.env.PORT || 5000));
@@ -311,24 +253,3 @@ app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-
-
-
-
-
-
-
-
-// // app.get('/sales/:week_name', function(req, res){
-// //   var week_name = req.params.week_name
-// //    //console.log(week_name)
-// //   res.send(application.weeklyStats(week_name));
-// // });
-// //
-// //set the port number to an existing environment variable PORT or default to 5000
-// app.set('port', (process.env.PORT || 3000));
-// //start the app like this:
-// app.listen(app.get('port'), function() {
-//   console.log('Node app is running on port', app.get('port'));
-// });
